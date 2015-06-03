@@ -1,105 +1,106 @@
 .queuelist {
     overflow: hidden;
-}
-.queueitem {
-    height: 50px;
-    line-height: 50px;
-    border-bottom: 1px solid #ededed;
-    position: relative;
-    .col {
-        vertical-align: middle;
-        display: inline-block;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        &.col-name {
-            width: 240px;
-            .exticon {
-                display: inline-block;
-                vertical-align: middle;
-                margin: 0 10px;
+    .listitem {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #ededed;
+        position: relative;
+        .col {
+            vertical-align: middle;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            &.col-name {
+                width: 240px;
+                .exticon {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 10px;
+                }
+                .queue-name {
+                    vertical-align: middle;
+                }
             }
-            .queue-name {
-                vertical-align: middle;
+            &.col-size {
+                width: 80px;
+            }
+            &.col-info {
+                width: 180px;
+                text-align: right;
+                padding-right: 15px;
             }
         }
-        &.col-size {
-            width: 80px;
-        }
-        &.col-info {
-            width: 180px;
-            text-align: right;
-            padding-right: 15px;
-        }
-    }
-    .queue-progress-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 5px;
-        background: #42a1eb;
-        width: 0;
-        -webkit-transition: width .2s ease-out, opacity .5s ease-out .2s;
-        -moz-transition: width .2s ease-out, opacity .5s ease-out .2s;
-        transition: width .2s ease-out, opacity .5s ease-out .2s;
-    }
-    .queue-name {
-        color: #707070;
-        font-size: 14px;
-        overflow: hidden;
-        display: inline-block;
-        max-width: 170px;
-        text-overflow: ellipsis;
-    }
-    .queue-size {
-        color: #adadad;
-        overflow: hidden;
-    }
-    .queue-progress-text {
-        color: #adadad;
-        width: 60px;
-        text-align: left;
-        margin-right: 20px;
-        overflow: hidden;
-    }
-    .queue-complete {
-        font-size: 20px;
-        margin-right: 12px;
-        color: #8ad256;
-    }
-    .queue-resend {
-        margin-right: 12px;
-        .icon {
-            font-size: 20px;
-        }
-        &:hover {
-            color:#42a1eb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
-    .queue-cancel {
-        .icon {
-            font-size: 20px;
-        }
-        &:hover {
-            color:#fc6e51;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
-    .queue-error {
-        margin-right: 15px;
-        color: #fc6e51;
-    }
-    &.complete {
         .queue-progress-bar {
-            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: #42a1eb;
+            width: 0;
+            -webkit-transition: width .2s ease-out, opacity .5s ease-out .2s;
+            -moz-transition: width .2s ease-out, opacity .5s ease-out .2s;
+            transition: width .2s ease-out, opacity .5s ease-out .2s;
         }
-    }
-    &.error {
-        .queue-progress-bar {
-            display: none;
+        .queue-name {
+            color: #707070;
+            font-size: 14px;
+            overflow: hidden;
+            display: inline-block;
+            max-width: 170px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .queue-size {
+            color: #adadad;
+            overflow: hidden;
+        }
+        .queue-progress-text {
+            color: #adadad;
+            width: 60px;
+            text-align: left;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+        .queue-complete {
+            font-size: 20px;
+            margin-right: 12px;
+            color: #8ad256;
+        }
+        .queue-resend {
+            margin-right: 12px;
+            .icon {
+                font-size: 20px;
+            }
+            &:hover {
+                color: #42a1eb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        .queue-cancel {
+            .icon {
+                font-size: 20px;
+            }
+            &:hover {
+                color: #fc6e51;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        .queue-error {
+            margin-right: 15px;
+            color: #fc6e51;
+        }
+        &.complete {
+            .queue-progress-bar {
+                opacity: 0;
+            }
+        }
+        &.error {
+            .queue-progress-bar {
+                display: none;
+            }
         }
     }
 }

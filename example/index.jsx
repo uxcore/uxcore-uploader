@@ -76,8 +76,9 @@ function onChunkComplete(response) {
 }
 
 function onComplete(response) {
+    const i = $.Deferred();
+
     if (response.isFromMultiChunkResponse()) {
-        const i = $.Deferred();
         getToken().then((token) => {
             let query = $.param({token, fileId: response.getFileRequest().getParam('fileId', true)});
             return $.post('http://up.django.t.taobao.com/rest/1.0/file/transaction?'+query);
@@ -85,8 +86,20 @@ function onComplete(response) {
             response.setResponse($.parseJSON(ret));
             i.resolve(response);
         });
-        return i;
+    } else {
+        i.resolve(response);
     }
+
+    return i.then((response) => {
+        const j = $.Deferred();
+        const res = response.getResponse();
+        if (res.code === 0) {
+            j.resolve(res);
+        } else {
+            j.reject(new Error(res.code));
+        }
+        return j;
+    });
 }
 
 function onStatChange(stat) {
@@ -96,5 +109,5 @@ function onStatChange(stat) {
 }
 
 React.render((
-    <QueueBox jsxchunkEnable={true} onPrepare={onPrepare} onChunkPrepare={onChunkPrepare} onChunkComplete={onChunkComplete} onComplete={onComplete} onStatChange={onStatChange} />
+    <QueueBox jsxchunkEnable={true} jsxmode="list" onPrepare={onPrepare} onChunkPrepare={onChunkPrepare} onChunkComplete={onChunkComplete} onComplete={onComplete} onStatChange={onStatChange} />
 ), document.getElementById('content'));

@@ -37,7 +37,7 @@
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.2.4",
     "should": "^6.0.1",
-    "uxcore-uploader": "^1.0.2",
+    "uxcore-uploader": "^1.0.4",
     "webpack": "^1.8.4",
     "webpack-dev-server": "1.6.6"
   },

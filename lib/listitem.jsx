@@ -13,7 +13,7 @@ function humanSizeFormat(size) {
     return size + ' ' + prefixesSI[index] + 'B';
 }
 
-export default class QueueItem extends React.Component {
+export default class ListItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -97,7 +97,7 @@ export default class QueueItem extends React.Component {
             </label>);
         }
         return (
-            <div className={"queueitem " + this.state.status}>
+            <div className={"listitem " + this.state.status}>
                 <label className="col col-name">
                     <i className={"exticon size-40 ext-" + this.props.file.ext}/>
                     <span className="queue-name" title={this.props.file.name}>{this.props.file.name}</span>
@@ -109,7 +109,7 @@ export default class QueueItem extends React.Component {
         );
     }
 }
-QueueItem.defaultProps = {
+ListItem.defaultProps = {
     file: null,
     confirmCancel: null
 };

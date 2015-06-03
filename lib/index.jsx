@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import {Context, FileAspects as Aspects, Events, FileStatus as Status} from 'uploader';
 import QueueList from './queuelist.jsx';
+import QueueIcon from './queueicon.jsx';
 
 const UPLOADER_INSTANCE = {};
 function getUploaderInstance(id, options, aspects) {
@@ -95,6 +96,7 @@ export default class QueueBox extends React.Component {
 
 QueueBox.defaultProps = {
     jsxinstanceId: 'default',
+    jsxmode: 'list',
     jsxfieldname: 'file',
     jsxurl: 'http://up.django.t.taobao.com/rest/1.0/file',
     jsxchunkSize: 5 * 1024 * 1024,

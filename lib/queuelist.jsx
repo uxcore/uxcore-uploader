@@ -1,6 +1,6 @@
 import React from 'react';
 import {Events, FileStatus as Status} from 'uploader';
-import QueueItem from './queueitem.jsx';
+import ListItem from './listitem.jsx';
 
 export default class QueueList extends React.Component {
 
@@ -40,7 +40,7 @@ export default class QueueList extends React.Component {
         }
         return (
             <div className="queuelist">{this.state.items.map((file) => {
-                return <QueueItem key={file.id} file={file} />;
+                return <ListItem key={file.id} file={file} />;
             })}</div>
         );
     }
