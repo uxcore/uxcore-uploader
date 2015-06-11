@@ -20,9 +20,18 @@ export default class ListItem extends React.Component {
 
         const file = this.props.file;
 
+        let status = file.getStatus();
+        if (status === Status.ERROR) {
+            status = 'error';
+        } else if (status === Status.SUCCESS) {
+            status = 'complete';
+        } else {
+            status = 'pending';
+        }
+
         this.state = {
             percentage: file.progress ? file.progress.percentage : 0,
-            status: file.getStatus()
+            status: status
         };
     }
 

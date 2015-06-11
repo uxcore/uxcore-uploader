@@ -85,11 +85,12 @@ export default class QueueBox extends React.Component {
     }
 
     render() {
+        let queue = this.props.jsxmode === 'list'
+            ? <QueueList context={this.state.context} />
+            : <QueueIcon context={this.state.context} />;
         return <div className="queuebox">
             <div className="overlay" />
-            <div className="queuebox-body">
-                <QueueList context={this.state.context} />
-            </div>
+            <div className="queuebox-body">{queue}</div>
         </div>;
     }
 }
@@ -98,7 +99,7 @@ QueueBox.defaultProps = {
     jsxinstanceId: 'default',
     jsxmode: 'list',
     jsxfieldname: 'file',
-    jsxurl: 'http://up.django.t.taobao.com/rest/1.0/file',
+    jsxurl: 'http://demo.nwux.taobao.net/file/upload',
     jsxchunkSize: 5 * 1024 * 1024,
     jsxchunkRetries: 2,
     jsxchunkEnable: false,
