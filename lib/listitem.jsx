@@ -1,5 +1,5 @@
 import React from 'react';
-import {Events, FileStatus as Status} from 'uploader';
+import {Events, Status} from 'uploadcore';
 
 function humanSizeFormat(size) {
     size = parseFloat(size);

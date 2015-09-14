@@ -15,9 +15,9 @@ module.exports = {
         loaders: require('./loaders.config')
     },
     externals: {
-        'react': 'React',
-        'jquery': 'jQuery',
-        'uploader': 'UXUploader'
+        'react': 'var React',
+        'jquery': 'var jQuery',
+        'uploadcore': 'var UploadCore'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']

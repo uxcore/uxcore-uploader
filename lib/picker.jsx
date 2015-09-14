@@ -7,7 +7,7 @@ export default class Picker extends React.Component {
     }
 
     componentDidMount() {
-        this.area = this.props.context.getPickerCollector().addArea(React.findDOMNode(this));
+        this.area = this.props.core.getPickerCollector().addArea(React.findDOMNode(this));
     }
 
     componentWillUnmount() {

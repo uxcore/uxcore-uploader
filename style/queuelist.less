@@ -1,37 +1,51 @@
-.queuelist {
+.filelist {
     overflow: hidden;
-    .listitem {
+    .fileitem {
         height: 50px;
         line-height: 50px;
         border-bottom: 1px solid #ededed;
         position: relative;
-        .col {
+        .field {
             vertical-align: middle;
             display: inline-block;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
-            &.col-name {
-                width: 240px;
-                .exticon {
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin: 0 10px;
-                }
-                .queue-name {
-                    vertical-align: middle;
-                }
+        }
+        .field-name {
+            width: 240px;
+            .exticon {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 10px;
             }
-            &.col-size {
-                width: 80px;
-            }
-            &.col-info {
-                width: 180px;
-                text-align: right;
-                padding-right: 15px;
+            .name {
+                vertical-align: middle;
+                color: #707070;
+                font-size: 14px;
+                overflow: hidden;
+                display: inline-block;
+                max-width: 170px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
-        .queue-progress-bar {
+        .field-size {
+            width: 80px;
+            color: #adadad;
+            overflow: hidden;
+        }
+        .field-actions {
+            width: 180px;
+            text-align: right;
+            padding-right: 15px;
+            .action {
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .progressbar {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -42,63 +56,62 @@
             -moz-transition: width .2s ease-out, opacity .5s ease-out .2s;
             transition: width .2s ease-out, opacity .5s ease-out .2s;
         }
-        .queue-name {
-            color: #707070;
-            font-size: 14px;
-            overflow: hidden;
-            display: inline-block;
-            max-width: 170px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .queue-size {
-            color: #adadad;
-            overflow: hidden;
-        }
-        .queue-progress-text {
-            color: #adadad;
-            width: 60px;
-            text-align: left;
-            margin-right: 20px;
-            overflow: hidden;
-        }
-        .queue-complete {
-            font-size: 20px;
-            margin-right: 12px;
-            color: #8ad256;
-        }
-        .queue-resend {
-            margin-right: 12px;
-            .icon {
-                font-size: 20px;
+
+        .action {
+            &.action-remove {
+                &:hover {
+                    color: #fc6e51;
+                }
+                &:before {
+                    content: "\e602";
+                }
+                &.status-success {
+                    color: #8ad256;
+                    &:before {
+                        content: "\e600";
+                    }
+                    &:hover {
+                        color: #fc6e51;
+                    }
+                    &:hover:before {
+                        content: "\e602";
+                    }
+                }
+                &.status-error {
+                    color: #fc6e51;
+                    &:before {
+                        content: "\e604";
+                    }
+                    &:hover:before {
+                        content: "\e602";
+                    }
+                }
             }
-            &:hover {
-                color: #42a1eb;
-                text-decoration: none;
-                cursor: pointer;
+
+            &.action-retry {
+                &:hover {
+                    color: #42a1eb;
+                }
+                &:before {
+                    content: "\e606";
+                }
             }
-        }
-        .queue-cancel {
-            .icon {
-                font-size: 20px;
+            &.action-upload {
+                &:hover {
+                    color: #42a1eb;
+                }
+                &:before {
+                    content: "\e60a";
+                }
             }
-            &:hover {
-                color: #fc6e51;
-                text-decoration: none;
-                cursor: pointer;
-            }
-        }
-        .queue-error {
-            margin-right: 15px;
-            color: #fc6e51;
         }
         &.complete {
-            .queue-progress-bar {
+            .progressbar {
                 opacity: 0;
             }
         }
         &.error {
-            .queue-progress-bar {
+            .progressbar {
                 display: none;
             }
         }

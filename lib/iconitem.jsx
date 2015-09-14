@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import {Events, FileStatus as Status} from 'uploader';
+import {Events, Status} from 'uploadcore';
 import Progress from './progress.jsx';
 
 class Preview extends React.Component {

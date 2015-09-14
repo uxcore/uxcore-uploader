@@ -1,5 +1,5 @@
 import React from 'react';
-import {Events, FileStatus as Status} from 'uploader';
+import {Events, Status} from 'uploadcore';
 import IconItem from './iconitem.jsx';
 import Picker from './picker.jsx';
 
@@ -8,22 +8,22 @@ export default class QueueIcon extends React.Component {
     constructor(props) {
         super(props);
 
-        this.queue = this.props.context.getQueue();
+        this.core = this.props.core;
 
         this.state = {
-            items: this.queue.getStat().getFiles()
+            items: this.core.getStat().getFiles()
         };
     }
 
     componentDidMount() {
         const statchange = () => {
             this.setState({
-                items: this.queue.getStat().getFiles()
+                items: this.core.getStat().getFiles()
             });
         };
-        this.queue.on(Events.QUEUE_STAT_CHANGE, statchange);
+        this.core.on(Events.QUEUE_STAT_CHANGE, statchange);
         this.stopListen = () => {
-            this.queue.off(Events.QUEUE_STAT_CHANGE, statchange);
+            this.core.off(Events.QUEUE_STAT_CHANGE, statchange);
         };
     }
 
@@ -37,7 +37,7 @@ export default class QueueIcon extends React.Component {
                 {this.state.items.map((file) => {
                     return <IconItem key={file.id} file={file} />;
                 })}
-                <Picker context={this.props.context} />
+                <Picker core={this.core} />
             </div>
         );
     }
