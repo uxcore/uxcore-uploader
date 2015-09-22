@@ -5,5 +5,5 @@ import '../style/index.less';
 
 
 React.render((
-    <QueueBox jsxmode="icon" />
+    <QueueBox name='file' url='http://test.yanbingbing.com/upload.php' autoPending={false} multiple={true} />
 ), document.getElementById('content'));

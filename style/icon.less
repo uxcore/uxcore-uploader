@@ -1,24 +1,156 @@
 @font-face {
-    font-family: 'iconfont';
-    src: url('//at.alicdn.com/t/font_1442156333_1757061.eot'); /* IE9*/
-    src: url('//at.alicdn.com/t/font_1442156333_1757061.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('//at.alicdn.com/t/font_1442156333_1757061.woff') format('woff'), /* chrome、firefox */
-    url('//at.alicdn.com/t/font_1442156333_1757061.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url('//at.alicdn.com/t/font_1442156333_1757061.svg#iconfont') format('svg'); /* iOS 4.1- */
+    font-family: 'uxicon';
+    src: url('//at.alicdn.com/t/font_1442816980_3990257.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1442816980_3990257.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.icon {
-    font-family:"iconfont" !important;
+.uxicon {
+    font-family:"uxicon" !important;
     font-size:16px;
     font-style:normal;
     vertical-align: middle;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
 }
-.icon-success:before { content: "\e600"; }
-.icon-cancel:before { content: "\e602"; }
-.icon-close:before { content: "\e601"; }
-.icon-warn:before { content: "\e604"; }
-.icon-refresh:before { content: "\e606"; }
-.icon-add:before { content: "\e607"; }
+.icon-retry:before { content: "\e606"; }
+.icon-success:before { content: "\e605"; }
+.icon-start:before { content: "\e602"; }
+.icon-remove:before { content: "\e604"; }
+.icon-error:before { content: "\e603"; }
+.icon-add:before { content: "\e60a"; }
+.icon-upload:before { content: "\e600"; }
+
+.fileicon {
+    font-family:"uxicon" !important;
+    font-size:18px;
+    font-style:normal;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.fileicon:before {
+    content: "\e700";
+    color: #666;
+}
+.fileicon:after {
+    display: inline-block;
+    content: attr(data-ext);
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: normal;
+    white-space: nowrap;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    color:white;
+    padding: 0 4px;
+    background:#666;
+    border-radius: 6px;
+}
+
+.fileicon[data-type^=video] {
+    &:before {
+        content: "\e704";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-type^=audio] {
+    &:before {
+        content: "\e703";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-type^=text] {
+    &:before {
+        content: "\e702";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-type^=image] {
+    &:before {
+        content: "\e701";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext^=doc] {
+    &:before {
+        content: "\e705";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext^=xls] {
+    &:before {
+        content: "\e706";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext^=ppt] {
+    &:before {
+        content: "\e707";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext=pdf] {
+    &:before {
+        content: "\e708";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext=zip],.fileicon[data-ext=rar] {
+    &:before {
+        content: "\e709";
+    }
+    &:after {
+        display: none;
+    }
+}
+
+.fileicon[data-ext=js],
+.fileicon[data-ext=css],
+.fileicon[data-ext=java],
+.fileicon[data-ext=php],
+.fileicon[data-ext=html],
+.fileicon[data-ext=xml],
+.fileicon[data-ext=json] {
+    &:before {
+        content: "\e70c";
+    }
+    &:after {
+        display: none;
+    }
+}

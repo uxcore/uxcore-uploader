@@ -43,7 +43,7 @@
   "dependencies": {
     "es6-promise": "^2.1.1",
     "object-assign": "^2.0.0",
-    "uxcore-uploadcore": "^2.0.0-beta.2"
+    "uxcore-uploadcore": "^2.0.0-beta.3"
   },
   "peerDependencies": {
     "react": ">=0.13.0"

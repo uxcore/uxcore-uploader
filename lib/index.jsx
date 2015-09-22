@@ -1,26 +1,50 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 import UploadCore, {Events, Status} from 'uploadcore';
+import Progress from './progress.jsx';
 
 const CORE_INSTANCE = {};
-function getCoreInstance(id, options) {
-    if (CORE_INSTANCE.hasOwnProperty(id)) {
+function getCoreInstance(props) {
+    let core = props.core;
+    if (core instanceof UploadCore) {
+        return core;
+    }
+
+    const id = core;
+    if (id && typeof id === 'string' && CORE_INSTANCE.hasOwnProperty(id)) {
         return CORE_INSTANCE[id];
     }
-    const core = new UploadCore({
-        request: {
-            name: 'file',
-            url: 'http://test.yanbingbing.com/upload.php'
-        },
-        autoPending: false
+
+    let options = props.options || {};
+    ['name', 'url', 'params', 'action', 'data', 'headers', 'withCredentials', 'timeout',
+        'chunkEnable', 'chunkSize', 'chunkRetries', 'chunkProcessThreads', 'processThreads',
+        'queueCapcity', 'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate'
+    ].forEach((key) => {
+        if (props.hasOwnProperty(key)) {
+            options[key] = props[key];
+        }
     });
 
-    CORE_INSTANCE[id] = core;
+    core = new UploadCore(options);
+
+    for (let key in props) {
+        if (props.hasOwnProperty(key)) {
+            let m = /^on(\w+)$/i.exec(key);
+            if (!m) continue;
+            if (Events.hasOwnProperty(m[1]) && (typeof props[key] === 'function')) {
+                core.on(m[1], props[key]);
+            }
+        }
+    }
+
+    if (id) {
+        CORE_INSTANCE[id] = core;
+    }
 
     return core;
 }
 
-class List extends Component {
+class FileList extends Component {
     constructor(props) {
         super(props);
 
@@ -48,13 +72,17 @@ class List extends Component {
     }
 
     render() {
-        return <div className="ucxore-upload-list">
-            <div className="filelist">{this.state.items.map((file) => {
-                return <ListItem key={file.id} file={file} />;
+        return <div className="ux-upload-box">
+            <div className="ux-filelist">{this.state.items.map((file) => {
+                return <FileItem key={file.id} file={file} mode={this.props.mode} />;
             })}</div>
         </div>
     }
 }
+
+FileList.defaultProps = {
+    mode: 'mini'
+};
 
 class Picker extends Component {
     componentDidMount() {
@@ -65,24 +93,18 @@ class Picker extends Component {
     }
 
     render() {
-        let children = this.props.children;
-        if (!children || children.length < 1) {
-            children = <i className="icon uxcore-upload-icon" />;
-        }
-        return <div className="uxcore-upload-picker">{children}</div>;
+        return <div className="ux-upload-picker">{this.props.children}</div>;
     }
 }
 
-export default class Uploader extends Component {
+class Uploader extends Component {
     constructor(props) {
         super(props);
 
-        this.core = this.props.core;
-        if (!(this.core instanceof UploadCore)) {
-            this.core = getCoreInstance(this.core || 'default');
-        }
+        this.core = getCoreInstance(this.props);
+
         this.state = {
-            total: 0
+            total: this.core.getTotal()
         };
 
         const statchange = (stat) => {
@@ -100,25 +122,27 @@ export default class Uploader extends Component {
         this.stopListen && this.stopListen();
     }
     render() {
-        return <div className={"uxcore-uploader " + (this.props.className || '')}>
-            <Picker core={this.core}>{this.props.children}</Picker>
-            <List core={this.core} mode="mini" />
+        let children = this.props.children;
+        if (!children || children.length < 1) {
+            children = <button className="ux-upload-button"><i className="uxicon icon-upload"/>UPLOAD</button>;
+        }
+        return <div className={"ux-uploader " + (this.props.className || '')}>
+            {this.core.isMultiple() || this.state.total < 1 ? <Picker core={this.core}>{children}</Picker> : null}
+            {this.state.total > 0 ? (this.core.isMultiple() ? <FileList core={this.core} mode="mini" /> : <FileItem file={this.core.getFiles()[0]} />) : null}
         </div>;
     }
 }
 
-class Droparea extends Component {
+export default class Droparea extends Component {
     constructor(props) {
         super(props);
 
-        this.core = this.props.core;
-        if (!(this.core instanceof UploadCore)) {
-            this.core = getCoreInstance(this.core || 'default');
-        }
+        this.core = getCoreInstance(this.props);
+
         this.state = {
             blink: 0,
             highlight: 0,
-            total: 0
+            total: this.core.getTotal()
         };
 
         const statchange = (stat) => {
@@ -155,7 +179,7 @@ class Droparea extends Component {
         this.stopListen && this.stopListen();
     }
     render() {
-        let className = "uxcore-uploader uxcore-upload-droparea";
+        let className = "ux-uploader ux-upload-droparea";
         if (this.props.className) {
             className += ' ' + this.props.className;
         }
@@ -165,28 +189,21 @@ class Droparea extends Component {
         if (this.state.highlight) {
             className += ' highlight';
         }
+        let children = this.props.children;
+        if (!children || children.length < 1) {
+            children = <i className="uxicon icon-add" />;
+        }
         return <div className={className}>
             {this.state.total > 0
-                ? <List core={this.core} mode={this.props.listMode} />
-                : <Picker core={this.core}>{this.props.children}</Picker>}
-            <div className="uxcore-upload-responser" />
+                ? <FileList core={this.core} mode="icon" />
+                : <Picker core={this.core}>{children}</Picker>}
+            <div className="ux-upload-responser" />
         </div>;
     }
 }
 
-function humanSizeFormat(size) {
-    size = parseFloat(size);
-    const prefixesSI = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'];
-    let base = 1000,
-        index = size ? Math.floor(Math.log(size) / Math.log(base)) : 0;
-    index = Math.min(index, prefixesSI.length - 1);
-    let powedPrecision = Math.pow(10, index < 2 ? 0 : (index > 2 ? 2 : 1));
-    size = size / Math.pow(base, index);
-    size = Math.round(size * powedPrecision) / powedPrecision;
-    return size + prefixesSI[index];
-}
 
-class ListItem extends Component {
+class FileItem extends Component {
 
     constructor(props) {
         super(props);
@@ -238,39 +255,125 @@ class ListItem extends Component {
     }
 
     render() {
-        const size = humanSizeFormat(this.file.size);
-        const percent = this.state.percentage + '%';
-        const progressStyle = {width: percent};
-        let actions;
-        if (this.state.status === 'success') {
-            actions = <label className="field field-actions">
-                <a className="icon action action-remove status-success" onClick={this.onCancel.bind(this)} title="移除" />
-            </label>;
-        } else if (this.state.status === 'error') {
-            actions = <label className="field field-actions">
-                <a className="icon action action-retry" onClick={this.onPending.bind(this)} title="重传" />
-                <a className="icon action action-remove status-error" onClick={this.onCancel.bind(this)} title="上传失败" />
-            </label>;
-        } else if (this.state.status === 'pending') {
-            actions = <label className="field field-actions">
-                <a className="icon action action-remove" onClick={this.onCancel.bind(this)} title="取消" />
-            </label>;
-        } else {
-            actions = <label className="field field-actions">
-                <a className="icon action action-upload" onClick={this.onPending.bind(this)} title="上传" />
-                <a className="icon action action-remove" onClick={this.onCancel.bind(this)} title="取消" />
-            </label>;
-        }
-        return (
-            <div className={"fileitem " + this.state.status}>
-                <label className="field field-name">
-                    <i className={"exticon size-40 ext-" + this.file.ext}/>
-                    <span className="name" title={this.file.name}>{this.file.name}</span>
-                </label>
-                <label className="field field-size">{size}</label>
-                {actions}
-                <div className="progressbar" style={progressStyle}/>
+        if (this.props.mode === 'icon') {
+            return <div className={"ux-fileitem iconmode " + this.state.status}>
+                <a className="action action-remove" onClick={this.onCancel.bind(this)} title="移除">
+                    <i className="uxicon icon-remove" />
+                </a>
+                <div className="filepreview">
+                    <Preview file={this.props.file} />
+                    {this.state.status === 'error' ? <a className="action action-retry" onClick={this.onPending.bind(this)} title="重传">
+                        <i className="uxicon icon-retry" />
+                    </a> : null}
+                    {this.state.status === 'queued' ? <a className="action action-upload" onClick={this.onPending.bind(this)} title="上传">
+                        <i className="uxicon icon-start" />
+                    </a> : null}
+                    {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress percentage={this.state.percentage} /> : null}
+                </div>
+                {this.state.status === 'error' ? <a className="status status-error" title="上传失败"><i className="uxicon icon-error" /></a> : null}
+                {this.state.status === 'success' ? <a className="status status-success"><i className="uxicon icon-success" /></a> : null}
+                <div className="filename" title={this.file.name}>{natcut(this.file.name, 10)}</div>
             </div>
-        );
+        } else {
+            const size = humanSizeFormat(this.file.size);
+            return <div className={"ux-fileitem minimode " + this.state.status}>
+                <label className="field field-info">
+                    <i className="fileicon" data-ext={this.file.ext} data-type={this.file.type}/>
+                    <span className="filename" title={this.file.name}>{natcut(this.file.name, 12)}</span>
+                    <span className="filesize">{'(' + size + ')'}</span>
+                </label>
+                <label className="field field-status">
+                    {this.state.status === 'error' ? <a className="status status-error" title="上传失败"><i className="uxicon icon-error" /></a> : null}
+                    {this.state.status === 'success' ? <a className="status status-success"><i className="uxicon icon-success" /></a> : null}
+
+                    {this.state.status === 'error' ? <a className="action action-retry" onClick={this.onPending.bind(this)} title="重传">
+                        <i className="uxicon icon-retry" />
+                    </a> : null}
+
+                    {this.state.status === 'queued' ? <a className="action action-upload" onClick={this.onPending.bind(this)} title="上传">
+                        <i className="uxicon icon-start" />
+                    </a> : null}
+
+                    <a className="action action-remove" onClick={this.onCancel.bind(this)} title="移除">
+                        <i className="uxicon icon-remove" />
+                    </a>
+                </label>
+                <Progress percentage={this.state.percentage} mode="bar"/>
+            </div>;
+        }
     }
+}
+
+FileItem.defaultProps = {
+    mode: 'mini'
+};
+
+class Preview extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+
+        const file = this.props.file;
+        if (file.isImage()) {
+            file.getAsDataUrl(1000).done((url) => this.setState({url}));
+        }
+    }
+
+    render() {
+         return <div className="ux-preview">{this.state.url
+            ? <img src={this.state.url} />
+            : <i className="fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
+    }
+}
+
+function natcut(title, len) {
+    let max = len * 2, length = title.length, l = 0, i = 0, part, s;
+    for (i=0; i < length && l <= max; i++) {
+        l += title.charCodeAt(i) > 255 ? 2 : 1;
+    }
+    if (l <= max) {
+        return title;
+    }
+    i = 0;
+    l = 0;
+    len -= 2;
+    while (l < len) {
+        s = title.charCodeAt(i) > 255 ? 2 : 1;
+        if (l + s > len) {
+            break;
+        } else {
+            i++;
+            l += s;
+        }
+    }
+    part = title.substr(0, i);
+    l += 3;
+
+    i = length;
+    while (l < max) {
+        s = title.charCodeAt(i-1) > 255 ? 2 : 1;
+        if (l + s > max) {
+            break;
+        } else {
+            i--;
+            l += s;
+        }
+    }
+    return part + '...' + title.substring(Math.min(i, length-1), length);
+}
+function humanSizeFormat(size) {
+    size = parseFloat(size);
+    const prefixesSI = ['', 'k', 'm', 'g', 't', 'p', 'e', 'z', 'y'];
+    let base = 1000,
+        index = size ? Math.floor(Math.log(size) / Math.log(base)) : 0;
+    index = Math.min(index, prefixesSI.length - 1);
+    let powedPrecision = Math.pow(10, index < 2 ? 0 : (index > 2 ? 2 : 1));
+    size = size / Math.pow(base, index);
+    size = Math.round(size * powedPrecision) / powedPrecision;
+    if (size > 500) {
+        size = Math.round(size / 100) / 10;
+        index++;
+    }
+    return size + prefixesSI[index];
 }

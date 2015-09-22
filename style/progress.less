@@ -1,50 +1,59 @@
-.progress {
-    height:44px;
-    width: 44px;
+.progresspin {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
     position: relative;
+    border-radius: 50%;
+    vertical-align: middle;
     .spin {
         position: absolute;
-        border-radius: 0 0 100% 0;
+        border-radius: 0 10px 10px 0;
         height: 20px;
-        width: 20px;
-        border: 1px solid #fff;
-        background: #e6e6e6;
+        width: 10px;
         overflow: hidden;
-        transform-origin: top left;
-        top:50%;
-        left:50%;
-        &.spin4-1 {
-            transform: rotate(-90deg);
+        -webkit-transform-origin:left center;
+        -moz-transform-origin:left center;
+        -ms-transform-origin:left center;
+        transform-origin:left center;
+        top:0;
+        right:0;
+        &.spin2-1 {
         }
-        &.spin4-2 {
-        }
-        &.spin4-3 {
-            transform: rotate(90deg);
-        }
-        &.spin4-4 {
+        &.spin2-2 {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
             transform: rotate(180deg);
         }
-        .inner {
-            width: 100%;
+        >.inner {
+            position: absolute;
+            width: 150%;
             height: 100%;
-            border-radius: 0 0 100% 0;
-            background-color: #9adf41;
-            transform: rotate(-90deg);
-            transform-origin: top left;
+            top:0;left:-150%;
+            background: #42a1eb;
+            -webkit-transform-origin:right center;
+            -moz-transform-origin:right center;
+            -ms-transform-origin:right center;
+            transform-origin:right center;
         }
     }
-    .progress-text {
-        position: absolute;
-        border-radius: 50%;
-        height: 30px;
-        width: 30px;
-        left:50%;
-        top:50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        line-height: 30px;
-        font-size: 12px;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        text-align: center;
+    &.escape .spin>.inner {
+        left:0;
+        -webkit-transform-origin:left center;
+        -moz-transform-origin:left center;
+        -ms-transform-origin:left center;
+        transform-origin:left center;
     }
+}
+
+.progressbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background: #42a1eb;
+    width: 0;
+    -webkit-transition: width .2s ease-out;
+    -moz-transition: width .2s ease-out;
+    transition: width .2s ease-out;
 }

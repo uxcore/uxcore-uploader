@@ -1,27 +1,46 @@
 import React from 'react';
 
+const TRANSFORM_PROPERTY = (() => {
+    const style = document.createElement("div").style;
+    const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];
+    for (let i = 0, l = properties.length; i < l; i++) {
+        if (properties[i] in style) {
+            return properties[i];
+        }
+    }
+    return false;
+})();
+
 export default class Progress extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let items = [0, 1, 2, 3], percentage = this.props.percentage || 0;
-        let ret = items.map((i) => {
-            return -90 + Math.floor(Math.min(Math.max(0, (percentage - (i * 25)) * 3.6), 90))
-        }).map((rotate) => {
-            return {transform: 'rotate('+rotate+'deg)'};
-        });
+        const percentage = this.props.percentage || 0;
+        if (TRANSFORM_PROPERTY && this.props.mode !== 'bar') {
+            let items = [0, 1];
+            let ret = items.map((i) => {
+                return Math.floor(Math.min(Math.max(0, (percentage - (i * 50)) * 3.6), 180))
+            }).map((rotate) => {
+                return {[TRANSFORM_PROPERTY]: 'rotate(' + rotate + 'deg)'};
+            });
 
-        return <div className="progress">
-            <div className="spin spin4-1"><div className="inner" style={ret[0]}></div></div>
-            <div className="spin spin4-2"><div className="inner" style={ret[1]}></div></div>
-            <div className="spin spin4-3"><div className="inner" style={ret[2]}></div></div>
-            <div className="spin spin4-4"><div className="inner" style={ret[3]}></div></div>
-            <div className="progress-text">{Math.floor(percentage)}</div>
-        </div>;
+            return <div className="ux-progress progresspin">
+                <div className="spin spin2-1">
+                    <div className="inner" style={ret[0]} />
+                </div>
+                <div className="spin spin2-2">
+                    <div className="inner" style={ret[1]} />
+                </div>
+            </div>;
+        } else {
+            return <div className="ux-progress progressbar"  style={{width: percentage + '%'}}></div>
+        }
     }
 }
+
+Progress.isSupport = TRANSFORM_PROPERTY !== false;
 
 Progress.propTypes = {
     percentage: React.PropTypes.number
