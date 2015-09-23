@@ -72,10 +72,13 @@ class FileList extends Component {
     }
 
     render() {
-        return <div className="ux-upload-box">
-            <div className="ux-filelist">{this.state.items.map((file) => {
-                return <FileItem key={file.id} file={file} mode={this.props.mode} />;
-            })}</div>
+        return <div className={"ux-filelist " + (this.props.mode === 'mini' ? 'minimode' : 'iconmode')}>
+            <div className="ux-filelist-inner">
+                {this.state.items.map((file) => {
+                    return <FileItem key={file.id} file={file} mode={this.props.mode} />;
+                })}
+                {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="uxicon icon-add" /></Picker> : null}
+            </div>
         </div>
     }
 }
@@ -97,7 +100,7 @@ class Picker extends Component {
     }
 }
 
-class Uploader extends Component {
+export default class Uploader extends Component {
     constructor(props) {
         super(props);
 
@@ -127,13 +130,13 @@ class Uploader extends Component {
             children = <button className="ux-upload-button"><i className="uxicon icon-upload"/>UPLOAD</button>;
         }
         return <div className={"ux-uploader " + (this.props.className || '')}>
-            {this.core.isMultiple() || this.state.total < 1 ? <Picker core={this.core}>{children}</Picker> : null}
-            {this.state.total > 0 ? (this.core.isMultiple() ? <FileList core={this.core} mode="mini" /> : <FileItem file={this.core.getFiles()[0]} />) : null}
+            {this.core.isFull() ? null : <Picker core={this.core}>{children}</Picker>}
+            {this.state.total > 0 ? (<FileList core={this.core} mode="mini" />) : null}
         </div>;
     }
 }
 
-export default class Droparea extends Component {
+export class Droparea extends Component {
     constructor(props) {
         super(props);
 
@@ -256,7 +259,7 @@ class FileItem extends Component {
 
     render() {
         if (this.props.mode === 'icon') {
-            return <div className={"ux-fileitem iconmode " + this.state.status}>
+            return <div className={"ux-fileitem " + this.state.status}>
                 <a className="action action-remove" onClick={this.onCancel.bind(this)} title="移除">
                     <i className="uxicon icon-remove" />
                 </a>
@@ -276,7 +279,7 @@ class FileItem extends Component {
             </div>
         } else {
             const size = humanSizeFormat(this.file.size);
-            return <div className={"ux-fileitem minimode " + this.state.status}>
+            return <div className={"ux-fileitem " + this.state.status}>
                 <label className="field field-info">
                     <i className="fileicon" data-ext={this.file.ext} data-type={this.file.type}/>
                     <span className="filename" title={this.file.name}>{natcut(this.file.name, 12)}</span>

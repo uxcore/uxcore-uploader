@@ -16,7 +16,7 @@
 .ux-uploader {
     min-width: 200px;
 
-    .ux-upload-box {
+    .ux-filelist {
         width: 100%;
         max-height: 400px;
         overflow-y: auto;
@@ -50,20 +50,21 @@
 }
 
 .ux-uploader.ux-upload-droparea {
-    min-height: 300px;
-    min-width: 300px;
+    min-height: 200px;
+    min-width: 200px;
     position: relative;
+    border-radius: 5px;
 
     .ux-upload-responser {
-        display: none;
         position: absolute;
         top:0;right:0;left:0;bottom:0;
-        border:3px dashed #fc6e51;
-        background: #e1e5e8;
-        z-index: 3;
+        border: 1px dashed #D9D9D9;
+        z-index: -1;
+        border-radius: 5px;
     }
     &.blink .ux-upload-responser {
-        display: block;
+        border:3px dashed #fc6e51;
+        background: #e1e5e8;
         -webkit-animation: glow .7s infinite;
         animation: glow .7s infinite;
     }
@@ -77,13 +78,8 @@
 
     .ux-upload-picker {
         display: block;
-        position: absolute;
-        z-index: 2;
-        border: 1px dashed #D9D9D9;
-        top:0;right:0;left:0;bottom:0;
         text-align: center;
         opacity: 0.6;
-        border-radius: 5px;
         -webkit-transition: opacity 0.2s;
         transition: opacity 0.2s;
         .uxicon.icon-add {
@@ -102,18 +98,36 @@
             opacity: 1;
         }
     }
+    >.ux-upload-picker {
+        position: absolute;
+        z-index: 2;
+        top:0;right:0;left:0;bottom:0;
+    }
+    .ux-filelist .ux-upload-picker {
+        float: left;
+        margin: 5px;
+        width: 80px;
+        height: 80px;
+        border: 1px dashed #D9D9D9;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        .uxicon.icon-add {
+            margin-top: -20px;
+            margin-left: -20px;
+            width: 40px;
+            height: 40px;
+            font-size: 40px;
+        }
+    }
 
-    .ux-upload-box {
+    .ux-filelist {
         height: 100%;
     }
 }
 
-.ux-filelist {
+.ux-filelist-inner {
     overflow: hidden;
-    .ux-fileitem.iconmode {
-        margin: 5px;
-        float:left;
-    }
 }
 
 .ux-fileitem {
@@ -168,8 +182,11 @@
             }
         }
     }
+}
 
-    &.minimode {
+
+.ux-filelist {
+    &.minimode .ux-fileitem {
         border: 1px solid #ededed;
 
         display: inline-block;
@@ -185,7 +202,6 @@
         }
 
         .field-info {
-            max-width: 270px;
             .fileicon {
                 margin: 0 5px;
             }
@@ -220,8 +236,11 @@
         }
     }
 
-    &.iconmode {
+    &.iconmode .ux-fileitem {
+        margin: 5px;
+        float:left;
         width: 80px;
+        height: 112px;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -312,4 +331,3 @@
         }
     }
 }
-
