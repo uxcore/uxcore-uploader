@@ -1,52 +1,49 @@
 {
-  "name": "uxcore-uploader-ui",
+  "name": "uxcore-uploader",
   "version": "1.0.0",
-  "description": "uxcore-uploader-ui ui component for react",
-  "main": "lib/index.js",
+  "description": "uxcore-uploader component for react",
+  "main": "src/index.js",
   "scripts": {
-    "test": "mocha --recursive --reporter spec --require should",
-    "dev": "webpack-dev-server --progress --colors --port  9090"
+    "start": "npm install && gulp start",
+    "dev": "npm install && gulp start"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:uxcore/uxcore-uploader-ui.git"
+    "url": "git@github.com:uxcore/uxcore-uploader.git"
   },
   "bugs": {
-    "url": "http://github.com/uxcore/uxcore-uploader-ui/issues"
+    "url": "http://github.com/uxcore/uxcore-uploader/issues"
   },
   "keywords": [
     "react",
     "react-component",
-    "react-uxcore-uploader-ui",
-    "uxcore-uploader-ui"
+    "react-uxcore-uploader",
+    "uxcore-uploader"
   ],
   "devDependencies": {
+    "browser-sync": "^2.9.3",
     "babel-core": "^5.1.13",
     "babel-loader": "^5.0.0",
     "exports-loader": "^0.6.2",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "gulp-less": "^3.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "webpack": "^1.10.5",
     "css-loader": "^0.13.1",
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
     "style-loader": "^0.12.2",
-    "gulp": "^3.8.11",
-    "gulp-react": "^3.0.0",
-    "jquery": "2.1.4",
-    "jsdom": "5.1.0",
-    "mocha": "^2.2.1",
-    "node-libs-browser": "~0.5.2",
-    "raw-loader": "^0.5.1",
-    "react-hot-loader": "^1.2.4",
-    "should": "^6.0.1",
-    "webpack": "^1.8.4",
-    "webpack-dev-server": "1.6.6"
-  },
-  "dependencies": {
+    "node-libs-browser": "^0.5.2",
+    "jquery": "^1.11.3",
+    "spark-md5": "^1.0.0",
+    "es5-shim": "^4.1.10",
     "es6-promise": "^2.1.1",
     "object-assign": "^2.0.0",
-    "uxcore-uploadcore": "^2.0.0"
+    "react": "^0.13.3"
   },
-  "peerDependencies": {
-    "react": ">=0.13.0"
+  "dependencies": {
+    "uxcore-uploadcore": "^2.0.0"
   },
   "author": "",
   "contributors": [],

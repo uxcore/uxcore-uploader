@@ -1,41 +1,38 @@
-'use strict'
+'use strict';
 
-var webpack = require('webpack')
+var path = require("path");
+var webpack = require('webpack');
 
 module.exports = {
-    entry: [
-        // 'webpack-dev-server/client?http://localhost:9090/assets',
-        // 'webpack/hot/only-dev-server',
-        './example/index.jsx'
-    ],
-    output: {
-        publicPath: 'http://localhost:9090/assets'
+    entry: {
+        'uploader': './index.js'
     },
+    output: {
+        path: path.join(__dirname, "dist"),
+        libraryTarget: "var",
+        filename: "[name].js",
+        library: "Uploader",
+        sourceMapFilename: "[file].map"
+    },
+    devtool: '#source-map',
     module: {
-        loaders: require('./loaders.config')
+        loaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader'
+        }, {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader'
+        }, {
+            test: /\.less$/,
+            loader: 'style!css!less'
+        }]
     },
     externals: {
         'react': 'var React',
-        'jquery': 'var jQuery',
         'uploadcore': 'var UploadCore'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-    },
-    plugins: [
-        //needed to supress vertx warning in es6-promise (Promise polyfill)
-        new webpack.IgnorePlugin(/vertx/)
-        // new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoErrorsPlugin()
-    ],
-
-    devServer: {    
-        info: true,
-        quiet: false,
-
-        stats: {
-            colors: true,
-            progress: true
-        }
     }
-}
+};

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import $ from 'jquery';
 import UploadCore, {Events, Status} from 'uploadcore';
-import Progress from './progress.jsx';
+import Progress from './progress';
 
 const CORE_INSTANCE = {};
 function getCoreInstance(props) {
@@ -204,7 +203,6 @@ export class Droparea extends Component {
         </div>;
     }
 }
-
 
 class FileItem extends Component {
 
