@@ -27,3 +27,6 @@ sea-modules
 spm_modules
 .cache
 cache
+demo
+webpack.*.js
+gulpfile.js

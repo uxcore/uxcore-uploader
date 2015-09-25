@@ -1,6 +1,6 @@
 {
   "name": "uxcore-uploader",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "uxcore-uploader component for react",
   "main": "src/index.js",
   "scripts": {
@@ -44,9 +44,9 @@
     "highlight.js": "^8.8.0"
   },
   "dependencies": {
-    "uxcore-uploadcore": "^2.0.0"
+    "uxcore-uploadcore": "^2.0.1"
   },
-  "author": "",
+  "author": "onbing",
   "contributors": [],
   "license": "MIT"
 }
