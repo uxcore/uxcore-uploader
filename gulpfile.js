@@ -28,18 +28,16 @@ gulp.task("server", ["pack_demo", "less_demo"], function (callback) {
     browserSync.init({
         server: {
             baseDir: './',
-            index: './demo/index.html'
+            index: './index.html'
         },
-        // ghostMode: false,
         open: 'local'
-        // notify: false
     });
 
     gulp.watch('demo/index.html').on('change', browserSync.reload);
 
-    gulp.watch(['src/**/*.js', 'demo/**/*.js'], ['reload_by_js']);
+    gulp.watch(['src/**/*.js'], ['reload_by_js']);
 
-    gulp.watch(['src/**/*.less', 'demo/**/*.less'], ['reload_by_css']);
+    gulp.watch(['src/**/*.less'], ['reload_by_css']);
 
     callback();
 });
@@ -55,20 +53,20 @@ gulp.task('pack_demo', function (callback) {
 });
 
 gulp.task('less_demo', function (callback) {
-    gulp.src(['./demo/index.less'])
+    gulp.src(['src/demo.less'])
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./cache'));
+        .pipe(gulp.dest('./css'));
     callback();
 });
 
 gulp.task('reload_by_css', function (callback) {
-    gulp.src(['./demo/index.less'])
+    gulp.src(['src/demo.less'])
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./cache'))
+        .pipe(gulp.dest('./css'))
         .pipe(browserSync.stream({match: '**/*.css'}));
     callback();
 });
