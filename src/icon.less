@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'uxicon';
+    font-family: 'kuxicon';
     src: url('//at.alicdn.com/t/font_1442816980_3990257.eot'); /* IE9*/
     src: url('//at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
     url('//at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */
@@ -7,8 +7,8 @@
     url('//at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-.uxicon {
-    font-family:"uxicon" !important;
+.@{uploader-prefix-class}-icon {
+    font-family:"kuxicon" !important;
     font-size:16px;
     font-style:normal;
     vertical-align: middle;
@@ -23,8 +23,8 @@
 .icon-add:before { content: "\e60a"; }
 .icon-upload:before { content: "\e600"; }
 
-.fileicon {
-    font-family:"uxicon" !important;
+.@{uploader-prefix-class}-fileicon {
+    font-family:"kuxicon" !important;
     font-size:18px;
     font-style:normal;
     vertical-align: middle;
@@ -33,33 +33,33 @@
     position: relative;
     display: inline-block;
     overflow: hidden;
+
+    &:before {
+        content: "\e700";
+        color: #666;
+    }
+    &:after {
+        display: inline-block;
+        content: attr(data-ext);
+        position: absolute;
+        bottom: 3px;
+        left: 3px;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: normal;
+        white-space: nowrap;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        -webkit-transform-origin: left bottom;
+        transform-origin: left bottom;
+        color:white;
+        padding: 0 4px;
+        background:#666;
+        border-radius: 6px;
+    }
 }
 
-.fileicon:before {
-    content: "\e700";
-    color: #666;
-}
-.fileicon:after {
-    display: inline-block;
-    content: attr(data-ext);
-    position: absolute;
-    bottom: 3px;
-    left: 3px;
-    font-size: 12px;
-    text-transform: uppercase;
-    line-height: normal;
-    white-space: nowrap;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    -webkit-transform-origin: left bottom;
-    transform-origin: left bottom;
-    color:white;
-    padding: 0 4px;
-    background:#666;
-    border-radius: 6px;
-}
-
-.fileicon[data-type^=video] {
+&[data-type^=video] {
     &:before {
         content: "\e704";
     }
@@ -68,7 +68,7 @@
     }
 }
 
-.fileicon[data-type^=audio] {
+&[data-type^=audio] {
     &:before {
         content: "\e703";
     }
@@ -77,7 +77,7 @@
     }
 }
 
-.fileicon[data-type^=text] {
+&[data-type^=text] {
     &:before {
         content: "\e702";
     }
@@ -86,7 +86,7 @@
     }
 }
 
-.fileicon[data-type^=image] {
+&[data-type^=image] {
     &:before {
         content: "\e701";
     }
@@ -95,7 +95,7 @@
     }
 }
 
-.fileicon[data-ext^=doc] {
+&[data-ext^=doc] {
     &:before {
         content: "\e705";
     }
@@ -104,7 +104,7 @@
     }
 }
 
-.fileicon[data-ext^=xls] {
+&[data-ext^=xls] {
     &:before {
         content: "\e706";
     }
@@ -113,7 +113,7 @@
     }
 }
 
-.fileicon[data-ext^=ppt] {
+&[data-ext^=ppt] {
     &:before {
         content: "\e707";
     }
@@ -122,7 +122,7 @@
     }
 }
 
-.fileicon[data-ext=pdf] {
+&[data-ext=pdf] {
     &:before {
         content: "\e708";
     }
@@ -131,7 +131,7 @@
     }
 }
 
-.fileicon[data-ext=zip],.fileicon[data-ext=rar] {
+&[data-ext=zip],&[data-ext=rar] {
     &:before {
         content: "\e709";
     }
@@ -140,13 +140,13 @@
     }
 }
 
-.fileicon[data-ext=js],
-.fileicon[data-ext=css],
-.fileicon[data-ext=java],
-.fileicon[data-ext=php],
-.fileicon[data-ext=html],
-.fileicon[data-ext=xml],
-.fileicon[data-ext=json] {
+&[data-ext=js],
+&[data-ext=css],
+&[data-ext=java],
+&[data-ext=php],
+&[data-ext=html],
+&[data-ext=xml],
+&[data-ext=json] {
     &:before {
         content: "\e70c";
     }

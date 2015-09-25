@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'uxicon';
+  font-family: 'kuxicon';
   src: url('//at.alicdn.com/t/font_1442816980_3990257.eot');
   /* IE9*/
   src: url('//at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */ url('//at.alicdn.com/t/font_1442816980_3990257.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg');
   /* iOS 4.1- */
 }
-.uxicon {
-  font-family: "uxicon" !important;
+.kuma-upload-icon {
+  font-family: "kuxicon" !important;
   font-size: 16px;
   font-style: normal;
   vertical-align: middle;
@@ -34,8 +34,8 @@
 .icon-upload:before {
   content: "\e600";
 }
-.fileicon {
-  font-family: "uxicon" !important;
+.kuma-upload-fileicon {
+  font-family: "kuxicon" !important;
   font-size: 18px;
   font-style: normal;
   vertical-align: middle;
@@ -45,11 +45,11 @@
   display: inline-block;
   overflow: hidden;
 }
-.fileicon:before {
+.kuma-upload-fileicon:before {
   content: "\e700";
   color: #666;
 }
-.fileicon:after {
+.kuma-upload-fileicon:after {
   display: inline-block;
   content: attr(data-ext);
   position: absolute;
@@ -68,81 +68,81 @@
   background: #666;
   border-radius: 6px;
 }
-.fileicon[data-type^=video]:before {
+[data-type^=video]:before {
   content: "\e704";
 }
-.fileicon[data-type^=video]:after {
+[data-type^=video]:after {
   display: none;
 }
-.fileicon[data-type^=audio]:before {
+[data-type^=audio]:before {
   content: "\e703";
 }
-.fileicon[data-type^=audio]:after {
+[data-type^=audio]:after {
   display: none;
 }
-.fileicon[data-type^=text]:before {
+[data-type^=text]:before {
   content: "\e702";
 }
-.fileicon[data-type^=text]:after {
+[data-type^=text]:after {
   display: none;
 }
-.fileicon[data-type^=image]:before {
+[data-type^=image]:before {
   content: "\e701";
 }
-.fileicon[data-type^=image]:after {
+[data-type^=image]:after {
   display: none;
 }
-.fileicon[data-ext^=doc]:before {
+[data-ext^=doc]:before {
   content: "\e705";
 }
-.fileicon[data-ext^=doc]:after {
+[data-ext^=doc]:after {
   display: none;
 }
-.fileicon[data-ext^=xls]:before {
+[data-ext^=xls]:before {
   content: "\e706";
 }
-.fileicon[data-ext^=xls]:after {
+[data-ext^=xls]:after {
   display: none;
 }
-.fileicon[data-ext^=ppt]:before {
+[data-ext^=ppt]:before {
   content: "\e707";
 }
-.fileicon[data-ext^=ppt]:after {
+[data-ext^=ppt]:after {
   display: none;
 }
-.fileicon[data-ext=pdf]:before {
+[data-ext=pdf]:before {
   content: "\e708";
 }
-.fileicon[data-ext=pdf]:after {
+[data-ext=pdf]:after {
   display: none;
 }
-.fileicon[data-ext=zip]:before,
-.fileicon[data-ext=rar]:before {
+[data-ext=zip]:before,
+[data-ext=rar]:before {
   content: "\e709";
 }
-.fileicon[data-ext=zip]:after,
-.fileicon[data-ext=rar]:after {
+[data-ext=zip]:after,
+[data-ext=rar]:after {
   display: none;
 }
-.fileicon[data-ext=js]:before,
-.fileicon[data-ext=css]:before,
-.fileicon[data-ext=java]:before,
-.fileicon[data-ext=php]:before,
-.fileicon[data-ext=html]:before,
-.fileicon[data-ext=xml]:before,
-.fileicon[data-ext=json]:before {
+[data-ext=js]:before,
+[data-ext=css]:before,
+[data-ext=java]:before,
+[data-ext=php]:before,
+[data-ext=html]:before,
+[data-ext=xml]:before,
+[data-ext=json]:before {
   content: "\e70c";
 }
-.fileicon[data-ext=js]:after,
-.fileicon[data-ext=css]:after,
-.fileicon[data-ext=java]:after,
-.fileicon[data-ext=php]:after,
-.fileicon[data-ext=html]:after,
-.fileicon[data-ext=xml]:after,
-.fileicon[data-ext=json]:after {
+[data-ext=js]:after,
+[data-ext=css]:after,
+[data-ext=java]:after,
+[data-ext=php]:after,
+[data-ext=html]:after,
+[data-ext=xml]:after,
+[data-ext=json]:after {
   display: none;
 }
-.progresspin {
+.kuma-upload-progresspin {
   height: 20px;
   width: 20px;
   display: inline-block;
@@ -150,7 +150,7 @@
   border-radius: 50%;
   vertical-align: middle;
 }
-.progresspin .spin {
+.kuma-upload-progresspin .spin {
   position: absolute;
   border-radius: 0 10px 10px 0;
   height: 20px;
@@ -163,13 +163,13 @@
   top: 0;
   right: 0;
 }
-.progresspin .spin.spin2-2 {
+.kuma-upload-progresspin .spin.spin2-2 {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-.progresspin .spin > .inner {
+.kuma-upload-progresspin .spin > .inner {
   position: absolute;
   width: 150%;
   height: 100%;
@@ -181,14 +181,14 @@
   -ms-transform-origin: right center;
   transform-origin: right center;
 }
-.progresspin.escape .spin > .inner {
+.kuma-upload-progresspin.escape .spin > .inner {
   left: 0;
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -ms-transform-origin: left center;
   transform-origin: left center;
 }
-.progressbar {
+.kuma-upload-progressbar {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -199,7 +199,7 @@
   -moz-transition: width 0.2s ease-out;
   transition: width 0.2s ease-out;
 }
-@-webkit-keyframes glow {
+@-webkit-keyframes kuxglow {
   0% {
     background: rgba(225, 229, 232, 0.2);
   }
@@ -210,21 +210,24 @@
     background: rgba(225, 229, 232, 0.2);
   }
 }
-.ux-uploader {
+.kuma-uploader {
   min-width: 200px;
 }
-.ux-uploader .ux-filelist {
+.kuma-upload-filelist {
   width: 100%;
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.ux-upload-picker {
+.kuma-upload-filelist > .inner {
+  overflow: hidden;
+}
+.kuma-upload-picker {
   display: inline-block;
   position: relative;
   line-height: normal;
 }
-.ux-upload-picker .ux-upload-button {
+.kuma-upload-picker .kuma-upload-button {
   display: inline-block;
   background: white;
   outline: none;
@@ -234,21 +237,21 @@
   -webkit-transition: border-color 0.1s, color 0.1s;
   transition: border-color 0.1s, color 0.1s;
 }
-.ux-upload-picker .ux-upload-button > * {
+.kuma-upload-picker .kuma-upload-button > * {
   vertical-align: middle;
 }
-.ux-upload-picker:hover .ux-upload-button,
-.ux-upload-picker.over .ux-upload-button {
+.kuma-upload-picker:hover .kuma-upload-button,
+.kuma-upload-picker.over .kuma-upload-button {
   border-color: #57c5f7;
   color: #57c5f7;
 }
-.ux-uploader.ux-upload-droparea {
+.kuma-upload-droparea {
   min-height: 200px;
   min-width: 200px;
   position: relative;
   border-radius: 5px;
 }
-.ux-uploader.ux-upload-droparea .ux-upload-responser {
+.kuma-upload-droparea .kuma-upload-responser {
   position: absolute;
   top: 0;
   right: 0;
@@ -258,27 +261,27 @@
   z-index: -1;
   border-radius: 5px;
 }
-.ux-uploader.ux-upload-droparea.blink .ux-upload-responser {
+.kuma-upload-droparea.blink .kuma-upload-responser {
   border: 3px dashed #fc6e51;
   background: #e1e5e8;
-  -webkit-animation: glow .7s infinite;
-  animation: glow .7s infinite;
+  -webkit-animation: kuxglow .7s infinite;
+  animation: kuxglow .7s infinite;
 }
-.ux-uploader.ux-upload-droparea.highlight .ux-upload-responser {
+.kuma-upload-droparea.enter .kuma-upload-responser {
   display: block;
   border: 3px solid #fc6e51;
   background: none;
   -webkit-animation: none;
   animation: none;
 }
-.ux-uploader.ux-upload-droparea .ux-upload-picker {
+.kuma-upload-droparea .kuma-upload-picker {
   display: block;
   text-align: center;
   opacity: 0.6;
   -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
-.ux-uploader.ux-upload-droparea .ux-upload-picker .uxicon.icon-add {
+.kuma-upload-droparea .kuma-upload-picker .icon-add {
   position: absolute;
   display: inline-block;
   left: 50%;
@@ -290,11 +293,11 @@
   font-size: 80px;
   color: #D9D9D9;
 }
-.ux-uploader.ux-upload-droparea .ux-upload-picker:hover,
-.ux-uploader.ux-upload-droparea .ux-upload-picker.over {
+.kuma-upload-droparea .kuma-upload-picker:hover,
+.kuma-upload-droparea .kuma-upload-picker.over {
   opacity: 1;
 }
-.ux-uploader.ux-upload-droparea > .ux-upload-picker {
+.kuma-upload-droparea > .kuma-upload-picker {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -302,159 +305,144 @@
   left: 0;
   bottom: 0;
 }
-.ux-uploader.ux-upload-droparea .ux-filelist .ux-upload-picker {
+.kuma-upload-droparea .kuma-upload-filelist .kuma-upload-picker {
   float: left;
   margin: 5px;
   width: 80px;
   height: 80px;
   background: #ebeff2;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
-.ux-uploader.ux-upload-droparea .ux-filelist .ux-upload-picker .uxicon.icon-add {
+.kuma-upload-droparea .kuma-upload-filelist .kuma-upload-picker .icon-add {
   margin-top: -20px;
   margin-left: -20px;
   width: 40px;
   height: 40px;
   font-size: 40px;
 }
-.ux-uploader.ux-upload-droparea .ux-filelist {
+.kuma-upload-droparea .kuma-upload-filelist {
   height: 100%;
 }
-.ux-filelist-inner {
-  overflow: hidden;
-}
-.ux-fileitem {
+.kuma-upload-fileitem {
   position: relative;
   overflow: hidden;
   font-family: monospace;
   line-height: normal;
+  display: block;
+  float: left;
 }
-.ux-fileitem .filename {
+.kuma-upload-fileitem .filename {
   color: #707070;
   font-size: 14px;
 }
-.ux-fileitem .status,
-.ux-fileitem .action {
+.kuma-upload-fileitem .kuma-upload-status,
+.kuma-upload-fileitem .kuma-upload-action {
   display: inline-block;
-  height: 18px;
-  width: 18px;
   text-align: center;
   border-radius: 50%;
   text-decoration: none;
-  background: #ccc;
-  color: white;
+  color: #ccc;
+  vertical-align: middle;
 }
-.ux-fileitem .status .uxicon,
-.ux-fileitem .action .uxicon {
-  line-height: 18px;
+.kuma-upload-fileitem .kuma-upload-status .kuma-upload-icon,
+.kuma-upload-fileitem .kuma-upload-action .kuma-upload-icon {
+  font-size: 18px;
 }
-.ux-fileitem .status.status-success {
-  background: #8ad256;
+.kuma-upload-fileitem .kuma-upload-status.status-success {
+  color: #8ad256;
 }
-.ux-fileitem .status.status-error {
-  background: #fc6e51;
+.kuma-upload-fileitem .kuma-upload-status.status-error {
+  color: #fcac79;
 }
-.ux-fileitem .action.action-remove {
+.kuma-upload-fileitem .kuma-upload-status.status-error:hover {
+  color: #fc482d;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-remove {
   cursor: pointer;
 }
-.ux-fileitem .action.action-remove:hover {
-  background: #fc6e51;
+.kuma-upload-fileitem .kuma-upload-action.action-remove:hover {
+  color: #fc6e51;
 }
-.ux-fileitem .action.action-retry {
+.kuma-upload-fileitem .kuma-upload-action.action-retry {
   cursor: pointer;
-  background: #444;
+  color: #444;
 }
-.ux-fileitem .action.action-retry:hover {
-  background: #42a1eb;
+.kuma-upload-fileitem .kuma-upload-action.action-retry:hover {
+  color: #42a1eb;
 }
-.ux-fileitem .action.action-upload {
+.kuma-upload-fileitem .kuma-upload-action.action-upload {
   cursor: pointer;
-  background: #444;
+  color: #444;
 }
-.ux-fileitem .action.action-upload:hover {
-  background: #42a1eb;
+.kuma-upload-fileitem .kuma-upload-action.action-upload:hover {
+  color: #42a1eb;
 }
-.ux-filelist.minimode .ux-fileitem {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem {
   border: 1px solid #ededed;
-  display: inline-block;
   padding: 5px 6px;
   border-radius: 25px;
 }
-.ux-filelist.minimode .ux-fileitem .field {
-  vertical-align: middle;
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.ux-filelist.minimode .ux-fileitem .field-info .fileicon {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-info .kuma-upload-fileicon {
   margin: 0 5px;
 }
-.ux-filelist.minimode .ux-fileitem .field-info .filename {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-info .filename {
   vertical-align: middle;
   white-space: nowrap;
 }
-.ux-filelist.minimode .ux-fileitem .field-info .filesize {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-info .filesize {
   color: #adadad;
   font-size: 14px;
   vertical-align: middle;
   margin: 0 2px;
 }
-.ux-filelist.minimode .ux-fileitem .field-status {
-  text-align: center;
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-status .kuma-upload-status,
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-status .kuma-upload-action {
+  margin: 0 1px;
 }
-.ux-filelist.minimode .ux-fileitem .field-status .status,
-.ux-filelist.minimode .ux-fileitem .field-status .action {
-  margin: 0 2px;
-}
-.ux-filelist.minimode .ux-fileitem .progressbar {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .kuma-upload-progressbar {
   opacity: 0.3;
   z-index: -1;
 }
-.ux-filelist.minimode .ux-fileitem.error .progressbar {
+.kuma-upload-filelist.minimode .kuma-upload-fileitem.status-error .kuma-upload-progressbar {
   display: none;
 }
-.ux-filelist.iconmode .ux-fileitem {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem {
   margin: 5px;
-  float: left;
   width: 80px;
   height: 112px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.ux-filelist.iconmode .ux-fileitem .action-remove {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .action-remove {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
 }
-.ux-filelist.iconmode .ux-fileitem .status-error,
-.ux-filelist.iconmode .ux-fileitem .status-success {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .status-error,
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .status-success {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 1;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview {
   position: relative;
   height: 80px;
   width: 80px;
   background: #ebeff2;
   text-align: center;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .ux-preview {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer {
   height: 80px;
   width: 80px;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .ux-preview img {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer img {
   max-height: 100%;
   max-width: 100%;
   vertical-align: middle;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .ux-preview:before {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer:before {
   display: inline-block;
   content: '';
   height: 100%;
@@ -462,43 +450,45 @@
   overflow: hidden;
   vertical-align: middle;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .ux-preview .fileicon {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer .kuma-upload-fileicon {
   font-size: 60px;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .action {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action {
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 20px;
-  width: 20px;
-  margin-left: -10px;
-  margin-top: -10px;
-  opacity: 0.8;
+  height: 30px;
+  width: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  opacity: 0.6;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .action .uxicon {
-  line-height: 20px;
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action .kuma-upload-icon {
+  line-height: 30px;
+  font-size: 28px;
+  color: #42a1eb;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .action:hover {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action:hover {
   opacity: 1;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .progressbar,
-.ux-filelist.iconmode .ux-fileitem .filepreview .progresspin {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progressbar,
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progresspin {
   z-index: 1;
   position: absolute;
   left: 50%;
   top: 50%;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .progresspin {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progresspin {
   margin-left: -10px;
   margin-top: -10px;
 }
-.ux-filelist.iconmode .ux-fileitem .filepreview .progressbar {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progressbar {
   left: 0;
   height: 20px;
   bottom: auto;
   margin-top: -10px;
 }
-.ux-filelist.iconmode .ux-fileitem .filename {
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filename {
   margin-top: 2px;
   font-size: 12px;
   word-wrap: break-word;

@@ -71,12 +71,12 @@ class FileList extends Component {
     }
 
     render() {
-        return <div className={"ux-filelist " + (this.props.mode === 'mini' ? 'minimode' : 'iconmode')}>
-            <div className="ux-filelist-inner">
+        return <div className={"kuma-upload-filelist " + (this.props.mode === 'mini' ? 'minimode' : 'iconmode')}>
+            <div className="inner">
                 {this.state.items.map((file) => {
                     return <FileItem key={file.id} file={file} mode={this.props.mode} />;
                 })}
-                {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="uxicon icon-add" /></Picker> : null}
+                {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-upload-icon icon-add" /></Picker> : null}
             </div>
         </div>
     }
@@ -95,7 +95,7 @@ class Picker extends Component {
     }
 
     render() {
-        return <div className="ux-upload-picker">{this.props.children}</div>;
+        return <div className="kuma-upload-picker">{this.props.children}</div>;
     }
 }
 
@@ -126,9 +126,9 @@ export default class Uploader extends Component {
     render() {
         let children = this.props.children;
         if (!children || children.length < 1) {
-            children = <button className="ux-upload-button"><i className="uxicon icon-upload"/>UPLOAD</button>;
+            children = <button className="kuma-upload-button"><i className="kuma-upload-icon icon-upload"/>UPLOAD</button>;
         }
-        return <div className={"ux-uploader " + (this.props.className || '')}>
+        return <div className={"kuma-uploader " + (this.props.className || '')}>
             {this.core.isFull() ? null : <Picker core={this.core}>{children}</Picker>}
             {this.state.total > 0 ? (<FileList core={this.core} mode="mini" />) : null}
         </div>;
@@ -181,7 +181,7 @@ export class Droparea extends Component {
         this.stopListen && this.stopListen();
     }
     render() {
-        let className = "ux-uploader ux-upload-droparea";
+        let className = "kuma-uploader kuma-upload-droparea";
         if (this.props.className) {
             className += ' ' + this.props.className;
         }
@@ -189,17 +189,17 @@ export class Droparea extends Component {
             className += ' blink';
         }
         if (this.state.highlight) {
-            className += ' highlight';
+            className += ' enter';
         }
         let children = this.props.children;
         if (!children || children.length < 1) {
-            children = <i className="uxicon icon-add" />;
+            children = <i className="kuma-upload-icon icon-add" />;
         }
         return <div className={className}>
             {this.state.total > 0
                 ? <FileList core={this.core} mode="icon" />
                 : <Picker core={this.core}>{children}</Picker>}
-            <div className="ux-upload-responser" />
+            <div className="kuma-upload-responser" />
         </div>;
     }
 }
@@ -257,46 +257,46 @@ class FileItem extends Component {
 
     render() {
         if (this.props.mode === 'icon') {
-            return <div className={"ux-fileitem " + this.state.status}>
-                <a className="action action-remove" onClick={this.onCancel.bind(this)} title="移除">
-                    <i className="uxicon icon-remove" />
+            return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+                <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title="移除">
+                    <i className="kuma-upload-icon icon-remove" />
                 </a>
                 <div className="filepreview">
                     <Preview file={this.props.file} />
-                    {this.state.status === 'error' ? <a className="action action-retry" onClick={this.onPending.bind(this)} title="重传">
-                        <i className="uxicon icon-retry" />
+                    {this.state.status === 'error' ? <a className="kuma-upload-action action-retry" onClick={this.onPending.bind(this)} title="重传">
+                        <i className="kuma-upload-icon icon-retry" />
                     </a> : null}
-                    {this.state.status === 'queued' ? <a className="action action-upload" onClick={this.onPending.bind(this)} title="上传">
-                        <i className="uxicon icon-start" />
+                    {this.state.status === 'queued' ? <a className="kuma-upload-action action-upload" onClick={this.onPending.bind(this)} title="上传">
+                        <i className="kuma-upload-icon icon-start" />
                     </a> : null}
                     {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress percentage={this.state.percentage} /> : null}
                 </div>
-                {this.state.status === 'error' ? <a className="status status-error" title="上传失败"><i className="uxicon icon-error" /></a> : null}
-                {this.state.status === 'success' ? <a className="status status-success"><i className="uxicon icon-success" /></a> : null}
+                {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-upload-icon icon-error" /></a> : null}
+                {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-upload-icon icon-success" /></a> : null}
                 <div className="filename" title={this.file.name}>{natcut(this.file.name, 10)}</div>
             </div>
         } else {
             const size = humanSizeFormat(this.file.size);
-            return <div className={"ux-fileitem " + this.state.status}>
-                <label className="field field-info">
-                    <i className="fileicon" data-ext={this.file.ext} data-type={this.file.type}/>
+            return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+                <label className="field-info">
+                    <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/>
                     <span className="filename" title={this.file.name}>{natcut(this.file.name, 12)}</span>
-                    <span className="filesize">{'(' + size + ')'}</span>
+                    <span className="filesize">{'/' + size}</span>
                 </label>
-                <label className="field field-status">
-                    {this.state.status === 'error' ? <a className="status status-error" title="上传失败"><i className="uxicon icon-error" /></a> : null}
-                    {this.state.status === 'success' ? <a className="status status-success"><i className="uxicon icon-success" /></a> : null}
+                <label className="field-status">
+                    {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-upload-icon icon-error" /></a> : null}
+                    {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-upload-icon icon-success" /></a> : null}
 
-                    {this.state.status === 'error' ? <a className="action action-retry" onClick={this.onPending.bind(this)} title="重传">
-                        <i className="uxicon icon-retry" />
+                    {this.state.status === 'error' ? <a className="kuma-upload-action action-retry" onClick={this.onPending.bind(this)} title="重传">
+                        <i className="kuma-upload-icon icon-retry" />
                     </a> : null}
 
-                    {this.state.status === 'queued' ? <a className="action action-upload" onClick={this.onPending.bind(this)} title="上传">
-                        <i className="uxicon icon-start" />
+                    {this.state.status === 'queued' ? <a className="kuma-upload-action action-upload" onClick={this.onPending.bind(this)} title="上传">
+                        <i className="kuma-upload-icon icon-start" />
                     </a> : null}
 
-                    <a className="action action-remove" onClick={this.onCancel.bind(this)} title="移除">
-                        <i className="uxicon icon-remove" />
+                    <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title="移除">
+                        <i className="kuma-upload-icon icon-remove" />
                     </a>
                 </label>
                 <Progress percentage={this.state.percentage} mode="bar"/>
@@ -322,9 +322,9 @@ class Preview extends Component {
     }
 
     render() {
-         return <div className="ux-preview">{this.state.url
+         return <div className="previewer">{this.state.url
             ? <img src={this.state.url} />
-            : <i className="fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
+            : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
     }
 }
 

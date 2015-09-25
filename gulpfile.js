@@ -5,6 +5,8 @@ var fs = require("fs");
 // https://github.com/gulpjs/gulp/blob/master/docs/API.md
 var gulp = require('gulp');
 
+var concat = require('gulp-concat');
+
 var webpack = require("webpack");
 
 var gutil = require("gulp-util");
@@ -21,7 +23,7 @@ var webpackDevConfig = require("./webpack.dev");
 gulp.task("default", ["server"]);
 gulp.task("watch", ["server"]);
 gulp.task("start", ["server"]);
-gulp.task("server", ["pack_demo", "less_demo"], function (callback) {
+gulp.task("server", ["lib", "pack_demo", "less_demo"], function (callback) {
     browserSync.init({
         server: {
             baseDir: './',
@@ -39,9 +41,24 @@ gulp.task("server", ["pack_demo", "less_demo"], function (callback) {
     callback();
 });
 
-gulp.task('deploy', ["pack_demo", "less_demo"]);
+gulp.task('deploy', ["lib", "pack_demo", "less_demo"]);
+
+gulp.task('lib', function (callback) {
+    gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/spark-md5/spark-md5.min.js',
+        'node_modules/es5-shim/es5-shim.min.js',
+        'node_modules/es5-shim/es5-sham.min.js',
+        'node_modules/react/dist/react.min.js'
+    ])
+        .pipe(concat('lib.js', {newLine: ';'}))
+        .pipe(gulp.dest('./js'));
+
+    callback();
+});
 
 gulp.task('pack_demo', function (callback) {
+
     webpack(webpackDevConfig, function (err) {
         if (err) {
             throw new gutil.PluginError("webpack", err);

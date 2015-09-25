@@ -4,8 +4,8 @@
   "description": "uxcore-uploader component for react",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm install && gulp start",
-    "dev": "npm install && gulp start"
+    "start": "npm install && gulp",
+    "dev": "npm install && gulp"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.6",
     "gulp-less": "^3.0.3",
+    "gulp-concat": "^2.6.0",
     "gulp-sourcemaps": "^1.5.2",
     "webpack": "^1.10.5",
     "css-loader": "^0.13.1",
@@ -40,8 +41,7 @@
     "es5-shim": "^4.1.10",
     "es6-promise": "^2.1.1",
     "object-assign": "^2.0.0",
-    "react": "^0.13.3",
-    "highlight.js": "^8.8.0"
+    "react": "^0.13.3"
   },
   "dependencies": {
     "uxcore-uploadcore": "^2.0.0"
