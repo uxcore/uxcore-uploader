@@ -1,17 +1,38 @@
+import hljs from 'highlight.js';
 import React from 'react';
-import $ from 'jquery';
 import Uploader, {Droparea} from '../src/index';
-import '../src/index.less';
 
 React.render((
-    <div>
-        <h2>单文件上传</h2>
-        <Uploader name='file' url='http://test.yanbingbing.com/upload.php' autoPending={false} multiple={false} accept="images" />
-        <h2>自动上传</h2>
-        <Uploader name='file' url='http://test.yanbingbing.com/upload.php' autoPending={true} multiple={false} />
-        <h2>多文件上传</h2>
-        <Uploader name='file' url='http://test.yanbingbing.com/upload.php' autoPending={false} multiple={true} />
-        <h2>拖拽上传</h2>
-        <Droparea name="file" url='http://test.yanbingbing.com/upload.php' autoPending={false} multiple={true} />
-    </div>
-), document.getElementById('content'));
+    <Uploader autoPending={false} multiple={false} name='file' url='http://test.yanbingbing.com/upload.php' />
+), document.getElementById('sample1'));
+
+React.render((
+    <Uploader autoPending={true} multiple={false}  name='file' url='http://test.yanbingbing.com/upload.php' />
+), document.getElementById('sample2'));
+
+React.render((
+    <Uploader autoPending={false} multiple={false} accept="images" name='file' url='http://test.yanbingbing.com/upload.php' />
+), document.getElementById('sample3'));
+
+React.render((
+    <Uploader autoPending={false} multiple={true} name='file' url='http://test.yanbingbing.com/upload.php' />
+), document.getElementById('sample4'));
+
+React.render((
+    <Droparea autoPending={false} multiple={true} capcity={20} name='file' url='http://test.yanbingbing.com/upload.php' />
+), document.getElementById('sample5'));
+
+React.render((
+    <Uploader autoPending={false} name='file' url='http://test.yanbingbing.com/upload.php'>
+        <button>自定义上传按钮</button>
+    </Uploader>
+), document.getElementById('sample6'));
+
+React.render((
+    <Droparea autoPending={false} className="mydroparea" multiple={true} capcity={20} name='file' url='http://test.yanbingbing.com/upload.php'>
+        <i className="uxicon icon-upload" />
+        <p>点击或将文件拖拽到此区域上传</p>
+    </Droparea>
+), document.getElementById('sample7'));
+
+hljs.initHighlightingOnLoad();

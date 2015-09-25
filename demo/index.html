@@ -1,19 +1,151 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="zh-cn">
 <head>
+    <meta charset="UTF-8" />
     <title>React UXcore Uploader</title>
-
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/demo/css/normalize.css" />
+    <link rel="stylesheet" href="/demo/css/tpl.css" />
+    <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css"/>
+    <link rel="stylesheet" href="/cache/index.css" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/spark-md5/spark-md5.min.js"></script>
     <script src="../node_modules/es5-shim/es5-shim.min.js"></script>
     <script src="../node_modules/es5-shim/es5-sham.min.js"></script>
-    <script src="../node_modules/react/dist/react.js"></script>
-    <script src="../node_modules/uxcore-uploadcore/dist/uploadcore.js"></script>
+    <script src="../node_modules/react/dist/react.min.js"></script>
 </head>
 <body>
+<section class="page-header">
+    <h1 class="project-name">uxcore-uploader</h1>
 
-    <div id="content"></div>
+    <h2 class="project-tagline">Uxcore Uploader</h2>
+    <a href="https://github.com/uxcore/uxcore-uploader" class="btn">View on GitHub</a>
+    <a href="https://github.com/uxcore/uxcore-uploader/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/uxcore/uxcore-uploader/tarball/master" class="btn">Download .tar.gz</a>
+</section>
 
-    <script src="/cache/demo.js"></script>
+<section class="main-content">
+
+    <p><strong>安装</strong></p>
+
+    <pre><code class="shell">npm install uxcore-uploader</code></pre>
+
+    <p><strong>引入类库</strong></p>
+
+<pre><code class="html">&lt;!--required--&gt;
+&lt;script src="path/to/jquery.min.js" /&gt;
+&lt;!--optional--&gt;
+&lt;script src="path/to/spark-md5.js" /&gt;
+&lt;script src="path/to/es5-shim/es5-shim.min.js" /&gt;
+&lt;script src="path/to/es5-shim/es5-sham.min.js" /&gt;</code></pre>
+
+    <p><strong>导入资源</strong></p>
+
+    <pre><code class="javascript">import Uploader, {Droparea} from 'uxcore-uploader';</code></pre>
+
+    <!--Sample 1-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample1 - 单文件上传</h3>
+
+    <div class="sample" id="sample1"></div>
+
+<pre><code class="html">&lt;Uploader multiple={false}
+          autoPending={false}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php' /&gt;</code>
+</pre>
+
+
+    <!--Sample 2-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample2 - 自动上传</h3>
+
+    <div class="sample" id="sample2"></div>
+
+<pre><code class="html">&lt;Uploader multiple={false}
+          autoPending={true}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php' /&gt;</code>
+</pre>
+
+    <!--Sample 3-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample3 - 图片上传</h3>
+
+    <div class="sample" id="sample3"></div>
+
+<pre><code class="html">&lt;Uploader autoPending={false}
+          multiple={false}
+          accept="images"
+          name='file'
+          url='http://test.yanbingbing.com/upload.php' /&gt;</code>
+</pre>
+
+
+    <!--Sample 4-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample4 - 多文件上传</h3>
+
+    <div class="sample" id="sample4"></div>
+
+<pre><code class="html">&lt;Uploader autoPending={false}
+          multiple={true}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php' /&gt;</code>
+</pre>
+
+    <!--Sample 5-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample5 - 拖拽上传</h3>
+
+    <div class="sample" id="sample5"></div>
+
+<pre><code class="html">&lt;Droparea autoPending={false}
+          multiple={true} capcity={20}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php' /&gt;</code>
+</pre>
+
+    <!--Sample 6-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample6 - 包裹UI-1</h3>
+
+    <div class="sample" id="sample6"></div>
+
+<pre><code class="html">&lt;Uploader autoPending={false}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php'&gt;
+    &lt;i className="uxicon icon-upload" /&gt;
+    &lt;p>点击或将文件拖拽到此区域上传&lt;/p&gt;
+&lt;/Uploader&gt;</code>
+</pre>
+
+    <!--Sample 7-->
+    <h3><a class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample7 - 包裹UI-2</h3>
+
+    <div class="sample" id="sample7"></div>
+
+<pre><code class="html">&lt;Droparea autoPending={false}
+          className="mydroparea"
+          multiple={true}
+          capcity={20}
+          name='file'
+          url='http://test.yanbingbing.com/upload.php'&gt;
+    &lt;i className="uxicon icon-upload" /&gt;
+    &lt;p>点击或将文件拖拽到此区域上传&lt;/p&gt;
+&lt;/Droparea&gt;</code>
+</pre>
+
+
+
+
+
+    <footer class="site-footer">
+                <span class="site-footer-owner"><a href="https://github.com/uxcore/uxcore-uploader">uxcore-uploader</a> is maintained by <a
+                        href="https://github.com/uxcore">uxcore</a>.</span>
+
+                <span class="site-footer-credits">This page using the <a
+                        href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                        href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
+
+</section>
+
+
+<script src="/cache/bundle.js"></script>
 </body>
 </html>

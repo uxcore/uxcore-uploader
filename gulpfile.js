@@ -10,36 +10,42 @@ var webpack = require("webpack");
 var gutil = require("gulp-util");
 
 // http://browsersync.io/
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
-var webpackConfig = require("./webpack.config");
+// https://www.npmjs.com/package/gulp-less
+var less = require('gulp-less');
+
+// https://github.com/floridoo/gulp-sourcemaps
+var sourcemaps = require('gulp-sourcemaps');
+
+var webpackDevConfig = require("./webpack.dev");
 
 gulp.task("default", ["server"]);
 gulp.task("watch", ["server"]);
 gulp.task("start", ["server"]);
-gulp.task("server", ["demo"], function (callback) {
-    browserSync({
+gulp.task("server", ["pack_demo", "less_demo"], function (callback) {
+    browserSync.init({
         server: {
             baseDir: './',
             index: './demo/index.html'
         },
-        open: 'external'
+        // ghostMode: false,
+        open: 'local'
+        // notify: false
     });
 
-    gulp.watch(['src/**/*.js', 'src/**/*.less', 'demo/**/*.js'], ['reload_demo']);
+    gulp.watch('demo/index.html').on('change', browserSync.reload);
+
+    gulp.watch(['src/**/*.js', 'demo/**/*.js'], ['reload_by_js']);
+
+    gulp.watch(['src/**/*.less', 'demo/**/*.less'], ['reload_by_css']);
 
     callback();
 });
 
-gulp.task("demo", function (callback) {
-    var config = Object.create(webpackConfig);
-    config.debug = true;
-    config.entry.demo = './demo/index.js';
-
-    config.output.path = path.join(__dirname, "cache");
-
-    webpack(config, function (err) {
+gulp.task('pack_demo', function (callback) {
+    webpack(webpackDevConfig, function (err) {
         if (err) {
             throw new gutil.PluginError("webpack", err);
         }
@@ -48,6 +54,25 @@ gulp.task("demo", function (callback) {
     });
 });
 
-gulp.task('reload_demo', ['demo'], function () {
-    reload();
+gulp.task('less_demo', function (callback) {
+    gulp.src(['./demo/index.less'])
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./cache'));
+    callback();
+});
+
+gulp.task('reload_by_css', function (callback) {
+    gulp.src(['./demo/index.less'])
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./cache'))
+        .pipe(browserSync.stream({match: '**/*.css'}));
+    callback();
+});
+
+gulp.task('reload_by_js', ['pack_demo'], function () {
+    browserSync.reload()
 });

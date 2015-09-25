@@ -1,15 +1,13 @@
-# uxcore-uploader-ui
+# uxcore-uploader
 ---
 
-uxcore-uploader-ui ui component for react
+uxcore-uploader component for react
 
 
 ```sh
-$ git clone https://github.com/uxcore/uxcore-uploader-ui
-$ cd uxcore-uploader-ui
+$ git clone https://github.com/uxcore/uxcore-uploader
+$ cd uxcore-uploader
 $ npm install
-$ npm run dev
+$ npm start
 ```
-
-then nav http://localhost:9090/example/ to see the demo
 

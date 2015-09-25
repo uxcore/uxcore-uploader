@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UploadCore, {Events, Status} from 'uploadcore';
+import {UploadCore, Events, Status} from 'uxcore-uploadcore';
 import Progress from './progress';
 
 const CORE_INSTANCE = {};

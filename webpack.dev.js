@@ -4,20 +4,15 @@ var path = require("path");
 var webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        'uploader': './index.js'
-    },
+    entry: "./demo/index",
     output: {
-        path: path.join(__dirname, "dist"),
-        libraryTarget: "var",
-        filename: "[name].js",
-        library: "Uploader",
+        path: "./cache",
         sourceMapFilename: "[file].map"
     },
     devtool: '#source-map',
     module: {
         loaders: [{
-            test: /\.js$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel-loader'
         }, {
@@ -30,7 +25,8 @@ module.exports = {
     },
     externals: {
         'react': 'var React',
-        'uploadcore': 'var UploadCore'
+        'spark-md5': 'var SparkMD5',
+        'jquery': 'var jQuery'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
