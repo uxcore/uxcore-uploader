@@ -26,7 +26,7 @@ export default class Progress extends React.Component {
                 return {[TRANSFORM_PROPERTY]: 'rotate(' + rotate + 'deg)'};
             });
 
-            return <div className="ux-progress progresspin">
+            return <div className="kuma-upload-progresspin">
                 <div className="spin spin2-1">
                     <div className="inner" style={ret[0]} />
                 </div>
@@ -35,7 +35,7 @@ export default class Progress extends React.Component {
                 </div>
             </div>;
         } else {
-            return <div className="ux-progress progressbar"  style={{width: percentage + '%'}}></div>
+            return <div className="kuma-upload-progressbar"  style={{width: percentage + '%'}}></div>
         }
     }
 }

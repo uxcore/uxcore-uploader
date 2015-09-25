@@ -1,7 +1,9 @@
+@uploader-prefix-class: kuma-upload;
+
 @import "icon";
 @import "progress";
 
-@-webkit-keyframes glow {
+@-webkit-keyframes kuxglow {
     0% {
         background:rgba(225, 229, 232, 0.2);
     }
@@ -13,23 +15,27 @@
     }
 }
 
-.ux-uploader {
+.@{uploader-prefix-class}er {
     min-width: 200px;
+}
 
-    .ux-filelist {
-        width: 100%;
-        max-height: 400px;
-        overflow-y: auto;
-        overflow-x: hidden;
+.@{uploader-prefix-class}-filelist {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    >.inner {
+        overflow: hidden;
     }
 }
 
-.ux-upload-picker {
+.@{uploader-prefix-class}-picker {
     display: inline-block;
     position: relative;
     line-height: normal;
 
-    .ux-upload-button {
+    .@{uploader-prefix-class}-button {
         display: inline-block;
         background: white;
         outline: none;
@@ -39,37 +45,37 @@
         -webkit-transition: border-color 0.1s, color 0.1s;
         transition: border-color 0.1s, color 0.1s;
     }
-    .ux-upload-button > * {
+    .@{uploader-prefix-class}-button > * {
         vertical-align: middle;
     }
     &:hover, &.over {
-        .ux-upload-button {
+        .@{uploader-prefix-class}-button {
             border-color: #57c5f7;
             color: #57c5f7;
         }
     }
 }
 
-.ux-uploader.ux-upload-droparea {
+.@{uploader-prefix-class}-droparea {
     min-height: 200px;
     min-width: 200px;
     position: relative;
     border-radius: 5px;
 
-    .ux-upload-responser {
+    .@{uploader-prefix-class}-responser {
         position: absolute;
         top:0;right:0;left:0;bottom:0;
         border: 1px dashed #D9D9D9;
         z-index: -1;
         border-radius: 5px;
     }
-    &.blink .ux-upload-responser {
+    &.blink .@{uploader-prefix-class}-responser {
         border:3px dashed #fc6e51;
         background: #e1e5e8;
-        -webkit-animation: glow .7s infinite;
-        animation: glow .7s infinite;
+        -webkit-animation: kuxglow .7s infinite;
+        animation: kuxglow .7s infinite;
     }
-    &.highlight .ux-upload-responser {
+    &.enter .@{uploader-prefix-class}-responser {
         display: block;
         border:3px solid #fc6e51;
         background: none;
@@ -77,13 +83,13 @@
         animation: none;
     }
 
-    .ux-upload-picker {
+    .@{uploader-prefix-class}-picker {
         display: block;
         text-align: center;
         opacity: 0.6;
         -webkit-transition: opacity 0.2s;
         transition: opacity 0.2s;
-        .uxicon.icon-add {
+        .icon-add {
             position: absolute;
             display: inline-block;
             left:50%;
@@ -99,21 +105,18 @@
             opacity: 1;
         }
     }
-    >.ux-upload-picker {
+    >.@{uploader-prefix-class}-picker {
         position: absolute;
         z-index: 2;
         top:0;right:0;left:0;bottom:0;
     }
-    .ux-filelist .ux-upload-picker {
+    .@{uploader-prefix-class}-filelist .@{uploader-prefix-class}-picker {
         float: left;
         margin: 5px;
         width: 80px;
         height: 80px;
         background: #ebeff2;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        .uxicon.icon-add {
+        .icon-add {
             margin-top: -20px;
             margin-left: -20px;
             width: 40px;
@@ -122,90 +125,79 @@
         }
     }
 
-    .ux-filelist {
+    .@{uploader-prefix-class}-filelist {
         height: 100%;
     }
 }
 
-.ux-filelist-inner {
-    overflow: hidden;
-}
-
-.ux-fileitem {
+.@{uploader-prefix-class}-fileitem {
     position: relative;
     overflow: hidden;
     font-family: monospace;
     line-height: normal;
+    display: block;
+    float:left;
 
     .filename {
         color: #707070;
         font-size: 14px;
     }
 
-    .status, .action {
+    .@{uploader-prefix-class}-status, .@{uploader-prefix-class}-action {
         display: inline-block;
-        height: 18px;
-        width: 18px;
         text-align: center;
         border-radius: 50%;
         text-decoration: none;
-        background: #ccc;
-        color:white;
-        .uxicon {
-            line-height: 18px;
+        color: #ccc;
+        vertical-align: middle;
+        .@{uploader-prefix-class}-icon {
+            font-size: 18px;
         }
     }
-    .status {
+    .@{uploader-prefix-class}-status {
         &.status-success {
-            background: #8ad256;
+            color: #8ad256;
         }
         &.status-error {
-            background: #fc6e51;
+            color: #fcac79;
+            &:hover {
+                color: #fc482d;
+            }
         }
     }
-    .action {
+    .@{uploader-prefix-class}-action {
         &.action-remove {
             cursor: pointer;
             &:hover {
-                background: #fc6e51;
+                color: #fc6e51;
             }
         }
         &.action-retry {
             cursor: pointer;
-            background: #444;
+            color: #444;
             &:hover {
-                background: #42a1eb;
+                color: #42a1eb;
             }
         }
         &.action-upload {
             cursor: pointer;
-            background: #444;
+            color: #444;
             &:hover {
-                background: #42a1eb;
+                color: #42a1eb;
             }
         }
     }
 }
 
 
-.ux-filelist {
-    &.minimode .ux-fileitem {
+.@{uploader-prefix-class}-filelist {
+    &.minimode .@{uploader-prefix-class}-fileitem {
         border: 1px solid #ededed;
-
-        display: inline-block;
         padding: 5px 6px;
         border-radius: 25px;
 
-        .field {
-            vertical-align: middle;
-            display: inline-block;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
         .field-info {
-            .fileicon {
+            .@{uploader-prefix-class}-fileicon {
                 margin: 0 5px;
             }
             .filename {
@@ -221,27 +213,25 @@
         }
 
         .field-status {
-            text-align: center;
-            .status, .action {
-                margin: 0 2px;
+            .@{uploader-prefix-class}-status, .@{uploader-prefix-class}-action {
+                margin: 0 1px;
             }
         }
 
-        .progressbar {
+        .@{uploader-prefix-class}-progressbar {
             opacity: 0.3;
             z-index: -1;
         }
 
-        &.error {
-            .progressbar {
+        &.status-error {
+            .@{uploader-prefix-class}-progressbar {
                 display: none;
             }
         }
     }
 
-    &.iconmode .ux-fileitem {
+    &.iconmode .@{uploader-prefix-class}-fileitem {
         margin: 5px;
-        float:left;
         width: 80px;
         height: 112px;
         -webkit-box-sizing: border-box;
@@ -267,7 +257,7 @@
             width: 80px;
             background: #ebeff2;
             text-align: center;
-            .ux-preview {
+            .previewer {
                 height: 80px;
                 width: 80px;
                 img {
@@ -283,38 +273,40 @@
                     overflow: hidden;
                     vertical-align: middle;
                 }
-                .fileicon {
+                .@{uploader-prefix-class}-fileicon {
                     font-size: 60px;
                 }
             }
-            .action {
+            .@{uploader-prefix-class}-action {
                 position: absolute;
                 top:50%;
                 left:50%;
-                height: 20px;
-                width: 20px;
-                .uxicon {
-                    line-height: 20px;
+                height: 30px;
+                width: 30px;
+                .@{uploader-prefix-class}-icon {
+                    line-height: 30px;
+                    font-size: 28px;
+                    color:#42a1eb;
                 }
-                margin-left: -10px;
-                margin-top: -10px;
-                opacity: 0.8;
+                margin-left: -15px;
+                margin-top: -15px;
+                opacity: 0.6;
                 &:hover {
                     opacity: 1;
                 }
             }
 
-            .progressbar, .progresspin  {
+            .@{uploader-prefix-class}-progressbar, .@{uploader-prefix-class}-progresspin  {
                 z-index: 1;
                 position: absolute;
                 left:50%;top:50%;
             }
 
-            .progresspin {
+            .@{uploader-prefix-class}-progresspin {
                 margin-left: -10px;
                 margin-top: -10px;
             }
-            .progressbar {
+            .@{uploader-prefix-class}-progressbar {
                 left:0;
                 height: 20px;
                 bottom: auto;

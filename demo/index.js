@@ -19,7 +19,7 @@ React.render((
 ), document.getElementById('sample4'));
 
 React.render((
-    <Droparea autoPending={false} multiple={true} capcity={20} name='file' url='http://test.yanbingbing.com/upload.php' />
+    <Droparea autoPending={false} multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php' />
 ), document.getElementById('sample5'));
 
 React.render((
@@ -29,8 +29,8 @@ React.render((
 ), document.getElementById('sample6'));
 
 React.render((
-    <Droparea autoPending={false} className="mydroparea" multiple={true} capcity={20} name='file' url='http://test.yanbingbing.com/upload.php'>
-        <i className="uxicon icon-upload" />
+    <Droparea autoPending={false} className="mydroparea" multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php'>
+        <i className="kuma-upload-icon icon-upload" />
         <p>点击或将文件拖拽到此区域上传</p>
     </Droparea>
 ), document.getElementById('sample7'));
