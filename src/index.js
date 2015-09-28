@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {UploadCore, Events, Status} from 'uxcore-uploadcore';
-import Progress from './progress';
+const {UploadCore, Events, Status} = require('uxcore-uploadcore');
+const Progress = require('./progress');
 
 const CORE_INSTANCE = {};
 function getCoreInstance(props) {
@@ -43,7 +42,7 @@ function getCoreInstance(props) {
     return core;
 }
 
-class FileList extends Component {
+class FileList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -86,7 +85,7 @@ FileList.defaultProps = {
     mode: 'mini'
 };
 
-class Picker extends Component {
+class Picker extends React.Component {
     componentDidMount() {
         this.area = this.props.core.getPickerCollector().addArea(React.findDOMNode(this));
     }
@@ -99,7 +98,7 @@ class Picker extends Component {
     }
 }
 
-export default class Uploader extends Component {
+class Uploader extends React.Component {
     constructor(props) {
         super(props);
 
@@ -120,6 +119,7 @@ export default class Uploader extends Component {
             this.core.off(Events.QUEUE_STAT_CHANGE, statchange);
         };
     }
+
     componentWillUnmount() {
         this.stopListen && this.stopListen();
     }
@@ -135,7 +135,7 @@ export default class Uploader extends Component {
     }
 }
 
-export class Droparea extends Component {
+class Droparea extends React.Component {
     constructor(props) {
         super(props);
 
@@ -204,7 +204,9 @@ export class Droparea extends Component {
     }
 }
 
-class FileItem extends Component {
+Uploader.Droparea = Droparea;
+
+class FileItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -309,7 +311,7 @@ FileItem.defaultProps = {
     mode: 'mini'
 };
 
-class Preview extends Component {
+class Preview extends React.Component {
     constructor(props) {
         super(props);
 
@@ -378,3 +380,5 @@ function humanSizeFormat(size) {
     }
     return size + prefixesSI[index];
 }
+
+module.exports = Uploader;

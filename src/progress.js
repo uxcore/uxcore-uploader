@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TRANSFORM_PROPERTY = (() => {
     const style = document.createElement("div").style;
     const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];
@@ -11,7 +9,7 @@ const TRANSFORM_PROPERTY = (() => {
     return false;
 })();
 
-export default class Progress extends React.Component {
+class Progress extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -48,3 +46,5 @@ Progress.propTypes = {
 Progress.defaultProps = {
     percentage: 0
 };
+
+module.exports = Progress;
