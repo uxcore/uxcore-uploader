@@ -36,7 +36,6 @@
     "less-loader": "^2.2.0",
     "style-loader": "^0.12.2",
     "node-libs-browser": "^0.5.2",
-    "jquery": "^1.11.3",
     "spark-md5": "^1.0.0",
     "es5-shim": "^4.1.10",
     "es6-promise": "^2.1.1",

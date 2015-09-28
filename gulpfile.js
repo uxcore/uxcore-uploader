@@ -45,7 +45,6 @@ gulp.task('deploy', ["lib", "pack_demo", "less_demo"]);
 
 gulp.task('lib', function (callback) {
     gulp.src([
-        'node_modules/jquery/dist/jquery.min.js',
         'node_modules/spark-md5/spark-md5.min.js',
         'node_modules/es5-shim/es5-shim.min.js',
         'node_modules/es5-shim/es5-sham.min.js',
