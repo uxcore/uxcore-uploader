@@ -70,12 +70,12 @@ class FileList extends React.Component {
     }
 
     render() {
-        return <div className={"kuma-upload-filelist " + (this.props.mode === 'mini' ? 'minimode' : 'iconmode')}>
+        return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
                 {this.state.items.map((file) => {
                     return <FileItem key={file.id} file={file} mode={this.props.mode} />;
                 })}
-                {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-upload-icon icon-add" /></Picker> : null}
+                {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
             </div>
         </div>
     }
@@ -97,7 +97,7 @@ class Picker extends React.Component {
         return <div className="kuma-upload-picker">{this.props.children}</div>;
     }
 }
-
+/*
 class Uploader extends React.Component {
     constructor(props) {
         super(props);
@@ -126,7 +126,7 @@ class Uploader extends React.Component {
     render() {
         let children = this.props.children;
         if (!children || children.length < 1) {
-            children = <button className="kuma-upload-button"><i className="kuma-upload-icon icon-upload"/>UPLOAD</button>;
+            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>UPLOAD</button>;
         }
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             {this.core.isFull() ? null : <Picker core={this.core}>{children}</Picker>}
@@ -134,8 +134,48 @@ class Uploader extends React.Component {
         </div>;
     }
 }
+*/
+class Uploader extends React.Component {
+    constructor(props) {
+        super(props);
 
-class Droparea extends React.Component {
+        this.props.autoPending = true;
+
+        this.core = getCoreInstance(this.props);
+
+        this.state = {
+            total: this.core.getTotal()
+        };
+
+        const statchange = (stat) => {
+            const total = stat.getTotal();
+            if (total !== this.state.total) {
+                this.setState({total:total});
+            }
+        };
+        this.core.on(Events.QUEUE_STAT_CHANGE, statchange);
+        this.stopListen = () => {
+            this.core.off(Events.QUEUE_STAT_CHANGE, statchange);
+        };
+    }
+
+    componentWillUnmount() {
+        this.stopListen && this.stopListen();
+    }
+    render() {
+        let children = this.props.children;
+        if (!children || children.length < 1) {
+            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>添加文件</button>;
+        }
+        return <div className={"kuma-uploader " + (this.props.className || '')}>
+            <Picker core={this.core}>{children}</Picker>
+            {this.props.tips}
+            {this.state.total > 0 ? (<FileList core={this.core} mode="nw" />) : null}
+        </div>;
+    }
+}
+
+class Dropzoom extends React.Component {
     constructor(props) {
         super(props);
 
@@ -181,7 +221,7 @@ class Droparea extends React.Component {
         this.stopListen && this.stopListen();
     }
     render() {
-        let className = "kuma-uploader kuma-upload-droparea";
+        let className = "kuma-uploader kuma-upload-dropzoom";
         if (this.props.className) {
             className += ' ' + this.props.className;
         }
@@ -193,7 +233,7 @@ class Droparea extends React.Component {
         }
         let children = this.props.children;
         if (!children || children.length < 1) {
-            children = <i className="kuma-upload-icon icon-add" />;
+            children = <i className="kuma-icon kuma-icon-add" />;
         }
         return <div className={className}>
             {this.state.total > 0
@@ -204,7 +244,7 @@ class Droparea extends React.Component {
     }
 }
 
-Uploader.Droparea = Droparea;
+Uploader.Dropzoom = Dropzoom;
 
 class FileItem extends React.Component {
 
@@ -261,22 +301,46 @@ class FileItem extends React.Component {
         if (this.props.mode === 'icon') {
             return <div className={"kuma-upload-fileitem status-" + this.state.status}>
                 <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title="移除">
-                    <i className="kuma-upload-icon icon-remove" />
+                    <i className="kuma-icon kuma-icon-close" />
                 </a>
                 <div className="filepreview">
                     <Preview file={this.props.file} />
                     {this.state.status === 'error' ? <a className="kuma-upload-action action-retry" onClick={this.onPending.bind(this)} title="重传">
-                        <i className="kuma-upload-icon icon-retry" />
+                        <i className="kuma-icon kuma-icon-refresh" />
                     </a> : null}
                     {this.state.status === 'queued' ? <a className="kuma-upload-action action-upload" onClick={this.onPending.bind(this)} title="上传">
-                        <i className="kuma-upload-icon icon-start" />
+                        <i className="kuma-icon kuma-icon-triangle-right" />
                     </a> : null}
                     {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress percentage={this.state.percentage} /> : null}
                 </div>
-                {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-upload-icon icon-error" /></a> : null}
-                {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-upload-icon icon-success" /></a> : null}
+                {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-icon kuma-icon-caution" /></a> : null}
+                {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a> : null}
                 <div className="filename" title={this.file.name}>{natcut(this.file.name, 10)}</div>
             </div>
+        } else if (this.props.mode === 'nw') {
+            let downloadUrl, previewUrl;
+            if (this.state.status === 'success') {
+                const json = this.file.response.getJson();
+                try {
+                    downloadUrl = json.data.downloadUrl || json.data.file || json.data.url;
+                    previewUrl = json.data.previewUrl || downloadUrl;
+                } catch (e) {}
+            }
+            return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+                <label className="field-info">
+                    {this.state.status === 'error' ? <i className="kuma-icon kuma-icon-caution" /> : null}
+                    {this.state.status !== 'error' && this.state.status !== 'success' ? <i className="kuma-loading" /> : null}
+                    {this.state.status === 'success' ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/> : null}
+                    <span className="filename">{this.file.name}</span>
+                </label>
+                <label className="field-status">
+                    {this.state.status === 'error' ? <a className="kuma-upload-status status-error">上传失败</a> : null}
+                    {this.state.status !== 'error' && this.state.status !== 'success' ? <a className="kuma-upload-status status-progress">上传中...</a> : null}
+                    {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>预览</a> : null}
+                    {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl}>下载</a> : null}
+                    <a className="kuma-upload-action" onClick={this.onCancel.bind(this)}>删除</a>
+                </label>
+            </div>;
         } else {
             const size = humanSizeFormat(this.file.size);
             return <div className={"kuma-upload-fileitem status-" + this.state.status}>
@@ -286,19 +350,19 @@ class FileItem extends React.Component {
                     <span className="filesize">{'/' + size}</span>
                 </label>
                 <label className="field-status">
-                    {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-upload-icon icon-error" /></a> : null}
-                    {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-upload-icon icon-success" /></a> : null}
+                    {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title="上传失败"><i className="kuma-icon kuma-icon-caution" /></a> : null}
+                    {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a> : null}
 
                     {this.state.status === 'error' ? <a className="kuma-upload-action action-retry" onClick={this.onPending.bind(this)} title="重传">
-                        <i className="kuma-upload-icon icon-retry" />
+                        <i className="kuma-icon kuma-icon-refresh" />
                     </a> : null}
 
                     {this.state.status === 'queued' ? <a className="kuma-upload-action action-upload" onClick={this.onPending.bind(this)} title="上传">
-                        <i className="kuma-upload-icon icon-start" />
+                        <i className="kuma-icon kuma-icon-triangle-right" />
                     </a> : null}
 
                     <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title="移除">
-                        <i className="kuma-upload-icon icon-remove" />
+                        <i className="kuma-icon kuma-icon-close" />
                     </a>
                 </label>
                 <Progress percentage={this.state.percentage} mode="bar"/>

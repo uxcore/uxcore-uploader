@@ -37,26 +37,36 @@
 
     .@{uploader-prefix-class}-button {
         display: inline-block;
-        background: white;
+        background: #f2f2f2;
         outline: none;
-        border: 1px solid #eee;
-        padding: 5px 10px;
-        border-radius: 15px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 0 5px;
+        font-size: 12px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 22px;
+        height: 24px;
         -webkit-transition: border-color 0.1s, color 0.1s;
         transition: border-color 0.1s, color 0.1s;
+        .kuma-icon-uploading {
+            margin-right:3px;
+            font-size: 12px;
+        }
     }
     .@{uploader-prefix-class}-button > * {
         vertical-align: middle;
     }
     &:hover, &.over {
         .@{uploader-prefix-class}-button {
-            border-color: #57c5f7;
-            color: #57c5f7;
+            border-color: #f60;
+            color: #f60;
         }
     }
 }
 
-.@{uploader-prefix-class}-droparea {
+.@{uploader-prefix-class}-dropzoom {
     min-height: 200px;
     min-width: 200px;
     position: relative;
@@ -67,7 +77,6 @@
         top:0;right:0;left:0;bottom:0;
         border: 1px dashed #D9D9D9;
         z-index: -1;
-        border-radius: 5px;
     }
     &.blink .@{uploader-prefix-class}-responser {
         border:3px dashed #fc6e51;
@@ -89,7 +98,7 @@
         opacity: 0.6;
         -webkit-transition: opacity 0.2s;
         transition: opacity 0.2s;
-        .icon-add {
+        .kuma-icon-add {
             position: absolute;
             display: inline-block;
             left:50%;
@@ -116,7 +125,7 @@
         width: 80px;
         height: 80px;
         background: #ebeff2;
-        .icon-add {
+        .kuma-icon-add {
             margin-top: -20px;
             margin-left: -20px;
             width: 40px;
@@ -146,11 +155,10 @@
     .@{uploader-prefix-class}-status, .@{uploader-prefix-class}-action {
         display: inline-block;
         text-align: center;
-        border-radius: 50%;
         text-decoration: none;
         color: #ccc;
         vertical-align: middle;
-        .@{uploader-prefix-class}-icon {
+        .kuma-icon {
             font-size: 18px;
         }
     }
@@ -176,14 +184,14 @@
             cursor: pointer;
             color: #444;
             &:hover {
-                color: #42a1eb;
+                color: #288df0;
             }
         }
         &.action-upload {
             cursor: pointer;
             color: #444;
             &:hover {
-                color: #42a1eb;
+                color: #288df0;
             }
         }
     }
@@ -192,9 +200,8 @@
 
 .@{uploader-prefix-class}-filelist {
     &.minimode .@{uploader-prefix-class}-fileitem {
-        border: 1px solid #ededed;
+        border: 1px solid #d9d9d9;
         padding: 5px 6px;
-        border-radius: 25px;
 
         .field-info {
             .@{uploader-prefix-class}-fileicon {
@@ -283,10 +290,10 @@
                 left:50%;
                 height: 30px;
                 width: 30px;
-                .@{uploader-prefix-class}-icon {
+                .kuma-icon {
                     line-height: 30px;
                     font-size: 28px;
-                    color:#42a1eb;
+                    color:#288df0;
                 }
                 margin-left: -15px;
                 margin-top: -15px;
@@ -323,6 +330,63 @@
             height: 2.4em;
             overflow: hidden;
             padding: 0 1px;
+        }
+    }
+
+    &.nwmode {
+        margin-top: 24px;
+    }
+
+    &.nwmode .@{uploader-prefix-class}-fileitem {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        clear:both;
+        margin-bottom: 10px;
+        .field-info {
+            .@{uploader-prefix-class}-fileicon {
+                margin: 0 5px;
+                font-size: 16px;
+            }
+            .kuma-icon-caution {
+                vertical-align: middle;
+                margin: 0 5px;
+                color: #ff6330;
+                font-size: 14px;
+            }
+            .kuma-loading {
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background: url(data:image/gif;base64,R0lGODlhDAAMAPfIAOnp6f7+/vz8/P39/efn5+jo6Ovr6+zs7O3t7e/v7/j4+OTk5OH6///+/ezr6/T4+/Hy8uz6//3+/vLw8OH////9/O///+bl5f/49PT09fX3+vT5/Pz+//rTu/nRuPymbvX3+P3///+tdv+JRvH09+fz+/Xi1f+odujr7+f6/+Xo6/Ls5vSkduXq7//VvvLx7+rr6+jp6eXk5OzHruTt9f/v5+js7/O5kvvDnub8///y6/KiaP6bZ/5mBv9yKPnu5v+WbeTn6/L//+rp6fx1I/bs5OXl5P92SPT6/e/v8POiaf/+/v7+//Df1PvXwOnr6+Ly+/bZxvW4jv9dAv9WAPG0kO/w8v9vJfP4/OP2+/9pHOn0/ej1+e/3/fHi2P9FAPmxgPi3jvjv6fHz8/X5/PP//+Px+u3r6vH1+PX7/v339PLw8fX5+/1eCf2OR+f///rHpfT///Lx8Of4/+X6/uvr7OL6//fdy/Xg0fvYwfbp3u/s6+3EqOv7/+ft8O3r7OTt9P+caPaXWPqUTv9pO/Xz8P+QW/eRSP2RRvf///D9//1iDP9eDvf4+Onz/OL4/v/Ttvb5/P1mC/Lx8ffXwef+//T6/vb19f9EAPb3+OL///307vH2+efg2v5xEv9NAP/dzefm5vb6/Ons7vyWVfjFo/a+l+nl4vancfv7/On7/+rx9fPs5vD19+zy9faqd/94P+T+/+vSufX///+JU/D3/P/Yyufl5P/8+vb5+ub1+v7///9YFfLy8fp6K/D8/+bm5vf39+rq6vT09PHx8fLy8vX19eXl5f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDIxQkZGNUVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDIxQkZGNkVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwMjFCRkYzRUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwMjFCRkY0RUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkECQAAyAAsAAAAAAwADAAACGEAkQkcSJDgMGAAECAQdmHWwGDAjBFEQiEPsgDHhhVE5uGLi2IENiLDwAIPgGIikVmYIwylSAjCiAFIWYDYgGPBNgY7NgDZsGMSBxrLOLAYMAMJEhggEHSgAGIHDhATMDAgACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABAgEAYs2MBgwIwRNHZMAbIAx4YVRKYhCJNiBDYK1GUCQDGRyBBpEXZSJKlBxACgdDRmwDGHBXOpkIBs2DGJAylqFFgMmIEECQwQADpQALEDB4gJGBgQACH5BAkAAMgALAgAAwAEAAgAAAgjAJEZWxAAGbICxAySgGHwxRtkNYhQQnZnESgyDAohC7XBYEAAIfkEBQAAyAAsAAAAAAwADAAACDMAkQkcSLCgwYMIExpbECAhsgLEHBYT5nACxYR+IiL8wUACQhFtihxMwoVPIIQOWnEYGBAAIfkECQAAyAAsBAAGAAgABgAACCQAkQkcWGygwQIGBUY6NmBgAxAthiGrEwHMlE4PBqqSAkvNwIAAIfkEBQAAyAAsAAAAAAwADAAACDUAkQkcSLCgwYMIEypcyJBgMWEKCxBLGOzYAIFG4hA0dmwYQTuoRuxZRcBYwVRuPJ1BI2BgQAAh+QQFAADIACwBAAYABwAGAAAIIQAnIBtI0AZBgmYaHUQmRAmQhYYOpbCSwMBAAV0cHCAWEAAh+QQJAADIACwAAAUABgAHAAAIIgCHIBs4cIsigshYVcFFEBKmDgQrwHmUBqGFWwYSICR2ICAAIfkEBQAAyAAsAAAAAAwADAAACC8AkQkcSLCgwYMIEw78lUPhjTAKeV1RGOWUwhCARCkcdsyYwmLADCRIKIDYAYMBAQAh+QQJAADIACwAAAEABAAIAAAIIwCRIXtwAZkYCmxsSdKDrFQPDMgqrRA4ipNAYgAEDjgWDFlAACH5BAkAAMgALAAAAAAMAAwAAAgzAJEJHEhwYIMTsmL9KSjQCRUeDAXu0oQjosBedCwKBLBGIzJhkzwSA+BxwLFgHlOqVBkQACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJ3HTEVAQIAQQqtDTj06s+T4AFUxiMxiUdCo0dU4AswDEsCjMuCFCMQMiQBYgBKHZSYTFhwli2RPZS5UxkKQccm3gy2LEByIYdMxZS4zCXwAwkSGCAANGQAogdOEBMgMKAACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJHFDLi48PAQQqHAasRBNGgrJkUhgMmDGFFcrIUIAswLFhChUaWxCgGIGQIQsQA1AMpcJiwoS1dIkM5kqayFQOOBbMZbBjA5ANO3ZR5MeXwAwkSGCAQFGFAogdOEBMgMKAACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABC4iuGL1sBgwIwNXEJoRyJkAY4NK4gsA5QAxQhwFIiCGIBiI5HJESYM5chiwkymLEBswLFgHIMdG4Bs2DGJA41pHFgMmIEECQwQADpQALEDB4gJGBgQADs=) no-repeat center;
+                vertical-align: middle;
+                margin: 0 5px;
+            }
+            .filename {
+                font-size: 12px;
+                vertical-align: middle;
+                white-space: nowrap;
+            }
+        }
+
+        .field-status {
+            margin-left: 10px;
+            .@{uploader-prefix-class}-status {
+                font-size: 12px;
+                &.status-progress {
+                    color:#f60;
+                }
+                &.status-error {
+                    color: #ff6330;
+                }
+            }
+            .@{uploader-prefix-class}-action {
+                font-size: 12px;
+                margin: 0 5px;
+                color:#288df0;
+                cursor: pointer;
+                &:hover {
+                    color: #fc6e51;
+                }
+            }
         }
     }
 }

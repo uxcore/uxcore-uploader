@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/demo/css/normalize.css" />
     <link rel="stylesheet" href="/demo/css/tpl.css" />
-    <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css"/>
+    <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css" />
+    <link rel="stylesheet" href="//g.alicdn.com/platform/common/s/1.1/global/global.css" />
     <link rel="stylesheet" href="/cache/index.css" />
     <script src="../node_modules/spark-md5/spark-md5.min.js"></script>
     <script src="../node_modules/es5-shim/es5-shim.min.js"></script>
@@ -39,7 +40,7 @@
 
     <p><strong>导入资源</strong></p>
 
-    <pre><code class="javascript">import Uploader, {Droparea} from 'uxcore-uploader';</code></pre>
+    <pre><code class="javascript">import Uploader, {Dropzoom} from 'uxcore-uploader';</code></pre>
 
     <!--Sample 1-->
     <h3>Sample1 - 单文件上传</h3>
@@ -93,7 +94,7 @@
 
     <div class="sample" id="sample5"></div>
 
-<pre><code class="html">&lt;Droparea autoPending={false}
+<pre><code class="html">&lt;Dropzoom autoPending={false}
           multiple={true}
           queueCapcity={20}
           name='file'
@@ -117,7 +118,7 @@
 
     <div class="sample" id="sample7"></div>
 
-<pre><code class="html">&lt;Droparea autoPending={false}
+<pre><code class="html">&lt;Dropzoom autoPending={false}
           className="mydroparea"
           multiple={true}
           queueCapcity={20}
@@ -125,7 +126,7 @@
           url='http://test.yanbingbing.com/upload.php'&gt;
     &lt;i className="kuma-upload-icon icon-upload" /&gt;
     &lt;p>点击或将文件拖拽到此区域上传&lt;/p&gt;
-&lt;/Droparea&gt;</code>
+&lt;/Dropzoom&gt;</code>
 </pre>
 
 

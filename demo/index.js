@@ -1,8 +1,10 @@
 const hljs = require('highlight.js');
 const Uploader = require('../src/index');
 
+const tips = <span>5M</span>;
+
 React.render((
-    <Uploader autoPending={false} multiple={false} name='file' url='http://test.yanbingbing.com/upload.php' />
+    <Uploader autoPending={false} multiple={false} tips={tips} name='file' url='http://test.yanbingbing.com/upload.php' />
 ), document.getElementById('sample1'));
 
 React.render((
@@ -18,7 +20,7 @@ React.render((
 ), document.getElementById('sample4'));
 
 React.render((
-    <Uploader.Droparea autoPending={false} multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php' />
+    <Uploader.Dropzoom autoPending={false} multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php' />
 ), document.getElementById('sample5'));
 
 React.render((
@@ -28,10 +30,10 @@ React.render((
 ), document.getElementById('sample6'));
 
 React.render((
-    <Uploader.Droparea autoPending={false} className="mydroparea" multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php'>
-        <i className="kuma-upload-icon icon-upload" />
+    <Uploader.Dropzoom autoPending={false} className="mydroparea" multiple={true} queueCapcity={20} name='file' url='http://test.yanbingbing.com/upload.php'>
+        <i className="kuma-icon kuma-icon-uploading" />
         <p>点击或将文件拖拽到此区域上传</p>
-    </Uploader.Droparea>
+    </Uploader.Dropzoom>
 ), document.getElementById('sample7'));
 
 hljs.initHighlightingOnLoad();
