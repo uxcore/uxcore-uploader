@@ -163,6 +163,13 @@ class Uploader extends React.Component {
     componentWillUnmount() {
         this.stopListen && this.stopListen();
     }
+
+    reset() {
+        this.core.getFiles().forEach((file) => {
+            file.cancel();
+        });
+    }
+
     render() {
         let children = this.props.children;
         if (!children || children.length < 1) {
@@ -198,6 +205,12 @@ class Dropzoom extends React.Component {
         this.stopListen = () => {
             this.core.off(Events.QUEUE_STAT_CHANGE, statchange);
         };
+    }
+
+    reset() {
+        this.core.getFiles().forEach((file) => {
+            file.cancel();
+        });
     }
 
     componentDidMount() {
