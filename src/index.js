@@ -2,7 +2,7 @@ const {UploadCore, Events, Status} = require('uxcore-uploadcore');
 const Progress = require('./progress');
 
 const CORE_INSTANCE = {};
-function getCoreInstance(props) {
+function getCoreInstance(props, autoPending) {
     let core = props.core;
     if (core instanceof UploadCore) {
         return core;
@@ -22,6 +22,9 @@ function getCoreInstance(props) {
             options[key] = props[key];
         }
     });
+    if (autoPending != null) {
+        options.autoPending = autoPending;
+    }
 
     core = new UploadCore(options);
 
@@ -87,7 +90,7 @@ FileList.defaultProps = {
 
 class Picker extends React.Component {
     componentDidMount() {
-        this.area = this.props.core.getPickerCollector().addArea(React.findDOMNode(this));
+        this.area = this.props.core.getPickerCollector().addArea(ReactDOM.findDOMNode(this));
     }
     componentWillUnmount() {
         this.area && this.area.destroy();
@@ -139,9 +142,7 @@ class Uploader extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.autoPending = true;
-
-        this.core = getCoreInstance(this.props);
+        this.core = getCoreInstance(this.props, true);
 
         this.state = {
             total: this.core.getTotal()
@@ -200,7 +201,7 @@ class Dropzoom extends React.Component {
     }
 
     componentDidMount() {
-        const areaNode = React.findDOMNode(this);
+        const areaNode = ReactDOM.findDOMNode(this);
 
         const dndArea = this.core.getDndCollector().addArea(areaNode);
         dndArea.on('start', () => {
