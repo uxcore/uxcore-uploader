@@ -32,7 +32,7 @@ function getCoreInstance(props, autoPending) {
         if (props.hasOwnProperty(key)) {
             let m = /^on(\w+)$/i.exec(key);
             if (!m) continue;
-            if (Events.hasOwnProperty(m[1]) && (typeof props[key] === 'function')) {
+            if (typeof props[key] === 'function') {
                 core.on(m[1], props[key]);
             }
         }
@@ -246,6 +246,9 @@ class Dropzoom extends React.Component {
 }
 
 Uploader.Dropzoom = Dropzoom;
+
+Uploader.Events = Events;
+Uploader.Status = Status;
 
 class FileItem extends React.Component {
 
