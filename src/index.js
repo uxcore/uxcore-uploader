@@ -1,6 +1,8 @@
 const {UploadCore, Events, Status} = require('uxcore-uploadcore');
 const Progress = require('./progress');
 
+UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
+
 const CORE_INSTANCE = {};
 function getCoreInstance(props, autoPending) {
     let core = props.core;
