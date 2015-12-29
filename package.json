@@ -1,6 +1,6 @@
 {
   "name": "uxcore-uploader",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "uxcore-uploader component for react",
   "main": "src/index.js",
   "scripts": {
@@ -48,10 +48,7 @@
     "webpack": "^1.10.5"
   },
   "dependencies": {
-    "uploadcore": "^2.2.0"
-  },
-  "babel": {
-    "presets": ["es2015", "react"]
+    "uploadcore": "^2.2.2"
   },
   "author": "onbing",
   "contributors": [],
