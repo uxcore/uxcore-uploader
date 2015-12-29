@@ -1,6 +1,6 @@
 {
   "name": "uxcore-uploader",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "uxcore-uploader component for react",
   "main": "src/index.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "webpack": "^1.10.5"
   },
   "dependencies": {
-    "uxcore-uploadcore": "^2.1.2"
+    "uploadcore": "^2.2.0"
   },
   "babel": {
     "presets": ["es2015", "react"]

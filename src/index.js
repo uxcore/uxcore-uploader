@@ -1,4 +1,4 @@
-const {UploadCore, Events, Status} = require('uxcore-uploadcore');
+const {UploadCore, Events, Status} = require('uploadcore');
 const Progress = require('./progress');
 
 UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
