@@ -264,6 +264,9 @@ Uploader.Dropzoom = Dropzoom;
 
 Uploader.Events = Events;
 Uploader.Status = Status;
+Uploader.setSWF = function (swf) {
+    UploadCore.setSWF(swf);
+};
 
 class FileItem extends React.Component {
 
