@@ -1,5 +1,4 @@
 bower_components/
-build/
 *.cfg
 node_modules/
 nohup.out
@@ -26,7 +25,4 @@ _site
 sea-modules
 spm_modules
 .cache
-cache
-demo
-webpack.*.js
-gulpfile.js
+dist

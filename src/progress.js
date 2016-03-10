@@ -1,3 +1,6 @@
+const React = require('react'); 
+const ReactDOM = require('react-dom');
+
 const TRANSFORM_PROPERTY = (() => {
     const style = document.createElement("div").style;
     const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];

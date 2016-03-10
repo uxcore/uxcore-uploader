@@ -1,5 +1,5 @@
 const hljs = require('highlight.js');
-const Uploader = require('../src/index');
+const Uploader = require('../src/');
 
 const tips = <span>5M</span>;
 
