@@ -12,3 +12,10 @@ $ cd uxcore-uploader
 $ npm start
 ```
 
+see http://uxco.re/components/uploader/ for details.
+
+## Props
+
+|Name                |Type                |Require   |Default     |Since Ver. |Note | 
+|---                 |---                 |---       |---         |---        |---|
+|`locale`            |string              |optional  |zh-cn       |1.1.10     |国际化，目前支持 `zh-cn` 和 `en-us`|

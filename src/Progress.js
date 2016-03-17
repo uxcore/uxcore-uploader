@@ -1,16 +1,6 @@
 const React = require('react'); 
 const ReactDOM = require('react-dom');
-
-const TRANSFORM_PROPERTY = (() => {
-    const style = document.createElement("div").style;
-    const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];
-    for (let i = 0, l = properties.length; i < l; i++) {
-        if (properties[i] in style) {
-            return properties[i];
-        }
-    }
-    return false;
-})();
+const util = require('./util');
 
 class Progress extends React.Component {
     constructor(props) {
@@ -19,12 +9,12 @@ class Progress extends React.Component {
 
     render() {
         const percentage = this.props.percentage || 0;
-        if (TRANSFORM_PROPERTY && this.props.mode !== 'bar') {
+        if (util.TRANSFORM_PROPERTY && this.props.mode !== 'bar') {
             let items = [0, 1];
             let ret = items.map((i) => {
                 return Math.floor(Math.min(Math.max(0, (percentage - (i * 50)) * 3.6), 180))
             }).map((rotate) => {
-                return {[TRANSFORM_PROPERTY]: 'rotate(' + rotate + 'deg)'};
+                return {[util.TRANSFORM_PROPERTY]: 'rotate(' + rotate + 'deg)'};
             });
 
             return <div className="kuma-upload-progresspin">
@@ -41,7 +31,7 @@ class Progress extends React.Component {
     }
 }
 
-Progress.isSupport = TRANSFORM_PROPERTY !== false;
+Progress.isSupport = util.TRANSFORM_PROPERTY !== false;
 
 Progress.propTypes = {
     percentage: React.PropTypes.number

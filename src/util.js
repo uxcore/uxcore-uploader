@@ -48,5 +48,15 @@ module.exports = {
             }
         }
         return part + '...' + title.substring(Math.min(i, length-1), length);
-    }
+    },
+    TRANSFORM_PROPERTY: (() => {
+        const style = document.createElement("div").style;
+        const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];
+        for (let i = 0, l = properties.length; i < l; i++) {
+            if (properties[i] in style) {
+                return properties[i];
+            }
+        }
+        return false;
+    })()
 }

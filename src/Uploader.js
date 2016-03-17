@@ -1,10 +1,11 @@
 const React = require('react'); 
 const ReactDOM = require('react-dom');
 const {UploadCore, Events, Status} = require('uploadcore');
-const Progress = require('./progress');
+const Progress = require('./Progress');
 const util = require("./util");
 const FileList = require("./FileList");
 const Picker = require("./Picker");
+const i18n = require("./locale");
 
 UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
 
@@ -89,14 +90,15 @@ class Uploader extends React.Component {
     }
 
     render() {
-        let children = this.props.children;
+        let me = this;
+        let {children, locale} = this.props;
         if (!children || children.length < 1) {
-            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>添加文件</button>;
+            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>{i18n[locale]['upload_files']}</button>;
         }
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
             {this.props.tips}
-            {this.state.total > 0 ? (<FileList core={this.core} mode="nw" />) : null}
+            {this.state.total > 0 ? (<FileList locale={this.props.locale} core={this.core} mode="nw" />) : null}
         </div>;
     }
 }
@@ -169,7 +171,7 @@ class Dropzoom extends React.Component {
         }
         return <div className={className}>
             {this.state.total > 0
-                ? <FileList core={this.core} mode="icon" />
+                ? <FileList locale={this.props.locale} core={this.core} mode="icon" />
                 : <Picker core={this.core}>{children}</Picker>}
             <div className="kuma-upload-responser" />
         </div>;
@@ -183,6 +185,16 @@ Uploader.Status = Status;
 Uploader.setSWF = function (swf) {
     UploadCore.setSWF(swf);
 };
+
+Uploader.displayName = "Uploader";
+
+Uploader.defaultProps = {
+    locale: 'zh-cn'
+}
+
+Uploader.propTypes = {
+    locale: React.PropTypes.string
+}
 
 
 

@@ -4,7 +4,7 @@ const Uploader = require('../src/');
 const tips = <span>5M</span>;
 
 ReactDOM.render((
-    <Uploader autoPending={false} multiple={false} tips={tips} name='file' url='http://test.yanbingbing.com/upload.php' />
+    <Uploader autoPending={false} multiple={false} tips={tips} name='file' url='http://test.yanbingbing.com/upload.php' locale="en" />
 ), document.getElementById('sample1'));
 
 ReactDOM.render((

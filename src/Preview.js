@@ -19,3 +19,5 @@ class Preview extends React.Component {
             : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
     }
 }
+
+module.exports = Preview;
