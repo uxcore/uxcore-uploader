@@ -1,7 +1,7 @@
 const FileItem = require('./FileItem');
 const Picker = require('./Picker');
 const {Events} = require('uploadcore');
-const React = require('react'); 
+const React = require('react');
 const ReactDOM = require('react-dom');
 
 class FileList extends React.Component {

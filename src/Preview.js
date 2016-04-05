@@ -1,4 +1,4 @@
-const React = require('react'); 
+const React = require('react');
 const ReactDOM = require('react-dom');
 
 class Preview extends React.Component {
