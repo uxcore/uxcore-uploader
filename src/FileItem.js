@@ -1,4 +1,5 @@
 const Preview = require('./Preview');
+const Progress = require('./Progress');
 const util = require('./util');
 const {Events,File} = require('uploadcore');
 const React = require('react');
@@ -89,6 +90,7 @@ class FileItem extends React.Component {
                 }
             }
             if (this.file.getCore().getAccept() && this.file.getCore().getAccept()[0].title === 'Images') {
+
                 return <div className={"kuma-upload-fileitem-img status-" + this.state.status}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">
@@ -111,7 +113,7 @@ class FileItem extends React.Component {
                     </label>
                     <label className="field-status">
                         {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
-                        {this.state.status !== 'error' && this.state.status !== 'success' ? <a className="kuma-upload-status status-progress">{`${i18n[locale]['uploading']}...`}</a> : null}
+                        {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress /> : null}
                         {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
                         {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl}>{i18n[locale]['download']}</a> : null}
                         <a className="kuma-upload-action" onClick={this.onCancel.bind(this)}>{i18n[locale]['remove']}</a>
