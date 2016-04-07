@@ -36,7 +36,7 @@ class Progress extends React.Component {
 
     render() {
         return (
-            <Line percent={this.state.percentage} strokeWidth={5} />
+            <Line percent={this.state.percentage} strokeWidth={8} />
         )
     }
 }

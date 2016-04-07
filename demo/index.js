@@ -6,7 +6,7 @@ const tips = <span>5M</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
 
 ReactDOM.render((
-    <Uploader autoPending={false} multiple={false} tips={tips} name='file' url='http://eternalsky.me:8122/file/upload?sleep=550' locale="en" />
+    <Uploader autoPending={false} multiple={false} tips={tips} name='file' url='http://eternalsky.me:8122/file/upload?sleep=5' locale="en" />
 ), document.getElementById('sample1'));
 
 ReactDOM.render((

@@ -105,19 +105,22 @@ class FileItem extends React.Component {
                         </div>;
             } else {
                 return <div className={"kuma-upload-fileitem status-" + this.state.status}>
-                    <label className="field-info">
+                    <label className="field-icon">
                         {this.state.status === 'error' ? <i className="kuma-icon kuma-icon-caution" /> : null}
-                        {this.state.status !== 'error' && this.state.status !== 'success' ? <i className="kuma-loading" /> : null}
-                        {this.state.status === 'success' ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/> : null}
-                        <span className="filename">{this.file.name}</span>
+                        {this.state.status !== 'error' ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/> : null}
                     </label>
-                    <label className="field-status">
-                        {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
-                        {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress /> : null}
-                        {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
-                        {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl}>{i18n[locale]['download']}</a> : null}
-                        <a className="kuma-upload-action" onClick={this.onCancel.bind(this)}>{i18n[locale]['remove']}</a>
-                    </label>
+                    <div className="field-info-wrap">
+                        <label className="field-info">
+                            <span className="filename">{this.file.name}</span>
+                        </label>
+                        <label className="field-status">
+                            {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
+                            {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress /> : null}
+                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><i className="kuma-icon kuma-icon-close"></i></a> : null}
+                            {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
+                            {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl}>{i18n[locale]['download']}</a> : null}
+                        </label>
+                    </div>
                 </div>;
             }
         } else {
