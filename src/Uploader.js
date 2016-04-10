@@ -1,4 +1,4 @@
-const React = require('react'); 
+const React = require('react');
 const ReactDOM = require('react-dom');
 const {UploadCore, Events, Status} = require('uploadcore');
 const Progress = require('./Progress');
@@ -24,7 +24,7 @@ function getCoreInstance(props, autoPending) {
     let options = props.options || {};
     ['name', 'url', 'params', 'action', 'data', 'headers', 'withCredentials', 'timeout',
         'chunkEnable', 'chunkSize', 'chunkRetries', 'chunkProcessThreads', 'processThreads',
-        'queueCapcity', 'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate'
+        'queueCapcity', 'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate','isOnlyImg'
     ].forEach((key) => {
         if (props.hasOwnProperty(key)) {
             options[key] = props[key];
@@ -98,7 +98,7 @@ class Uploader extends React.Component {
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
             {this.props.tips}
-            {this.state.total > 0 ? (<FileList locale={this.props.locale} core={this.core} mode="nw" />) : null}
+            {this.state.total > 0 ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" />) : null}
         </div>;
     }
 }

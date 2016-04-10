@@ -1,7 +1,7 @@
 const Preview = require('./Preview');
 const Progress = require('./Progress');
 const util = require('./util');
-const {Events,File} = require('uploadcore');
+const {Events} = require('uploadcore');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const i18n = require('./locale');
@@ -89,8 +89,7 @@ class FileItem extends React.Component {
                 } catch (e) {
                 }
             }
-            if (this.file.getCore().getAccept() && this.file.getCore().getAccept()[0].title === 'Images') {
-
+            if (this.props.isOnlyImg) {
                 return <div className={"kuma-upload-fileitem-img status-" + this.state.status}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">

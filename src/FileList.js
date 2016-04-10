@@ -35,7 +35,7 @@ class FileList extends React.Component {
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
                 {this.state.items.map((file) => {
-                    return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} />;
+                    return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />;
                 })}
                 {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
             </div>
