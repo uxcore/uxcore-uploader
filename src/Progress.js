@@ -1,33 +1,43 @@
-const React = require('react'); 
+const React = require('react');
 const ReactDOM = require('react-dom');
 const util = require('./util');
+const UxcoreProgress = require('uxcore-progress');
+const {Line} = UxcoreProgress;
 
 class Progress extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            percentage: 0
+        };
+    }
+
+    componentDidMount() {
+
+        let t = null;
+        let me = this;
+        let percentage = me.state.percentage;
+
+        t = setInterval(function() {
+
+            percentage = percentage + 5;
+
+            me.setState({
+                percentage: percentage
+            });
+
+            if(percentage === 100) {
+
+                clearInterval(t);
+            }
+        },100);
+
     }
 
     render() {
-        const percentage = this.props.percentage || 0;
-        if (util.TRANSFORM_PROPERTY && this.props.mode !== 'bar') {
-            let items = [0, 1];
-            let ret = items.map((i) => {
-                return Math.floor(Math.min(Math.max(0, (percentage - (i * 50)) * 3.6), 180))
-            }).map((rotate) => {
-                return {[util.TRANSFORM_PROPERTY]: 'rotate(' + rotate + 'deg)'};
-            });
-
-            return <div className="kuma-upload-progresspin">
-                <div className="spin spin2-1">
-                    <div className="inner" style={ret[0]} />
-                </div>
-                <div className="spin spin2-2">
-                    <div className="inner" style={ret[1]} />
-                </div>
-            </div>;
-        } else {
-            return <div className="kuma-upload-progressbar"  style={{width: percentage + '%'}}></div>
-        }
+        return (
+            <Line percent={this.state.percentage} strokeWidth={8} />
+        )
     }
 }
 
