@@ -8,7 +8,7 @@ class FileList extends React.Component {
     constructor(props) {
         super(props);
 
-        this.core = this.props.core;
+        this.core = props.core;
 
         this.state = {
             items: this.core.getStat().getFiles()

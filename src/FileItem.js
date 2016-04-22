@@ -11,7 +11,7 @@ class FileItem extends React.Component {
     constructor(props) {
         super(props);
 
-        const file = this.props.file;
+        const file = props.file;
         this.file = file;
 
         this.state = {

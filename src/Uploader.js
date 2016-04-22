@@ -61,7 +61,7 @@ class Uploader extends React.Component {
     constructor(props) {
         super(props);
 
-        this.core = getCoreInstance(this.props, true);
+        this.core = getCoreInstance(props, true);
 
         this.state = {
             total: this.core.getTotal()
@@ -107,7 +107,7 @@ class Dropzoom extends React.Component {
     constructor(props) {
         super(props);
 
-        this.core = getCoreInstance(this.props);
+        this.core = getCoreInstance(props);
 
         this.state = {
             blink: 0,

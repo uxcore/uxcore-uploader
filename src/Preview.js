@@ -7,7 +7,7 @@ class Preview extends React.Component {
 
         this.state = {};
 
-        const file = this.props.file;
+        const file = props.file;
         if (file.isImage()) {
             file.getAsDataUrl(1000).done((url) => this.setState({url}));
         }
