@@ -2,7 +2,7 @@
 
 ---
 
-## 1.2.0
+## 1.2.1
 
 * `NEW` new style
 * `FIX` fix issue #5
