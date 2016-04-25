@@ -2,6 +2,11 @@
 
 ---
 
+## 1.2.0
+
+* `NEW` new style
+* `FIX` fix issue #5
+
 ## 1.1.10
 
 `NEW` i18n support
