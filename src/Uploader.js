@@ -171,7 +171,7 @@ class Dropzoom extends React.Component {
         }
         return <div className={className}>
             {this.state.total > 0
-                ? <FileList locale={this.props.locale} core={this.core} mode="icon" />
+                ? <FileList locale={this.props.locale} core={this.core} mode="nw" />
                 : <Picker core={this.core}>{children}</Picker>}
             <div className="kuma-upload-responser" />
         </div>;
