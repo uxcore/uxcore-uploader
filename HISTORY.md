@@ -2,6 +2,11 @@
 
 ---
 
+## 1.2.2
+
+* `FIX` fix style when upload fails
+* `CHANGED` add response support like {content: {url: xxx}} or {content: {data: {url: xxx}}}
+
 ## 1.2.1
 
 * `NEW` new style
