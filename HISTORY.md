@@ -4,7 +4,7 @@
 
 ## 1.3.0
 
-* `NEW` add props `fileList` & `onChange`
+* `NEW` add props `fileList`, `onChange` & `onCancel`
 
 ## 1.2.2
 
