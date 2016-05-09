@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.0
+
+* `NEW` add props `fileList` & `onChange`
+
 ## 1.2.2
 
 * `FIX` fix style when upload fails

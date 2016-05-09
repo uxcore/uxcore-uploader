@@ -1,3 +1,7 @@
+const {UploadCore} = require('uploadcore');
+const hijackEvents = ['fileuploadsuccess', 'onfilecancel'];
+let CORE_INSTANCE = {};
+UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
 module.exports = {
     humanSizeFormat: function (size) {
         size = parseFloat(size);
@@ -48,6 +52,59 @@ module.exports = {
             }
         }
         return part + '...' + title.substring(Math.min(i, length-1), length);
+    },
+    getCoreInstance: (props, autoPending) => {
+        let core = props.core;
+        if (core instanceof UploadCore) {
+            return core;
+        }
+
+        const id = core;
+        if (id && typeof id === 'string' && CORE_INSTANCE.hasOwnProperty(id)) {
+            return CORE_INSTANCE[id];
+        }
+
+        let options = props.options || {};
+        ['name', 'url', 'params', 'action', 'data', 'headers', 'withCredentials', 'timeout',
+            'chunkEnable', 'chunkSize', 'chunkRetries', 'chunkProcessThreads', 'processThreads',
+            'queueCapcity', 'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate','isOnlyImg'
+        ].forEach((key) => {
+            if (props.hasOwnProperty(key)) {
+                options[key] = props[key];
+            }
+        });
+        if (autoPending != null) {
+            options.autoPending = autoPending;
+        }
+
+        core = new UploadCore(options);
+
+        for (let key in props) {
+            if (props.hasOwnProperty(key)) {
+                let m = /^on(\w+)$/i.exec(key);
+                if (!m) continue;
+                if (typeof props[key] === 'function' && hijackEvents.indexOf(m) == -1) {
+                    core.on(m[1], props[key]);
+                }
+            }
+        }
+
+        if (id) {
+            CORE_INSTANCE[id] = core;
+        }
+
+        return core;
+    },
+    /**
+     * JSON can not handle undefined/null/function
+     * hence it's just a simple method
+     * Don't use if your object contains the type metioned before
+     */
+    simpleDeepCopy: (obj) => {
+        return JSON.parse(JSON.stringify(obj));
+    },
+    simpleDeepEqual: (a, b) => {
+        return JSON.stringify(a) === JSON.stringify(b)
     },
     TRANSFORM_PROPERTY: (() => {
         const style = document.createElement("div").style;

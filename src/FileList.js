@@ -1,4 +1,5 @@
 const FileItem = require('./FileItem');
+const DefaultFileItem = require('./DefaultFileItem');
 const Picker = require('./Picker');
 const {Events} = require('uploadcore');
 const React = require('react');
@@ -34,6 +35,9 @@ class FileList extends React.Component {
     render() {
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
+                {this.props.fileList.map((file, index) => {
+                    return <DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} onCancel={this.props.removeFileFromList.bind(this)} />;
+                })}
                 {this.state.items.map((file) => {
                     return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />;
                 })}
