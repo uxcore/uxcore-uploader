@@ -1,5 +1,5 @@
 const {UploadCore} = require('uploadcore');
-const hijackEvents = ['fileuploadsuccess', 'onfilecancel'];
+const hijackEvents = ['fileuploadsuccess', 'filecancel'];
 let CORE_INSTANCE = {};
 UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
 module.exports = {
@@ -83,7 +83,7 @@ module.exports = {
             if (props.hasOwnProperty(key)) {
                 let m = /^on(\w+)$/i.exec(key);
                 if (!m) continue;
-                if (typeof props[key] === 'function' && hijackEvents.indexOf(m) == -1) {
+                if (typeof props[key] === 'function' && hijackEvents.indexOf(m[1]) == -1) {
                     core.on(m[1], props[key]);
                 }
             }

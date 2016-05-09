@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.1
+
+* `FIX` fix events hijack bug.
+
 ## 1.3.0
 
 * `NEW` add props `fileList`, `onChange` & `onCancel`
