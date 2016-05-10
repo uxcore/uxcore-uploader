@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.5
+
+* `FIX` fix typo
+
 ## 1.3.4
 
 * `CHANGED` filecancel will not be fired when reset.

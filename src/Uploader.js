@@ -69,7 +69,7 @@ class Uploader extends React.Component {
     stopListen() {
         this.core.off(Events.QUEUE_STAT_CHANGE, this.statchange);
         this.core.off(Events.FILE_UPLOAD_SUCCESS, this.fileuploadsuccess);
-        this.core.off(Events.FILE_CANCEL, me.filecancel);
+        this.core.off(Events.FILE_CANCEL, this.filecancel);
     }
 
     reset() {
