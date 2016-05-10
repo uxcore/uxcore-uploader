@@ -32,12 +32,20 @@ class FileList extends React.Component {
         this.stopListen && this.stopListen();
     }
 
+    renderDefaultFileItems() {
+        let arr = [];
+        this.props.fileList.forEach((file, index) => {
+            if (file.type !== 'delete') {
+                arr.push(<DefaultFileItem file={file.response} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} onCancel={this.props.removeFileFromList.bind(this)} />);
+            }
+        });
+        return arr;
+    }
+
     render() {
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
-                {this.props.fileList.map((file, index) => {
-                    return <DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} onCancel={this.props.removeFileFromList.bind(this)} />;
-                })}
+                {this.renderDefaultFileItems()}
                 {this.state.items.map((file) => {
                     return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />;
                 })}

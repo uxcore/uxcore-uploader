@@ -15,7 +15,7 @@ class Uploader extends React.Component {
         this.fileList = this.getDefaultList();
         this.state = {
             total: this.core.getTotal(),
-            fileList: this.addUniqueIdForList(this.fileList)
+            fileList: this.processDefaultList(this.fileList)
         };
     }
 
@@ -34,7 +34,16 @@ class Uploader extends React.Component {
         };
 
         me.filecancel = (file) => {
-            me.handleChange();
+            let newList = util.simpleDeepCopy(me.state.fileList);
+            newList.push({
+                type: 'delete',
+                response: JSON.parse(file.response.rawResponse.rawResponse)
+            });
+            me.setState({
+                fileList: newList
+            }, () => {
+                me.handleChange();
+            });
             onfilecancel && onfilecancel(file);
             onCancel && onCancel(me.processFile(file));
         };
@@ -69,6 +78,9 @@ class Uploader extends React.Component {
         });
     }
 
+    /**
+     * deepcopy props.filelist for comparision in `componentWillReceiveProps`
+     */
     getDefaultList(props) {
         let me = this;
         props = props || me.props;
@@ -93,6 +105,13 @@ class Uploader extends React.Component {
         }
     }
 
+    processDefaultList(fileList) {
+        let me = this;
+        return me.addUniqueIdForList(fileList).map((file) => {
+            return me.processDefaultListFile(file);
+        });
+    }
+
     /**
      * process file in this.props.fileList
      */
@@ -106,8 +125,12 @@ class Uploader extends React.Component {
     handleRemoveFile(file) {
         let me = this;
         let newList = util.simpleDeepCopy(me.state.fileList);
-        newList = newList.filter((item) => {
-            return item.__uploaderId !== file.__uploaderId;
+        newList = newList.map((item) => {
+            if (item.response.__uploaderId === file.__uploaderId) {
+                item.subType = item.type;
+                item.type = 'delete';
+            } 
+            return item
         });
         me.props.onCancel && me.props.onCancel(me.processDefaultListFile(file));
         me.setState({
@@ -119,12 +142,12 @@ class Uploader extends React.Component {
 
     handleChange() {
         let me = this;
-        let uploadFiles = me.core.getFiles().map((file) => {
+        let uploadFiles = me.core.getFiles().filter((file) => {
+            return file.status == Status.SUCCESS;
+        }).map((file) => {
             return me.processFile(file);
         });
-        let defaultFiles = me.state.fileList.map((file) => {
-            return me.processDefaultListFile(file);
-        });
+        let defaultFiles = me.state.fileList;
         me.props.onChange(defaultFiles.concat(uploadFiles));
     }
 

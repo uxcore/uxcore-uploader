@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.2
+
+* `CHANGED` add a new file type 'delete'
+
 ## 1.3.1
 
 * `FIX` fix events hijack bug.

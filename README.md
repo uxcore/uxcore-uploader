@@ -83,6 +83,12 @@ see http://uxco.re/components/uploader/ for details.
     {
         type: 'list',
         response: file
+    },
+    // 被删除的文件的格式
+    {
+        type: 'delete',
+        subType: 'list/upload', // 与上面两种类型对应，用于解析 response
+        response: file // 与上面的 subType 相对应
     }
 ]
 ```
