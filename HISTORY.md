@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.4
+
+* `CHANGED` filecancel will not be fired when reset.
+
 ## 1.3.3
 
 * `FIX` fix componentWillReceiveProps bug

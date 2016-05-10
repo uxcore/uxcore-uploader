@@ -74,7 +74,7 @@ class Uploader extends React.Component {
 
     reset() {
         this.core.getFiles().forEach((file) => {
-            file.cancel(silence);
+            file.cancel(true);
         });
     }
 
