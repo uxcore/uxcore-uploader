@@ -1,6 +1,6 @@
 {
  "name": "uxcore-uploader",
- "version": "1.3.2",
+ "version": "1.3.3",
  "description": "uxcore-uploader component for react",
  "main": "build/index.js",
  "scripts": {

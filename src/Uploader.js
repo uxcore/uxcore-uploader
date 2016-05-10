@@ -54,10 +54,10 @@ class Uploader extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         let me = this;
-        if (util.simpleDeepEqual(nextProps.fileList, me.fileList)) {
+        if (!util.simpleDeepEqual(nextProps.fileList, me.fileList)) {
             me.fileList = me.getDefaultList(nextProps);
             me.setState({
-                fileList: me.addUniqueIdForList(me.fileList)
+                fileList: me.processDefaultList(me.fileList)
             });
         }
     }
@@ -74,7 +74,7 @@ class Uploader extends React.Component {
 
     reset() {
         this.core.getFiles().forEach((file) => {
-            file.cancel();
+            file.cancel(silence);
         });
     }
 

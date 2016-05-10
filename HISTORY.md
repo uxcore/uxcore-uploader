@@ -2,6 +2,10 @@
 
 ---
 
+## 1.3.3
+
+* `FIX` fix componentWillReceiveProps bug
+
 ## 1.3.2
 
 * `CHANGED` add a new file type 'delete'
