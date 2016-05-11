@@ -7,12 +7,23 @@ const tips = <span>5M</span>;
 
 class Demo1 extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            fileList: []
+        }
+    }
+
+    handleChange(fileList) {
+        this.setState({
+            fileList: fileList
+        })
     }
     render() {
         return <Uploader autoPending={false} 
                     multiple={false} 
-                    isOnlyImg={false} 
+                    isOnlyImg={false}
+                    fileList={this.state.fileList}
+                    onChange={this.handleChange.bind(this)} 
                     tips={tips} 
                     name='file' 
                     url='http://eternalsky.me:8122/file/upload' 

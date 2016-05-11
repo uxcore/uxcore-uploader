@@ -1,7 +1,7 @@
 const FileItem = require('./FileItem');
 const DefaultFileItem = require('./DefaultFileItem');
 const Picker = require('./Picker');
-const {Events} = require('uploadcore');
+const {Events, Status} = require('uploadcore');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
@@ -42,13 +42,21 @@ class FileList extends React.Component {
         return arr;
     }
 
+    renderFileItems() {
+        let arr = [];
+        this.state.items.forEach((file) => {
+            if (file.status !== Status.SUCCESS) {
+                arr.push(<FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />);
+            }
+        });
+        return arr;
+    }
+
     render() {
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
                 {this.renderDefaultFileItems()}
-                {/*this.state.items.map((file) => {
-                    return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />;
-                })*/}
+                {this.renderFileItems()}
                 {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
             </div>
         </div>

@@ -2,6 +2,10 @@
 
 ---
 
+## 1.4.1
+
+* `FIX` fix style bug in file list mode.
+
 ## 1.4.0
 
 * `CHANGED` prop `fileList` format change

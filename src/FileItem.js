@@ -22,19 +22,25 @@ class FileItem extends React.Component {
 
     componentDidMount() {
         const file = this.file;
+        let me = this;
+        me._isMounted = true;
         const statuschange = () => {
-            const state = {
-                status: file.getStatusName()
-            };
-            if (state.status === 'error') {
-                state.percentage = 0;
+            if (me._isMounted) {
+                const state = {
+                    status: file.getStatusName()
+                };
+                if (state.status === 'error') {
+                    state.percentage = 0;
+                }
+                me.setState(state);
             }
-            this.setState(state);
         };
         const progress = (progress) => {
-            this.setState({
-                percentage: progress.percentage
-            });
+            if (me._isMounted) {
+                me.setState({
+                    percentage: progress.percentage
+                });
+            }
         };
         file.on(Events.FILE_STATUS_CHANGE, statuschange);
         file.on(Events.FILE_UPLOAD_PROGRESS, progress);
@@ -45,6 +51,7 @@ class FileItem extends React.Component {
     }
 
     componentWillUnmount() {
+        this._isMounted = false;
         this.stopListen && this.stopListen();
     }
 

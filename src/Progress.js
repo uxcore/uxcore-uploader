@@ -17,13 +17,9 @@ class Progress extends React.Component {
         let t = null;
         let me = this;
         let percentage = me.state.percentage;
-
         me._isMounted = true;
-
         me.t = setInterval(() => {
-
             percentage = percentage + 5;
-
             if (me._isMounted) {
                 me.setState({
                     percentage: percentage
@@ -31,7 +27,6 @@ class Progress extends React.Component {
             }
 
             if (percentage === 95) {
-
                 clearInterval(me.t);
             }
         }, 100);

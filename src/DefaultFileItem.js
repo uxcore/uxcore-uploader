@@ -50,9 +50,12 @@ class DefaultFileItem extends React.Component {
                         </div>;
             } else {
                 return <div className={"kuma-upload-fileitem"}>
+                    <label className="field-icon">
+                        <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
+                    </label>
                     <div className="field-info-wrap">
                         <label className="field-info">
-                            <span className="filename">{response.name}</span>
+                            <span className="filename">{file.name}</span>
                         </label>
                         <label className="field-status">
                             <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this, file)}><i className="kuma-icon kuma-icon-close"></i></a>
@@ -65,8 +68,8 @@ class DefaultFileItem extends React.Component {
         } else {
             return <div className={"kuma-upload-fileitem"}>
                 <label className="field-info">
-                    <i className="kuma-upload-fileicon" data-ext={response.ext} data-type={response.type}/>
-                    <span className="filename" title={response.name}>{util.natcut(response.name, 12)}</span>
+                    <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType}/>
+                    <span className="filename" title={file.name}>{util.natcut(response.name, 12)}</span>
                 </label>
                 <label className="field-status">
                     <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>

@@ -98,6 +98,7 @@ class Uploader extends React.Component {
         return {
             ext: file.ext,
             name: file.name,
+            fileType: file.type,
             type: 'upload',
             response: JSON.parse(file.response.rawResponse.rawResponse)
         }
@@ -146,7 +147,7 @@ class Uploader extends React.Component {
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
             {this.props.tips}
-            {(this.state.total > 0 || this.props.fileList.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} />) : null}
+            {(this.state.total > 0 || this.state.fileList.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} />) : null}
         </div>;
     }
 }

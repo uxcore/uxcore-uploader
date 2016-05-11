@@ -58,7 +58,9 @@ module.exports = {
         ]
     },
     resolve: {
-       alias: getUxcoreModuleAlias()
+        alias: {
+            uploadcore: 'uploadcore/dist/uploadcore'
+        }
     },
     externals: {
         react: 'var React', // 相当于把全局的React作为模块的返回 module.exports = React;
