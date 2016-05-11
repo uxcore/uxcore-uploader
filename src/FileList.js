@@ -36,7 +36,7 @@ class FileList extends React.Component {
         let arr = [];
         this.props.fileList.forEach((file, index) => {
             if (file.type !== 'delete') {
-                arr.push(<DefaultFileItem file={file.response} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} onCancel={this.props.removeFileFromList.bind(this)} />);
+                arr.push(<DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} onCancel={this.props.removeFileFromList.bind(this)} />);
             }
         });
         return arr;
@@ -46,9 +46,9 @@ class FileList extends React.Component {
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
                 {this.renderDefaultFileItems()}
-                {this.state.items.map((file) => {
+                {/*this.state.items.map((file) => {
                     return <FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />;
-                })}
+                })*/}
                 {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
             </div>
         </div>

@@ -2,6 +2,11 @@
 
 ---
 
+## 1.4.0
+
+* `CHANGED` prop `fileList` format change
+* `CHANGED` change to controlled mode.
+
 ## 1.3.5
 
 * `FIX` fix typo

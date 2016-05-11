@@ -5,81 +5,173 @@ const tips = <span>5M</span>;
 
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
 
+class Demo1 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader autoPending={false} 
+                    multiple={false} 
+                    isOnlyImg={false} 
+                    tips={tips} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload' 
+                    locale="en" />
+    }
+}
+
 ReactDOM.render((
-    <Uploader autoPending={false} 
-        multiple={false} 
-        isOnlyImg={false} 
-        tips={tips} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload' 
-        locale="en" />
+    <Demo1 />
 ), document.getElementById('sample1'));
 
+class Demo2 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader autoPending={true} 
+                    multiple={false} 
+                    isOnlyImg={false} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload' />
+    }
+}
+
 ReactDOM.render((
-    <Uploader autoPending={true} 
-        multiple={false} 
-        isOnlyImg={false} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload' />
+    <Demo2 />
 ), document.getElementById('sample2'));
 
-ReactDOM.render((
-    <Uploader fileList={[
+
+class Demo3 extends React.Component {
+    constructor(props) {
+        super(props);
+        this.fileList = [
             {
-                url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
-                name: '测试用',
-                canRemove: false
+                response: {
+                    url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
+                    name: '测试用',
+                    canRemove: false
+                }
             },
             {
-                url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
-                name: '测试用'
+                response: {
+                    url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
+                    name: '测试用'
+                }
             }
-        ]} 
-        autoPending={false} 
-        multiple={true} 
-        isOnlyImg={true} 
-        accept="images" 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload'
-        onCancel={ function(file) { console.log(file) }} 
-        onChange={ function(stat) { console.log(stat) }} />
+        ]
+        this.state = {
+            fileList: this.fileList
+        }
+    }
+    handleChange(fileList) {
+        let me = this;
+        console.log(fileList);
+        me.setState({
+            fileList: fileList
+        });
+    }
+
+    reset() {
+        let me = this;
+        me.setState({
+            fileList: me.fileList
+        })
+    }
+
+    render() {
+        return <div>
+            <Uploader fileList={this.state.fileList} 
+                    autoPending={false} 
+                    multiple={true} 
+                    isOnlyImg={true} 
+                    accept="images" 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload'
+                    onCancel={ function(file) { console.log(file) }} 
+                    onChange={this.handleChange.bind(this)} />
+            <button onClick={this.reset.bind(this)}>重置fileList</button>
+        </div>
+    }
+}
+
+ReactDOM.render((
+    <Demo3 />
 ), document.getElementById('sample3'));
 
+
+class Demo4 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader autoPending={false} 
+                    multiple={true} 
+                    isOnlyImg={false} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload' />
+    }
+}
+
 ReactDOM.render((
-    <Uploader autoPending={false} 
-        multiple={true} 
-        isOnlyImg={false} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload' />
+    <Demo4 />
 ), document.getElementById('sample4'));
 
+
+class Demo5 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader.Dropzoom autoPending={false} 
+                    multiple={true} 
+                    isOnlyImg={false} 
+                    queueCapcity={20} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload' />
+    }
+}
+
 ReactDOM.render((
-    <Uploader.Dropzoom autoPending={false} 
-        multiple={true} 
-        isOnlyImg={false} 
-        queueCapcity={20} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload' />
+    <Demo5 />
 ), document.getElementById('sample5'));
 
-ReactDOM.render((
-    <Uploader autoPending={false} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload'>
-        <button>自定义上传按钮</button>
-    </Uploader>
-), document.getElementById('sample6'));
+class Demo6 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader autoPending={false} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload'>
+                    <button>自定义上传按钮</button>
+                </Uploader>
+    }
+}
 
 ReactDOM.render((
-    <Uploader.Dropzoom autoPending={false} 
-        className="mydroparea" 
-        multiple={true} 
-        queueCapcity={20} 
-        name='file' 
-        url='http://eternalsky.me:8122/file/upload'>
-            <i className="kuma-icon kuma-icon-uploading" />
-            <p>点击或将文件拖拽到此区域上传</p>
-    </Uploader.Dropzoom>
+    <Demo6 />
+), document.getElementById('sample6'));
+
+class Demo7 extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        return <Uploader.Dropzoom autoPending={false} 
+                    className="mydroparea" 
+                    multiple={true} 
+                    queueCapcity={20} 
+                    name='file' 
+                    url='http://eternalsky.me:8122/file/upload'>
+                        <i className="kuma-icon kuma-icon-uploading" />
+                        <p>点击或将文件拖拽到此区域上传</p>
+                </Uploader.Dropzoom>
+    }
+} 
+
+ReactDOM.render((
+    <Demo7 />
 ), document.getElementById('sample7'));
 
 hljs.initHighlightingOnLoad();

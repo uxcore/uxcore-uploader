@@ -16,8 +16,12 @@ class DefaultFileItem extends React.Component {
     render() {
         let me = this;
         let {locale, file, mode, isOnlyImg} = me.props;
-        let downloadUrl = file.downloadUrl || file.file || file.url;
-        let previewUrl = file.previewUrl || downloadUrl;
+        let response = util.simpleDeepCopy(file.response);
+        if (file.type == 'upload') {
+            response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
+        }
+        let downloadUrl = response.downloadUrl || response.file || response.url;
+        let previewUrl = response.previewUrl || downloadUrl;
         if (mode === 'icon') {
             return <div className={"kuma-upload-fileitem"}>
                 <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
@@ -28,7 +32,7 @@ class DefaultFileItem extends React.Component {
                         <img src={previewUrl} />
                     </div>
                 </div>
-                <div className="filename" title={file.name}>{util.natcut(file.name, 10)}</div>
+                <div className="filename" title={response.name}>{util.natcut(response.name, 10)}</div>
             </div>
         } else if (mode === 'nw') {
             if (isOnlyImg) {
@@ -39,7 +43,7 @@ class DefaultFileItem extends React.Component {
                                 </a>
                             </div>
                             <div className="field-status">
-                                { file.canRemove !== false ? <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}>
+                                { response.canRemove !== false ? <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}>
                                     <i className="kuma-icon kuma-icon-close"></i>
                                 </a> : undefined}
                             </div>
@@ -48,7 +52,7 @@ class DefaultFileItem extends React.Component {
                 return <div className={"kuma-upload-fileitem"}>
                     <div className="field-info-wrap">
                         <label className="field-info">
-                            <span className="filename">{file.name}</span>
+                            <span className="filename">{response.name}</span>
                         </label>
                         <label className="field-status">
                             <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this, file)}><i className="kuma-icon kuma-icon-close"></i></a>
@@ -61,8 +65,8 @@ class DefaultFileItem extends React.Component {
         } else {
             return <div className={"kuma-upload-fileitem"}>
                 <label className="field-info">
-                    <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.type}/>
-                    <span className="filename" title={file.name}>{util.natcut(file.name, 12)}</span>
+                    <i className="kuma-upload-fileicon" data-ext={response.ext} data-type={response.type}/>
+                    <span className="filename" title={response.name}>{util.natcut(response.name, 12)}</span>
                 </label>
                 <label className="field-status">
                     <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>

@@ -46,15 +46,17 @@ see http://uxco.re/components/uploader/ for details.
 |sizeLimit           | size          | 0       |            | 文件大小限制, 0表示不限制 |
 |preventDuplicate    | bool          | false   |            | 是否防止文件重复 |
 
-### fileList 的最小格式
+### fileList 的最小格式 (格式稍显麻烦，是为了 onChange 的返回值可以传回给 fileList)
 
 ```javascript
 [
     {
-        url: xxx,  // 文件链接，必填
-        name: xxx, // filename，必填 
-        canRemove: true, // 是否可以删除，可选
-        downloadUrl: 'xxxx', // 下载 URL，可选
+        response: {
+            url: xxx,  // 文件链接，必填
+            name: xxx, // filename，必填 
+            canRemove: true, // 是否可以删除，可选
+            downloadUrl: 'xxxx', // 下载 URL，可选
+        }
     }
 ]
 
