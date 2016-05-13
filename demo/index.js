@@ -38,10 +38,21 @@ ReactDOM.render((
 class Demo2 extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            fileList: []
+        }
     }
+    handleChange(fileList) {
+        this.setState({
+            fileList: fileList
+        })
+    }
+
     render() {
         return <Uploader autoPending={true} 
                     multiple={false} 
+                    fileList={this.state.fileList}
+                    onChange={this.handleChange.bind(this)}
                     isOnlyImg={false} 
                     name='file' 
                     url='http://eternalsky.me:8122/file/upload' />
@@ -114,12 +125,24 @@ ReactDOM.render((
 class Demo4 extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            fileList: []
+        }
     }
+
+    handleChange(fileList) {
+        this.setState({
+            fileList: fileList
+        })
+    }
+
     render() {
         return <Uploader autoPending={false} 
                     multiple={true} 
                     isOnlyImg={false} 
-                    name='file' 
+                    name='file'
+                    fileList={this.state.fileList}
+                    onChange={this.handleChange.bind(this)}  
                     url='http://eternalsky.me:8122/file/upload' />
     }
 }
@@ -131,13 +154,16 @@ ReactDOM.render((
 
 class Demo5 extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        
     }
+    
     render() {
         return <Uploader.Dropzoom autoPending={false} 
                     multiple={true} 
                     isOnlyImg={false} 
                     queueCapcity={20} 
+                    
                     name='file' 
                     url='http://eternalsky.me:8122/file/upload' />
     }
@@ -149,10 +175,20 @@ ReactDOM.render((
 
 class Demo6 extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            fileList: [],
+        }
+    }
+    handleChange(fileList) {
+        this.setState({
+            fileList: fileList,
+        })
     }
     render() {
-        return <Uploader autoPending={false} 
+        return <Uploader autoPending={false}
+                    fileList={this.state.fileList}
+                    onChange={this.handleChange.bind(this)} 
                     name='file' 
                     url='http://eternalsky.me:8122/file/upload'>
                     <button>自定义上传按钮</button>

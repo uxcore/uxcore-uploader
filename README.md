@@ -18,7 +18,9 @@ see http://uxco.re/components/uploader/ for details.
 
 ## API
 
-### reset() 重置文件队列
+### reset() 
+
+重置文件队列
 
 ## Props
 
