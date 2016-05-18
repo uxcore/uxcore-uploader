@@ -6,6 +6,12 @@ const FileList = require("./FileList");
 const Picker = require("./Picker");
 const Dropzoom = require('./Dropzoom');
 const i18n = require("./locale");
+const RESETOPTIONS = [
+    'name', 'url', 'params', 'action', 'data', 'headers', 
+    'withCredentials', 'timeout', 'chunkEnable', 'chunkSize', 
+    'chunkRetries', 'chunkProcessThreads', 'autoPending', 
+    'auto', 'sizeLimit', 'fileSizeLimit'
+];
 
 
 class Uploader extends React.Component {
@@ -32,7 +38,9 @@ class Uploader extends React.Component {
             let newList = util.simpleDeepCopy(me.state.fileList);
             newList.push(me.processFile(file));
             me.handleChange(newList);
-            onfileuploadsuccess && onfileuploadsuccess(file, response);
+            file.cancel(true);
+            me.core.getStat().remove(file);
+            // onfileuploadsuccess && onfileuploadsuccess(file, response);
         };
 
         me.filecancel = (file) => {
@@ -48,20 +56,40 @@ class Uploader extends React.Component {
         me.core.on(Events.QUEUE_STAT_CHANGE, me.statchange);
         me.core.on(Events.FILE_UPLOAD_SUCCESS, me.fileuploadsuccess);
         me.core.on(Events.FILE_CANCEL, me.filecancel);
+        me.core.addConstraint(() => {
+            if (me.props.queueCapcity === undefined || me.props.queueCapcity === null) {
+                return false;
+            }
+            else {
+                return me.props.fileList.length >= me.props.queueCapcity;
+            }
+        });
     }
 
     componentWillReceiveProps(nextProps) {
         let me = this;
+        let newState = {};
+        let options = {};
         if (!util.simpleDeepEqual(nextProps.fileList, me.fileList)) {
             me.fileList = me.getDefaultList(nextProps);
             me.setState({
                 fileList: me.processDefaultList(me.fileList)
             });
         }
+        RESETOPTIONS.forEach((item) => {
+            if (nextProps.hasOwnProperty(item) && me.props[item] !== nextProps[item]) {
+                options[item] = nextProps[item];
+            }
+        });
+        me.core.setOptions && me.core.setOptions(options);
     }
 
     componentWillUnmount() {
         this.stopListen();
+    }
+
+    getCore() {
+        return this.core;
     }
 
     stopListen() {

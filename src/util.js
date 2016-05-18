@@ -67,12 +67,13 @@ module.exports = {
         let options = props.options || {};
         ['name', 'url', 'params', 'action', 'data', 'headers', 'withCredentials', 'timeout',
             'chunkEnable', 'chunkSize', 'chunkRetries', 'chunkProcessThreads', 'processThreads',
-            'queueCapcity', 'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate','isOnlyImg'
+            'autoPending', 'multiple', 'accept', 'sizeLimit', 'preventDuplicate','isOnlyImg'
         ].forEach((key) => {
             if (props.hasOwnProperty(key)) {
                 options[key] = props[key];
             }
         });
+
         if (autoPending != null) {
             options.autoPending = autoPending;
         }

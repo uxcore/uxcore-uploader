@@ -60,7 +60,7 @@
  },
  "dependencies": {
   "object-assign": "^4.0.0",
-  "uploadcore": "^2.2.2",
+  "uploadcore": "~2.3.0",
   "uxcore-progress": "^1.1.0"
  },
  "author": "onbing",

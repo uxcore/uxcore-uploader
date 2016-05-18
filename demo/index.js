@@ -19,9 +19,13 @@ class Demo1 extends React.Component {
         })
     }
     render() {
-        return <Uploader autoPending={false} 
+        const me = this;
+        return <Uploader autoPending={false}
+                    ref="uploader" 
                     multiple={false} 
                     isOnlyImg={false}
+                    queueCapcity={2}
+                    onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader.getCore().getTotal())}}
                     fileList={this.state.fileList}
                     onChange={this.handleChange.bind(this)} 
                     tips={tips} 
@@ -106,6 +110,7 @@ class Demo3 extends React.Component {
             <Uploader fileList={this.state.fileList} 
                     autoPending={false} 
                     multiple={true} 
+                    queueCapcity={3}
                     isOnlyImg={true} 
                     accept="images" 
                     name='file' 
