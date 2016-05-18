@@ -45,7 +45,7 @@ class FileList extends React.Component {
     renderFileItems() {
         let arr = [];
         this.state.items.forEach((file) => {
-            if (file.status !== Status.SUCCESS) {
+            if (file.status !== Status.SUCCESS && file.status !== Status.CANCELLED) {
                 arr.push(<FileItem locale={this.props.locale} key={file.id} file={file} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} />);
             }
         });

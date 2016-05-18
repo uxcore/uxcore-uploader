@@ -90,6 +90,10 @@ class Demo3 extends React.Component {
             fileList: this.fileList
         }
     }
+
+    componentDidMount() {
+        window.core = this.refs.uploader3.getCore();
+    }
     handleChange(fileList) {
         let me = this;
         console.log(fileList);
@@ -106,11 +110,14 @@ class Demo3 extends React.Component {
     }
 
     render() {
+        const me = this;
         return <div>
             <Uploader fileList={this.state.fileList} 
                     autoPending={false} 
                     multiple={true} 
+                    ref="uploader3"
                     queueCapcity={3}
+                    onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader3.getCore().getTotal())}}
                     isOnlyImg={true} 
                     accept="images" 
                     name='file' 

@@ -61,7 +61,9 @@ class Uploader extends React.Component {
                 return false;
             }
             else {
-                return me.props.fileList.length >= me.props.queueCapcity;
+                return me.state.fileList.filter((file) => {
+                    return file.type !== 'delete'
+                }).length + me.core.getTotal() >= me.props.queueCapcity;
             }
         });
     }

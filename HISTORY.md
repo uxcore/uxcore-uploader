@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.1
+
+* `FIX` fix issue #15 #16 #17
+
 ## 1.5.0
 
 * `CHANGED` queueCapacity will concern props.fileList
