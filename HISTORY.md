@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.0
+
+* `CHANGED` queueCapacity will concern props.fileList
+
 ## 1.4.1
 
 * `FIX` fix style bug in file list mode.
