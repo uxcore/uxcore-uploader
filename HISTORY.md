@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.2
+
+* `CHANGED` add className for download & preview button
+
 ## 1.5.1
 
 * `FIX` fix issue #15 #16 #17
