@@ -24,6 +24,7 @@ class Demo1 extends React.Component {
                     ref="uploader" 
                     multiple={false} 
                     isOnlyImg={false}
+                    progressInterval={100}
                     queueCapcity={2}
                     onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader.getCore().getTotal())}}
                     fileList={this.state.fileList}

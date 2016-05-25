@@ -29,7 +29,7 @@ class Progress extends React.Component {
             if (percentage === 95) {
                 clearInterval(me.t);
             }
-        }, 100);
+        }, me.props.interval);
     }
 
     componentWillUnmount() {
@@ -45,13 +45,13 @@ class Progress extends React.Component {
     }
 }
 
-Progress.isSupport = util.TRANSFORM_PROPERTY !== false;
-
 Progress.propTypes = {
-    percentage: React.PropTypes.number
+    percentage: React.PropTypes.number,
+    interval: React.PropTypes.number
 };
 Progress.defaultProps = {
-    percentage: 0
+    percentage: 0,
+    interval: 100
 };
 
 module.exports = Progress;

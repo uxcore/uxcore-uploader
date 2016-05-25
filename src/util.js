@@ -107,7 +107,7 @@ module.exports = {
     simpleDeepEqual: (a, b) => {
         return JSON.stringify(a) === JSON.stringify(b)
     },
-    TRANSFORM_PROPERTY: (() => {
+    TRANSFORM_PROPERTY: () => {
         const style = document.createElement("div").style;
         const properties = ["transform", "WebkitTransform", "MozTransform", "msTransform"];
         for (let i = 0, l = properties.length; i < l; i++) {
@@ -116,5 +116,5 @@ module.exports = {
             }
         }
         return false;
-    })()
+    }
 }

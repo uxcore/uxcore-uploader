@@ -2,6 +2,11 @@
 
 ---
 
+## 1.5.3
+
+* `CHANGED` remove Progress.isSupport
+* `NEW` add server render support
+
 ## 1.5.2
 
 * `CHANGED` add className for download & preview button
