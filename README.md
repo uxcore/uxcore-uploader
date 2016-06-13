@@ -29,6 +29,7 @@ see http://uxco.re/components/uploader/ for details.
 |className           |               |         |            | |
 |locale              | string        | zh-cn   | 1.1.10     | 国际化，目前支持 `zh-cn` 和 `en-us`|
 |fileList            | array         | []      | 1.2.3      |用于展示的文件列表|
+|isOnlyImg           | boolean       | 是否以图片形式展示 |   |  |
 |core                | string/`Core` | null    |            | 唯一标识或者UploadCore对象, 防止重复创建, 当传入UploadCore对象时,下列参数和事件设置均无效 |
 |name                | string        | 'file'  |            | 上传文件字段名称 |
 |url                 | string        | ''      |            | 响应上传服务器地址 |
@@ -53,9 +54,11 @@ see http://uxco.re/components/uploader/ for details.
 ```javascript
 [
     {
+        name: '', // 文件名称，列表形式必填
+        ext: '', // 文件扩展名。例如 jpg。可选，不填时无法根据类型展示对应图标
+        fileType: '', // 文件 mimetypes 类型。 例如 image/jpg。 可选，不填时无法根据类型展示对应图标
         response: {
             url: xxx,  // 文件链接，必填
-            name: xxx, // filename，必填 
             canRemove: true, // 是否可以删除，可选
             downloadUrl: 'xxxx', // 下载 URL，可选
         }
@@ -73,10 +76,10 @@ see http://uxco.re/components/uploader/ for details.
 | onfileuploaderror | `File`, `Error` | 文件上传失败 | 
 
 
-### fileList 的格式
+### onChange 的 fileList 的枚举格式有如下几种
 ```javascript
 [
-    // 上传后的文件的格式， responce 即服务器返回的值
+    // 上传后的文件的格式， response 即服务器返回的值
     {
         type: 'upload',
         ext: file.ext,

@@ -20,6 +20,7 @@ Thumbs.db
 *.swp
 out/
 .build
+.happypack
 node_modules
 _site
 sea-modules
