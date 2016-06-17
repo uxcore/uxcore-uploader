@@ -60,7 +60,7 @@ class DefaultFileItem extends React.Component {
                         <label className="field-status">
                             <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this, file)}><i className="kuma-icon kuma-icon-close"></i></a>
                             {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
-                            {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" href={downloadUrl}>{i18n[locale]['download']}</a> : null}
+                            {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}>{i18n[locale]['download']}</a> : null}
                         </label>
                     </div>
                 </div>;
