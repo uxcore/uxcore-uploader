@@ -2,6 +2,11 @@
 
 ---
 
+## 1.5.4
+
+* `CHANGED` add download property in download link
+* `FIX` fix response process bug.
+
 ## 1.5.3
 
 * `CHANGED` remove Progress.isSupport

@@ -1,53 +1,53 @@
 {
-  "name": "uxcore-uploader",
-  "version": "1.5.3",
-  "description": "uxcore-uploader component for react",
-  "main": "build/index.js",
-  "scripts": {
-    "start": "uxcore-tools run start",
-    "server": "uxcore-tools run server",
-    "lint": "uxcore-tools run lint",
-    "build": "uxcore-tools run build",
-    "test": "uxcore-tools run test",
-    "coverage": "uxcore-tools run coverage",
-    "pub": "uxcore-tools run pub",
-    "dep": "uxcore-tools run dep",
-    "chrome": "uxcore-tools run chrome",
-    "browsers": "uxcore-tools run browsers",
-    "saucelabs": "uxcore-tools run saucelabs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:uxcore/uxcore-uploader.git"
-  },
-  "bugs": {
-    "url": "http://github.com/uxcore/uxcore-uploader/issues"
-  },
-  "keywords": [
-    "react",
-    "react-component",
-    "react-uxcore-uploader",
-    "uxcore-uploader"
-  ],
-  "devDependencies": {
-    "console-polyfill": "^0.2.2",
-    "es5-shim": "^4.5.8",
-    "expect.js": "~0.3.1",
-    "highlight.js": "~9.4.0",
-    "kuma-base": "1.x",
-    "react": "15.x",
-    "react-addons-test-utils": "15.x",
-    "react-dom": "15.x",
-    "spark-md5": "~2.0.2",
-    "uxcore-kuma": "2.x",
-    "uxcore-tools": "0.2.x"
-  },
-  "dependencies": {
-    "object-assign": "^4.0.0",
-    "uploadcore": "~2.3.0",
-    "uxcore-progress": "^1.1.0"
-  },
-  "author": "onbing",
-  "contributors": [],
-  "license": "MIT"
+ "name": "uxcore-uploader",
+ "version": "1.5.4",
+ "description": "uxcore-uploader component for react",
+ "main": "build/index.js",
+ "scripts": {
+  "start": "uxcore-tools run start",
+  "server": "uxcore-tools run server",
+  "lint": "uxcore-tools run lint",
+  "build": "uxcore-tools run build",
+  "test": "uxcore-tools run test",
+  "coverage": "uxcore-tools run coverage",
+  "pub": "uxcore-tools run pub",
+  "dep": "uxcore-tools run dep",
+  "chrome": "uxcore-tools run chrome",
+  "browsers": "uxcore-tools run browsers",
+  "saucelabs": "uxcore-tools run saucelabs"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git@github.com:uxcore/uxcore-uploader.git"
+ },
+ "bugs": {
+  "url": "http://github.com/uxcore/uxcore-uploader/issues"
+ },
+ "keywords": [
+  "react",
+  "react-component",
+  "react-uxcore-uploader",
+  "uxcore-uploader"
+ ],
+ "devDependencies": {
+  "console-polyfill": "^0.2.2",
+  "es5-shim": "^4.5.8",
+  "expect.js": "~0.3.1",
+  "highlight.js": "~9.4.0",
+  "kuma-base": "1.x",
+  "react": "15.x",
+  "react-addons-test-utils": "15.x",
+  "react-dom": "15.x",
+  "spark-md5": "~2.0.2",
+  "uxcore-kuma": "2.x",
+  "uxcore-tools": "0.2.x"
+ },
+ "dependencies": {
+  "object-assign": "^4.0.0",
+  "uploadcore": "~2.3.0",
+  "uxcore-progress": "^1.1.0"
+ },
+ "author": "onbing",
+ "contributors": [],
+ "license": "MIT"
 }
