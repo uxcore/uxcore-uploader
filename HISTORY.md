@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.5
+
+* `CHANGED` cancel icon style fix (#24)
+
 ## 1.5.4
 
 * `CHANGED` add download property in download link
