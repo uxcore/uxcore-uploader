@@ -27,7 +27,7 @@ see http://uxco.re/components/uploader/ for details.
 | name               | type          | default | Since Ver. |  description |
 |----------          |---------------|---------|------------|------------|
 |className           |               |         |            | |
-|locale              | string        | zh-cn   | 1.1.10     | 国际化，目前支持 `zh-cn` 和 `en-us`|
+|locale              | string        | zh-cn   | 1.1.10     | 国际化，目前支持 `zh-cn`, `en-us` 和 `pl-pl`|
 |fileList            | array         | []      | 1.2.3      |用于展示的文件列表|
 |isOnlyImg           | boolean       | 是否以图片形式展示 |   |  |
 |core                | string/`Core` | null    |            | 唯一标识或者UploadCore对象, 防止重复创建, 当传入UploadCore对象时,下列参数和事件设置均无效 |

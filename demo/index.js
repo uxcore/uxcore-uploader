@@ -43,8 +43,23 @@ ReactDOM.render((
 class Demo2 extends React.Component {
     constructor(props) {
         super(props)
+        this.fileList = [
+            {
+                response: {
+                    url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
+                    name: '测试用',
+                    canRemove: false
+                }
+            },
+            {
+                response: {
+                    url: 'http://gtms02.alicdn.com/tps/i2/TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg', 
+                    name: '测试用'
+                }
+            }
+        ]
         this.state = {
-            fileList: []
+            fileList: this.fileList,
         }
     }
     handleChange(fileList) {

@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.6
+
+* `NEW` add polish support. 
+
 ## 1.5.5
 
 * `CHANGED` cancel icon style fix (#24)
