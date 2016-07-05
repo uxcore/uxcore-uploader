@@ -9,6 +9,16 @@ let locale = {
         "upload_failed": "upload failed",
         "upload_files": "upload files"
     },
+    "pl-pl": {
+        "download": "pobierz",
+        "preview": "podgląd",
+        "remove": "usuń",
+        "retry": "powtórz",
+        "upload": "wyślij",
+        "uploading": "wysyłanie",
+        "upload_failed": "wysyłka nieudana",
+        "upload_files": "wyślij pliki"
+    },
     "zh-cn": {
         "download": "下载",
         "preview": "预览",
@@ -22,5 +32,6 @@ let locale = {
 }
 
 locale['en'] = locale['en-us'];
+locale['pl'] = locale['pl-pl'];
 
 module.exports = locale;
