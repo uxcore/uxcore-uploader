@@ -27,7 +27,7 @@ class Uploader extends React.Component {
 
     componentWillMount() {
         let me = this;
-        let {onfileuploadsuccess, onfilecancel, onCancel} = me.props;
+        let {onfileuploadsuccess, onfilecancel, onCancel, preventDuplicate} = me.props;
         me.statchange = (stat) => {
             const total = stat.getTotal();
             if (total !== me.state.total) {
@@ -66,6 +66,13 @@ class Uploader extends React.Component {
                 }).length + me.core.getTotal() >= me.props.queueCapcity;
             }
         });
+        me.core.addFilter((file) => {
+            if (preventDuplicate) {
+                if (this.state.fileList.some((item) => item.type === 'upload' && item.name === file.name && item.size === file.size)) {
+                    return `DuplicateError: ${file.name} is duplicated`
+                }
+            }
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -128,6 +135,7 @@ class Uploader extends React.Component {
         return {
             ext: file.ext,
             name: file.name,
+            size: file.size,
             fileType: file.type,
             type: 'upload',
             response: file.response.getJson()

@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.7
+
+* `FIXED` fix `preventDuplicate`
+
 ## 1.5.6
 
 * `NEW` add polish support. 

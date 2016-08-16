@@ -132,6 +132,8 @@ class Demo3 extends React.Component {
                     autoPending={false} 
                     multiple={true} 
                     ref="uploader3"
+                    preventDuplicate
+                    // sizeLimit='10k'
                     queueCapcity={3}
                     onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader3.getCore().getTotal())}}
                     isOnlyImg={true} 

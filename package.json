@@ -1,6 +1,6 @@
 {
  "name": "uxcore-uploader",
- "version": "1.5.6",
+ "version": "1.5.7",
  "description": "uxcore-uploader component for react",
  "main": "build/index.js",
  "scripts": {
@@ -12,9 +12,11 @@
   "coverage": "uxcore-tools run coverage",
   "pub": "uxcore-tools run pub",
   "dep": "uxcore-tools run dep",
+  "tnpm-dep": "uxcore-tools run tnpm-dep",
   "chrome": "uxcore-tools run chrome",
   "browsers": "uxcore-tools run browsers",
-  "saucelabs": "uxcore-tools run saucelabs"
+  "saucelabs": "uxcore-tools run saucelabs",
+  "update": "uxcore-tools run update"
  },
  "repository": {
   "type": "git",
@@ -33,12 +35,11 @@
   "console-polyfill": "^0.2.2",
   "es5-shim": "^4.5.8",
   "expect.js": "~0.3.1",
-  "highlight.js": "~9.4.0",
+  "highlight.js": "^9.6.0",
   "kuma-base": "1.x",
-  "react": "15.x",
-  "react-addons-test-utils": "15.x",
-  "react-dom": "15.x",
-  "spark-md5": "~2.0.2",
+  "react": "0.14.x",
+  "react-addons-test-utils": "0.14.x",
+  "react-dom": "0.14.x",
   "uxcore-kuma": "2.x",
   "uxcore-tools": "0.2.x"
  },
