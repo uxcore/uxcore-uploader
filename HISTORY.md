@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.8
+
+* `FIXED` fix file.response.getJson bug when upload fails.
+
 ## 1.5.7
 
 * `FIXED` fix `preventDuplicate`

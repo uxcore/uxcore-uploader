@@ -47,7 +47,7 @@ class Uploader extends React.Component {
             let newList = util.simpleDeepCopy(me.state.fileList);
             newList.push({
                 type: 'delete',
-                response: file.response.getJson()
+                response: file.response ? file.response.getJson() : null,
             });
             me.handleChange(newList);
             onfilecancel && onfilecancel(file);
@@ -138,7 +138,7 @@ class Uploader extends React.Component {
             size: file.size,
             fileType: file.type,
             type: 'upload',
-            response: file.response.getJson()
+            response: file.response ? file.response.getJson() : null,
         }
     }
 
