@@ -45,7 +45,7 @@ see http://uxco.re/components/uploader/ for details.
 |queueCapcity        | int           | 0       |            | 队列容量，0无限 |
 |autoPending         | bool          | true    |            | 是否选择后自动等待上传 |
 |multiple            | bool          | true    |            | 是否多选 | 
-|accept              | string/array  | null    |            | 允许文件类型 |
+|accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
 |sizeLimit           | size          | 0       |            | 文件大小限制, 0表示不限制 |
 |preventDuplicate    | bool          | false   |            | 是否防止文件重复 |
 
