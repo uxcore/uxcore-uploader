@@ -2,6 +2,10 @@
 
 ---
 
+## 1.5.9
+
+* `FIXED` throw error when queueCapacity is 0
+
 ## 1.5.8
 
 * `FIXED` fix file.response.getJson bug when upload fails.
