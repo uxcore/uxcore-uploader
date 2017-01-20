@@ -57,7 +57,7 @@ class Uploader extends React.Component {
         me.core.on(Events.FILE_UPLOAD_SUCCESS, me.fileuploadsuccess);
         me.core.on(Events.FILE_CANCEL, me.filecancel);
         me.core.addConstraint(() => {
-            if (me.props.queueCapcity === undefined || me.props.queueCapcity === null) {
+            if (me.props.queueCapcity === undefined || me.props.queueCapcity === null || me.props.queueCapcity <= 0) {
                 return false;
             }
             else {
