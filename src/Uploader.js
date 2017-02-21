@@ -27,7 +27,7 @@ class Uploader extends React.Component {
 
     componentWillMount() {
         let me = this;
-        let {onfileuploadsuccess, onfilecancel, onCancel, preventDuplicate} = me.props;
+        let { onfileuploadsuccess, onfilecancel, onCancel, preventDuplicate, queueCapcity, actionOnQueueLimit } = me.props;
         me.statchange = (stat) => {
             const total = stat.getTotal();
             if (total !== me.state.total) {
@@ -37,10 +37,25 @@ class Uploader extends React.Component {
         me.fileuploadsuccess = (file, response) => {
             let newList = util.simpleDeepCopy(me.state.fileList);
             newList.push(me.processFile(file));
+            if (actionOnQueueLimit === 'cover') {
+                // the last ones will exist
+                let count = 0;
+                let coveredList = [];
+                for (let i = newList.length - 1; i >= 0; i--) {
+                    if (count === queueCapcity) {
+                        break;
+                    }
+                    const item = newList[i];
+                    if (item.type !== 'delete') {
+                        count += 1;
+                    }
+                    coveredList.push(item);
+                }
+                newList = coveredList.reverse();
+            }
             me.handleChange(newList);
             file.cancel(true);
             me.core.getStat().remove(file);
-            // onfileuploadsuccess && onfileuploadsuccess(file, response);
         };
 
         me.filecancel = (file) => {
@@ -57,13 +72,13 @@ class Uploader extends React.Component {
         me.core.on(Events.FILE_UPLOAD_SUCCESS, me.fileuploadsuccess);
         me.core.on(Events.FILE_CANCEL, me.filecancel);
         me.core.addConstraint(() => {
-            if (me.props.queueCapcity === undefined || me.props.queueCapcity === null || me.props.queueCapcity <= 0) {
+            if (queueCapcity === undefined || queueCapcity === null || queueCapcity <= 0 || actionOnQueueLimit === 'cover') {
                 return false;
             }
             else {
                 return me.state.fileList.filter((file) => {
                     return file.type !== 'delete'
-                }).length + me.core.getTotal() >= me.props.queueCapcity;
+                }).length + me.core.getTotal() >= queueCapcity;
             }
         });
         me.core.addFilter((file) => {
