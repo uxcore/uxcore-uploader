@@ -53,6 +53,7 @@ class DefaultFileItem extends React.Component {
                     <label className="field-icon">
                         <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
                     </label>
+                    <div className="field-line"></div>
                     <div className="field-info-wrap">
                         <label className="field-info">
                             <span className="filename">{file.name}</span>

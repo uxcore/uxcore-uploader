@@ -1,7 +1,7 @@
 const hljs = require('highlight.js');
 const Uploader = require('../src/');
 
-const tips = <span>5M</span>;
+const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
 
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
 

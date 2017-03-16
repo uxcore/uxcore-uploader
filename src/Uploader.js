@@ -179,7 +179,7 @@ class Uploader extends React.Component {
             if (item.__uploaderId === file.__uploaderId) {
                 item.subType = item.type;
                 item.type = 'delete';
-            } 
+            }
             return item;
         });
         me.handleChange(newList);
@@ -195,11 +195,11 @@ class Uploader extends React.Component {
         let me = this;
         let {children, locale} = this.props;
         if (!children || children.length < 1) {
-            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>{i18n[locale]['upload_files']}</button>;
+            children = <button className="kuma-upload-button">{i18n[locale]['upload_files']}</button>;
         }
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
-            {this.props.tips}
+            <div className="kuma-upload-tip">{this.props.tips}</div>
             {(this.state.total > 0 || this.state.fileList.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
         </div>;
     }

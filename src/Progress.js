@@ -1,8 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const util = require('./util');
-const UxcoreProgress = require('uxcore-progress');
-const {Line} = UxcoreProgress;
 
 class Progress extends React.Component {
     constructor(props) {
@@ -39,8 +37,9 @@ class Progress extends React.Component {
     }
 
     render() {
+
         return (
-            <Line percent={this.state.percentage} strokeWidth={8} />
+            <div style={{width: this.state.percentage + '%'}} className="progress-box"></div>
         )
     }
 }
