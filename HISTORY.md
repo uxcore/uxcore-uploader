@@ -2,6 +2,11 @@
 
 ---
 
+## 1.6.0
+
+* `FIXED` autoPending fail to work
+* `FIXED` FileList component still render when Files are all deleted
+
 ## 1.5.9
 
 * `FIXED` throw error when queueCapacity is 0
