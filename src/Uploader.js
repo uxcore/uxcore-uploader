@@ -17,7 +17,7 @@ const RESETOPTIONS = [
 class Uploader extends React.Component {
     constructor(props) {
         super(props);
-        this.core = util.getCoreInstance(props, true);
+        this.core = util.getCoreInstance(props);
         this.fileList = this.getDefaultList();
         this.state = {
             total: this.core.getTotal(),
@@ -191,16 +191,26 @@ class Uploader extends React.Component {
         me.props.onChange(fileList);
     }
 
+    getUploadingFiles() {
+        return this.core.getFiles().filter(file => ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1))
+    }
+
+    getNotDeletedDefaultFiles() {
+        return (this.state.fileList || []).filter(file => !file.type || file.type !== 'delete');
+    }
+
     render() {
         let me = this;
         let {children, locale} = this.props;
+        const uploadingFiles = me.getUploadingFiles();
+        const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
         if (!children || children.length < 1) {
             children = <button className="kuma-upload-button">{i18n[locale]['upload_files']}</button>;
         }
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
-            <div className="kuma-upload-tip">{this.props.tips}</div>
-            {(this.state.total > 0 || this.state.fileList.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
+            {this.props.tips}
+            {(uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
         </div>;
     }
 }
@@ -217,6 +227,7 @@ Uploader.displayName = "Uploader";
 
 Uploader.defaultProps = {
     locale: 'zh-cn',
+    autoPending: true,
     fileList: [],
     onChange: () => {},
     onError: () => {}

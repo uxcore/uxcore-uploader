@@ -20,7 +20,8 @@ class Demo1 extends React.Component {
     }
     render() {
         const me = this;
-        return <Uploader autoPending={false}
+        window.uploader = me;
+        return <Uploader
                     ref="uploader" 
                     multiple={false} 
                     isOnlyImg={false}
