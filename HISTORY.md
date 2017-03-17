@@ -2,6 +2,10 @@
 
 ---
 
+## 1.6.1
+
+* `FIXED` uploading progress can not show
+
 ## 1.6.0
 
 * `FIXED` autoPending fail to work

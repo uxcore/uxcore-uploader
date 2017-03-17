@@ -33,7 +33,7 @@ class Demo1 extends React.Component {
                     onChange={this.handleChange.bind(this)} 
                     tips={tips} 
                     name='file' 
-                    url='http://eternalsky.me:8122/file/upload' 
+                    url='http://eternalsky.me:8122/file/upload?sleep=100' 
                     locale="en" />
     }
 }
