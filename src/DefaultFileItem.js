@@ -15,7 +15,7 @@ class DefaultFileItem extends React.Component {
 
     render() {
         let me = this;
-        let {locale, file, mode, isOnlyImg} = me.props;
+        let {locale, file, mode, isOnlyImg, isVisual} = me.props;
         let response = util.simpleDeepCopy(file.response);
         if (file.type == 'upload') {
             response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
@@ -35,8 +35,24 @@ class DefaultFileItem extends React.Component {
                 <div className="filename" title={response.name}>{util.natcut(response.name, 10)}</div>
             </div>
         } else if (mode === 'nw') {
+
             if (isOnlyImg) {
-                return <div className={"kuma-upload-fileitem-img"}>
+                if (!isVisual) {
+                    return <div className={"kuma-upload-fileitem-img"}>
+                            <div className="field-image-info">
+                                <a className="field-image-preview" href={previewUrl} target="_blank">
+                                    <img src={previewUrl} />
+                                </a>
+                            </div>
+                            <div className="field-image-name">{file.name}</div>
+                            <div className="field-status">
+                                { response.canRemove !== false ? <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}>
+                                    <i className="kuma-icon kuma-icon-close"></i>
+                                </a> : undefined}
+                            </div>
+                        </div>;
+                } else {
+                    return <div className={"kuma-upload-fileitem-visual"}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">
                                     <img src={previewUrl} />
@@ -48,6 +64,7 @@ class DefaultFileItem extends React.Component {
                                 </a> : undefined}
                             </div>
                         </div>;
+                }
             } else {
                 return <div className={"kuma-upload-fileitem"}>
                     <label className="field-icon">

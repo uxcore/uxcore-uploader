@@ -22,18 +22,19 @@ class Demo1 extends React.Component {
         const me = this;
         window.uploader = me;
         return <Uploader
-                    ref="uploader" 
-                    multiple={false} 
-                    isOnlyImg={false}
+                    ref="uploader"
+                    multiple={false}
+                    isOnlyImg
+                    isVisual
                     progressInterval={100}
                     queueCapcity={2}
                     actionOnQueueLimit="cover"
                     onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader.getCore().getTotal())}}
                     fileList={this.state.fileList}
-                    onChange={this.handleChange.bind(this)} 
-                    tips={tips} 
-                    name='file' 
-                    url='http://eternalsky.me:8122/file/upload?sleep=100' 
+                    onChange={this.handleChange.bind(this)}
+                    tips={tips}
+                    name='file'
+                    url='http://eternalsky.me:8122/fle/upload'
                     locale="en" />
     }
 }
@@ -76,7 +77,8 @@ class Demo2 extends React.Component {
                     fileList={this.state.fileList}
                     onChange={this.handleChange.bind(this)}
                     isOnlyImg={false} 
-                    name='file' 
+                    name='file'
+                    isVisual={false}
                     url='http://eternalsky.me:8122/file/upload' />
     }
 }
@@ -133,6 +135,7 @@ class Demo3 extends React.Component {
             <Uploader fileList={this.state.fileList} 
                     autoPending={false} 
                     multiple={true} 
+                    isVisual={false}
                     ref="uploader3"
                     preventDuplicate
                     // sizeLimit='10k'
@@ -175,7 +178,7 @@ class visualDemo1 extends React.Component {
                     ref="uploader"
                     multiple={false}
                     isOnlyImg
-                    isVisual
+                    isVisual={false}
                     progressInterval={100}
                     queueCapcity={2}
                     actionOnQueueLimit="cover"
@@ -215,6 +218,7 @@ class Demo4 extends React.Component {
                     multiple={true} 
                     isOnlyImg={false} 
                     name='file'
+                    isVisual={false}
                     fileList={this.state.fileList}
                     onChange={this.handleChange.bind(this)}  
                     url='http://eternalsky.me:8122/file/upload' />
@@ -237,7 +241,7 @@ class Demo5 extends React.Component {
                     multiple={true} 
                     isOnlyImg={false} 
                     queueCapcity={20} 
-                    
+                    isVisual={false}
                     name='file' 
                     url='http://eternalsky.me:8122/file/upload' />
     }
@@ -264,6 +268,7 @@ class Demo6 extends React.Component {
                     fileList={this.state.fileList}
                     onChange={this.handleChange.bind(this)} 
                     name='file' 
+                    isVisual={false}
                     url='http://eternalsky.me:8122/file/upload'>
                     <button>自定义上传按钮</button>
                 </Uploader>

@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const util = require('./util');
+const UxcoreProgress = require('uxcore-progress');
+const { Line } = UxcoreProgress;
 
 class Progress extends React.Component {
     constructor(props) {
@@ -37,15 +39,23 @@ class Progress extends React.Component {
     }
 
     render() {
-    console.log(this.state.percentage);
-        return (
-            <div style={{
-                width: '100%',
-                transform: `scale(${this.state.percentage / 100}, 1)`,
-                transformOrigin: 'left top',
-                transition: 'transform 0.1s linear',
-            }} className="progress-box"></div>
-        )
+        if (this.props.isVisual) {
+            return (
+                <div className="visual-progress-box">
+                    <span>上传中...</span>
+                    <Line percent={this.state.percentage} strokeWidth={4} showInfo={false} />
+                </div>
+            )
+        }else {
+            return (
+                <div style={{
+                    width: '100%',
+                    transform: `scale(${this.state.percentage / 100}, 1)`,
+                    transformOrigin: 'left top',
+                    transition: 'transform 0.1s linear',
+                }} className="progress-box"></div>
+            )
+        }
     }
 }
 
