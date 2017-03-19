@@ -33,7 +33,7 @@ class Demo1 extends React.Component {
                     onChange={this.handleChange.bind(this)} 
                     tips={tips} 
                     name='file' 
-                    url='http://eternalsky.me:8122/file/upload' 
+                    url='http://eternalsky.me:8122/file/upload?sleep=100' 
                     locale="en" />
     }
 }
@@ -154,6 +154,48 @@ ReactDOM.render((
 ), document.getElementById('sample3'));
 
 
+
+class visualDemo1 extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fileList: []
+        }
+    }
+
+    handleChange(fileList) {
+        this.setState({
+            fileList: fileList
+        })
+    }
+    render() {
+        const me = this;
+        window.uploader = me;
+        return <Uploader
+                    ref="uploader"
+                    multiple={false}
+                    isOnlyImg
+                    isVisual
+                    progressInterval={100}
+                    queueCapcity={2}
+                    actionOnQueueLimit="cover"
+                    onqueueerror={function(err) {console.log(err); console.log(me.refs.uploader.getCore().getTotal())}}
+                    fileList={this.state.fileList}
+                    onChange={this.handleChange.bind(this)}
+                    tips={tips}
+                    name='file'
+                    url='http://eternalsky.me:8122/file/upload'
+                    locale="en" />
+    }
+}
+
+ReactDOM.render((
+    <visualDemo1 />
+), document.getElementById('sample7'));
+
+
+
+
 class Demo4 extends React.Component {
     constructor(props) {
         super(props)
@@ -232,7 +274,7 @@ ReactDOM.render((
     <Demo6 />
 ), document.getElementById('sample6'));
 
-class Demo7 extends React.Component {
+/*class Demo7 extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -253,4 +295,4 @@ ReactDOM.render((
     <Demo7 />
 ), document.getElementById('sample7'));
 
-hljs.initHighlightingOnLoad();
+hljs.initHighlightingOnLoad();*/

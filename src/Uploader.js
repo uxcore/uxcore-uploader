@@ -34,6 +34,11 @@ class Uploader extends React.Component {
                 me.setState({total:total});
             }
         };
+        me.fileuploadstart = (file) => {
+            if (file.status === Status.PROGRESS) {
+                me.forceUpdate();
+            }
+        }
         me.fileuploadsuccess = (file, response) => {
             let newList = util.simpleDeepCopy(me.state.fileList);
             newList.push(me.processFile(file));
@@ -69,6 +74,7 @@ class Uploader extends React.Component {
             onCancel && onCancel(me.processFile(file));
         };
         me.core.on(Events.QUEUE_STAT_CHANGE, me.statchange);
+        me.core.on(Events.FILE_UPLOAD_START, me.fileuploadstart);
         me.core.on(Events.FILE_UPLOAD_SUCCESS, me.fileuploadsuccess);
         me.core.on(Events.FILE_CANCEL, me.filecancel);
         me.core.addConstraint(() => {
@@ -209,7 +215,7 @@ class Uploader extends React.Component {
         }
         return <div className={"kuma-uploader " + (this.props.className || '')}>
             <Picker core={this.core}>{children}</Picker>
-            {this.props.tips}
+            <div className="kuma-upload-tip">{this.props.tips}</div>
             {(uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
         </div>;
     }

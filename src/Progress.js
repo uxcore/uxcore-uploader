@@ -37,9 +37,14 @@ class Progress extends React.Component {
     }
 
     render() {
-
+    console.log(this.state.percentage);
         return (
-            <div style={{width: this.state.percentage + '%'}} className="progress-box"></div>
+            <div style={{
+                width: '100%',
+                transform: `scale(${this.state.percentage / 100}, 1)`,
+                transformOrigin: 'left top',
+                transition: 'transform 0.1s linear',
+            }} className="progress-box"></div>
         )
     }
 }

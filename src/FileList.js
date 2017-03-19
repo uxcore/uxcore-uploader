@@ -53,6 +53,7 @@ class FileList extends React.Component {
     }
 
     render() {
+
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode'))}>
             <div className="inner">
                 {this.renderDefaultFileItems()}
