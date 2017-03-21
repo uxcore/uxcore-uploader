@@ -20,15 +20,19 @@ class Progress extends React.Component {
         me._isMounted = true;
         me.t = setInterval(() => {
             percentage = percentage + 5;
-            if (me._isMounted) {
-                me.setState({
-                    percentage: percentage
-                });
+            if (me.props.isVisual && me.props.status === 'error') {
+                clearInterval(me.t);
+            } else {
+                if (me._isMounted) {
+                    me.setState({
+                        percentage: percentage
+                    });
+                }
+                if (percentage === 95) {
+                    clearInterval(me.t);
+                }
             }
 
-            if (percentage === 95) {
-                clearInterval(me.t);
-            }
         }, me.props.interval);
     }
 
@@ -40,13 +44,24 @@ class Progress extends React.Component {
 
     render() {
         if (this.props.isVisual) {
-            return (
-                <div className="visual-progress-box">
-                    <span>上传中...</span>
-                    <Line percent={this.state.percentage} strokeWidth={4} showInfo={false} />
-                </div>
-            )
-        }else {
+            if (this.props.status === 'error') {
+                return (
+                    <div className="visual-progress-box">
+                        <span>上传失败...</span>
+                        <Line percent={this.state.percentage} status="exception" strokeWidth={4} showInfo={false} />
+                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}>取消</div>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="visual-progress-box">
+                        <span>上传中...</span>
+                        <Line percent={this.state.percentage} strokeWidth={4} showInfo={false} />
+                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}>取消</div>
+                    </div>
+                )
+            }
+        } else {
             return (
                 <div style={{
                     width: '100%',

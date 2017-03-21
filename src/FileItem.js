@@ -5,6 +5,7 @@ const {Events} = require('uploadcore');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const i18n = require('./locale');
+const Icon = require('uxcore-icon');
 
 class FileItem extends React.Component {
 
@@ -70,7 +71,7 @@ class FileItem extends React.Component {
         if (this.props.mode === 'icon') {
             return <div className={"kuma-upload-fileitem status-" + this.state.status}>
                 <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
-                    <i className="kuma-icon kuama-icon-delete"></i>
+                    <Icon name="shanchu" />
                 </a>
                 <div className="filepreview">
                     <Preview file={this.props.file} />
@@ -111,8 +112,8 @@ class FileItem extends React.Component {
                             {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} /> : null}
                             <div className="field-image-name">{this.file.name}</div>
                             <div className="field-status">
-                                <a className="kuma-upload-action" onClick={this.onCancel.bind(this)}>
-                                    <i className="kuma-icon kuama-icon-delete"></i>
+                                <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}>
+                                    <Icon name="shanchu" />
                                 </a>
                             </div>
                         </div>;
@@ -124,12 +125,7 @@ class FileItem extends React.Component {
                                 </a>
                             </div>
                             <div className="error-text">{i18n[locale]['upload_failed']}</div>
-                            {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} isVisual /> : null}
-                            <div className="field-status">
-                                <a className="kuma-upload-action" onClick={this.onCancel.bind(this)}>
-                                    <i className="kuma-icon kuama-icon-delete"></i>
-                                </a>
-                            </div>
+                            {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)}/> : null}
                         </div>;
                 }
 
@@ -148,7 +144,7 @@ class FileItem extends React.Component {
                             {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
                             {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
                             {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl} download>{i18n[locale]['download']}</a> : null}
-                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><i className="kuma-icon kuama-icon-delete"></i></a> : null}
+                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : null}
                         </label>
                     </div>
                 </div>;
@@ -175,7 +171,7 @@ class FileItem extends React.Component {
                     </a> : null}
 
                     <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
-                        <i className="kuma-icon kuama-icon-delete"></i>
+                        <Icon name="shanchu" />
                     </a>
                 </label>
                 <Progress interval={interval} percentage={this.state.percentage} mode="bar"/>
