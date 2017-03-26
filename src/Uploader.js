@@ -6,6 +6,7 @@ const FileList = require("./FileList");
 const Picker = require("./Picker");
 const Dropzoom = require('./Dropzoom');
 const i18n = require("./locale");
+
 const RESETOPTIONS = [
     'name', 'url', 'params', 'action', 'data', 'headers', 
     'withCredentials', 'timeout', 'chunkEnable', 'chunkSize', 
@@ -185,7 +186,7 @@ class Uploader extends React.Component {
             if (item.__uploaderId === file.__uploaderId) {
                 item.subType = item.type;
                 item.type = 'delete';
-            } 
+            }
             return item;
         });
         me.handleChange(newList);
@@ -207,17 +208,25 @@ class Uploader extends React.Component {
 
     render() {
         let me = this;
-        let {children, locale} = this.props;
+        let {children, locale, isVisual} = this.props;
         const uploadingFiles = me.getUploadingFiles();
         const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
         if (!children || children.length < 1) {
-            children = <button className="kuma-upload-button"><i className="kuma-icon kuma-icon-uploading"/>{i18n[locale]['upload_files']}</button>;
+            children = <button className="kuma-upload-button">{i18n[locale]['upload_files']}</button>;
         }
-        return <div className={"kuma-uploader " + (this.props.className || '')}>
-            <Picker core={this.core}>{children}</Picker>
-            {this.props.tips}
-            {(uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
-        </div>;
+        if(isVisual){
+            return <div className={"kuma-uploader " + (this.props.className || '')}>
+                <div className="kuma-upload-tip">{this.props.tips}</div>
+                {(uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isVisual={this.props.isVisual} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
+                <Picker core={this.core} isVisual>{children}</Picker>
+            </div>;
+        }else {
+            return <div className={"kuma-uploader " + (this.props.className || '')}>
+                <Picker core={this.core}>{children}</Picker>
+                <div className="kuma-upload-tip">{this.props.tips}</div>
+                {(uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0) ? (<FileList locale={this.props.locale} core={this.core} isVisual={this.props.isVisual} isOnlyImg={this.props.isOnlyImg} mode="nw" fileList={me.state.fileList} removeFileFromList={me.handleRemoveFile.bind(me)} interval={this.props.progressInterval}/>) : null}
+            </div>;
+        }
     }
 }
 
