@@ -45,17 +45,18 @@
     line-height: normal;
     .@{uploader-prefix-class}-button {
         display: inline-block;
-        background: rgba(31, 58, 88, 0.04);
+        background-color: #fff;
         outline: none;
         border: 1px dashed rgba(31, 56, 88, 0.2);
+        border-color: rgba(31,56,88,.3);
         border-radius: 3px;
         padding-top: 43px;
         font-size: 12px;
-        color: rgba(31, 56, 88, 0.6);
+        color: rgba(31,56,88,.8);
         height: 100%;
         width: 100%;
-        -webkit-transition: border-color 0.1s, color 0.1s;
-        transition: border-color 0.1s, color 0.1s;
+        transition: all .3s ease;
+        -webkit-transition: all .3s ease;
     }
     .uxicon-zengjia {
         position: absolute;
@@ -73,18 +74,18 @@
         display: inline-block;
         background: #fff;
         outline: none;
-        border: 1px solid rgba(31, 56, 88, 0.3);
+        border: 1px solid rgba(31,56,88,.3);
         border-radius: 3px;
         padding: 0 8px;
         font-size: 12px;
-        color: rgba(31, 56, 88, 0.6);
+        color: rgba(31,56,88,.8);
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         line-height: 26px;
         height: 28px;
-        -webkit-transition: border-color 0.1s, color 0.1s;
-        transition: border-color 0.1s, color 0.1s;
+        transition: all .3s ease;
+        -webkit-transition: all .3s ease;
 
         .kuma-icon-uploading {
             margin-right:3px;
@@ -96,8 +97,8 @@
     }
     &:hover, &.over {
         .@{uploader-prefix-class}-button {
-            border-color: #f60;
-            color: #f60;
+            border-color: rgba(31,56,88,.6);
+            background-color: rgba(31,56,88,.06);
         }
     }
 }
