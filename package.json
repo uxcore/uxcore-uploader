@@ -41,10 +41,10 @@
     "react-addons-test-utils": "0.14.x",
     "react-dom": "0.14.x",
     "uxcore-kuma": "2.x",
-    "uxcore-tools": "0.2.x"
+    "uxcore-tools": "0.2.x",
+    "kuma-base": "^1.3.11"
   },
   "dependencies": {
-    "kuma-base": "^1.3.11",
     "object-assign": "^4.0.0",
     "uploadcore": "~2.3.0",
     "uxcore-button": "^0.4.11",
