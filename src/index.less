@@ -69,6 +69,24 @@
     display: inline-block;
     position: relative;
     line-height: normal;
+    &:hover {
+        .kuma-button {
+            border-color: @normal-alpha-3;
+            background-color: @normal-alpha-8;
+        }
+    }
+    &:active {
+        .kuma-button {
+            border-color: @normal-alpha-1;
+            background-color: @normal-alpha-7;
+            color: @normal-alpha-1;
+        }
+    }
+    &:visited {
+        .kuma-button {
+            color: @gray;
+        }
+    }
     .@{uploader-prefix-class}-button {
         display: inline-block;
         background: #fff;
@@ -134,6 +152,24 @@
         opacity: 0.6;
         -webkit-transition: opacity 0.2s;
         transition: opacity 0.2s;
+        &:hover {
+            .kuma-button {
+                border-color: @normal-alpha-3;
+                background-color: @normal-alpha-8;
+            }
+        }
+        &:active {
+            .kuma-button {
+                border-color: @normal-alpha-1;
+                background-color: @normal-alpha-7;
+                color: @normal-alpha-1;
+            }
+        }
+        &:visited {
+            .kuma-button {
+                color: @gray;
+            }
+        }
         .kuma-icon-add {
             position: absolute;
             display: inline-block;
@@ -161,6 +197,24 @@
         width: 80px;
         height: 80px;
         background: #ebeff2;
+        &:hover {
+            .kuma-button {
+                border-color: @normal-alpha-3;
+                background-color: @normal-alpha-8;
+            }
+        }
+        &:active {
+            .kuma-button {
+                border-color: @normal-alpha-1;
+                background-color: @normal-alpha-7;
+                color: @normal-alpha-1;
+            }
+        }
+        &:visited {
+            .kuma-button {
+                color: @gray;
+            }
+        }
         .kuma-icon-add {
             margin-top: -20px;
             margin-left: -20px;
