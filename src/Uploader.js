@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const {UploadCore, Events, Status} = require('uploadcore');
+const Button = require('uxcore-button');
 const util = require("./util");
 const FileList = require("./FileList");
 const Picker = require("./Picker");
@@ -212,7 +213,11 @@ class Uploader extends React.Component {
         const uploadingFiles = me.getUploadingFiles();
         const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
         if (!children || children.length < 1) {
-            children = <button className="kuma-upload-button">{i18n[locale]['upload_files']}</button>;
+            if (isVisual) {
+                children = <button className="kuma-upload-button">{i18n[locale]['upload_files']}</button>;
+            } else {
+                children = <Button type="secondary" size="small">{i18n[locale]['upload_files']}</Button>;
+            }
         }
         if(isVisual){
             return <div className={"kuma-uploader " + (this.props.className || '')}>
