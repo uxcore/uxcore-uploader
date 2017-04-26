@@ -2,6 +2,10 @@
 
 ---
 
+## 2.0.0
+
+* `CHANGED` new style
+
 ## 1.6.1
 
 * `FIXED` uploading progress can not show
