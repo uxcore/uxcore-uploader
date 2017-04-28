@@ -2,6 +2,10 @@
 
 ---
 
+## 2.1.0
+
+* `CHANGED` use `uxcore-button` for default trigger
+
 ## 2.0.0
 
 * `CHANGED` new style
