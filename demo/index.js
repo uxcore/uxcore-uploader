@@ -61,7 +61,6 @@ class Demo2 extends React.Component {
     }
     render() {
         const me = this;
-        window.uploader = me;
         return <Uploader
                     ref="uploader"
                     multiple={false}
@@ -101,7 +100,7 @@ class Demo3 extends React.Component {
     }
     render() {
         const me = this;
-        window.uploader = me;
+        
         return <Uploader
                     ref="uploader"
                     multiple={false}

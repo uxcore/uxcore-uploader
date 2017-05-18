@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const {UploadCore, Events, Status} = require('uploadcore');
+const {UploadCore, Events, Status} = require('uploadcore/dist/uploadcore');
 const Button = require('uxcore-button');
 const util = require("./util");
 const FileList = require("./FileList");
@@ -133,7 +133,9 @@ class Uploader extends React.Component {
     reset() {
         this.core.getFiles().forEach((file) => {
             file.cancel(true);
+            this.core.getStat().remove(file);
         });
+        this.forceUpdate();
     }
 
     /**

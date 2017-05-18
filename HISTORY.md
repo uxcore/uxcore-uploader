@@ -2,6 +2,10 @@
 
 ---
 
+## 2.1.1
+
+* `FIXED` `reset` method fails to work
+
 ## 2.1.0
 
 * `CHANGED` use `uxcore-button` for default trigger
