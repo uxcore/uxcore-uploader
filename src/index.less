@@ -472,6 +472,11 @@
             .field-info {
                 display: inline-block;
                 margin-left: 18px;
+                width: -moz-calc(~"100% - 138px");
+                width: -webkit-calc(~"100% - 138px");
+                width: calc(~"100% - 138px");
+                overflow: hidden;
+                text-overflow: ellipsis;
                 .kuma-loading {
                     display: inline-block;
                     height: 16px;
@@ -484,6 +489,7 @@
                     font-size: 12px;
                     vertical-align: middle;
                     white-space: nowrap;
+                    width: 79px;
                 }
             }
 
