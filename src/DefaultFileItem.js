@@ -25,7 +25,7 @@ class DefaultFileItem extends React.Component {
         let previewUrl = response.previewUrl || downloadUrl;
         if (mode === 'icon') {
             return <div className={"kuma-upload-fileitem"}>
-                <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
+                <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
                     <Icon name="shanchu" />
                 </a>
                 <div className="filepreview">
@@ -48,7 +48,7 @@ class DefaultFileItem extends React.Component {
                             <div className="field-image-name">{file.name}</div>
                             <div className="field-status">
                                 {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-                                { response.canRemove !== false ? <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}>
+                                { response.canRemove !== false ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="shanchu" />
                                 </a> : undefined}
                             </div>
@@ -62,7 +62,7 @@ class DefaultFileItem extends React.Component {
                             </div>
                             <div className="field-status">
                                 {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="sousuo" /></a> : null}
-                                { response.canRemove !== false ? <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}>
+                                { response.canRemove !== false ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="shanchu" />
                                 </a> : undefined}
                             </div>
@@ -82,7 +82,7 @@ class DefaultFileItem extends React.Component {
                         <div className="field-status">
                             {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="sousuo" /></a> : null}
                             {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-                            <a className="kuma-upload-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a>
+                            <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a>
                         </div>
                     </div>
                 </div>;
@@ -95,7 +95,7 @@ class DefaultFileItem extends React.Component {
                 </label>
                 <label className="field-status">
                     <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>
-                    <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this, file)} title={i18n[locale]['remove']}>
+                    <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)} title={i18n[locale]['remove']}>
                         <Icon name="shanchu" />
                     </a>
                 </label>

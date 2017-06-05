@@ -2,6 +2,10 @@
 
 ---
 
+## 2.1.2
+
+* `FIXED` missing `action-remove` in some remove button
+
 ## 2.1.1
 
 * `FIXED` `reset` method fails to work
