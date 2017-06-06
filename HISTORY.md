@@ -2,6 +2,10 @@
 
 ---
 
+## 2.1.3
+
+* `FIXED` filename overflow style bug
+
 ## 2.1.2
 
 * `FIXED` missing `action-remove` in some remove button
