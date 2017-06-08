@@ -2,6 +2,12 @@
 
 ---
 
+## 2.1.4
+
+* `CHANGED` upgrade scaffold 
+* `FIXED` render an empty container if tips is empty
+* `CHANGED` eslint `uploader.js` (70%), `locale.js` (100%)
+
 ## 2.1.3
 
 * `FIXED` filename overflow style bug
