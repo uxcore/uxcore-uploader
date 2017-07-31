@@ -110,7 +110,7 @@ class FileItem extends React.Component {
                                 </a>
                             </div>
                             {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} /> : null}
-                            <div className="field-image-name">{this.file.name}</div>
+                            <div className="field-image-name" title={this.file.name}>{this.file.name}</div>
                             <div className="field-status">
                                 <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}>
                                     <Icon name="shanchu" />
@@ -138,7 +138,7 @@ class FileItem extends React.Component {
                     <div className="field-line"></div>
                     <div className="field-info-wrap">
                         <label className="field-info">
-                            <span className="filename">{this.file.name}</span>
+                            <span className="filename" title={this.file.name}>{this.file.name}</span>
                         </label>
                         <label className="field-status">
                             {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
