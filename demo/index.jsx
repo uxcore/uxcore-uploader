@@ -1,10 +1,50 @@
 const ReactDOM = require('react-dom');
 const React = require('react');
 const Uploader = require('../src/');
-
+// attachment file tips
 const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
-
+const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
+
+class Demo11 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: [],
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+  render() {
+    const me = this;
+    window.uploader = me;
+    return (<Uploader
+      // sizeLimit="3072kb"
+      // accept="*.jpeg, *.jpg *.png"
+      ref="uploader"
+      multiple={false}
+      isOnlyImg={false}
+      isVisual={false}
+      progressInterval={100}
+      queueCapcity={2}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={imgTips}
+      name="file"
+      url="http://eternalsky.me:8122/file/upload"
+      locale="zh-cn-img"
+    />);
+  }
+}
+ReactDOM.render((
+  <Demo11 />
+), document.getElementById('sample11'));
 
 class Demo1 extends React.Component {
   constructor(props) {

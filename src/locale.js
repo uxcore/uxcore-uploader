@@ -29,6 +29,16 @@ const locale = {
     upload_failed: '上传失败',
     upload_files: '添加文件',
   },
+  'zh-cn-img': {
+    download: '下载',
+    preview: '预览',
+    remove: '移除',
+    retry: '重传',
+    upload: '上传',
+    uploading: '上传中',
+    upload_failed: '上传失败',
+    upload_files: '上传图片',
+  },
 };
 
 locale.en = locale['en-us'];
