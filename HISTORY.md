@@ -1,6 +1,9 @@
 # history
 
 ---
+## 2.1.5
+* `FIXED` Fix image uploader filename overflow styles
+* `FIXED` Add filename title attribute
 
 ## 2.1.4
 

@@ -45,7 +45,7 @@ class DefaultFileItem extends React.Component {
                                     <img src={previewUrl} />
                                 </a>
                             </div>
-                            <div className="field-image-name">{file.name}</div>
+                            <div className="field-image-name" title={file.name}>{file.name}</div>
                             <div className="field-status">
                                 {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                                 { response.canRemove !== false ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
@@ -77,7 +77,7 @@ class DefaultFileItem extends React.Component {
                     <div className="field-line"></div>
                     <div className="field-info-wrap">
                         <label className="field-info">
-                            <span className="filename">{file.name}</span>
+                            <span className="filename" title={file.name}>{file.name}</span>
                         </label>
                         <div className="field-status">
                             {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
