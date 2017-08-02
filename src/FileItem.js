@@ -144,7 +144,7 @@ class FileItem extends React.Component {
                             {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
                             {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
                             {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl} download>{i18n[locale]['download']}</a> : null}
-                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : null}
+                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : <a className="kuma-upload-action terminal-action" onClick={this.onCancel.bind(this)}><Icon name="guanbi" /></a>}
                         </label>
                     </div>
                 </div>;

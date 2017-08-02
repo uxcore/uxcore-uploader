@@ -510,15 +510,20 @@
                     color: #616162;
                     cursor: pointer;
                     margin: 0 5px;
+                    display: none;
+                    background: none;
                 }
-                .download-action,.remove-action {
-                  display: none;
-                }
-            }
 
+            }
+            .download-action,.remove-action,.terminal-action {
+              display: none;
+            }
             &:hover{
-              .download-action,.remove-action {
+              .download-action,.remove-action,.terminal-action {
                 display: inline;
+              }
+              .@{uploader-prefix-class}-action {
+                  display: inline;
               }
             }
         }
@@ -613,6 +618,7 @@
                 text-align: center;
                 line-height: 16px;
                 border-radius: 2px;
+                background: none;
                 &:hover {
                     text-decoration: none;
                 }
