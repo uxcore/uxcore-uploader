@@ -1,4 +1,4 @@
-const React = require('react'); 
+const React = require('react');
 const ReactDOM = require('react-dom');
 const Icon = require('uxcore-icon');
 
@@ -15,7 +15,7 @@ class Picker extends React.Component {
       if(isVisual){
         return <div className="kuma-upload-picker-visual">
           {this.props.children}
-          <Icon name="zengjia" />
+          <Icon name="zengjia1" />
         </div>;
       }else{
         return <div className="kuma-upload-picker">{this.props.children}</div>;

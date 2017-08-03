@@ -22,11 +22,15 @@
 .@{uploader-prefix-class}-filelist {
     width: 100%;
     max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
-
+    overflow-y: visible;
+    overflow-x: visible;
+    & .visual-progress-box:hover {
+      .delete-progress {
+        display: inline;
+      }
+    }
     >.inner {
-        overflow: hidden;
+        overflow: visible;
     }
 }
 
@@ -47,7 +51,6 @@
         display: inline-block;
         background-color: #fff;
         outline: none;
-        border: 1px dashed rgba(31,56,88,.3);
         border-radius: 3px;
         padding-top: 43px;
         font-size: 12px;
@@ -56,12 +59,16 @@
         width: 100%;
         transition: all .3s ease;
         -webkit-transition: all .3s ease;
+        background: rgba(31,56,88,0.04);
+        border: 1px dashed rgba(31,56,88,0.20);
     }
-    .uxicon-zengjia {
+    .uxicon-zengjia1 {
         position: absolute;
         top: 26px;
         left: 36px;
         font-size: 28px;
+        color: #1F3858;
+        opacity: 0.4;
     }
 }
 
@@ -552,6 +559,15 @@
     }
 
     &.nwmode .@{uploader-prefix-class}-fileitem-img {
+        &.read-style{
+          border: none;
+        }
+        &.read-style:hover{
+          background: rgba(31,56,88,0.04);
+          .pre-action{
+            display: inline;
+          }
+        }
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         clear:both;
         margin-bottom: 0;
@@ -633,6 +649,17 @@
             .close-action {
                 display: none;
             }
+            .download-action,.remove-action {
+                display: none;
+            }
+            .pre-action{
+              display: none;
+            }
+        }
+        &:hover {
+          .download-action,.remove-action {
+              display: inline;
+          }
         }
     }
 
@@ -649,6 +676,9 @@
     }
 
     &.nwmode .@{uploader-prefix-class}-fileitem-visual {
+      &.status-progress{
+        border: 1px dashed rgba(31, 56, 88, 0.2);
+      }
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         clear:both;
         margin-right: 10px;
@@ -656,9 +686,9 @@
         position: relative;
         width: 100px;
         height: 100px;
-        border: 1px dashed rgba(31,56,88,0.20);
+        border: none;
         border-radius: 3px;
-        overflow: hidden;
+        overflow: visible;
         .error-text {
             position: absolute;
             top: 0;
@@ -708,7 +738,9 @@
     }
 
     &.nwmode .@{uploader-prefix-class}-fileitem-visual.status-error {
-        border: 1px dashed #F04631;
+        background:rgba(240,70,49,0.06);
+        border:1px solid #f04631;
+        border-radius:3px;
     }
     &.nwmode .@{uploader-prefix-class}-fileitem-visual:hover {
         .field-status {
@@ -716,35 +748,34 @@
             position: absolute;
             top: 0;
             left: 0;
-            padding: 36px 18px;
+            padding: 0;
             text-align: center;
             line-height: 100px;
             background: rgba(0, 0, 0, 0.4);
             border-radius: 3px;
-            .@{uploader-prefix-class}-action {
-                display: block;
-                cursor: pointer;
-                width: 28px;
-                height: 28px;
-                border: 1px solid rgba(255,255,255,0.40);
-                background: rgba(0, 0, 0, 0.4);
-                text-align: center;
-                line-height: 28px;
-                border-radius: 3px;
-                float: left;
-                &:hover {
-                    text-decoration: none;
-                }
-                .uxicon-sousuo {
-
-                }
-                .uxcore-icon {
-                    font-size: 14px;
-                    color: #fff;
-                }
-            }
+            height: 100%;
+            width: 100%;
             .preview-action {
                 margin-right: 6px;
+                position: absolute;
+                top: 37px;
+                left: 37px;
+                background: none;
+                border: none;
+                .uxicon-fangda{
+                  font-size: 27px;
+                }
+            }
+            .remove-action{
+              position: absolute;
+              top: -9px;
+              right: -9px;
+              color: rgba(31, 56, 88, 0.2);
+              line-height: normal;
+              cursor: pointer;
+              .uxicon-biaodanlei-tongyongqingchu{
+                font-size: 17px;
+              }
             }
         }
     }
@@ -774,5 +805,14 @@
 }
 .delete-progress {
     cursor: pointer;
-    color: #3C99D8;
+    position: absolute;
+    right: -9px;
+    top: -12px;
+    width: 17px;
+    height: 17px;
+    color: rgba(31, 56, 88, 0.4);
+    display: none;
+    .uxicon-biaodanlei-tongyongqingchu{
+      font-size: 17px;
+    }
 }

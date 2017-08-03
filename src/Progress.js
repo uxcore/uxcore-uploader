@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const util = require('./util');
 const UxcoreProgress = require('uxcore-progress');
 const { Line } = UxcoreProgress;
+const Icon = require('uxcore-icon');
 
 class Progress extends React.Component {
     constructor(props) {
@@ -48,9 +49,9 @@ class Progress extends React.Component {
             if (this.props.status === 'error') {
                 return (
                     <div className="visual-progress-box">
-                        <span>上传失败...</span>
-                        <Line percent={this.state.percentage} status="exception" strokeWidth={4} showInfo={false} />
-                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}>取消</div>
+                        <Icon name="shuaxin" />
+                        <span>重新上传</span>
+                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}><Icon name="biaodanlei-tongyongqingchu" /></div>
                     </div>
                 )
             } else {
@@ -58,7 +59,7 @@ class Progress extends React.Component {
                     <div className="visual-progress-box">
                         <span>上传中...</span>
                         <Line percent={this.state.percentage} strokeWidth={4} showInfo={false} />
-                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}>取消</div>
+                        <div className="delete-progress" onClick={this.props.onCancel.bind(this)}><Icon name="biaodanlei-tongyongqingchu" /></div>
                     </div>
                 )
             }

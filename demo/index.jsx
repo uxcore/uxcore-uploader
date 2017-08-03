@@ -4,47 +4,8 @@ const Uploader = require('../src/');
 // attachment file tips
 const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
 const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
+const imgTips2 = <span>单文件不超过5M</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
-
-class Demo11 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fileList: [],
-    };
-  }
-
-  handleChange(fileList) {
-    this.setState({
-      fileList,
-    });
-  }
-  render() {
-    const me = this;
-    window.uploader = me;
-    return (<Uploader
-      // sizeLimit="3072kb"
-      // accept="*.jpeg, *.jpg *.png"
-      ref="uploader"
-      multiple={false}
-      isOnlyImg={false}
-      isVisual={false}
-      progressInterval={100}
-      queueCapcity={2}
-      actionOnQueueLimit="cover"
-      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
-      fileList={this.state.fileList}
-      onChange={this.handleChange.bind(this)}
-      tips={imgTips}
-      name="file"
-      url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn-img"
-    />);
-  }
-}
-ReactDOM.render((
-  <Demo11 />
-), document.getElementById('sample11'));
 
 class Demo1 extends React.Component {
   constructor(props) {
@@ -63,6 +24,8 @@ class Demo1 extends React.Component {
     const me = this;
     window.uploader = me;
     return (<Uploader
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
       ref="uploader"
       multiple={false}
       isOnlyImg={false}
@@ -73,18 +36,16 @@ class Demo1 extends React.Component {
       onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
       fileList={this.state.fileList}
       onChange={this.handleChange.bind(this)}
-      tips={tips}
+      tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn-img"
     />);
   }
 }
-
 ReactDOM.render((
   <Demo1 />
 ), document.getElementById('sample1'));
-
 
 class Demo2 extends React.Component {
   constructor(props) {
@@ -103,6 +64,8 @@ class Demo2 extends React.Component {
     const me = this;
     return (<Uploader
       ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
       multiple={false}
       isOnlyImg
       isVisual={false}
@@ -112,10 +75,10 @@ class Demo2 extends React.Component {
       onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
       fileList={this.state.fileList}
       onChange={this.handleChange.bind(this)}
-      tips={tips}
+      tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn-img"
     />);
   }
 }
@@ -124,6 +87,46 @@ ReactDOM.render((
   <Demo2 />
 ), document.getElementById('sample2'));
 
+class Demo9 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: [],
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+  render() {
+    const me = this;
+    return (<Uploader
+      ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
+      readOnlyStyle
+      multiple={false}
+      isOnlyImg
+      isVisual={false}
+      progressInterval={100}
+      queueCapcity={2}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={imgTips}
+      name="file"
+      url="http://eternalsky.me:8122/file/upload"
+      locale="zh-cn-img"
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo9 />
+), document.getElementById('sample9'));
 
 class Demo3 extends React.Component {
   constructor(props) {
@@ -155,7 +158,7 @@ class Demo3 extends React.Component {
       tips={tips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn"
     />);
   }
 }
