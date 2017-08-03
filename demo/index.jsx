@@ -87,7 +87,7 @@ ReactDOM.render((
   <Demo2 />
 ), document.getElementById('sample2'));
 
-class Demo9 extends React.Component {
+class Demo3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -125,10 +125,10 @@ class Demo9 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo9 />
-), document.getElementById('sample9'));
+  <Demo3 />
+), document.getElementById('sample3'));
 
-class Demo3 extends React.Component {
+class Demo4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -164,10 +164,10 @@ class Demo3 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo3 />
-), document.getElementById('sample3'));
+  <Demo4 />
+), document.getElementById('sample4'));
 
-class Demo4 extends React.Component {
+class Demo5 extends React.Component {
   constructor(props) {
     super(props);
     this.fileList = [
@@ -196,11 +196,11 @@ class Demo4 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo4 />
-), document.getElementById('sample4'));
+  <Demo5 />
+), document.getElementById('sample5'));
 
 
-class Demo5 extends React.Component {
+class Demo6 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -228,11 +228,11 @@ class Demo5 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo5 />
-), document.getElementById('sample5'));
+  <Demo6 />
+), document.getElementById('sample6'));
 
 
-class Demo6 extends React.Component {
+class Demo7 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -250,10 +250,10 @@ class Demo6 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo6 />
-), document.getElementById('sample6'));
+  <Demo7 />
+), document.getElementById('sample7'));
 
-class Demo7 extends React.Component {
+class Demo8 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -279,10 +279,10 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo7 />
-), document.getElementById('sample7'));
+  <Demo8 />
+), document.getElementById('sample8'));
 
-class Demo8 extends React.Component {
+class Demo9 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -301,7 +301,7 @@ class Demo8 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo8 />
-), document.getElementById('sample8'));
+  <Demo9 />
+), document.getElementById('sample9'));
 
 // hljs.initHighlightingOnLoad();
