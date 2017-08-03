@@ -49,15 +49,14 @@ class Progress extends React.Component {
             if (this.props.status === 'error') {
                 return (
                     <div className="visual-progress-box">
-                        <Icon name="shuaxin" />
-                        <span>重新上传</span>
+                        <Icon className="re-upload-icon" name="shuaxin" />
+                        <span className="re-upload">重新上传</span>
                         <div className="delete-progress" onClick={this.props.onCancel.bind(this)}><Icon name="biaodanlei-tongyongqingchu" /></div>
                     </div>
                 )
             } else {
                 return (
                     <div className="visual-progress-box">
-                        <span>上传中...</span>
                         <Line percent={this.state.percentage} strokeWidth={4} showInfo={false} />
                         <div className="delete-progress" onClick={this.props.onCancel.bind(this)}><Icon name="biaodanlei-tongyongqingchu" /></div>
                     </div>
