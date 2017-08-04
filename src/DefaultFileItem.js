@@ -16,7 +16,7 @@ class DefaultFileItem extends React.Component {
 
     render() {
         let me = this;
-        let {locale, file, mode, isOnlyImg, isVisual} = me.props;
+        let {locale, file, mode, isOnlyImg, isVisual,readStyle,readOnlyStyle} = me.props;
         let response = util.simpleDeepCopy(file.response);
         if (file.type == 'upload') {
             response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
@@ -39,6 +39,19 @@ class DefaultFileItem extends React.Component {
 
             if (isOnlyImg) {
                 if (!isVisual) {
+                  if(!!readOnlyStyle){
+                    return <div className={"kuma-upload-fileitem-img read-style"}>
+                            <div className="field-image-info">
+                                <a className="field-image-preview" href={previewUrl} target="_blank">
+                                    <img src={previewUrl} />
+                                </a>
+                            </div>
+                            <div className="field-image-name" title={file.name}>{file.name}</div>
+                            <div className="field-status">
+                                {previewUrl ? <a className="kuma-upload-action pre-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                            </div>
+                        </div>;
+                  }else{
                     return <div className={"kuma-upload-fileitem-img"}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">
@@ -53,6 +66,8 @@ class DefaultFileItem extends React.Component {
                                 </a> : undefined}
                             </div>
                         </div>;
+                  }
+
                 } else {
                     return <div className={"kuma-upload-fileitem-visual"}>
                             <div className="field-image-info">
@@ -61,9 +76,9 @@ class DefaultFileItem extends React.Component {
                                 </a>
                             </div>
                             <div className="field-status">
-                                {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="sousuo" /></a> : null}
-                                { response.canRemove !== false ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
-                                    <Icon name="shanchu" />
+                                {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                                { response.canRemove !== false ? <a className="remove-action" onClick={this.onCancel.bind(this, file)}>
+                                    <Icon name="biaodanlei-tongyongqingchu" />
                                 </a> : undefined}
                             </div>
                         </div>;
@@ -80,7 +95,6 @@ class DefaultFileItem extends React.Component {
                             <span className="filename" title={file.name}>{file.name}</span>
                         </label>
                         <div className="field-status">
-                            {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="sousuo" /></a> : null}
                             {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                             <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a>
                         </div>

@@ -36,7 +36,7 @@ class FileList extends React.Component {
         let arr = [];
         this.props.fileList.forEach((file, index) => {
             if (file.type !== 'delete') {
-                arr.push(<DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} isVisual={this.props.isVisual} onCancel={this.props.removeFileFromList.bind(this)} />);
+                arr.push(<DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} readOnlyStyle={this.props.readOnlyStyle} isVisual={this.props.isVisual} onCancel={this.props.removeFileFromList.bind(this)} />);
             }
         });
         return arr;

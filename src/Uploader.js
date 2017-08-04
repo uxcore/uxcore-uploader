@@ -244,6 +244,7 @@ class Uploader extends React.Component {
           core={this.core}
           isVisual={this.props.isVisual}
           isOnlyImg={this.props.isOnlyImg}
+          readOnlyStyle={this.props.readOnlyStyle}
           mode="nw"
           fileList={me.state.fileList}
           removeFileFromList={me.handleRemoveFile.bind(me)}
