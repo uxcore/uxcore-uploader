@@ -126,7 +126,7 @@ class FileItem extends React.Component {
                             <div className="field-image-info">
                             </div>
                             {/*<div className="error-text">{i18n[locale]['upload_failed']}</div>*/}
-                            {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)}/> : null}
+                            {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)} onPending={this.onPending.bind(this)}/> : null}
                         </div>;
                 }
 

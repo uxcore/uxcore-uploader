@@ -13,6 +13,10 @@ class Progress extends React.Component {
         };
     }
 
+    onPending() {
+        this.props.file.pending();
+    }
+
     componentDidMount() {
 
         let t = null;
@@ -49,8 +53,8 @@ class Progress extends React.Component {
             if (this.props.status === 'error') {
                 return (
                     <div className="visual-progress-box">
-                        <Icon className="re-upload-icon" name="shuaxin" />
-                        <span className="re-upload">重新上传</span>
+                        <Icon onClick={this.props.onPending.bind(this)} className="re-upload-icon" name="shuaxin" />
+                        <span onClick={this.props.onPending.bind(this)} className="re-upload">重新上传</span>
                         <div className="delete-progress" onClick={this.props.onCancel.bind(this)}><Icon name="biaodanlei-tongyongqingchu" /></div>
                     </div>
                 )
