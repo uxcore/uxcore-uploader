@@ -4,6 +4,7 @@ const util = require('./util');
 const UxcoreProgress = require('uxcore-progress');
 const { Line } = UxcoreProgress;
 const Icon = require('uxcore-icon');
+const {Events} = require('uploadcore');
 
 class Progress extends React.Component {
     constructor(props) {
@@ -23,22 +24,30 @@ class Progress extends React.Component {
         let me = this;
         let percentage = me.state.percentage;
         me._isMounted = true;
-        me.t = setInterval(() => {
-            percentage = percentage + 5;
-            if (me.props.isVisual && me.props.status === 'error') {
-                clearInterval(me.t);
-            } else {
-                if (me._isMounted) {
-                    me.setState({
-                        percentage: percentage
-                    });
-                }
-                if (percentage === 95) {
-                    clearInterval(me.t);
-                }
-            }
-
-        }, me.props.interval);
+        this.props.file.on(Events.FILE_UPLOAD_PROGRESS,(progress)=>{
+          if (me._isMounted) {
+              me.setState({
+                  percentage: progress.percentage
+              });
+          }
+        });
+        // me.t = setInterval(() => {
+        //     console.log(me.props.file.progress);
+        //     percentage = percentage + 5;
+        //     if (me.props.isVisual && me.props.status === 'error') {
+        //         clearInterval(me.t);
+        //     } else {
+        //         if (me._isMounted) {
+        //             me.setState({
+        //                 percentage: percentage
+        //             });
+        //         }
+        //         if (percentage === 95) {
+        //             clearInterval(me.t);
+        //         }
+        //     }
+        //
+        // }, me.props.interval);
     }
 
     componentWillUnmount() {
