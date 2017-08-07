@@ -220,6 +220,7 @@ class Uploader extends React.Component {
     const me = this;
     const { locale, isVisual } = this.props;
     let children = this.props.children;
+    const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
     const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
     if (!children || children.length < 1) {
@@ -229,8 +230,8 @@ class Uploader extends React.Component {
         children = <Button type="secondary" size="small">{i18n[locale].upload_files}</Button>;
       }
     }
-    const tips = this.renderTips();
-    const picker = (
+    const tips = readOnly ? null : this.renderTips();
+    const picker = readOnly ? null : (
       <Picker
         key="picker"
         core={this.core}
@@ -244,7 +245,7 @@ class Uploader extends React.Component {
           core={this.core}
           isVisual={this.props.isVisual}
           isOnlyImg={this.props.isOnlyImg}
-          readOnlyStyle={this.props.readOnlyStyle}
+          readOnly={this.props.readOnly}
           mode="nw"
           fileList={me.state.fileList}
           removeFileFromList={me.handleRemoveFile.bind(me)}

@@ -6,6 +6,35 @@ const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xl
 const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
 const imgTips2 = <span>单文件不超过5M</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
+const fileList = [
+  {
+    "name":"TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg",
+    "fileType":"image/jpeg",
+    "type":"upload",
+    "response":{
+      "success":true,
+      "data":{
+        "url":"http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png",
+        canRemove: false, // 是否可以删除，可选
+        downloadUrl: "http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png", // 下载 URL，可选
+      }
+    }
+  },{
+    "ext":"jpg",
+    "name":"TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg",
+    "size":16387,
+    "fileType":"image/jpeg",
+    "type":"upload",
+    "response":{
+      "success":true,
+      "data":{
+        "url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg",
+        canRemove: false, // 是否可以删除，可选
+        downloadUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg", // 下载 URL，可选
+      }
+    }
+  }
+]
 
 class Demo1 extends React.Component {
   constructor(props) {
@@ -51,7 +80,7 @@ class Demo2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileList: [],
+      fileList:[],
     };
   }
 
@@ -91,7 +120,7 @@ class Demo3 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileList: [],
+      fileList: fileList,
     };
   }
 
@@ -106,7 +135,7 @@ class Demo3 extends React.Component {
       ref="uploader"
       sizeLimit="3072kb"
       accept="*.jpeg, *.jpg *.png"
-      readOnlyStyle
+      readOnly 
       multiple={false}
       isOnlyImg
       isVisual={false}
