@@ -135,7 +135,7 @@ class Demo3 extends React.Component {
       ref="uploader"
       sizeLimit="3072kb"
       accept="*.jpeg, *.jpg *.png"
-      readOnly
+      readOnly 
       multiple={false}
       isOnlyImg
       isVisual={false}
