@@ -19,6 +19,10 @@ class FileItem extends React.Component {
             percentage: file.progress ? file.progress.percentage : 0,
             status: file.getStatusName()
         };
+
+        if (file.isImage()) {
+            file.getAsDataUrl(1000).done((url) => this.setState({url}));
+        }
     }
 
     componentDidMount() {
@@ -81,7 +85,7 @@ class FileItem extends React.Component {
                     {this.state.status === 'queued' ? <a className="kuma-upload-action action-upload" onClick={this.onPending.bind(this)} title={i18n[locale]['upload']}>
                         <i className="kuma-icon kuma-icon-triangle-right" />
                     </a> : null}
-                    {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress interval={interval} percentage={this.state.percentage} /> : null}
+                    {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress file={this.file} interval={interval} percentage={this.state.percentage} /> : null}
                 </div>
                 {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title={i18n[locale]['upload_failed']}><i className="kuma-icon kuma-icon-caution" /></a> : null}
                 {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a> : null}
@@ -106,10 +110,10 @@ class FileItem extends React.Component {
                     return <div className={"kuma-upload-fileitem-img status-" + this.state.status}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">
-                                    <img src={previewUrl} />
+                                    <img src={this.state.url} />
                                 </a>
                             </div>
-                            {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} /> : null}
+                            {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress file={this.file} interval={interval} /> : null}
                             <div className="field-image-name" title={this.file.name}>{this.file.name}</div>
                             <div className="field-status">
                                 <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}>
@@ -120,12 +124,9 @@ class FileItem extends React.Component {
                 }else {
                     return <div className={"kuma-upload-fileitem-visual status-" + this.state.status}>
                             <div className="field-image-info">
-                                <a className="field-image-preview" href={previewUrl} target="_blank">
-                                    <img src={previewUrl} />
-                                </a>
                             </div>
                             {/*<div className="error-text">{i18n[locale]['upload_failed']}</div>*/}
-                            {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)}/> : null}
+                            {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)} onPending={this.onPending.bind(this)} file={this.file} /> : null}
                         </div>;
                 }
 
@@ -134,7 +135,7 @@ class FileItem extends React.Component {
                     <label className="field-icon">
                         {(this.state.status === 'error' || this.state.status === 'success' ) ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/> : null}
                     </label>
-                    {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} /> : null}
+                    {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} file={this.file} /> : null}
                     <div className="field-line"></div>
                     <div className="field-info-wrap">
                         <label className="field-info">
@@ -144,7 +145,7 @@ class FileItem extends React.Component {
                             {this.state.status === 'error' ? <a className="kuma-upload-status status-error">{i18n[locale]['upload_failed']}</a> : null}
                             {this.state.status === 'success' && previewUrl ? <a className="kuma-upload-action" target="_blank" href={previewUrl}>{i18n[locale]['preview']}</a> : null}
                             {this.state.status === 'success' && downloadUrl ? <a className="kuma-upload-action" target="_blank" href={downloadUrl} download>{i18n[locale]['download']}</a> : null}
-                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : null}
+                            {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : <a className="kuma-upload-action terminal-action" onClick={this.onCancel.bind(this)}><Icon name="guanbi" /></a>}
                         </label>
                     </div>
                 </div>;
@@ -174,7 +175,7 @@ class FileItem extends React.Component {
                         <Icon name="shanchu" />
                     </a>
                 </label>
-                <Progress interval={interval} percentage={this.state.percentage} mode="bar"/>
+                <Progress file={this.file} interval={interval} percentage={this.state.percentage} mode="bar"/>
             </div>;
         }
     }

@@ -1,10 +1,40 @@
 const ReactDOM = require('react-dom');
 const React = require('react');
 const Uploader = require('../src/');
-
+// attachment file tips
 const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
-
+const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
+const imgTips2 = <span>单文件不超过5M</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
+const fileList = [
+  {
+    "name":"TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg",
+    "fileType":"image/jpeg",
+    "type":"upload",
+    "response":{
+      "success":true,
+      "data":{
+        "url":"http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png",
+        canRemove: false, // 是否可以删除，可选
+        downloadUrl: "http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png", // 下载 URL，可选
+      }
+    }
+  },{
+    "ext":"jpg",
+    "name":"TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg",
+    "size":16387,
+    "fileType":"image/jpeg",
+    "type":"upload",
+    "response":{
+      "success":true,
+      "data":{
+        "url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg",
+        canRemove: false, // 是否可以删除，可选
+        downloadUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg", // 下载 URL，可选
+      }
+    }
+  }
+]
 
 class Demo1 extends React.Component {
   constructor(props) {
@@ -23,6 +53,8 @@ class Demo1 extends React.Component {
     const me = this;
     window.uploader = me;
     return (<Uploader
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
       ref="uploader"
       multiple={false}
       isOnlyImg={false}
@@ -33,24 +65,22 @@ class Demo1 extends React.Component {
       onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
       fileList={this.state.fileList}
       onChange={this.handleChange.bind(this)}
-      tips={tips}
+      tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn-img"
     />);
   }
 }
-
 ReactDOM.render((
   <Demo1 />
 ), document.getElementById('sample1'));
-
 
 class Demo2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileList: [],
+      fileList:[],
     };
   }
 
@@ -63,6 +93,8 @@ class Demo2 extends React.Component {
     const me = this;
     return (<Uploader
       ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
       multiple={false}
       isOnlyImg
       isVisual={false}
@@ -72,10 +104,10 @@ class Demo2 extends React.Component {
       onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
       fileList={this.state.fileList}
       onChange={this.handleChange.bind(this)}
-      tips={tips}
+      tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn-img"
     />);
   }
 }
@@ -84,8 +116,48 @@ ReactDOM.render((
   <Demo2 />
 ), document.getElementById('sample2'));
 
-
 class Demo3 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: fileList,
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+  render() {
+    const me = this;
+    return (<Uploader
+      ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
+      readOnly 
+      multiple={false}
+      isOnlyImg
+      isVisual={false}
+      progressInterval={100}
+      queueCapcity={2}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={imgTips}
+      name="file"
+      url="http://eternalsky.me:8122/file/upload"
+      locale="zh-cn-img"
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo3 />
+), document.getElementById('sample3'));
+
+class Demo4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,16 +187,16 @@ class Demo3 extends React.Component {
       tips={tips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="en"
+      locale="zh-cn"
     />);
   }
 }
 
 ReactDOM.render((
-  <Demo3 />
-), document.getElementById('sample3'));
+  <Demo4 />
+), document.getElementById('sample4'));
 
-class Demo4 extends React.Component {
+class Demo5 extends React.Component {
   constructor(props) {
     super(props);
     this.fileList = [
@@ -153,11 +225,11 @@ class Demo4 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo4 />
-), document.getElementById('sample4'));
+  <Demo5 />
+), document.getElementById('sample5'));
 
 
-class Demo5 extends React.Component {
+class Demo6 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -185,11 +257,11 @@ class Demo5 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo5 />
-), document.getElementById('sample5'));
+  <Demo6 />
+), document.getElementById('sample6'));
 
 
-class Demo6 extends React.Component {
+class Demo7 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -207,10 +279,10 @@ class Demo6 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo6 />
-), document.getElementById('sample6'));
+  <Demo7 />
+), document.getElementById('sample7'));
 
-class Demo7 extends React.Component {
+class Demo8 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -236,10 +308,10 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo7 />
-), document.getElementById('sample7'));
+  <Demo8 />
+), document.getElementById('sample8'));
 
-class Demo8 extends React.Component {
+class Demo9 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -258,7 +330,7 @@ class Demo8 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo8 />
-), document.getElementById('sample8'));
+  <Demo9 />
+), document.getElementById('sample9'));
 
 // hljs.initHighlightingOnLoad();

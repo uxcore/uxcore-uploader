@@ -18,7 +18,7 @@ see http://uxco.re/components/uploader/ for details.
 
 ## API
 
-### reset() 
+### reset()
 
 重置文件队列
 
@@ -44,10 +44,11 @@ see http://uxco.re/components/uploader/ for details.
 |processThreads      | int           | 2       |            | 文件上传并发数 |
 |queueCapcity        | int           | 0       |            | 队列容量，0无限 |
 |autoPending         | bool          | true    |            | 是否选择后自动等待上传 |
-|multiple            | bool          | true    |            | 是否多选 | 
+|multiple            | bool          | true    |            | 是否多选 |
 |accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
 |sizeLimit           | size          | 0       |            | 文件大小限制, 0表示不限制 |
 |preventDuplicate    | bool          | false   |            | 是否防止文件重复 |
+|readOnly            | bool          | false   |            | 是否以只读方式显示图片,有该属性时请fileList不能为空 |
 |actionOnQueueLimit  | string        | error   | 1.5.10     | 当队列超长时采取的策略：error, 抛错；
 cover, 覆盖 |
 ### fileList 的最小格式 (格式稍显麻烦，是为了 onChange 的返回值可以传回给 fileList)
@@ -74,7 +75,7 @@ cover, 覆盖 |
 |----------|--------------|------------------|
 | onChange | fileList     | 在上传成功或文件移除后触发，返回文件队列，包括自己传入的`fileList` |
 | onCancel | file         | 文件移除后触发，上传的文件和默认列表的文件格式会有所不同，文件格式参见下面的 fileList 格式|
-| onfileuploaderror | `File`, `Error` | 文件上传失败 | 
+| onfileuploaderror | `File`, `Error` | 文件上传失败 |
 
 
 ### onChange 的 fileList 的枚举格式有如下几种
@@ -128,3 +129,4 @@ cover, 覆盖 |
 
 
 具体配置信息见<https://github.com/uxcore/uxcore-uploadcore/blob/master/README.md>.
+
