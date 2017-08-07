@@ -1,11 +1,11 @@
-const React = require('react');
-const { UploadCore, Events, Status } = require('uploadcore/dist/uploadcore');
-const Button = require('uxcore-button');
-const util = require('./util');
-const FileList = require('./FileList');
-const Picker = require('./Picker');
-const Dropzoom = require('./Dropzoom');
-const i18n = require('./locale');
+import React from 'react';
+import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
+import Button from 'uxcore-button';
+import util from './util';
+import FileList from './FileList';
+import Picker from './Picker';
+import Dropzoom from './Dropzoom';
+import i18n from './locale';
 
 const RESETOPTIONS = [
   'name', 'url', 'params', 'action', 'data', 'headers',
@@ -299,4 +299,4 @@ Uploader.propTypes = {
 };
 
 
-module.exports = Uploader;
+export default Uploader;

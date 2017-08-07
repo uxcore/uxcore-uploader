@@ -1,79 +1,79 @@
-const Preview = require('./Preview');
-const Progress = require('./Progress');
-const util = require('./util');
-const {Events} = require('uploadcore');
-const React = require('react');
-const ReactDOM = require('react-dom');
-const i18n = require('./locale');
-const Icon = require('uxcore-icon');
+import Preview from './Preview';
+import Progress from './Progress';
+import util from './util';
+import { Events } from 'uploadcore';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import i18n from './locale';
+import Icon from 'uxcore-icon';
 
 class FileItem extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        const file = props.file;
-        this.file = file;
+    const file = props.file;
+    this.file = file;
 
-        this.state = {
-            percentage: file.progress ? file.progress.percentage : 0,
-            status: file.getStatusName()
+    this.state = {
+      percentage: file.progress ? file.progress.percentage : 0,
+      status: file.getStatusName(),
+    };
+
+    if (file.isImage()) {
+      file.getAsDataUrl(1000).done((url) => this.setState({ url }));
+    }
+  }
+
+  componentDidMount() {
+    const file = this.file;
+    let me = this;
+    me._isMounted = true;
+    const statuschange = () => {
+      if (me._isMounted) {
+        const state = {
+          status: file.getStatusName(),
         };
-
-        if (file.isImage()) {
-            file.getAsDataUrl(1000).done((url) => this.setState({url}));
+        if (state.status === 'error') {
+          state.percentage = 0;
         }
-    }
+        me.setState(state);
+      }
+    };
+    const progress = (progress) => {
+      if (me._isMounted) {
+        me.setState({
+          percentage: progress.percentage,
+        });
+      }
+    };
+    file.on(Events.FILE_STATUS_CHANGE, statuschange);
+    file.on(Events.FILE_UPLOAD_PROGRESS, progress);
+    this.stopListen = () => {
+      file.off(Events.FILE_STATUS_CHANGE, statuschange);
+      file.off(Events.FILE_UPLOAD_PROGRESS, progress);
+    };
+  }
 
-    componentDidMount() {
-        const file = this.file;
-        let me = this;
-        me._isMounted = true;
-        const statuschange = () => {
-            if (me._isMounted) {
-                const state = {
-                    status: file.getStatusName()
-                };
-                if (state.status === 'error') {
-                    state.percentage = 0;
-                }
-                me.setState(state);
-            }
-        };
-        const progress = (progress) => {
-            if (me._isMounted) {
-                me.setState({
-                    percentage: progress.percentage
-                });
-            }
-        };
-        file.on(Events.FILE_STATUS_CHANGE, statuschange);
-        file.on(Events.FILE_UPLOAD_PROGRESS, progress);
-        this.stopListen = () => {
-            file.off(Events.FILE_STATUS_CHANGE, statuschange);
-            file.off(Events.FILE_UPLOAD_PROGRESS, progress);
-        };
-    }
+  componentWillUnmount() {
+    this._isMounted = false;
+    this.stopListen && this.stopListen();
+  }
 
-    componentWillUnmount() {
-        this._isMounted = false;
-        this.stopListen && this.stopListen();
-    }
+  onPending() {
+    this.file.pending();
+  }
 
-    onPending() {
-        this.file.pending();
-    }
+  onCancel() {
+    this.file.cancel();
+  }
 
-    onCancel() {
-        this.file.cancel();
-    }
+  render() {
+    let me = this;
+    let { locale, interval } = me.props;
 
-    render() {
-        let me = this;
-        let {locale, interval} = me.props;
-
-        if (this.props.mode === 'icon') {
-            return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+    if (this.props.mode === 'icon') {
+      return (<div className={'kuma-upload-fileitem status-' + this.state.status}>
                 <a className="kuma-upload-action action-remove" onClick={this.onCancel.bind(this)} title={i18n[locale]['remove']}>
                     <Icon name="shanchu" />
                 </a>
@@ -90,24 +90,24 @@ class FileItem extends React.Component {
                 {this.state.status === 'error' ? <a className="kuma-upload-status status-error" title={i18n[locale]['upload_failed']}><i className="kuma-icon kuma-icon-caution" /></a> : null}
                 {this.state.status === 'success' ? <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a> : null}
                 <div className="filename" title={this.file.name}>{util.natcut(this.file.name, 10)}</div>
-            </div>
-        } else if (this.props.mode === 'nw') {
-            let downloadUrl, previewUrl;
-            if (this.state.status === 'success') {
+            </div>);
+    } else if (this.props.mode === 'nw') {
+      let downloadUrl, previewUrl;
+      if (this.state.status === 'success') {
 
-                const json = this.file.response.getJson();
-                try {
-                    let data = json.content ? (json.content.data ? json.content.data : json.content) : json.data;
-                    downloadUrl = data.downloadUrl || data.file || data.url;
-                    previewUrl = data.previewUrl || downloadUrl;
-                } catch (e) {
-                    console.error('data or content not found in response, maybe you should set response by yourself')
-                }
-            }
-            if (this.props.isOnlyImg) {
+        const json = this.file.response.getJson();
+        try {
+          let data = json.content ? (json.content.data ? json.content.data : json.content) : json.data;
+          downloadUrl = data.downloadUrl || data.file || data.url;
+          previewUrl = data.previewUrl || downloadUrl;
+        } catch (e) {
+          console.error('data or content not found in response, maybe you should set response by yourself');
+        }
+      }
+      if (this.props.isOnlyImg) {
 
-                if(!this.props.isVisual){
-                    return <div className={"kuma-upload-fileitem-img status-" + this.state.status}>
+        if (!this.props.isVisual) {
+          return (<div className={'kuma-upload-fileitem-img status-' + this.state.status}>
                             <div className="field-image-info">
                                 <a className="field-image-preview" href={previewUrl} target="_blank">
                                     <img src={this.state.url} />
@@ -120,20 +120,20 @@ class FileItem extends React.Component {
                                     <Icon name="shanchu" />
                                 </a>
                             </div>
-                        </div>;
-                }else {
-                    return <div className={"kuma-upload-fileitem-visual status-" + this.state.status}>
+                        </div>);
+        } else {
+          return (<div className={'kuma-upload-fileitem-visual status-' + this.state.status}>
                             <div className="field-image-info">
                             </div>
-                            {/*<div className="error-text">{i18n[locale]['upload_failed']}</div>*/}
+                            {/* <div className="error-text">{i18n[locale]['upload_failed']}</div>*/}
                             {this.state.status !== 'success' ? <Progress interval={interval} isVisual status={this.state.status} onCancel={this.onCancel.bind(this)} onPending={this.onPending.bind(this)} file={this.file} /> : null}
-                        </div>;
-                }
+                        </div>);
+        }
 
-            } else {
-                return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+      } else {
+        return (<div className={'kuma-upload-fileitem status-' + this.state.status}>
                     <label className="field-icon">
-                        {(this.state.status === 'error' || this.state.status === 'success' ) ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/> : null}
+                        {(this.state.status === 'error' || this.state.status === 'success') ? <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type} /> : null}
                     </label>
                     {this.state.status !== 'error' && this.state.status !== 'success' ? <Progress interval={interval} file={this.file} /> : null}
                     <div className="field-line"></div>
@@ -148,14 +148,14 @@ class FileItem extends React.Component {
                             {(this.state.status === 'success' || this.state.status === 'error') ? <a className="kuma-upload-action close-action" onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : <a className="kuma-upload-action terminal-action" onClick={this.onCancel.bind(this)}><Icon name="guanbi" /></a>}
                         </label>
                     </div>
-                </div>;
-            }
+                </div>);
+      }
 
-        } else {
-            const size = util.humanSizeFormat(this.file.size);
-            return <div className={"kuma-upload-fileitem status-" + this.state.status}>
+    } else {
+      const size = util.humanSizeFormat(this.file.size);
+      return (<div className={'kuma-upload-fileitem status-' + this.state.status}>
                 <label className="field-info">
-                    <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type}/>
+                    <i className="kuma-upload-fileicon" data-ext={this.file.ext} data-type={this.file.type} />
                     <span className="filename" title={this.file.name}>{util.natcut(this.file.name, 12)}</span>
                     <span className="filesize">{'/' + size}</span>
                 </label>
@@ -175,14 +175,14 @@ class FileItem extends React.Component {
                         <Icon name="shanchu" />
                     </a>
                 </label>
-                <Progress file={this.file} interval={interval} percentage={this.state.percentage} mode="bar"/>
-            </div>;
-        }
+                <Progress file={this.file} interval={interval} percentage={this.state.percentage} mode="bar" />
+            </div>);
     }
+  }
 }
 
 FileItem.defaultProps = {
-    mode: 'mini'
+  mode: 'mini',
 };
 
-module.exports = FileItem;
+export default FileItem;

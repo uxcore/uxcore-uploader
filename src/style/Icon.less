@@ -1,140 +1,143 @@
 @font-face {
-    font-family: 'fileicon';
-    src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot'); /* IE9*/
-    src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('https://at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */
-    url('https://at.alicdn.com/t/font_1442816980_3990257.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url('https://at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg'); /* iOS 4.1- */
+  font-family: 'fileicon';
+  src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot');
+  /* IE9*/
+  src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('https://at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */
+  url('https://at.alicdn.com/t/font_1442816980_3990257.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('https://at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg');
+  /* iOS 4.1- */
 }
 
 .@{uploader-prefix-class}-fileicon {
-    font-family: "fileicon" !important;
-    font-size: 18px;
-    font-style: normal;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
+  font-family: "fileicon" !important;
+  font-size: 18px;
+  font-style: normal;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 
+  &:before {
+    content: "\e700";
+    color: #666;
+  }
+  &:after {
+    display: inline-block;
+    content: attr(data-ext);
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: normal;
+    white-space: nowrap;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    color: white;
+    padding: 0 4px;
+    background: #666;
+    border-radius: 6px;
+  }
+
+  &[data-type^=video] {
     &:before {
-        content: "\e700";
-        color: #666;
+      content: "\e704";
     }
     &:after {
-        display: inline-block;
-        content: attr(data-ext);
-        position: absolute;
-        bottom: 3px;
-        left: 3px;
-        font-size: 12px;
-        text-transform: uppercase;
-        line-height: normal;
-        white-space: nowrap;
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-        -webkit-transform-origin: left bottom;
-        transform-origin: left bottom;
-        color: white;
-        padding: 0 4px;
-        background: #666;
-        border-radius: 6px;
+      display: none;
     }
+  }
 
-    &[data-type^=video] {
-        &:before {
-            content: "\e704";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-type^=audio] {
+    &:before {
+      content: "\e703";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-type^=audio] {
-        &:before {
-            content: "\e703";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-type^=text] {
+    &:before {
+      content: "\e702";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-type^=text] {
-        &:before {
-            content: "\e702";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-type^=image] {
+    &:before {
+      content: "\e701";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-type^=image] {
-        &:before {
-            content: "\e701";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext^=doc] {
+    &:before {
+      content: "\e705";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-ext^=doc] {
-        &:before {
-            content: "\e705";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext^=xls] {
+    &:before {
+      content: "\e706";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-ext^=xls] {
-        &:before {
-            content: "\e706";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext^=ppt] {
+    &:before {
+      content: "\e707";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-ext^=ppt] {
-        &:before {
-            content: "\e707";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext=pdf] {
+    &:before {
+      content: "\e708";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-ext=pdf] {
-        &:before {
-            content: "\e708";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext=zip],
+  &[data-ext=rar] {
+    &:before {
+      content: "\e709";
     }
+    &:after {
+      display: none;
+    }
+  }
 
-    &[data-ext=zip], &[data-ext=rar] {
-        &:before {
-            content: "\e709";
-        }
-        &:after {
-            display: none;
-        }
+  &[data-ext=js],
+  &[data-ext=css],
+  &[data-ext=java],
+  &[data-ext=php],
+  &[data-ext=html],
+  &[data-ext=xml],
+  &[data-ext=json] {
+    &:before {
+      content: "\e70c";
     }
-
-    &[data-ext=js],
-    &[data-ext=css],
-    &[data-ext=java],
-    &[data-ext=php],
-    &[data-ext=html],
-    &[data-ext=xml],
-    &[data-ext=json] {
-        &:before {
-            content: "\e70c";
-        }
-        &:after {
-            display: none;
-        }
+    &:after {
+      display: none;
     }
+  }
 }
