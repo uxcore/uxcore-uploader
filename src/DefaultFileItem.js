@@ -61,6 +61,7 @@ class DefaultFileItem extends React.Component {
                             <div className="field-image-name" title={file.name}>{file.name}</div>
                             <div className="field-status">
                                 {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+                                {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
                                 { response.canRemove !== false ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="shanchu" />
                                 </a> : undefined}
@@ -96,6 +97,7 @@ class DefaultFileItem extends React.Component {
                         </label>
                         <div className="field-status">
                             {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+                            {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
                             { !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
                         </div>
                     </div>
