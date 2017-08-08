@@ -5,6 +5,7 @@
 ## 3.0.0
 * `CHANGED` new style
 * `FIXED` true percentage
+* `NEW` add readOnly prop
 
 ## 2.1.5
 * `FIXED` Fix image uploader filename overflow styles
