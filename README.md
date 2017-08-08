@@ -48,7 +48,7 @@ see http://uxco.re/components/uploader/ for details.
 |accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
 |sizeLimit           | size          | 0       |            | 文件大小限制, 0表示不限制 |
 |preventDuplicate    | bool          | false   |            | 是否防止文件重复 |
-|readOnly            | bool          | false   |            | 是否以只读方式显示图片,有该属性时请fileList不能为空 |
+|readOnly            | bool          | false   | 3.0.0      | 是否以只读方式显示图片,有该属性时请fileList不能为空 |
 |actionOnQueueLimit  | string        | error   | 1.5.10     | 当队列超长时采取的策略：error, 抛错；cover, 覆盖 |
 
 
