@@ -15,7 +15,7 @@ const fileList = [
       "success":true,
       "data":{
         "url":"http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png",
-        canRemove: false, // 是否可以删除，可选
+        canRemove: true, // 是否可以删除，可选
         downloadUrl: "http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png", // 下载 URL，可选
       }
     }
@@ -29,12 +29,12 @@ const fileList = [
       "success":true,
       "data":{
         "url":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg",
-        canRemove: false, // 是否可以删除，可选
+        canRemove: true, // 是否可以删除，可选
         downloadUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg", // 下载 URL，可选
       }
     }
   }
-]
+];
 
 class Demo1 extends React.Component {
   constructor(props) {
@@ -199,8 +199,7 @@ ReactDOM.render((
 class Demo5 extends React.Component {
   constructor(props) {
     super(props);
-    this.fileList = [
-    ];
+    this.fileList = [];
     this.state = {
       fileList: this.fileList,
     };
