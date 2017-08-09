@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.0.1
+* `FIXED` add preview button
+* `FIXED` update readonly style
 
 ## 3.0.0
 * `CHANGED` new style
