@@ -54,8 +54,8 @@ class DefaultFileItem extends React.Component {
                             </div>
                             <div className="field-image-name" title={file.name}>{file.name}</div>
                             <div className="field-status">
-                                {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-                                {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                              {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                              {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                                 { response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="shanchu" />
                                 </a> : undefined}
@@ -87,8 +87,8 @@ class DefaultFileItem extends React.Component {
                             <span className="filename" title={file.name}>{file.name}</span>
                         </label>
                         <div className="field-status">
-                            {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-                            {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                          {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                          {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                             {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
                         </div>
                     </div>

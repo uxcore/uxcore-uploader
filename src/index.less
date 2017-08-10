@@ -485,7 +485,7 @@
             .field-info {
                 display: inline-block;
                 margin-left: 18px;
-                width: calc(~"100% - 138px");
+                width: calc(~"100% - 132px");
                 overflow: hidden;
                 text-overflow: ellipsis;
                 .kuma-loading {
@@ -525,6 +525,9 @@
                     margin: 0 5px;
                     display: none;
                     background: none;
+                    &.remove-action {
+                      margin-right: 0;
+                    }
                 }
 
             }
@@ -591,7 +594,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: calc(~"100% - 138px");
+            width: calc(~"100% - 140px");
             height: 50px;
             line-height: 50px;
             margin-left: 12px;
@@ -636,6 +639,7 @@
         .field-status {
             float: right;
             margin-top: 17px;
+            margin-right: 5px;
             .@{uploader-prefix-class}-action {
                 cursor: pointer;
                 width: 16px;
@@ -645,12 +649,13 @@
                 line-height: 16px;
                 border-radius: 2px;
                 background: none;
+                margin: 0 5px;
                 &:hover {
                     text-decoration: none;
                 }
             }
-            .download-action {
-                margin-right: 5px;
+            .preview-action {
+                margin-left: 0;
             }
             .close-action {
                 display: none;
@@ -803,6 +808,9 @@
               color: rgba(31, 56, 88, 0.2);
               line-height: normal;
               cursor: pointer;
+              &:hover {
+                text-decoration:none;
+              }
               .uxicon-biaodanlei-tongyongqingchu{
                 font-size: 17px;
               }

@@ -1,6 +1,10 @@
 # history
 
 ---
+
+## 3.0.3
+* `FIXED` Visual reduction
+
 ## 3.0.2
 * `FIXED` remove old style and fix new style
 
