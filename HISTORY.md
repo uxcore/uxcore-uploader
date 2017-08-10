@@ -2,6 +2,9 @@
 
 ---
 
+## 3.0.4
+* `FIXED` clear float
+
 ## 3.0.3
 * `FIXED` Visual reduction
 

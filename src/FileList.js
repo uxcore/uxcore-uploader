@@ -55,7 +55,7 @@ class FileList extends React.Component {
     render() {
 
         return <div className={"kuma-upload-filelist " + (this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode')) + (this.props.isVisual ? ' filelist-visual' : '')}>
-            <div className="inner">
+            <div className="inner fn-clear">
                 {this.renderDefaultFileItems()}
                 {this.renderFileItems()}
                 {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
