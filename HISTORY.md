@@ -2,6 +2,9 @@
 
 ---
 
+## 3.0.5
+* `FIXED` readonly style
+
 ## 3.0.4
 * `FIXED` clear float
 

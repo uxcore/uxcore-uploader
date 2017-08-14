@@ -16,7 +16,7 @@ class DefaultFileItem extends React.Component {
 
     render() {
         let me = this;
-        let {locale, file, mode, isOnlyImg, isVisual,readStyle,readOnly} = me.props;
+        let {locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly} = me.props;
         let response = util.simpleDeepCopy(file.response);
         if (file.type == 'upload') {
             response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
