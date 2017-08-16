@@ -14,6 +14,11 @@ class DefaultFileItem extends React.Component {
         me.props.onCancel(file);
     }
 
+    onShowFile(file,url,e){
+      e.preventDefault();
+      this.props.onShowFile(file,url);
+    }
+
     render() {
         let me = this;
         let {locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly} = me.props;
@@ -54,7 +59,7 @@ class DefaultFileItem extends React.Component {
                             </div>
                             <div className="field-image-name" title={file.name}>{file.name}</div>
                             <div className="field-status">
-                              {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                              {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this,file,previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
                               {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                                 { response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="shanchu" />
@@ -69,7 +74,7 @@ class DefaultFileItem extends React.Component {
                                 </a>
                             </div>
                             <div className="field-status">
-                                {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                                {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this,file,previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
                                 { response.canRemove !== false && !readOnly ? <a className="remove-action" onClick={this.onCancel.bind(this, file)}>
                                     <Icon name="biaodanlei-tongyongqingchu" />
                                 </a> : undefined}
@@ -87,7 +92,7 @@ class DefaultFileItem extends React.Component {
                             <span className="filename" title={file.name}>{file.name}</span>
                         </label>
                         <div className="field-status">
-                          {previewUrl ? <a className="kuma-upload-action preview-action" target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+                          {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this,file,previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
                           {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
                             {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
                         </div>

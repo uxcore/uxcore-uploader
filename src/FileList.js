@@ -4,6 +4,8 @@ const Picker = require('./Picker');
 const {Events, Status} = require('uploadcore');
 const React = require('react');
 const ReactDOM = require('react-dom');
+const Album = require('uxcore-album');
+const {Photo} = Album;
 
 class FileList extends React.Component {
     constructor(props) {
@@ -14,6 +16,35 @@ class FileList extends React.Component {
         this.state = {
             items: this.core.getStat().getFiles()
         };
+    }
+
+    onShowFile(file,url) {
+      if (file.fileType.match(/image/) && url) {
+        let fileList = this.props.fileList.map((item,index)=>{
+
+         if(item.response && item.response.data && item.response.data.url && item.fileType.match(/image/)){
+           return <Photo
+             src={item.response.data.url}
+             key={index}
+           />
+         }else{
+           return null;
+         }
+
+        });
+
+        let shows = fileList.filter((item)=>{
+          return !!item;
+        });
+
+        Album.show({
+          photos: shows,
+        });
+
+      }else{
+        window.open(url);
+      }
+
     }
 
     componentDidMount() {
@@ -33,10 +64,11 @@ class FileList extends React.Component {
     }
 
     renderDefaultFileItems() {
+        let me = this;
         let arr = [];
         this.props.fileList.forEach((file, index) => {
             if (file.type !== 'delete') {
-                arr.push(<DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} readOnly={this.props.readOnly} isVisual={this.props.isVisual} onCancel={this.props.removeFileFromList.bind(this)} />);
+                arr.push(<DefaultFileItem file={file} locale={this.props.locale} key={index} mode={this.props.mode} isOnlyImg={this.props.isOnlyImg} readOnly={this.props.readOnly} isVisual={this.props.isVisual} onShowFile={me.onShowFile.bind(this)} onCancel={this.props.removeFileFromList.bind(this)} />);
             }
         });
         return arr;
