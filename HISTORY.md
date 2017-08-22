@@ -2,6 +2,9 @@
 
 ---
 
+## 3.1.0
+* `CHANGED` add album show image if only image
+
 ## 3.0.5
 * `FIXED` readonly style
 
