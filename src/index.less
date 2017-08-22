@@ -450,6 +450,14 @@
         position: relative;
         &.read-style {
             border: none;
+            .field-line {
+                display: none;
+            }
+            .field-info-wrap {
+                .field-info {
+                    margin-left: 6px;
+                }
+            }
         }
         &.read-style:hover {
             background: rgba(31, 56, 88, 0.04);
@@ -485,7 +493,7 @@
             .field-info {
                 display: inline-block;
                 margin-left: 18px;
-                width: calc(~"100% - 138px");
+                width: calc(~"100% - 132px");
                 overflow: hidden;
                 text-overflow: ellipsis;
                 .kuma-loading {
@@ -525,6 +533,9 @@
                     margin: 0 5px;
                     display: none;
                     background: none;
+                    &.remove-action {
+                      margin-right: 0;
+                    }
                 }
 
             }
@@ -591,7 +602,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: calc(~"100% - 138px");
+            width: calc(~"100% - 140px");
             height: 50px;
             line-height: 50px;
             margin-left: 12px;
@@ -636,6 +647,7 @@
         .field-status {
             float: right;
             margin-top: 17px;
+            margin-right: 5px;
             .@{uploader-prefix-class}-action {
                 cursor: pointer;
                 width: 16px;
@@ -645,12 +657,13 @@
                 line-height: 16px;
                 border-radius: 2px;
                 background: none;
+                margin: 0 5px;
                 &:hover {
                     text-decoration: none;
                 }
             }
-            .download-action {
-                margin-right: 5px;
+            .preview-action {
+                margin-left: 0;
             }
             .close-action {
                 display: none;
@@ -784,12 +797,16 @@
             .preview-action {
                 margin-right: 6px;
                 position: absolute;
-                top: 37px;
+                top: 0;
                 left: 37px;
                 background: none;
                 border: none;
+                &:hover {
+                    text-decoration:none;
+                }
                 .uxicon-fangda{
                   font-size: 27px;
+                  color: white;
                 }
             }
             .remove-action{
@@ -799,6 +816,9 @@
               color: rgba(31, 56, 88, 0.2);
               line-height: normal;
               cursor: pointer;
+              &:hover {
+                text-decoration:none;
+              }
               .uxicon-biaodanlei-tongyongqingchu{
                 font-size: 17px;
               }

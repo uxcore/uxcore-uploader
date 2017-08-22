@@ -2,6 +2,22 @@
 
 ---
 
+## 3.0.5
+* `FIXED` readonly style
+
+## 3.0.4
+* `FIXED` clear float
+
+## 3.0.3
+* `FIXED` Visual reduction
+
+## 3.0.2
+* `FIXED` remove old style and fix new style
+
+## 3.0.1
+* `FIXED` add preview button
+* `FIXED` update readonly style
+
 ## 3.0.0
 * `CHANGED` new style
 * `FIXED` true percentage
