@@ -19,10 +19,9 @@ class FileList extends React.Component {
     }
 
     onShowFile(file,url) {
-      if (file.fileType.match(/image/) && url) {
+      if (this.props.isOnlyImg && url) {
         let fileList = this.props.fileList.map((item,index)=>{
-
-         if(item.response && item.response.data && item.response.data.url && item.fileType.match(/image/)){
+         if(item.response && item.response.data && item.response.data.url){
            return <Photo
              src={item.response.data.url}
              key={index}
