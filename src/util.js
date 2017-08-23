@@ -116,5 +116,17 @@ module.exports = {
             }
         }
         return false;
-    }
+    },
+
+    getUrl: (json) => {
+        try {
+            let data = json.content ? (json.content.data ? json.content.data : json.content) : json.data;
+            const downloadUrl = data.downloadUrl || data.file || data.url;
+            const previewUrl = data.previewUrl || downloadUrl;
+            return { downloadUrl, previewUrl };
+        } catch (e) {
+            console.error('data or content not found in response, maybe you should set response by yourself');
+            return null;
+        }
+    },
 }

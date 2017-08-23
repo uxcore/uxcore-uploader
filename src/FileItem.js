@@ -94,15 +94,10 @@ class FileItem extends React.Component {
         } else if (this.props.mode === 'nw') {
             let downloadUrl, previewUrl;
             if (this.state.status === 'success') {
-
                 const json = this.file.response.getJson();
-                try {
-                    let data = json.content ? (json.content.data ? json.content.data : json.content) : json.data;
-                    downloadUrl = data.downloadUrl || data.file || data.url;
-                    previewUrl = data.previewUrl || downloadUrl;
-                } catch (e) {
-                    console.error('data or content not found in response, maybe you should set response by yourself')
-                }
+                const url = util.getUrl(json);
+                downloadUrl = url.downloadUrl;
+                previewUrl = url.previewUrl;
             }
             if (this.props.isOnlyImg) {
 

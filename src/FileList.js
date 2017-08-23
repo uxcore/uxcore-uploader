@@ -1,6 +1,7 @@
 const FileItem = require('./FileItem');
 const DefaultFileItem = require('./DefaultFileItem');
 const Picker = require('./Picker');
+const util = require('./util');
 const {Events, Status} = require('uploadcore');
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -21,9 +22,10 @@ class FileList extends React.Component {
     onShowFile(file,url) {
       if (this.props.isOnlyImg && url) {
         let fileList = this.props.fileList.map((item,index)=>{
-         if(item.response && item.response.data && item.response.data.url){
+         if(item.response){
+           const { previewUrl } = util.getUrl(item.response);
            return <Photo
-             src={item.response.data.url}
+             src={previewUrl}
              key={index}
            />
          }else{

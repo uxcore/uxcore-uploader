@@ -2,6 +2,9 @@
 
 ---
 
+## 3.1.2
+* `FIXED` compatible with access to the previewUrl and downloadUrl
+
 ## 3.1.1
 * `FIXED` default image cant preview
 
