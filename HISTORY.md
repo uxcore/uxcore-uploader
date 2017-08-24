@@ -2,6 +2,9 @@
 
 ---
 
+## 3.1.3
+* `FIXED` more robust getUrl
+
 ## 3.1.2
 * `FIXED` compatible with access to the previewUrl and downloadUrl
 
