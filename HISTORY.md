@@ -2,6 +2,9 @@
 
 ---
 
+## 3.1.4
+* `FIXED` shown photo index is always 0
+
 ## 3.1.3
 * `FIXED` more robust getUrl
 
