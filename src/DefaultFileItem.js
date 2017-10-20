@@ -1,9 +1,9 @@
-const React = require('react');
-const util = require('./util');
-const i18n = require('./locale');
-const Icon = require('uxcore-icon');
+import React from 'react';
+import util from './util';
+import i18n from './locale';
+import Icon from 'uxcore-icon';
 
-class DefaultFileItem extends React.Component {
+export default class DefaultFileItem extends React.Component {
 
   onCancel(file) {
     const me = this;
@@ -110,5 +110,3 @@ class DefaultFileItem extends React.Component {
     }
   }
 }
-
-module.exports = DefaultFileItem;

@@ -1,8 +1,8 @@
-const { UploadCore } = require('uploadcore');
+import { UploadCore } from 'uploadcore';
 const hijackEvents = ['fileuploadsuccess', 'filecancel'];
 const CORE_INSTANCE = {};
 UploadCore.setSWF('https://alinw.alicdn.com/alinw/uxuploader/2.0.1/flashpicker.swf');
-module.exports = {
+export default {
   humanSizeFormat(size) {
     size = parseFloat(size);
     const prefixesSI = ['', 'k', 'm', 'g', 't', 'p', 'e', 'z', 'y'];

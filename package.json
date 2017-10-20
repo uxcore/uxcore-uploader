@@ -1,57 +1,60 @@
 {
- "name": "uxcore-uploader",
- "version": "3.1.4",
- "description": "uxcore-uploader component for react",
- "main": "build/index.js",
- "scripts": {
-  "start": "uxcore-tools run start",
-  "server": "uxcore-tools run server",
-  "lint": "uxcore-tools run lint",
-  "build": "uxcore-tools run build",
-  "test": "uxcore-tools run test",
-  "coverage": "uxcore-tools run coverage",
-  "pub": "uxcore-tools run pub",
-  "dep": "uxcore-tools run dep",
-  "tnpm-dep": "uxcore-tools run tnpm-dep",
-  "chrome": "uxcore-tools run chrome",
-  "browsers": "uxcore-tools run browsers",
-  "saucelabs": "uxcore-tools run saucelabs",
-  "update": "uxcore-tools run update",
-  "tnpm-update": "uxcore-tools run tnpm-update"
- },
- "repository": {
-  "type": "git",
-  "url": "git@github.com:uxcore/uxcore-uploader.git"
- },
- "bugs": {
-  "url": "http://github.com/uxcore/uxcore-uploader/issues"
- },
- "keywords": [
-  "react",
-  "react-component",
-  "react-uxcore-uploader",
-  "uxcore-uploader"
- ],
- "devDependencies": {
-  "console-polyfill": "^0.2.2",
-  "es5-shim": "^4.5.8",
-  "expect.js": "~0.3.1",
-  "kuma-base": "1.x",
-  "react": "0.14.x",
-  "react-addons-test-utils": "0.14.x",
-  "react-dom": "0.14.x",
-  "uxcore-kuma": "*",
-  "uxcore-tools": "0.2.x"
- },
- "dependencies": {
-  "object-assign": "^4.0.0",
-  "uploadcore": "~2.3.0",
-  "uxcore-button": "^0.4.11",
-  "uxcore-icon": "^0.1.1",
-  "uxcore-progress": "^1.1.0",
-  "uxcore-album": "latest"
- },
- "author": "onbing",
- "contributors": [],
- "license": "MIT"
+  "name": "uxcore-uploader",
+  "version": "3.1.4",
+  "description": "uxcore-uploader component for react",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "uxcore-tools run start",
+    "server": "uxcore-tools run server",
+    "lint": "uxcore-tools run lint",
+    "build": "uxcore-tools run build",
+    "test": "uxcore-tools run test",
+    "coverage": "uxcore-tools run coverage",
+    "pub": "uxcore-tools run pub",
+    "dep": "uxcore-tools run dep",
+    "tnpm-dep": "uxcore-tools run tnpm-dep",
+    "chrome": "uxcore-tools run chrome",
+    "browsers": "uxcore-tools run browsers",
+    "saucelabs": "uxcore-tools run saucelabs",
+    "update": "uxcore-tools run update",
+    "tnpm-update": "uxcore-tools run tnpm-update"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:uxcore/uxcore-uploader.git"
+  },
+  "bugs": {
+    "url": "http://github.com/uxcore/uxcore-uploader/issues"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "react-uxcore-uploader",
+    "uxcore-uploader"
+  ],
+  "devDependencies": {
+    "console-polyfill": "^0.2.2",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.0",
+    "es5-shim": "^4.5.8",
+    "expect.js": "~0.3.1",
+    "kuma-base": "1.x",
+    "react": "15.x",
+    "react-dom": "15.x",
+    "react-test-renderer": "15.x",
+    "uxcore-kuma": "*",
+    "uxcore-tools": "0.2.x"
+  },
+  "dependencies": {
+    "object-assign": "^4.0.0",
+    "prop-types": "15.x",
+    "uploadcore": "~2.3.0",
+    "uxcore-album": "latest",
+    "uxcore-button": "^0.4.11",
+    "uxcore-icon": "^0.1.1",
+    "uxcore-progress": "^1.1.0"
+  },
+  "author": "onbing",
+  "contributors": [],
+  "license": "MIT"
 }

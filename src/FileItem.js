@@ -1,14 +1,15 @@
-const Preview = require('./Preview');
-const Progress = require('./Progress');
-const util = require('./util');
-const {Events} = require('uploadcore');
-const React = require('react');
-const ReactDOM = require('react-dom');
-const i18n = require('./locale');
-const Icon = require('uxcore-icon');
+import  Preview from './Preview';
+import  Progress from './Progress';
+import  util from './util';
+import  {Events} from 'uploadcore';
+import  React from 'react';
+import  i18n from './locale';
+import  Icon from 'uxcore-icon';
 
-class FileItem extends React.Component {
-
+export default class FileItem extends React.Component {
+    static defaultProps = {
+        mode: 'mini'
+    };
     constructor(props) {
         super(props);
 
@@ -176,8 +177,5 @@ class FileItem extends React.Component {
     }
 }
 
-FileItem.defaultProps = {
-    mode: 'mini'
-};
 
-module.exports = FileItem;
+

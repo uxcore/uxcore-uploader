@@ -1,7 +1,6 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
 
-class Preview extends React.Component {
+export default class Preview extends React.Component {
     constructor(props) {
         super(props);
 
@@ -19,5 +18,3 @@ class Preview extends React.Component {
             : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
     }
 }
-
-module.exports = Preview;

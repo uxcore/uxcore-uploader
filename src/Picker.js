@@ -1,8 +1,8 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Icon = require('uxcore-icon');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Icon from 'uxcore-icon';
 
-class Picker extends React.Component {
+export default class Picker extends React.Component {
   componentDidMount() {
     this.area = this.props.core.getPickerCollector().addArea(ReactDOM.findDOMNode(this));
   }
@@ -23,4 +23,3 @@ class Picker extends React.Component {
   }
 }
 
-module.exports = Picker;
