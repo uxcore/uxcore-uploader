@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UxcoreProgress from 'uxcore-progress';
-const { Line } = UxcoreProgress;
+import { Line } from 'uxcore-progress';
 import Icon from 'uxcore-icon';
-import {Events} from 'uploadcore';
+import { Events } from 'uploadcore';
+
 
 export default class Progress extends React.Component {
     static propTypes = {

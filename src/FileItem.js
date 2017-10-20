@@ -1,7 +1,7 @@
 import  Preview from './Preview';
 import  Progress from './Progress';
 import  util from './util';
-import  {Events} from 'uploadcore';
+import  { Events } from 'uploadcore';
 import  React from 'react';
 import  i18n from './locale';
 import  Icon from 'uxcore-icon';
