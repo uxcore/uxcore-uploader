@@ -26,4 +26,6 @@ spm_modules
 .happypack
 dist
 build
+coverage
+package-lock.json
 assets/**/*.css

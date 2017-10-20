@@ -1,11 +1,12 @@
-const React = require('react');
-const { UploadCore, Events, Status } = require('uploadcore/dist/uploadcore');
-const Button = require('uxcore-button');
-const util = require('./util');
-const FileList = require('./FileList');
-const Picker = require('./Picker');
-const Dropzoom = require('./Dropzoom');
-const i18n = require('./locale');
+import React from 'react';
+import PropTypes from "prop-types";
+import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
+import Button from 'uxcore-button';
+import util from './util';
+import FileList from './FileList';
+import Picker from './Picker';
+import Dropzoom from './Dropzoom';
+import i18n from './locale';
 
 const RESETOPTIONS = [
   'name', 'url', 'params', 'action', 'data', 'headers',
@@ -16,6 +17,43 @@ const RESETOPTIONS = [
 
 
 class Uploader extends React.Component {
+
+    static Dropzoom = Dropzoom;
+
+    static Events = Events;
+    static Status = Status;
+    static setSWF = function (swf) {
+        UploadCore.setSWF(swf);
+    };
+
+    static displayName = 'Uploader';
+
+    static defaultProps = {
+        locale: 'zh-cn',
+        autoPending: true,
+        fileList: [],
+        onChange: () => { },
+        onError: () => { },
+        isVisual: false,
+        isOnlyImg: false,
+    };
+
+    static propTypes = {
+        locale: PropTypes.string,
+        fileList: PropTypes.array,
+        onChange: PropTypes.func,
+        onError: PropTypes.func,
+        tips: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+            PropTypes.element,
+        ]),
+        className: PropTypes.string,
+        isVisual: PropTypes.bool,
+        isOnlyImg: PropTypes.bool,
+        children: PropTypes.any,
+    };
+
   constructor(props) {
     super(props);
     this.core = util.getCoreInstance(props);
@@ -262,41 +300,4 @@ class Uploader extends React.Component {
   }
 }
 
-Uploader.Dropzoom = Dropzoom;
-
-Uploader.Events = Events;
-Uploader.Status = Status;
-Uploader.setSWF = function (swf) {
-  UploadCore.setSWF(swf);
-};
-
-Uploader.displayName = 'Uploader';
-
-Uploader.defaultProps = {
-  locale: 'zh-cn',
-  autoPending: true,
-  fileList: [],
-  onChange: () => { },
-  onError: () => { },
-  isVisual: false,
-  isOnlyImg: false,
-};
-
-Uploader.propTypes = {
-  locale: React.PropTypes.string,
-  fileList: React.PropTypes.array,
-  onChange: React.PropTypes.func,
-  onError: React.PropTypes.func,
-  tips: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-    React.PropTypes.element,
-  ]),
-  className: React.PropTypes.string,
-  isVisual: React.PropTypes.bool,
-  isOnlyImg: React.PropTypes.bool,
-  children: React.PropTypes.any,
-};
-
-
-module.exports = Uploader;
+export default Uploader;

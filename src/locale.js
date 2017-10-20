@@ -44,4 +44,4 @@ const locale = {
 locale.en = locale['en-us'];
 locale.pl = locale['pl-pl'];
 
-module.exports = locale;
+export default locale;

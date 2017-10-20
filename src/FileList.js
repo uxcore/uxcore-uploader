@@ -1,14 +1,28 @@
-const FileItem = require('./FileItem');
-const DefaultFileItem = require('./DefaultFileItem');
-const Picker = require('./Picker');
-const util = require('./util');
-const { Events, Status } = require('uploadcore');
-const React = require('react');
-const Album = require('uxcore-album');
+import FileItem from './FileItem';
+import DefaultFileItem from './DefaultFileItem';
+import Picker from './Picker';
+import util from './util';
+import { Events, Status } from 'uploadcore';
+import React from 'react';
+import PropTypes from "prop-types";
+import Album from 'uxcore-album';
 
 const { Photo } = Album;
 
-class FileList extends React.Component {
+export default class FileList extends React.Component {
+    static defaultProps = {
+        mode: 'mini',
+    };
+
+    static propTypes = {
+        locale: PropTypes.string,
+        mode: PropTypes.string,
+        isVisual: PropTypes.bool,
+        isOnlyImg: PropTypes.bool,
+        readOnly: PropTypes.bool,
+        fileList: PropTypes.array,
+        core: PropTypes.any,
+    };
   constructor(props) {
     super(props);
 
@@ -115,18 +129,3 @@ class FileList extends React.Component {
   }
 }
 
-FileList.defaultProps = {
-  mode: 'mini',
-};
-
-FileList.propTypes = {
-  locale: React.PropTypes.string,
-  mode: React.PropTypes.string,
-  isVisual: React.PropTypes.bool,
-  isOnlyImg: React.PropTypes.bool,
-  readOnly: React.PropTypes.bool,
-  fileList: React.PropTypes.array,
-  core: React.PropTypes.any,
-};
-
-module.exports = FileList;

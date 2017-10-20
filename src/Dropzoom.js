@@ -1,11 +1,13 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const {Events} = require('uploadcore');
-const util = require("./util");
-const FileList = require("./FileList");
-const Picker = require("./Picker");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Events} from 'uploadcore';
+import util from "./util";
+import FileList from "./FileList";
+import Picker from "./Picker";
 
-class Dropzoom extends React.Component {
+export default class Dropzoom extends React.Component {
+    static displayName = "Dropzoom";
+
     constructor(props) {
         super(props);
 
@@ -79,6 +81,3 @@ class Dropzoom extends React.Component {
         </div>;
     }
 }
-
-Dropzoom.displayName = "Dropzoom";
-module.exports = Dropzoom;

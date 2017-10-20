@@ -1,12 +1,19 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const util = require('./util');
-const UxcoreProgress = require('uxcore-progress');
-const { Line } = UxcoreProgress;
-const Icon = require('uxcore-icon');
-const {Events} = require('uploadcore');
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Line } from 'uxcore-progress';
+import Icon from 'uxcore-icon';
+import { Events } from 'uploadcore';
 
-class Progress extends React.Component {
+
+export default class Progress extends React.Component {
+    static propTypes = {
+        percentage: PropTypes.number,
+        interval: PropTypes.number
+    };
+    static defaultProps = {
+        percentage: 0,
+        interval: 100
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -88,13 +95,4 @@ class Progress extends React.Component {
     }
 }
 
-Progress.propTypes = {
-    percentage: React.PropTypes.number,
-    interval: React.PropTypes.number
-};
-Progress.defaultProps = {
-    percentage: 0,
-    interval: 100
-};
 
-module.exports = Progress;
