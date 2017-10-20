@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.1.5
+* `CHANGED` update react to ver 15.x
+* `CHANGED` eslint
 
 ## 3.1.4
 * `FIXED` shown photo index is always 0
