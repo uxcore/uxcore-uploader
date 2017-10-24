@@ -19,6 +19,7 @@ export default class FileList extends React.Component {
         mode: PropTypes.string,
         isVisual: PropTypes.bool,
         isOnlyImg: PropTypes.bool,
+        showErrFile:PropTypes.bool,
         readOnly: PropTypes.bool,
         fileList: PropTypes.array,
         core: PropTypes.any,
@@ -34,9 +35,16 @@ export default class FileList extends React.Component {
   }
 
   componentDidMount() {
+    const flag = this.props.showErrFile;
     const statchange = (stat) => {
+      let files = stat.getFiles();
+      if(!flag){
+        files = files.filter((file)=>{
+              return file.getStatus() != 64;
+        });
+      }
       this.setState({
-        items: stat.getFiles(),
+        items: files,
       });
     };
     this.core.on(Events.QUEUE_STAT_CHANGE, statchange);

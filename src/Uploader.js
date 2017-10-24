@@ -36,6 +36,7 @@ class Uploader extends React.Component {
         onError: () => { },
         isVisual: false,
         isOnlyImg: false,
+        showErrFile: true,
     };
 
     static propTypes = {
@@ -51,6 +52,7 @@ class Uploader extends React.Component {
         className: PropTypes.string,
         isVisual: PropTypes.bool,
         isOnlyImg: PropTypes.bool,
+        showErrFile: PropTypes.bool,
         children: PropTypes.any,
     };
 
@@ -284,6 +286,7 @@ class Uploader extends React.Component {
           isVisual={this.props.isVisual}
           isOnlyImg={this.props.isOnlyImg}
           readOnly={this.props.readOnly}
+          showErrFile={this.props.showErrFile}
           mode="nw"
           fileList={me.state.fileList}
           removeFileFromList={me.handleRemoveFile.bind(me)}
