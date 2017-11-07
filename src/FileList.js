@@ -4,27 +4,27 @@ import Picker from './Picker';
 import util from './util';
 import { Events, Status } from 'uploadcore';
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import Album from 'uxcore-album';
 
 const { Photo } = Album;
 
 export default class FileList extends React.Component {
-    static defaultProps = {
-        mode: 'mini',
-        showErrFile: true,
-    };
+  static defaultProps = {
+    mode: 'mini',
+    showErrFile: true,
+  };
 
-    static propTypes = {
-        locale: PropTypes.string,
-        mode: PropTypes.string,
-        isVisual: PropTypes.bool,
-        isOnlyImg: PropTypes.bool,
-        showErrFile:PropTypes.bool,
-        readOnly: PropTypes.bool,
-        fileList: PropTypes.array,
-        core: PropTypes.any,
-    };
+  static propTypes = {
+    locale: PropTypes.string,
+    mode: PropTypes.string,
+    isVisual: PropTypes.bool,
+    isOnlyImg: PropTypes.bool,
+    showErrFile: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    fileList: PropTypes.array,
+    core: PropTypes.any,
+  };
   constructor(props) {
     super(props);
 
@@ -39,10 +39,8 @@ export default class FileList extends React.Component {
     const flag = this.props.showErrFile;
     const statchange = (stat) => {
       let files = stat.getFiles();
-      if(!flag){
-        files = files.filter((file)=>{
-              return file.getStatus() != 64;
-        });
+      if (!flag) {
+        files = files.filter(file => file.getStatus() != 64);
       }
       this.setState({
         items: files,

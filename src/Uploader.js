@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
 import Button from 'uxcore-button';
 import util from './util';
@@ -18,43 +18,43 @@ const RESETOPTIONS = [
 
 class Uploader extends React.Component {
 
-    static Dropzoom = Dropzoom;
+  static Dropzoom = Dropzoom;
 
-    static Events = Events;
-    static Status = Status;
-    static setSWF = function (swf) {
-        UploadCore.setSWF(swf);
-    };
+  static Events = Events;
+  static Status = Status;
+  static setSWF = function (swf) {
+    UploadCore.setSWF(swf);
+  };
 
-    static displayName = 'Uploader';
+  static displayName = 'Uploader';
 
-    static defaultProps = {
-        locale: 'zh-cn',
-        autoPending: true,
-        fileList: [],
-        onChange: () => { },
-        onError: () => { },
-        isVisual: false,
-        isOnlyImg: false,
-        showErrFile: true,
-    };
+  static defaultProps = {
+    locale: 'zh-cn',
+    autoPending: true,
+    fileList: [],
+    onChange: () => { },
+    onError: () => { },
+    isVisual: false,
+    isOnlyImg: false,
+    showErrFile: true,
+  };
 
-    static propTypes = {
-        locale: PropTypes.string,
-        fileList: PropTypes.array,
-        onChange: PropTypes.func,
-        onError: PropTypes.func,
-        tips: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.element,
-        ]),
-        className: PropTypes.string,
-        isVisual: PropTypes.bool,
-        isOnlyImg: PropTypes.bool,
-        showErrFile: PropTypes.bool,
-        children: PropTypes.any,
-    };
+  static propTypes = {
+    locale: PropTypes.string,
+    fileList: PropTypes.array,
+    onChange: PropTypes.func,
+    onError: PropTypes.func,
+    tips: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.element,
+    ]),
+    className: PropTypes.string,
+    isVisual: PropTypes.bool,
+    isOnlyImg: PropTypes.bool,
+    showErrFile: PropTypes.bool,
+    children: PropTypes.any,
+  };
 
   constructor(props) {
     super(props);
@@ -122,9 +122,7 @@ class Uploader extends React.Component {
       if (queueCapcity === undefined || queueCapcity === null || queueCapcity <= 0 || actionOnQueueLimit === 'cover') {
         return false;
       }
-      return me.state.fileList.filter((file) => {
-        return file.type !== 'delete';
-      }).length + me.core.getTotal() >= queueCapcity;
+      return me.state.fileList.filter(file => file.type !== 'delete').length + me.core.getTotal() >= queueCapcity;
     });
     me.core.addFilter((file) => {
       if (preventDuplicate) {
@@ -206,9 +204,7 @@ class Uploader extends React.Component {
 
   processDefaultList(fileList) {
     const me = this;
-    return me.addUniqueIdForList(fileList).map((file) => {
-      return me.processDefaultListFile(file);
-    });
+    return me.addUniqueIdForList(fileList).map(file => me.processDefaultListFile(file));
   }
 
   /**
@@ -240,7 +236,7 @@ class Uploader extends React.Component {
 
   getUploadingFiles() {
     return this.core.getFiles().filter(file =>
-      ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1)
+      ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1),
     );
   }
 

@@ -1,20 +1,23 @@
 import React from 'react';
 
 export default class Preview extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {};
+    this.state = {};
 
-        const file = props.file;
-        if (file.isImage()) {
-            file.getAsDataUrl(1000).done((url) => this.setState({url}));
-        }
+    const file = props.file;
+    if (file.isImage()) {
+      file.getAsDataUrl(1000).done(url => this.setState({ url }));
     }
+  }
 
-    render() {
-         return <div className="previewer">{this.state.url
-            ? <img src={this.state.url} />
-            : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type}/>}</div>;
-    }
+  render() {
+    return (
+      <div className="previewer">{this.state.url
+        ? <img src={this.state.url} />
+        : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type} />}
+      </div>
+    );
+  }
 }

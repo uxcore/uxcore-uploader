@@ -10,7 +10,7 @@ export default {
       index = size ? Math.floor(Math.log(size) / Math.log(base)) : 0;
     index = Math.min(index, prefixesSI.length - 1);
     const powedPrecision = Math.pow(10, index < 2 ? 0 : (index > 2 ? 2 : 1));
-    size = size / Math.pow(base, index);
+    size /= Math.pow(base, index);
     size = Math.round(size * powedPrecision) / powedPrecision;
     if (size > 500) {
       size = Math.round(size / 100) / 10;

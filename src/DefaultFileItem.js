@@ -61,52 +61,49 @@ export default class DefaultFileItem extends React.Component {
               </a> : undefined}
             </div>
           </div>);
-        } else {
-          return (<div className={readOnlyStyle}>
-            <div className="field-image-info">
-              <a className="field-image-preview" href={previewUrl} target="_blank">
-                <img src={previewUrl} />
-              </a>
-            </div>
-            <div className="field-status">
-              {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-              {response.canRemove !== false && !readOnly ? <a className="remove-action" onClick={this.onCancel.bind(this, file)}>
-                <Icon name="biaodanlei-tongyongqingchu" />
-              </a> : undefined}
-            </div>
-          </div>);
         }
-      } else {
         return (<div className={readOnlyStyle}>
-          <label className="field-icon">
-            <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
-          </label>
-          <div className="field-line" />
-          <div className="field-info-wrap">
-            <label className="field-info">
-              <span className="filename" title={file.name}>{file.name}</span>
-            </label>
-            <div className="field-status">
-              {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-              {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-              {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
-            </div>
+          <div className="field-image-info">
+            <a className="field-image-preview" href={previewUrl} target="_blank">
+              <img src={previewUrl} />
+            </a>
+          </div>
+          <div className="field-status">
+            {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+            {response.canRemove !== false && !readOnly ? <a className="remove-action" onClick={this.onCancel.bind(this, file)}>
+              <Icon name="biaodanlei-tongyongqingchu" />
+            </a> : undefined}
           </div>
         </div>);
       }
-    } else {
-      return (<div className={'kuma-upload-fileitem'}>
-        <label className="field-info">
+      return (<div className={readOnlyStyle}>
+        <label className="field-icon">
           <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
-          <span className="filename" title={file.name}>{util.natcut(response.name, 12)}</span>
         </label>
-        <label className="field-status">
-          <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>
-          {!readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)} title={i18n[locale].remove}>
-            <Icon name="shanchu" />
-          </a> : null}
-        </label>
+        <div className="field-line" />
+        <div className="field-info-wrap">
+          <label className="field-info">
+            <span className="filename" title={file.name}>{file.name}</span>
+          </label>
+          <div className="field-status">
+            {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+            {downloadUrl && !readOnly ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+            {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
+          </div>
+        </div>
       </div>);
     }
+    return (<div className={'kuma-upload-fileitem'}>
+      <label className="field-info">
+        <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
+        <span className="filename" title={file.name}>{util.natcut(response.name, 12)}</span>
+      </label>
+      <label className="field-status">
+        <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>
+        {!readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)} title={i18n[locale].remove}>
+          <Icon name="shanchu" />
+        </a> : null}
+      </label>
+    </div>);
   }
 }

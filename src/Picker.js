@@ -17,9 +17,8 @@ export default class Picker extends React.Component {
         {this.props.children}
         <Icon name="zengjia1" />
       </div>);
-    } else {
-      return <div className="kuma-upload-picker">{this.props.children}</div>;
     }
+    return <div className="kuma-upload-picker">{this.props.children}</div>;
   }
 }
 
