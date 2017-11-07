@@ -49,6 +49,10 @@ class Demo1 extends React.Component {
       fileList,
     });
   }
+  beforeUpload(...args){
+      console.log('beforeUpload',args);
+      throw new Error('this error is made for test');
+  }
   render() {
     const me = this;
     window.uploader = me;
@@ -59,6 +63,8 @@ class Demo1 extends React.Component {
       multiple={false}
       isOnlyImg={false}
       isVisual={false}
+      showErrFile={false}
+      onfileuploadpreparing={this.beforeUpload}
       progressInterval={100}
       queueCapcity={2}
       actionOnQueueLimit="cover"
