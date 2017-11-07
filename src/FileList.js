@@ -12,6 +12,7 @@ const { Photo } = Album;
 export default class FileList extends React.Component {
     static defaultProps = {
         mode: 'mini',
+        showErrFile: true,
     };
 
     static propTypes = {
