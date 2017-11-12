@@ -1,6 +1,10 @@
 # history
 
 ---
+
+## 3.1.6
+* `FIXED` issue #58 #61
+
 ## 3.1.5
 * `CHANGED` update react to ver 15.x
 * `CHANGED` eslint
