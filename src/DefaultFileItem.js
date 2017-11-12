@@ -22,8 +22,8 @@ export default class DefaultFileItem extends React.Component {
     if (file.type === 'upload') {
       response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
     }
-    const downloadUrl = response.downloadUrl || response.file || response.url;
-    const previewUrl = response.previewUrl || downloadUrl;
+    const downloadUrl = response.downloadUrl === undefined ? (response.file || response.url) : response.downloadUrl;
+    const previewUrl = response.previewUrl === undefined ? downloadUrl : response.previewUrl;
     let readOnlyStyle;
     if (isOnlyImg) {
       const type = isVisual ? 'kuma-upload-fileitem-visual' : 'kuma-upload-fileitem-img';

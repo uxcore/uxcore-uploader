@@ -63,7 +63,6 @@ export default class Progress extends React.Component {
   }
 
   render() {
-    console.log(this.props.percentage);
     if (this.props.isVisual) {
       if (this.props.status === 'error') {
         return (

@@ -63,7 +63,7 @@ class Demo1 extends React.Component {
       multiple={false}
       isOnlyImg={false}
       isVisual={false}
-      showErrFile={false}
+      // showErrFile={false}
       onfileuploadpreparing={this.beforeUpload}
       progressInterval={100}
       queueCapcity={2}
