@@ -261,7 +261,7 @@ class Uploader extends React.Component {
     const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
     if (!children || children.length < 1) {
       if (isVisual) {
-        children = <button className="kuma-upload-button">{i18n[locale].upload_files}</button>;
+        children = <button className="kuma-upload-button">{i18n[`${locale}-img`].upload_files}</button>;
       } else {
         children = <Button type="secondary" size="small">{i18n[locale].upload_files}</Button>;
       }
