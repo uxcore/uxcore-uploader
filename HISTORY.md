@@ -2,6 +2,9 @@
 
 ---
 
+## 3.1.7
+* `FIXED` merge pull request #63
+
 ## 3.1.6
 * `FIXED` issue #58 #61
 
