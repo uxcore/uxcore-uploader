@@ -2,6 +2,10 @@
 
 ---
 
+## 3.1.8
+
+* `CHANGED` replace preview icon
+
 ## 3.1.7
 * `FIXED` merge pull request #63
 
