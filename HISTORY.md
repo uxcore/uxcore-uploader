@@ -2,6 +2,10 @@
 
 ---
 
+## 3.1.9
+
+* `CHANGED` fix some wrong style
+
 ## 3.1.8
 
 * `CHANGED` replace preview icon
