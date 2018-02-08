@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import Button from 'uxcore-button';
 import Uploader from '../src/';
 // attachment file tips
 const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
@@ -300,7 +301,8 @@ class Demo8 extends React.Component {
     });
   }
   render() {
-    return (<Uploader autoPending={false}
+    return (<div className="custom-button-group">
+      <Uploader autoPending={false}
       fileList={this.state.fileList}
       onChange={this.handleChange.bind(this)}
       name="file"
@@ -308,7 +310,35 @@ class Demo8 extends React.Component {
       url="http://eternalsky.me:8122/file/upload"
     >
       <button>自定义上传按钮</button>
-    </Uploader>);
+    </Uploader>
+    <Uploader autoPending={false}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      name="file"
+      isVisual={false}
+      url="http://eternalsky.me:8122/file/upload"
+    >
+      <Button type="primary">自定义primary</Button>
+    </Uploader>
+    <Uploader autoPending={false}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      name="file"
+      isVisual={false}
+      url="http://eternalsky.me:8122/file/upload"
+    >
+      <Button type="secondary">自定义secondary</Button>
+    </Uploader>
+    <Uploader autoPending={false}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      name="file"
+      isVisual={false}
+      url="http://eternalsky.me:8122/file/upload"
+    >
+      <Button type="outline">自定义outline</Button>
+    </Uploader>
+    </div>);
   }
 }
 
