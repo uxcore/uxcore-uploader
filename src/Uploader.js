@@ -68,7 +68,6 @@ class Uploader extends React.Component {
 
   componentWillMount() {
     const me = this;
-    const { onfilecancel, onCancel, preventDuplicate, queueCapcity, actionOnQueueLimit } = me.props;
     me.statchange = (stat) => {
       const total = stat.getTotal();
       if (total !== me.state.total) {
@@ -83,12 +82,12 @@ class Uploader extends React.Component {
     me.fileuploadsuccess = (file) => {
       let newList = util.simpleDeepCopy(me.state.fileList);
       newList.push(me.processFile(file));
-      if (actionOnQueueLimit === 'cover') {
+      if (me.props.actionOnQueueLimit === 'cover') {
         // the last ones will exist
         let count = 0;
         const coveredList = [];
         for (let i = newList.length - 1; i >= 0; i--) {
-          if (count === queueCapcity) {
+          if (count === me.props.queueCapcity) {
             break;
           }
           const item = newList[i];
@@ -105,27 +104,31 @@ class Uploader extends React.Component {
     };
 
     me.filecancel = (file) => {
+      const onCancel = me.props.onCancel;
+      const onfilecancel = me.props.onfilecancel;
       const newList = util.simpleDeepCopy(me.state.fileList);
       newList.push({
         type: 'delete',
         response: file.response ? file.response.getJson() : null,
       });
       me.handleChange(newList);
-      onfilecancel && onfilecancel(file);
-      onCancel && onCancel(me.processFile(file));
+      if (onfilecancel) onfilecancel(file);
+      if (onCancel) onCancel(me.processFile(file));
     };
     me.core.on(Events.QUEUE_STAT_CHANGE, me.statchange);
     me.core.on(Events.FILE_UPLOAD_START, me.fileuploadstart);
     me.core.on(Events.FILE_UPLOAD_SUCCESS, me.fileuploadsuccess);
     me.core.on(Events.FILE_CANCEL, me.filecancel);
     me.core.addConstraint(() => {
+      const queueCapcity = me.props.queueCapcity;
+      const actionOnQueueLimit = me.props.actionOnQueueLimit;
       if (queueCapcity === undefined || queueCapcity === null || queueCapcity <= 0 || actionOnQueueLimit === 'cover') {
         return false;
       }
       return me.state.fileList.filter(file => file.type !== 'delete').length + me.core.getTotal() >= queueCapcity;
     });
     me.core.addFilter((file) => {
-      if (preventDuplicate) {
+      if (me.props.preventDuplicate) {
         if (this.state.fileList.some(item => item.type === 'upload' && item.name === file.name && item.size === file.size)) {
           return `DuplicateError: ${file.name} is duplicated`;
         }
