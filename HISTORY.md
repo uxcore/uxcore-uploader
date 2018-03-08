@@ -2,6 +2,11 @@
 
 ---
 
+## 3.1.10
+
+* `CHANGED` fix button style (issue #66)
+* `CHANGED` fix mutable props (issue #71)
+
 ## 3.1.9
 
 * `CHANGED` fix some wrong style
