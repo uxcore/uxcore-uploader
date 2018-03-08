@@ -12,7 +12,7 @@ const RESETOPTIONS = [
   'name', 'url', 'params', 'action', 'data', 'headers',
   'withCredentials', 'timeout', 'chunkEnable', 'chunkSize',
   'chunkRetries', 'chunkProcessThreads', 'autoPending',
-  'auto', 'sizeLimit', 'fileSizeLimit',
+  'auto', 'sizeLimit', 'fileSizeLimit', 'queueCapcity',
 ];
 
 
