@@ -48,7 +48,7 @@ export default class DefaultFileItem extends React.Component {
         if (!isVisual) {
           return (<div className={readOnlyStyle}>
             <div className="field-image-info">
-              <a className="field-image-preview" href={previewUrl} target="_blank">
+              <a className="field-image-preview" onClick={me.onShowFile.bind(this, file, previewUrl)} href="javascript:void(0)">
                 <img src={previewUrl} />
               </a>
             </div>
@@ -64,7 +64,7 @@ export default class DefaultFileItem extends React.Component {
         }
         return (<div className={readOnlyStyle}>
           <div className="field-image-info">
-            <a className="field-image-preview" href={previewUrl} target="_blank">
+            <a className="field-image-preview" onClick={me.onShowFile.bind(this, file, previewUrl)} href="javascript:void(0)">
               <img src={previewUrl} />
             </a>
           </div>

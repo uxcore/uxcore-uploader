@@ -2,6 +2,10 @@
 
 ---
 
+## 3.1.11
+
+* `CHANGED` show image with album if click image
+
 ## 3.1.10
 
 * `CHANGED` fix button style (issue #66)
