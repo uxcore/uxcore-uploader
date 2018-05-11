@@ -129,7 +129,7 @@ export default class FileList extends React.Component {
         <div className="inner fn-clear">
           {this.renderDefaultFileItems()}
           {this.renderFileItems()}
-          {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
+          {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core} disabled={this.props.disabled}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
         </div>
       </div>
     );

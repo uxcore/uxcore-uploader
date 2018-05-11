@@ -75,8 +75,8 @@ export default class Dropzoom extends React.Component {
     }
     return (<div className={className}>
       {this.state.total > 0
-                ? <FileList locale={this.props.locale} core={this.core} mode="nw" fileList={this.props.fileList} />
-                : <Picker core={this.core}>{children}</Picker>}
+                ? <FileList locale={this.props.locale} disabled={this.props.disabled} core={this.core} mode="nw" fileList={this.props.fileList} />
+                : <Picker core={this.core} disabled={this.props.disabled}>{children}</Picker>}
       <div className="kuma-upload-responser" />
     </div>);
   }

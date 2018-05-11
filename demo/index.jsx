@@ -142,7 +142,7 @@ class Demo3 extends React.Component {
       ref="uploader"
       sizeLimit="3072kb"
       accept="*.jpeg, *.jpg *.png"
-      readOnly 
+      readOnly
       multiple={false}
       isOnlyImg
       isVisual={false}
@@ -234,8 +234,40 @@ ReactDOM.render((
   <Demo5 />
 ), document.getElementById('sample5'));
 
-
 class Demo6 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.fileList = [];
+    this.state = {
+      fileList: this.fileList,
+    };
+  }
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+
+  render() {
+    return (<Uploader autoPending
+      multiple={false}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      isOnlyImg={false}
+      name="file"
+      isVisual={false}
+      url="http://eternalsky.me:8122/file/upload"
+      disabled
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo6 />
+), document.getElementById('sample6'));
+
+
+class Demo7 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -263,11 +295,11 @@ class Demo6 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo6 />
-), document.getElementById('sample6'));
+  <Demo7 />
+), document.getElementById('sample7'));
 
 
-class Demo7 extends React.Component {
+class Demo8 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -285,10 +317,10 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo7 />
-), document.getElementById('sample7'));
+  <Demo8 />
+), document.getElementById('sample8'));
 
-class Demo8 extends React.Component {
+class Demo9 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -343,10 +375,10 @@ class Demo8 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo8 />
-), document.getElementById('sample8'));
+  <Demo9 />
+), document.getElementById('sample9'));
 
-class Demo9 extends React.Component {
+class Demo10 extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -365,7 +397,7 @@ class Demo9 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo9 />
-), document.getElementById('sample9'));
+  <Demo10 />
+), document.getElementById('sample10'));
 
 // hljs.initHighlightingOnLoad();

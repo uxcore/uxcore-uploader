@@ -257,7 +257,7 @@ class Uploader extends React.Component {
 
   render() {
     const me = this;
-    const { locale, isVisual } = this.props;
+    const { locale, isVisual, disabled } = this.props;
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -266,7 +266,7 @@ class Uploader extends React.Component {
       if (isVisual) {
         children = <button className="kuma-upload-button">{i18n[`${locale}-img`].upload_files}</button>;
       } else {
-        children = <Button type="secondary" size="small">{i18n[locale].upload_files}</Button>;
+        children = <Button disabled={disabled} type="secondary" size="small">{i18n[locale].upload_files}</Button>;
       }
     }
     const tips = readOnly ? null : this.renderTips();
@@ -275,6 +275,7 @@ class Uploader extends React.Component {
         key="picker"
         core={this.core}
         isVisual={this.props.isVisual}
+        disabled={disabled}
       >{children}</Picker>);
     const files = (uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0)
       ? (
@@ -290,6 +291,7 @@ class Uploader extends React.Component {
           fileList={me.state.fileList}
           removeFileFromList={me.handleRemoveFile.bind(me)}
           interval={this.props.progressInterval}
+          disabled={disabled}
         />)
       : null;
     const contents = isVisual ? [tips, files, picker] : [picker, tips, files];

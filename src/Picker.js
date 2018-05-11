@@ -4,7 +4,9 @@ import Icon from 'uxcore-icon';
 
 export default class Picker extends React.Component {
   componentDidMount() {
-    this.area = this.props.core.getPickerCollector().addArea(ReactDOM.findDOMNode(this));
+    if (!this.props.disabled) {
+      this.area = this.props.core.getPickerCollector().addArea(ReactDOM.findDOMNode(this));
+    }
   }
   componentWillUnmount() {
     this.area && this.area.destroy();

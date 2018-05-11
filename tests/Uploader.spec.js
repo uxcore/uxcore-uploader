@@ -87,6 +87,23 @@ describe('Uploader', () => {
     expect(wrapper.children().hasClass('kuma-uploader')).to.be(true);
   });
 
+  it('should render disabled correctly', () => {
+    const wrapper = mount(
+      <Uploader
+        autoPending
+        multiple={false}
+        fileList={fileList}
+        onChange={handleChange}
+        isOnlyImg={false}
+        name="file"
+        isVisual={false}
+        url="http://eternalsky.me:8122/file/upload"
+        disabled
+      />
+    );
+    expect(wrapper.children().hasClass('kuma-uploader')).to.be(true);
+  });
+
   it('should not render picker and tips when readOnly is true', () => {
     const wrapper = mount(
       <Uploader
