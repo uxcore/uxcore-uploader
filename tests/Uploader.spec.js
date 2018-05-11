@@ -87,7 +87,7 @@ describe('Uploader', () => {
     expect(wrapper.children().hasClass('kuma-uploader')).to.be(true);
   });
 
-  it('should render disabled correctly', () => {
+  it('should render disabled', () => {
     const wrapper = mount(
       <Uploader
         autoPending
