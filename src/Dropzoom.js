@@ -54,10 +54,12 @@ export default class Dropzoom extends React.Component {
     });
     this.dndArea = dndArea;
   }
+
   componentWillUnmount() {
     this.dndArea && this.dndArea.destroy();
     this.stopListen && this.stopListen();
   }
+
   render() {
     let className = 'kuma-uploader kuma-upload-dropzoom';
     if (this.props.className) {
