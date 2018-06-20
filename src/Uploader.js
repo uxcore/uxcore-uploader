@@ -59,9 +59,10 @@ class Uploader extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (!util.simpleDeepEqual(nextProps.fileList, prevState.fileList)) {
+    if (!util.simpleDeepEqual(nextProps.fileList, prevState.preFileList)) {
       return {
         fileList: Uploader.processDefaultList(util.simpleDeepCopy(nextProps.fileList)),
+        preFileList: nextProps.fileList,
       };
     }
     return prevState;
@@ -110,6 +111,7 @@ class Uploader extends React.Component {
     this.state = {
       total: this.core.getTotal(),
       fileList: Uploader.processDefaultList(util.simpleDeepCopy(props.fileList)),
+      preFileList: props.fileList,
     };
     this.init();
   }
