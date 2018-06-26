@@ -2,6 +2,10 @@
 
 ---
 
+## 3.2.0
+
+* `CHANGED` upgrade react to v16
+
 ## 3.1.11
 
 * `CHANGED` show image with album if click image
