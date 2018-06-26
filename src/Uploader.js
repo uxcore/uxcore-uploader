@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
 import Button from 'uxcore-button';
+import { polyfill } from 'react-lifecycles-compat';
 import util from './util';
 import FileList from './FileList';
 import Picker from './Picker';
@@ -50,23 +51,134 @@ class Uploader extends React.Component {
       PropTypes.element,
     ]),
     className: PropTypes.string,
+    readOnly: PropTypes.bool,
     isVisual: PropTypes.bool,
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
     children: PropTypes.any,
   };
 
-  constructor(props) {
-    super(props);
-    this.core = util.getCoreInstance(props);
-    this.fileList = this.getDefaultList();
-    this.state = {
-      total: this.core.getTotal(),
-      fileList: this.processDefaultList(this.fileList),
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (!util.simpleDeepEqual(nextProps.fileList, prevState.preFileList)) {
+      return {
+        fileList: Uploader.processDefaultList(util.simpleDeepCopy(nextProps.fileList)),
+        preFileList: nextProps.fileList,
+      };
+    }
+    return prevState;
+  }
+
+  /**
+  * process file in this.props.fileList
+  */
+  static processDefaultListFile(file) {
+    const newFile = file;
+    if (!file.type) newFile.type = 'list';
+    return newFile;
+  }
+
+  static processFile(file) {
+    return {
+      ext: file.ext,
+      name: file.name,
+      size: file.size,
+      fileType: file.type,
+      type: 'upload',
+      response: file.response ? file.response.getJson() : null,
     };
   }
 
-  componentWillMount() {
+  /**
+  * deepcopy props.filelist for comparision in `componentWillReceiveProps`
+  */
+  static addUniqueIdForList(fileList) {
+    let newList = util.simpleDeepCopy(fileList);
+    newList = newList.map((file, index) => {
+      const newFile = file;
+      newFile.__uploaderId = `uploader${index}`;
+      return newFile;
+    });
+    return newList;
+  }
+
+  static processDefaultList(fileList) {
+    return Uploader.addUniqueIdForList(fileList).map(file => Uploader.processDefaultListFile(file));
+  }
+
+  constructor(props) {
+    super(props);
+    this.core = util.getCoreInstance(props);
+    this.state = {
+      total: this.core.getTotal(),
+      fileList: Uploader.processDefaultList(util.simpleDeepCopy(props.fileList)),
+      preFileList: props.fileList,
+    };
+    this.init();
+  }
+
+  componentDidUpdate(nextProps) {
+    const options = {};
+    RESETOPTIONS.forEach((item) => {
+      if (nextProps.hasOwnProperty(item) && this.props[item] !== nextProps[item]) {
+        options[item] = nextProps[item];
+      }
+    });
+    if (this.core.setOptions) this.core.setOptions(options);
+  }
+
+  componentWillUnmount() {
+    this.stopListen();
+  }
+
+  getCore() {
+    return this.core;
+  }
+
+  getUploadingFiles() {
+    return this.core.getFiles().filter(file =>
+      ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1),
+    );
+  }
+
+  getNotDeletedDefaultFiles() {
+    return (this.state.fileList || []).filter(file => !file.type || file.type !== 'delete');
+  }
+
+  stopListen() {
+    this.core.off(Events.QUEUE_STAT_CHANGE, this.statchange);
+    this.core.off(Events.FILE_UPLOAD_SUCCESS, this.fileuploadsuccess);
+    this.core.off(Events.FILE_CANCEL, this.filecancel);
+  }
+
+  reset() {
+    this.core.getFiles().forEach((file) => {
+      file.cancel(true);
+      this.core.getStat().remove(file);
+    });
+    this.forceUpdate();
+  }
+
+  handleRemoveFile(file) {
+    const me = this;
+    let newList = util.simpleDeepCopy(me.state.fileList);
+    newList = newList.map((item) => {
+      const newItem = item;
+      if (item.__uploaderId === file.__uploaderId) {
+        newItem.subType = item.type;
+        newItem.type = 'delete';
+      }
+      return newItem;
+    });
+    me.handleChange(newList);
+    if (me.props.onCancel) me.props.onCancel(file);
+  }
+
+  handleChange(fileList) {
+    const me = this;
+    me.props.onChange(fileList);
+  }
+
+  init() {
     const me = this;
     me.statchange = (stat) => {
       const total = stat.getTotal();
@@ -81,7 +193,7 @@ class Uploader extends React.Component {
     };
     me.fileuploadsuccess = (file) => {
       let newList = util.simpleDeepCopy(me.state.fileList);
-      newList.push(me.processFile(file));
+      newList.push(Uploader.processFile(file));
       if (me.props.actionOnQueueLimit === 'cover') {
         // the last ones will exist
         let count = 0;
@@ -113,7 +225,7 @@ class Uploader extends React.Component {
       });
       me.handleChange(newList);
       if (onfilecancel) onfilecancel(file);
-      if (onCancel) onCancel(me.processFile(file));
+      if (onCancel) onCancel(Uploader.processFile(file));
     };
     me.core.on(Events.QUEUE_STAT_CHANGE, me.statchange);
     me.core.on(Events.FILE_UPLOAD_START, me.fileuploadstart);
@@ -122,129 +234,21 @@ class Uploader extends React.Component {
     me.core.addConstraint(() => {
       const queueCapcity = me.props.queueCapcity;
       const actionOnQueueLimit = me.props.actionOnQueueLimit;
-      if (queueCapcity === undefined || queueCapcity === null || queueCapcity <= 0 || actionOnQueueLimit === 'cover') {
+      if (queueCapcity === undefined || queueCapcity === null
+        || queueCapcity <= 0 || actionOnQueueLimit === 'cover') {
         return false;
       }
-      return me.state.fileList.filter(file => file.type !== 'delete').length + me.core.getTotal() >= queueCapcity;
+      return me.state.fileList.filter(file => file.type !== 'delete').length
+        + me.core.getTotal() >= queueCapcity;
     });
-    me.core.addFilter((file) => {
+    me.core.addFilter(file => {
       if (me.props.preventDuplicate) {
-        if (this.state.fileList.some(item => item.type === 'upload' && item.name === file.name && item.size === file.size)) {
+        if (this.state.fileList.some(item => item.type === 'upload'
+          && item.name === file.name && item.size === file.size)) {
           return `DuplicateError: ${file.name} is duplicated`;
         }
       }
     });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const me = this;
-    const newState = {};
-    const options = {};
-    if (!util.simpleDeepEqual(nextProps.fileList, me.fileList)) {
-      me.fileList = me.getDefaultList(nextProps);
-      me.setState({
-        fileList: me.processDefaultList(me.fileList),
-      });
-    }
-    RESETOPTIONS.forEach((item) => {
-      if (nextProps.hasOwnProperty(item) && me.props[item] !== nextProps[item]) {
-        options[item] = nextProps[item];
-      }
-    });
-    me.core.setOptions && me.core.setOptions(options);
-  }
-
-  componentWillUnmount() {
-    this.stopListen();
-  }
-
-  getCore() {
-    return this.core;
-  }
-
-  stopListen() {
-    this.core.off(Events.QUEUE_STAT_CHANGE, this.statchange);
-    this.core.off(Events.FILE_UPLOAD_SUCCESS, this.fileuploadsuccess);
-    this.core.off(Events.FILE_CANCEL, this.filecancel);
-  }
-
-  reset() {
-    this.core.getFiles().forEach((file) => {
-      file.cancel(true);
-      this.core.getStat().remove(file);
-    });
-    this.forceUpdate();
-  }
-
-  /**
-   * deepcopy props.filelist for comparision in `componentWillReceiveProps`
-   */
-  getDefaultList(props) {
-    const me = this;
-    props = props || me.props;
-    return util.simpleDeepCopy(props.fileList);
-  }
-
-  addUniqueIdForList(fileList) {
-    let newList = util.simpleDeepCopy(fileList);
-    newList = newList.map((file, index) => {
-      file.__uploaderId = `uploader${index}`;
-      return file;
-    });
-    return newList;
-  }
-
-  processFile(file) {
-    return {
-      ext: file.ext,
-      name: file.name,
-      size: file.size,
-      fileType: file.type,
-      type: 'upload',
-      response: file.response ? file.response.getJson() : null,
-    };
-  }
-
-  processDefaultList(fileList) {
-    const me = this;
-    return me.addUniqueIdForList(fileList).map(file => me.processDefaultListFile(file));
-  }
-
-  /**
-   * process file in this.props.fileList
-   */
-  processDefaultListFile(file) {
-    !file.type && (file.type = 'list');
-    return file;
-  }
-
-  handleRemoveFile(file) {
-    const me = this;
-    let newList = util.simpleDeepCopy(me.state.fileList);
-    newList = newList.map((item) => {
-      if (item.__uploaderId === file.__uploaderId) {
-        item.subType = item.type;
-        item.type = 'delete';
-      }
-      return item;
-    });
-    me.handleChange(newList);
-    me.props.onCancel && me.props.onCancel(file);
-  }
-
-  handleChange(fileList) {
-    const me = this;
-    me.props.onChange(fileList);
-  }
-
-  getUploadingFiles() {
-    return this.core.getFiles().filter(file =>
-      ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1),
-    );
-  }
-
-  getNotDeletedDefaultFiles() {
-    return (this.state.fileList || []).filter(file => !file.type || file.type !== 'delete');
   }
 
   renderTips() {
@@ -264,7 +268,11 @@ class Uploader extends React.Component {
     const notDeletedDefaultFiles = me.getNotDeletedDefaultFiles();
     if (!children || children.length < 1) {
       if (isVisual) {
-        children = <button className="kuma-upload-button">{i18n[`${locale}-img`].upload_files}</button>;
+        children = (
+          <button className="kuma-upload-button">
+            {i18n[`${locale}-img`].upload_files}
+          </button>
+        );
       } else {
         children = <Button type="secondary" size="small">{i18n[locale].upload_files}</Button>;
       }
@@ -278,19 +286,19 @@ class Uploader extends React.Component {
       >{children}</Picker>);
     const files = (uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0)
       ? (
-        <FileList
-          key="files"
-          locale={this.props.locale}
-          core={this.core}
-          isVisual={this.props.isVisual}
-          isOnlyImg={this.props.isOnlyImg}
-          readOnly={this.props.readOnly}
-          showErrFile={this.props.showErrFile}
-          mode="nw"
-          fileList={me.state.fileList}
-          removeFileFromList={me.handleRemoveFile.bind(me)}
-          interval={this.props.progressInterval}
-        />)
+      <FileList
+        key="files"
+        locale={this.props.locale}
+        core={this.core}
+        isVisual={this.props.isVisual}
+        isOnlyImg={this.props.isOnlyImg}
+        readOnly={this.props.readOnly}
+        showErrFile={this.props.showErrFile}
+        mode="nw"
+        fileList={me.state.fileList}
+        removeFileFromList={me.handleRemoveFile.bind(me)}
+        interval={this.props.progressInterval}
+      />)
       : null;
     const contents = isVisual ? [tips, files, picker] : [picker, tips, files];
 
@@ -301,5 +309,7 @@ class Uploader extends React.Component {
     );
   }
 }
+
+polyfill(Uploader);
 
 export default Uploader;

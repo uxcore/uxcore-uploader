@@ -14,6 +14,7 @@ export default class Progress extends React.Component {
     percentage: 0,
     interval: 100,
   };
+
   constructor(props) {
     super(props);
     this.state = {

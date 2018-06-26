@@ -83,9 +83,9 @@ export default class FileList extends React.Component {
   }
 
   renderDefaultFileItems() {
-    const me = this;
     const arr = [];
-    this.props.fileList.forEach((file, index) => {
+    const fileList = this.props.fileList || [];
+    fileList.forEach((file, index) => {
       if (file.type !== 'delete') {
         arr.push(
           <DefaultFileItem
