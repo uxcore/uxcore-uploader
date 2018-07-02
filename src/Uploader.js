@@ -52,6 +52,7 @@ class Uploader extends React.Component {
     ]),
     className: PropTypes.string,
     readOnly: PropTypes.bool,
+    queueCapcity: PropTypes.number,
     isVisual: PropTypes.bool,
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
@@ -261,7 +262,7 @@ class Uploader extends React.Component {
 
   render() {
     const me = this;
-    const { locale, isVisual } = this.props;
+    const { locale, isVisual, queueCapcity } = this.props;
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -278,7 +279,9 @@ class Uploader extends React.Component {
       }
     }
     const tips = readOnly ? null : this.renderTips();
-    const picker = readOnly ? null : (
+    const hidePicker = isVisual && queueCapcity > 0 &&
+      (uploadingFiles.length + notDeletedDefaultFiles.length) >= queueCapcity;
+    const picker = readOnly || hidePicker ? null : (
       <Picker
         key="picker"
         core={this.core}
