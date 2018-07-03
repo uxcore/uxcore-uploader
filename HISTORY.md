@@ -2,6 +2,10 @@
 
 ---
 
+## 3.2.1 hidepicker when isVisual and over queueCapcity
+
+* `CHANGED` upgrade react to v16
+
 ## 3.2.0
 
 * `CHANGED` upgrade react to v16
