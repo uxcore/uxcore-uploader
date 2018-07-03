@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Button from 'uxcore-button';
 import Uploader from '../src/';
 // attachment file tips
-const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式</span>;
+const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式，最多3张</span>;
 const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
 const imgTips2 = <span>单文件不超过5M</span>;
 // http://dip.alibaba-inc.com/api/v2/services/schema/mock/22006
@@ -168,7 +168,7 @@ class Demo4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileList: [],
+      fileList,
     };
   }
 
@@ -182,11 +182,11 @@ class Demo4 extends React.Component {
 
     return (<Uploader
       ref="uploader"
-      multiple={false}
+      multiple
       isOnlyImg
       isVisual
       progressInterval={100}
-      queueCapcity={2}
+      queueCapcity={3}
       actionOnQueueLimit="cover"
       onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
       fileList={this.state.fileList}
@@ -282,7 +282,7 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <div><Demo7 />  <p>已废弃</p></div>
+  <div><Demo7 />           <p>已废弃</p></div>
 ), document.getElementById('sample7'));
 
 class Demo8 extends React.Component {
