@@ -43,7 +43,7 @@ see http://uxco.re/components/uploader/ for details.
 |chunkRetries        | int           | 0       |            | 文件分片上传重试次数 |
 |chunkProcessThreads | int           | 2       |            | 分片上传并发数 |
 |processThreads      | int           | 2       |            | 文件上传并发数 |
-|queueCapcity        | int           | 0       |            | 队列容量，0无限 |
+|queueCapcity        | int           | 0       |            | 队列容量，0无限;在可视化展示下，达到容量后picker不可见 |
 |autoPending         | bool          | true    |            | 是否选择后自动等待上传 |
 |multiple            | bool          | true    |            | 是否多选 |
 |accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
