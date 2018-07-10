@@ -2,9 +2,13 @@
 
 ---
 
-## 3.2.1 hidepicker when isVisual and over queueCapcity
+## 3.2.2 
 
-* `CHANGED` upgrade react to v16
+* `CHANGED` add new prop 'hideUploadIcon'
+
+## 3.2.1 
+
+* `CHANGED` hidepicker when isVisual and over queueCapcity
 
 ## 3.2.0
 

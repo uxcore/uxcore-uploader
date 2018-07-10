@@ -31,6 +31,7 @@ see http://uxco.re/components/uploader/ for details.
 |fileList            | array         | []      | 1.2.3      |用于展示的文件列表|
 |isOnlyImg           | boolean       | false   | 1.2.1      | 是否以图片形式展示 |
 |isVisual            | boolean       | false   | 2.0.0      | 是否可视化展示 |
+|hideUploadIcon      | boolean       | false   | 3.2.2      | 在可视化展示下，达到容量(queueCapcity)后是否隐藏上传入口 |
 |core                | string/`Core` | null    |            | 唯一标识或者UploadCore对象, 防止重复创建, 当传入UploadCore对象时,下列参数和事件设置均无效 |
 |name                | string        | 'file'  |            | 上传文件字段名称 |
 |url                 | string        | ''      |            | 响应上传服务器地址 |
@@ -43,7 +44,7 @@ see http://uxco.re/components/uploader/ for details.
 |chunkRetries        | int           | 0       |            | 文件分片上传重试次数 |
 |chunkProcessThreads | int           | 2       |            | 分片上传并发数 |
 |processThreads      | int           | 2       |            | 文件上传并发数 |
-|queueCapcity        | int           | 0       |            | 队列容量，0无限;在可视化展示下，达到容量后picker不可见 |
+|queueCapcity        | int           | 0       |            | 队列容量，0无限; |
 |autoPending         | bool          | true    |            | 是否选择后自动等待上传 |
 |multiple            | bool          | true    |            | 是否多选 |
 |accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |

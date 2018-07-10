@@ -185,6 +185,7 @@ class Demo4 extends React.Component {
       multiple
       isOnlyImg
       isVisual
+      hideUploadIcon
       progressInterval={100}
       queueCapcity={3}
       actionOnQueueLimit="cover"
@@ -282,7 +283,7 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <div><Demo7 />           <p>已废弃</p></div>
+  <div><Demo7 />             <p>已废弃</p></div>
 ), document.getElementById('sample7'));
 
 class Demo8 extends React.Component {
