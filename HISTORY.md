@@ -2,6 +2,10 @@
 
 ---
 
+## 3.2.3 
+
+* `FIXED` modify picker position when isVisual
+
 ## 3.2.2 
 
 * `CHANGED` add new prop 'hideUploadIcon'
