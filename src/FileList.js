@@ -1,6 +1,5 @@
 import FileItem from './FileItem';
 import DefaultFileItem from './DefaultFileItem';
-import Picker from './Picker';
 import util from './util';
 import { Events, Status } from 'uploadcore';
 import React from 'react';
@@ -129,7 +128,7 @@ export default class FileList extends React.Component {
         <div className="inner fn-clear">
           {this.renderDefaultFileItems()}
           {this.renderFileItems()}
-          {!this.core.isFull() && this.props.mode === 'icon' ? <Picker core={this.core}><i className="kuma-icon kuma-icon-add" /></Picker> : null}
+          {this.props.children}
         </div>
       </div>
     );

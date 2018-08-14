@@ -303,9 +303,13 @@ class Uploader extends React.Component {
         fileList={me.state.fileList}
         removeFileFromList={me.handleRemoveFile.bind(me)}
         interval={this.props.progressInterval}
-      />)
+      >
+        {
+          isVisual ? (picker) : null
+        }
+      </FileList>)
       : null;
-    const contents = isVisual ? [tips, files, picker] : [picker, tips, files];
+    const contents = isVisual ? [tips, files] : [picker, tips, files];
 
     return (
       <div className={`kuma-uploader ${this.props.className || ''}`}>
