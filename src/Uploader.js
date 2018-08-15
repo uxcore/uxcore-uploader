@@ -308,7 +308,9 @@ class Uploader extends React.Component {
           isVisual ? (picker) : null
         }
       </FileList>)
-      : null;
+      : (
+        isVisual ? (picker) : null
+      );
     const contents = isVisual ? [tips, files] : [picker, tips, files];
 
     return (

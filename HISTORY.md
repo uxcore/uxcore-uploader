@@ -2,6 +2,10 @@
 
 ---
 
+## 3.2.5
+
+* `FIXED` fix no picker bug when filelist is null
+
 ## 3.2.4
 
 * `CHANGED` show download icon when readonly
