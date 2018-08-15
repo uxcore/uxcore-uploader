@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.0
+
+* `CHANGED` modify picker position and css
+
 ## 3.2.5
 
 * `FIXED` fix no picker bug when filelist is null
