@@ -45,13 +45,13 @@ describe('DefaultFileItem', () => {
       expect(wrapper.find('.filename').text()).to.be(file.name);
     });
 
-    it('should not allow download when readOnly is true', () => {
+    it('should allow download when readOnly is true', () => {
       const wrapper = mount(
         <DefaultFileItem locale={'en'} file={file} mode={'nw'} onCancel={onCancel} />
       );
       expect(wrapper.find('.download-action').length).to.be(1);
       wrapper.setProps({ readOnly: true });
-      expect(wrapper.find('.download-action').length).to.be(0);
+      expect(wrapper.find('.download-action').length).to.be(1);
     });
 
     it('should allow callback when click on the preview area', () => {

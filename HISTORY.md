@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.1 
+
+* `CHANGED` show download icon when readonly
+
 ## 3.2.2 
 
 * `CHANGED` add new prop 'hideUploadIcon'
