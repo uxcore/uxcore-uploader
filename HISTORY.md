@@ -2,6 +2,22 @@
 
 ---
 
+## 3.2.6
+
+* `FIXED` fallback to 3.2.2
+
+## 3.2.5
+
+* `FIXED` fix no picker bug when filelist is null
+
+## 3.2.4
+
+* `CHANGED` show download icon when readonly
+
+## 3.2.3 
+
+* `FIXED` modify picker position when isVisual
+
 ## 3.2.2 
 
 * `CHANGED` add new prop 'hideUploadIcon'
