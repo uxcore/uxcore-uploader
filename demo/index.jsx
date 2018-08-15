@@ -36,6 +36,77 @@ const fileList = [
     },
   },
 ];
+const fileList2 = [
+  {
+    'name': 'TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg',
+    'fileType': 'image/jpeg',
+    'type': 'upload',
+    'response': {
+      'success': true,
+      'data': {
+        'url': 'http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png',
+        canRemove: true, // 是否可以删除，可选
+        downloadUrl: 'http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png', // 下载 URL，可选
+      },
+    },
+  }, {
+    'ext': 'jpg',
+    'name': 'TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg',
+    'size': 16387,
+    'fileType': 'image/jpeg',
+    'type': 'upload',
+    'response': {
+      'success': true,
+      'data': {
+        'url': 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg',
+        canRemove: true, // 是否可以删除，可选
+        downloadUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg', // 下载 URL，可选
+      },
+    },
+  }, {
+    'ext': 'jpg',
+    'name': 'TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg',
+    'size': 16387,
+    'fileType': 'image/jpeg',
+    'type': 'upload',
+    'response': {
+      'success': true,
+      'data': {
+        'url': 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg',
+        canRemove: true, // 是否可以删除，可选
+        downloadUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg', // 下载 URL，可选
+      },
+    },
+  }, {
+    'ext': 'jpg',
+    'name': 'TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg',
+    'size': 16387,
+    'fileType': 'image/jpeg',
+    'type': 'upload',
+    'response': {
+      'success': true,
+      'data': {
+        'url': 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg',
+        canRemove: true, // 是否可以删除，可选
+        downloadUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg', // 下载 URL，可选
+      },
+    },
+  }, {
+    'ext': 'jpg',
+    'name': 'TB1Xe3SMpXXXXX6XpXXTCU0QpXX-300-300.jpg',
+    'size': 16387,
+    'fileType': 'image/jpeg',
+    'type': 'upload',
+    'response': {
+      'success': true,
+      'data': {
+        'url': 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg',
+        canRemove: true, // 是否可以删除，可选
+        downloadUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502095774427&di=3897e137b04c575ac0f6e84c51e3bb46&imgtype=0&src=http%3A%2F%2Fs3.lvjs.com.cn%2Ftrip%2Foriginal%2F20140818131532_2090993967.jpg', // 下载 URL，可选
+      },
+    },
+  },
+];
 
 class Demo1 extends React.Component {
   constructor(props) {
@@ -168,7 +239,48 @@ class Demo4 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      fileList: fileList2,
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
       fileList,
+    });
+  }
+  render() {
+    const me = this;
+
+    return (<Uploader
+      ref="uploader"
+      multiple
+      isOnlyImg
+      isVisual
+      hideUploadIcon
+      progressInterval={100}
+      queueCapcity={0}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={tips}
+      name="file"
+      url="http://eternalsky.me:8122/file/upload"
+      locale="zh-cn"
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo4 />
+), document.getElementById('sample4'));
+
+
+class Demo41 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: [],
     };
   }
 
@@ -201,8 +313,9 @@ class Demo4 extends React.Component {
 }
 
 ReactDOM.render((
-  <Demo4 />
-), document.getElementById('sample4'));
+  <Demo41 />
+), document.getElementById('sample4-1'));
+
 
 class Demo5 extends React.Component {
   constructor(props) {
@@ -283,7 +396,7 @@ class Demo7 extends React.Component {
 }
 
 ReactDOM.render((
-  <div><Demo7 />             <p>已废弃</p></div>
+  <div><Demo7 />                 <p>已废弃</p></div>
 ), document.getElementById('sample7'));
 
 class Demo8 extends React.Component {

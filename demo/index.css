@@ -1,0 +1,2205 @@
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #606c71;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+.btn + .btn {
+  margin-left: 1rem;
+}
+.btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+@media screen and (min-width: 64em) {
+  .btn {
+    padding: 0.75rem 1rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .btn {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  .btn + .btn {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}
+.page-header {
+  color: #fff;
+  text-align: center;
+  background-color: #159957;
+  background-image: linear-gradient(120deg, #155799, #159957);
+}
+@media screen and (min-width: 64em) {
+  .page-header {
+    padding: 3rem 6rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .page-header {
+    padding: 3rem 4rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .page-header {
+    padding: 2rem 1rem;
+  }
+}
+.project-name {
+  margin-top: 0;
+  margin-bottom: 0.1rem;
+}
+@media screen and (min-width: 64em) {
+  .project-name {
+    font-size: 3.25rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .project-name {
+    font-size: 2.25rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .project-name {
+    font-size: 1.75rem;
+  }
+}
+.project-tagline {
+  margin-bottom: 2rem;
+  font-weight: normal;
+  opacity: 0.7;
+}
+@media screen and (min-width: 64em) {
+  .project-tagline {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .project-tagline {
+    font-size: 1.15rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .project-tagline {
+    font-size: 1rem;
+  }
+}
+.main-content :first-child {
+  margin-top: 0;
+}
+.main-content img {
+  max-width: 100%;
+}
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  color: #159957;
+}
+.main-content p {
+  margin-bottom: 1em;
+}
+.main-content code {
+  padding: 2px 4px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 0.9rem;
+  color: #383e41;
+  background-color: #f3f6fa;
+  border-radius: 0.3rem;
+}
+.main-content pre {
+  padding: 0.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  color: #567482;
+  word-wrap: normal;
+  background-color: #f3f6fa;
+  border: solid 1px #dce6f0;
+  border-radius: 0.3rem;
+}
+.main-content pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #567482;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.main-content .highlight {
+  margin-bottom: 1rem;
+}
+.main-content .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.main-content .highlight pre,
+.main-content pre {
+  padding: 0.8rem;
+  overflow: auto;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  border-radius: 0.3rem;
+}
+.main-content pre code,
+.main-content pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+.main-content pre code:before,
+.main-content pre code:after,
+.main-content pre tt:before,
+.main-content pre tt:after {
+  content: normal;
+}
+.main-content ul,
+.main-content ol {
+  margin-top: 0;
+}
+.main-content blockquote {
+  padding: 0 1rem;
+  margin-left: 0;
+  color: #819198;
+  border-left: 0.3rem solid #dce6f0;
+}
+.main-content blockquote > :first-child {
+  margin-top: 0;
+}
+.main-content blockquote > :last-child {
+  margin-bottom: 0;
+}
+.main-content table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+.main-content table th {
+  font-weight: bold;
+}
+.main-content table th,
+.main-content table td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e9ebec;
+}
+.main-content dl {
+  padding: 0;
+}
+.main-content dl dt {
+  padding: 0;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.main-content dl dd {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.main-content hr {
+  height: 2px;
+  padding: 0;
+  margin: 1rem 0;
+  background-color: #eff0f1;
+  border: 0;
+}
+@media screen and (min-width: 64em) {
+  .main-content {
+    max-width: 64rem;
+    padding: 2rem 6rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .main-content {
+    padding: 2rem 4rem;
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .main-content {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+}
+.site-footer {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: solid 1px #eff0f1;
+  text-align: center;
+}
+.site-footer-owner {
+  display: block;
+  font-weight: bold;
+}
+.site-footer-credits {
+  color: #819198;
+}
+@media screen and (min-width: 64em) {
+  .site-footer {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .site-footer {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 42em) {
+  .site-footer {
+    font-size: 0.9rem;
+  }
+}
+@font-face {
+  font-family: 'fileicon';
+  src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot');
+  /* IE9*/
+  src: url('https://at.alicdn.com/t/font_1442816980_3990257.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('https://at.alicdn.com/t/font_1442816980_3990257.woff') format('woff'), /* chrome、firefox */ url('https://at.alicdn.com/t/font_1442816980_3990257.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('https://at.alicdn.com/t/font_1442816980_3990257.svg#iconfont') format('svg');
+  /* iOS 4.1- */
+}
+.kuma-upload-fileicon {
+  font-family: "fileicon" !important;
+  font-size: 18px;
+  font-style: normal;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.kuma-upload-fileicon:before {
+  content: "\e700";
+  color: #666;
+}
+.kuma-upload-fileicon:after {
+  display: inline-block;
+  content: attr(data-ext);
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: normal;
+  white-space: nowrap;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: left bottom;
+  transform-origin: left bottom;
+  color: white;
+  padding: 0 4px;
+  background: #666;
+  border-radius: 6px;
+}
+.kuma-upload-fileicon[data-type^=video]:before {
+  content: "\e704";
+}
+.kuma-upload-fileicon[data-type^=video]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-type^=audio]:before {
+  content: "\e703";
+}
+.kuma-upload-fileicon[data-type^=audio]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-type^=text]:before {
+  content: "\e702";
+}
+.kuma-upload-fileicon[data-type^=text]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-type^=image]:before {
+  content: "\e701";
+}
+.kuma-upload-fileicon[data-type^=image]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext^=doc]:before {
+  content: "\e705";
+}
+.kuma-upload-fileicon[data-ext^=doc]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext^=xls]:before {
+  content: "\e706";
+}
+.kuma-upload-fileicon[data-ext^=xls]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext^=ppt]:before {
+  content: "\e707";
+}
+.kuma-upload-fileicon[data-ext^=ppt]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext=pdf]:before {
+  content: "\e708";
+}
+.kuma-upload-fileicon[data-ext=pdf]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext=zip]:before,
+.kuma-upload-fileicon[data-ext=rar]:before {
+  content: "\e709";
+}
+.kuma-upload-fileicon[data-ext=zip]:after,
+.kuma-upload-fileicon[data-ext=rar]:after {
+  display: none;
+}
+.kuma-upload-fileicon[data-ext=js]:before,
+.kuma-upload-fileicon[data-ext=css]:before,
+.kuma-upload-fileicon[data-ext=java]:before,
+.kuma-upload-fileicon[data-ext=php]:before,
+.kuma-upload-fileicon[data-ext=html]:before,
+.kuma-upload-fileicon[data-ext=xml]:before,
+.kuma-upload-fileicon[data-ext=json]:before {
+  content: "\e70c";
+}
+.kuma-upload-fileicon[data-ext=js]:after,
+.kuma-upload-fileicon[data-ext=css]:after,
+.kuma-upload-fileicon[data-ext=java]:after,
+.kuma-upload-fileicon[data-ext=php]:after,
+.kuma-upload-fileicon[data-ext=html]:after,
+.kuma-upload-fileicon[data-ext=xml]:after,
+.kuma-upload-fileicon[data-ext=json]:after {
+  display: none;
+}
+.kuma-upload-progresspin {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.kuma-upload-progresspin .spin {
+  position: absolute;
+  border-radius: 0 10px 10px 0;
+  height: 20px;
+  width: 10px;
+  overflow: hidden;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  transform-origin: left center;
+  top: 0;
+  right: 0;
+}
+.kuma-upload-progresspin .spin.spin2-2 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.kuma-upload-progresspin .spin > .inner {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  top: 0;
+  left: -150%;
+  background: #42a1eb;
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  transform-origin: right center;
+}
+.kuma-upload-progresspin.escape .spin > .inner {
+  left: 0;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -ms-transform-origin: left center;
+  transform-origin: left center;
+}
+.kuma-upload-progressbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  background: #42a1eb;
+  width: 0;
+  -webkit-transition: width 0.2s ease-out;
+  -moz-transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out;
+}
+@-webkit-keyframes kuxglow {
+  0% {
+    background: rgba(225, 229, 232, 0.2);
+  }
+  50% {
+    background: rgba(252, 110, 81, 0.2);
+  }
+  100% {
+    background: rgba(225, 229, 232, 0.2);
+  }
+}
+.kuma-uploader {
+  min-width: 200px;
+}
+.kuma-uploader .uxicon-fangda:before {
+  content: '\e6a8';
+}
+.kuma-upload-filelist {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: visible;
+  overflow-x: visible;
+}
+.kuma-upload-filelist .visual-progress-box:hover .delete-progress {
+  display: inline;
+}
+.kuma-upload-filelist > .inner {
+  overflow: visible;
+}
+.kuma-upload-filelist > .inner .kuma-upload-picker-visual {
+  margin-top: 0;
+}
+.kuma-upload-filelist.filelist-visual.nwmode {
+  float: none;
+  margin-top: 5px;
+  width: auto;
+}
+.kuma-upload-picker-visual {
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  line-height: normal;
+}
+.kuma-upload-picker-visual .kuma-upload-button {
+  display: inline-block;
+  background-color: #fff;
+  outline: none;
+  border-radius: 3px;
+  padding-top: 43px;
+  font-size: 12px;
+  color: rgba(31, 56, 88, 0.6);
+  height: 100%;
+  width: 100%;
+  transition: all .3s ease;
+  border: 1px dashed rgba(31, 56, 88, 0.3);
+}
+.kuma-upload-picker-visual .uxicon-zengjia1 {
+  position: absolute;
+  top: 26px;
+  left: 36px;
+  font-size: 28px;
+  color: #1F3858;
+  opacity: 0.4;
+}
+.kuma-upload-picker {
+  display: inline-block;
+  position: relative;
+  line-height: normal;
+}
+.kuma-upload-picker:hover .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: #fff;
+}
+.kuma-upload-picker:hover .kuma-button-secondary {
+  border-color: rgba(31, 56, 88, 0.6);
+  background-color: rgba(31, 56, 88, 0.06);
+}
+.kuma-upload-picker:hover .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.06);
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+}
+.kuma-upload-picker:active .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: #fff;
+}
+.kuma-upload-picker:active .kuma-button-secondary {
+  border-color: #1f3858;
+  background-color: rgba(31, 56, 88, 0.1);
+  color: #1f3858;
+}
+.kuma-upload-picker:active .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.1);
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+}
+.kuma-upload-picker:visited .kuma-button-primary {
+  color: #fff;
+}
+.kuma-upload-picker:visited .kuma-button-secondary {
+  color: rgba(31, 56, 88, 0.6);
+}
+.kuma-upload-picker:visited .kuma-button-outline {
+  color: #ff6f00;
+}
+.kuma-upload-picker .kuma-upload-button {
+  display: inline-block;
+  background: #fff;
+  outline: none;
+  border: 1px solid rgba(31, 56, 88, 0.3);
+  border-radius: 3px;
+  padding: 0 8px;
+  font-size: 12px;
+  color: rgba(31, 56, 88, 0.6);
+  box-sizing: border-box;
+  line-height: 26px;
+  height: 28px;
+  transition: all .3s ease;
+}
+.kuma-upload-picker .kuma-upload-button .kuma-icon-uploading {
+  margin-right: 3px;
+  font-size: 12px;
+}
+.kuma-upload-picker .kuma-upload-button > * {
+  vertical-align: middle;
+}
+.kuma-upload-tip {
+  font-size: 12px;
+  color: rgba(31, 56, 88, 0.4);
+  margin-top: 10px;
+}
+.kuma-upload-dropzoom {
+  min-height: 200px;
+  min-width: 200px;
+  position: relative;
+  border-radius: 5px;
+}
+.kuma-upload-dropzoom .kuma-upload-responser {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border: 1px dashed #D9D9D9;
+  z-index: -1;
+}
+.kuma-upload-dropzoom.blink .kuma-upload-responser {
+  border: 3px dashed #fc6e51;
+  background: #e1e5e8;
+  -webkit-animation: kuxglow .7s infinite;
+  animation: kuxglow .7s infinite;
+}
+.kuma-upload-dropzoom.enter .kuma-upload-responser {
+  display: block;
+  border: 3px solid #fc6e51;
+  background: none;
+  -webkit-animation: none;
+  animation: none;
+}
+.kuma-upload-dropzoom .kuma-upload-picker {
+  display: block;
+  text-align: center;
+  opacity: 0.6;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:hover .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:hover .kuma-button-secondary {
+  border-color: rgba(31, 56, 88, 0.6);
+  background-color: rgba(31, 56, 88, 0.06);
+}
+.kuma-upload-dropzoom .kuma-upload-picker:hover .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.06);
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+}
+.kuma-upload-dropzoom .kuma-upload-picker:active .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:active .kuma-button-secondary {
+  border-color: #1f3858;
+  background-color: rgba(31, 56, 88, 0.1);
+  color: #1f3858;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:active .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.1);
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+}
+.kuma-upload-dropzoom .kuma-upload-picker:visited .kuma-button-primary {
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:visited .kuma-button-secondary {
+  color: rgba(31, 56, 88, 0.6);
+}
+.kuma-upload-dropzoom .kuma-upload-picker:visited .kuma-button-outline {
+  color: #ff6f00;
+}
+.kuma-upload-dropzoom .kuma-upload-picker .kuma-icon-add {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  margin-top: -40px;
+  margin-left: -40px;
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+  color: #D9D9D9;
+}
+.kuma-upload-dropzoom .kuma-upload-picker:hover,
+.kuma-upload-dropzoom .kuma-upload-picker.over {
+  opacity: 1;
+}
+.kuma-upload-dropzoom > .kuma-upload-picker {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker {
+  float: left;
+  margin: 5px;
+  width: 80px;
+  height: 80px;
+  background: #ebeff2;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:hover .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:hover .kuma-button-secondary {
+  border-color: rgba(31, 56, 88, 0.6);
+  background-color: rgba(31, 56, 88, 0.06);
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:hover .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.06);
+  border-color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+  color: rgba2rgb(#ff6f00, rgba(255, 255, 255, 0.1));
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:active .kuma-button-primary {
+  background-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:active .kuma-button-secondary {
+  border-color: #1f3858;
+  background-color: rgba(31, 56, 88, 0.1);
+  color: #1f3858;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:active .kuma-button-outline {
+  background-color: rgba(255, 111, 0, 0.1);
+  border-color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+  color: rgba2rgb(#ff6f00, rgba(0, 0, 0, 0.05));
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:visited .kuma-button-primary {
+  color: #fff;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:visited .kuma-button-secondary {
+  color: rgba(31, 56, 88, 0.6);
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker:visited .kuma-button-outline {
+  color: #ff6f00;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist .kuma-upload-picker .kuma-icon-add {
+  margin-top: -20px;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+.kuma-upload-dropzoom .kuma-upload-filelist {
+  height: 100%;
+}
+.kuma-upload-fileitem {
+  overflow: hidden;
+  font-family: monospace;
+  display: block;
+  float: left;
+  width: 100%;
+  height: 32px;
+  background: #fff;
+  line-height: 30px;
+  border: 1px solid rgba(31, 56, 88, 0.2);
+  border-radius: 3px;
+  z-index: -1;
+  position: relative;
+}
+.kuma-upload-fileitem .filename {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+}
+.kuma-upload-fileitem .kuma-upload-status,
+.kuma-upload-fileitem .kuma-upload-action {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: #ccc;
+  vertical-align: middle;
+}
+.kuma-upload-fileitem .kuma-upload-status .kuma-icon,
+.kuma-upload-fileitem .kuma-upload-action .kuma-icon {
+  font-size: 18px;
+}
+.kuma-upload-fileitem .kuma-upload-status.status-success {
+  color: #8ad256;
+}
+.kuma-upload-fileitem .kuma-upload-status.status-error {
+  color: #fcac79;
+}
+.kuma-upload-fileitem .kuma-upload-status.status-error:hover {
+  color: #fc482d;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-remove {
+  cursor: pointer;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-remove:hover {
+  color: #fc6e51;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-retry {
+  cursor: pointer;
+  color: #444;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-retry:hover {
+  color: #288df0;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-upload {
+  cursor: pointer;
+  color: #444;
+}
+.kuma-upload-fileitem .kuma-upload-action.action-upload:hover {
+  color: #288df0;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem {
+  border: 1px solid #d9d9d9;
+  padding: 5px 6px;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-info .filename {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-info .filesize {
+  color: #adadad;
+  font-size: 14px;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-status .kuma-upload-status,
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .field-status .kuma-upload-action {
+  margin: 0 1px;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem .kuma-upload-progressbar {
+  opacity: 0.3;
+  z-index: -1;
+}
+.kuma-upload-filelist.minimode .kuma-upload-fileitem.status-error .kuma-upload-progressbar {
+  display: none;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem {
+  margin: 5px;
+  width: 80px;
+  height: 112px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .action-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .status-error,
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .status-success {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  background: #ebeff2;
+  text-align: center;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer {
+  height: 80px;
+  width: 80px;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer:before {
+  display: inline-block;
+  content: '';
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .previewer .kuma-upload-fileicon {
+  font-size: 60px;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 30px;
+  width: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  opacity: 0.6;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action .kuma-icon {
+  line-height: 30px;
+  font-size: 28px;
+  color: #288df0;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-action:hover {
+  opacity: 1;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progressbar,
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progresspin {
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progresspin {
+  margin-left: -10px;
+  margin-top: -10px;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filepreview .kuma-upload-progressbar {
+  left: 0;
+  height: 20px;
+  bottom: auto;
+  margin-top: -10px;
+}
+.kuma-upload-filelist.iconmode .kuma-upload-fileitem .filename {
+  margin-top: 2px;
+  font-size: 12px;
+  word-wrap: break-word;
+  text-align: center;
+  line-height: 1.2em;
+  height: 2.4em;
+  overflow: hidden;
+  padding: 0 1px;
+}
+.kuma-upload-filelist.nwmode {
+  margin-top: 10px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  clear: both;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 32px;
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid rgba(31, 56, 88, 0.2);
+  border-radius: 3px;
+  z-index: 0;
+  position: relative;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.read-style {
+  border: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.read-style .field-line {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.read-style .field-info-wrap .field-info {
+  margin-left: 6px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.read-style:hover {
+  background: rgba(31, 56, 88, 0.04);
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-icon {
+  float: left;
+  height: 32px;
+  width: 30px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-icon .kuma-upload-fileicon {
+  font-size: 16px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-icon .kuma-icon-caution {
+  vertical-align: middle;
+  margin: 0 5px;
+  color: #ff6330;
+  font-size: 24px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-line {
+  float: left;
+  height: 20px;
+  width: 1px;
+  background: rgba(31, 56, 88, 0.1);
+  margin-top: 6px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap {
+  display: block;
+  padding: 0;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-info {
+  display: inline-block;
+  margin-left: 18px;
+  width: calc(100% - 138px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-info .kuma-loading {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background: url(data:image/gif;base64,R0lGODlhDAAMAPfIAOnp6f7+/vz8/P39/efn5+jo6Ovr6+zs7O3t7e/v7/j4+OTk5OH6///+/ezr6/T4+/Hy8uz6//3+/vLw8OH////9/O///+bl5f/49PT09fX3+vT5/Pz+//rTu/nRuPymbvX3+P3///+tdv+JRvH09+fz+/Xi1f+odujr7+f6/+Xo6/Ls5vSkduXq7//VvvLx7+rr6+jp6eXk5OzHruTt9f/v5+js7/O5kvvDnub8///y6/KiaP6bZ/5mBv9yKPnu5v+WbeTn6/L//+rp6fx1I/bs5OXl5P92SPT6/e/v8POiaf/+/v7+//Df1PvXwOnr6+Ly+/bZxvW4jv9dAv9WAPG0kO/w8v9vJfP4/OP2+/9pHOn0/ej1+e/3/fHi2P9FAPmxgPi3jvjv6fHz8/X5/PP//+Px+u3r6vH1+PX7/v339PLw8fX5+/1eCf2OR+f///rHpfT///Lx8Of4/+X6/uvr7OL6//fdy/Xg0fvYwfbp3u/s6+3EqOv7/+ft8O3r7OTt9P+caPaXWPqUTv9pO/Xz8P+QW/eRSP2RRvf///D9//1iDP9eDvf4+Onz/OL4/v/Ttvb5/P1mC/Lx8ffXwef+//T6/vb19f9EAPb3+OL///307vH2+efg2v5xEv9NAP/dzefm5vb6/Ons7vyWVfjFo/a+l+nl4vancfv7/On7/+rx9fPs5vD19+zy9faqd/94P+T+/+vSufX///+JU/D3/P/Yyufl5P/8+vb5+ub1+v7///9YFfLy8fp6K/D8/+bm5vf39+rq6vT09PHx8fLy8vX19eXl5f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDIxQkZGNUVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDIxQkZGNkVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwMjFCRkYzRUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwMjFCRkY0RUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkECQAAyAAsAAAAAAwADAAACGEAkQkcSJDgMGAAECAQdmHWwGDAjBFEQiEPsgDHhhVE5uGLi2IENiLDwAIPgGIikVmYIwylSAjCiAFIWYDYgGPBNgY7NgDZsGMSBxrLOLAYMAMJEhggEHSgAGIHDhATMDAgACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABAgEAYs2MBgwIwRNHZMAbIAx4YVRKYhCJNiBDYK1GUCQDGRyBBpEXZSJKlBxACgdDRmwDGHBXOpkIBs2DGJAylqFFgMmIEECQwQADpQALEDB4gJGBgQACH5BAkAAMgALAgAAwAEAAgAAAgjAJEZWxAAGbICxAySgGHwxRtkNYhQQnZnESgyDAohC7XBYEAAIfkEBQAAyAAsAAAAAAwADAAACDMAkQkcSLCgwYMIExpbECAhsgLEHBYT5nACxYR+IiL8wUACQhFtihxMwoVPIIQOWnEYGBAAIfkECQAAyAAsBAAGAAgABgAACCQAkQkcWGygwQIGBUY6NmBgAxAthiGrEwHMlE4PBqqSAkvNwIAAIfkEBQAAyAAsAAAAAAwADAAACDUAkQkcSLCgwYMIEypcyJBgMWEKCxBLGOzYAIFG4hA0dmwYQTuoRuxZRcBYwVRuPJ1BI2BgQAAh+QQFAADIACwBAAYABwAGAAAIIQAnIBtI0AZBgmYaHUQmRAmQhYYOpbCSwMBAAV0cHCAWEAAh+QQJAADIACwAAAUABgAHAAAIIgCHIBs4cIsigshYVcFFEBKmDgQrwHmUBqGFWwYSICR2ICAAIfkEBQAAyAAsAAAAAAwADAAACC8AkQkcSLCgwYMIEw78lUPhjTAKeV1RGOWUwhCARCkcdsyYwmLADCRIKIDYAYMBAQAh+QQJAADIACwAAAEABAAIAAAIIwCRIXtwAZkYCmxsSdKDrFQPDMgqrRA4ipNAYgAEDjgWDFlAACH5BAkAAMgALAAAAAAMAAwAAAgzAJEJHEhwYIMTsmL9KSjQCRUeDAXu0oQjosBedCwKBLBGIzJhkzwSA+BxwLFgHlOqVBkQACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJ3HTEVAQIAQQqtDTj06s+T4AFUxiMxiUdCo0dU4AswDEsCjMuCFCMQMiQBYgBKHZSYTFhwli2RPZS5UxkKQccm3gy2LEByIYdMxZS4zCXwAwkSGCAANGQAogdOEBMgMKAACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJHFDLi48PAQQqHAasRBNGgrJkUhgMmDGFFcrIUIAswLFhChUaWxCgGIGQIQsQA1AMpcJiwoS1dIkM5kqayFQOOBbMZbBjA5ANO3ZR5MeXwAwkSGCAQFGFAogdOEBMgMKAACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABC4iuGL1sBgwIwNXEJoRyJkAY4NK4gsA5QAxQhwFIiCGIBiI5HJESYM5chiwkymLEBswLFgHIMdG4Bs2DGJA41pHFgMmIEECQwQADpQALEDB4gJGBgQADs=) no-repeat center;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-info .filename {
+  font-size: 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 79px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status {
+  margin-left: 0;
+  float: right;
+  margin-right: 10px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status .kuma-upload-status {
+  font-size: 12px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status .kuma-upload-status.status-progress {
+  color: #f60;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status .kuma-upload-status.status-error {
+  color: #ff6330;
+  margin-left: 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status .kuma-upload-action {
+  font-size: 12px;
+  color: #616162;
+  cursor: pointer;
+  margin: 0 5px;
+  display: none;
+  background: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .field-status .kuma-upload-action.remove-action {
+  margin-right: 0;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .download-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .remove-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap .terminal-action {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap:hover .download-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap:hover .remove-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap:hover .terminal-action {
+  display: inline;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .field-info-wrap:hover .kuma-upload-action {
+  display: inline;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .close-action {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem .status-error {
+  display: inline-block;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem:hover .close-action {
+  display: inline-block;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem:hover .status-error {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.status-error {
+  border: 1px solid #F04631;
+  background: rgba(240, 69, 48, 0.06);
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem.status-error .kuma-upload-action.close-action {
+  margin: 0;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  clear: both;
+  margin-bottom: 0;
+  margin-right: 0;
+  display: inline-block;
+  position: relative;
+  margin-top: 5px;
+  width: 100%;
+  height: 66px;
+  border: 1px solid rgba(31, 56, 88, 0.2);
+  border-radius: 3px;
+  padding: 8px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.read-style {
+  border: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.read-style:hover {
+  background: rgba(31, 56, 88, 0.04);
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.read-style:hover .pre-action {
+  display: inline;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-name {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - 140px);
+  height: 50px;
+  line-height: 50px;
+  margin-left: 12px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  float: left;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info .field-image-preview img {
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info .kuma-upload-fileicon {
+  margin: 0 10px;
+  font-size: 16px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info .kuma-icon-caution {
+  vertical-align: middle;
+  margin: 0 5px;
+  color: #ff6330;
+  font-size: 14px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info .kuma-loading {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background: url(data:image/gif;base64,R0lGODlhDAAMAPfIAOnp6f7+/vz8/P39/efn5+jo6Ovr6+zs7O3t7e/v7/j4+OTk5OH6///+/ezr6/T4+/Hy8uz6//3+/vLw8OH////9/O///+bl5f/49PT09fX3+vT5/Pz+//rTu/nRuPymbvX3+P3///+tdv+JRvH09+fz+/Xi1f+odujr7+f6/+Xo6/Ls5vSkduXq7//VvvLx7+rr6+jp6eXk5OzHruTt9f/v5+js7/O5kvvDnub8///y6/KiaP6bZ/5mBv9yKPnu5v+WbeTn6/L//+rp6fx1I/bs5OXl5P92SPT6/e/v8POiaf/+/v7+//Df1PvXwOnr6+Ly+/bZxvW4jv9dAv9WAPG0kO/w8v9vJfP4/OP2+/9pHOn0/ej1+e/3/fHi2P9FAPmxgPi3jvjv6fHz8/X5/PP//+Px+u3r6vH1+PX7/v339PLw8fX5+/1eCf2OR+f///rHpfT///Lx8Of4/+X6/uvr7OL6//fdy/Xg0fvYwfbp3u/s6+3EqOv7/+ft8O3r7OTt9P+caPaXWPqUTv9pO/Xz8P+QW/eRSP2RRvf///D9//1iDP9eDvf4+Onz/OL4/v/Ttvb5/P1mC/Lx8ffXwef+//T6/vb19f9EAPb3+OL///307vH2+efg2v5xEv9NAP/dzefm5vb6/Ons7vyWVfjFo/a+l+nl4vancfv7/On7/+rx9fPs5vD19+zy9faqd/94P+T+/+vSufX///+JU/D3/P/Yyufl5P/8+vb5+ub1+v7///9YFfLy8fp6K/D8/+bm5vf39+rq6vT09PHx8fLy8vX19eXl5f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDIxQkZGNUVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDIxQkZGNkVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwMjFCRkYzRUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwMjFCRkY0RUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkECQAAyAAsAAAAAAwADAAACGEAkQkcSJDgMGAAECAQdmHWwGDAjBFEQiEPsgDHhhVE5uGLi2IENiLDwAIPgGIikVmYIwylSAjCiAFIWYDYgGPBNgY7NgDZsGMSBxrLOLAYMAMJEhggEHSgAGIHDhATMDAgACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABAgEAYs2MBgwIwRNHZMAbIAx4YVRKYhCJNiBDYK1GUCQDGRyBBpEXZSJKlBxACgdDRmwDGHBXOpkIBs2DGJAylqFFgMmIEECQwQADpQALEDB4gJGBgQACH5BAkAAMgALAgAAwAEAAgAAAgjAJEZWxAAGbICxAySgGHwxRtkNYhQQnZnESgyDAohC7XBYEAAIfkEBQAAyAAsAAAAAAwADAAACDMAkQkcSLCgwYMIExpbECAhsgLEHBYT5nACxYR+IiL8wUACQhFtihxMwoVPIIQOWnEYGBAAIfkECQAAyAAsBAAGAAgABgAACCQAkQkcWGygwQIGBUY6NmBgAxAthiGrEwHMlE4PBqqSAkvNwIAAIfkEBQAAyAAsAAAAAAwADAAACDUAkQkcSLCgwYMIEypcyJBgMWEKCxBLGOzYAIFG4hA0dmwYQTuoRuxZRcBYwVRuPJ1BI2BgQAAh+QQFAADIACwBAAYABwAGAAAIIQAnIBtI0AZBgmYaHUQmRAmQhYYOpbCSwMBAAV0cHCAWEAAh+QQJAADIACwAAAUABgAHAAAIIgCHIBs4cIsigshYVcFFEBKmDgQrwHmUBqGFWwYSICR2ICAAIfkEBQAAyAAsAAAAAAwADAAACC8AkQkcSLCgwYMIEw78lUPhjTAKeV1RGOWUwhCARCkcdsyYwmLADCRIKIDYAYMBAQAh+QQJAADIACwAAAEABAAIAAAIIwCRIXtwAZkYCmxsSdKDrFQPDMgqrRA4ipNAYgAEDjgWDFlAACH5BAkAAMgALAAAAAAMAAwAAAgzAJEJHEhwYIMTsmL9KSjQCRUeDAXu0oQjosBedCwKBLBGIzJhkzwSA+BxwLFgHlOqVBkQACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJ3HTEVAQIAQQqtDTj06s+T4AFUxiMxiUdCo0dU4AswDEsCjMuCFCMQMiQBYgBKHZSYTFhwli2RPZS5UxkKQccm3gy2LEByIYdMxZS4zCXwAwkSGCAANGQAogdOEBMgMKAACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJHFDLi48PAQQqHAasRBNGgrJkUhgMmDGFFcrIUIAswLFhChUaWxCgGIGQIQsQA1AMpcJiwoS1dIkM5kqayFQOOBbMZbBjA5ANO3ZR5MeXwAwkSGCAQFGFAogdOEBMgMKAACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABC4iuGL1sBgwIwNXEJoRyJkAY4NK4gsA5QAxQhwFIiCGIBiI5HJESYM5chiwkymLEBswLFgHIMdG4Bs2DGJA41pHFgMmIEECQwQADpQALEDB4gJGBgQADs=) no-repeat center;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-image-info .filename {
+  font-size: 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status {
+  float: right;
+  margin-top: 17px;
+  margin-right: 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .kuma-upload-action {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  color: #616162;
+  text-align: center;
+  line-height: 16px;
+  border-radius: 2px;
+  background: none;
+  margin: 0 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .kuma-upload-action:hover {
+  text-decoration: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .preview-action {
+  margin-left: 0;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .close-action {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .download-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .remove-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .preview-action {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img .field-status .pre-action {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img:hover .download-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img:hover .remove-action,
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img:hover .preview-action {
+  display: inline;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.status-error {
+  border: 1px solid #F04631;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.status-error .field-image-name {
+  color: #F04631;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-img.status-error:hover .close-action {
+  display: inline-block;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  clear: both;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 3px;
+  overflow: visible;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual.status-progress {
+  border: 1px dashed rgba(31, 56, 88, 0.2);
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .error-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: #F04631;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-image-info {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-image-info .field-image-preview img {
+  width: 100px;
+  height: 100px;
+  margin: -1px;
+  border-radius: 3px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-image-info .kuma-upload-fileicon {
+  margin: 0 10px;
+  font-size: 16px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-image-info .kuma-icon-caution {
+  vertical-align: middle;
+  margin: 0 5px;
+  color: #ff6330;
+  font-size: 14px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-image-info .kuma-loading {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background: url(data:image/gif;base64,R0lGODlhDAAMAPfIAOnp6f7+/vz8/P39/efn5+jo6Ovr6+zs7O3t7e/v7/j4+OTk5OH6///+/ezr6/T4+/Hy8uz6//3+/vLw8OH////9/O///+bl5f/49PT09fX3+vT5/Pz+//rTu/nRuPymbvX3+P3///+tdv+JRvH09+fz+/Xi1f+odujr7+f6/+Xo6/Ls5vSkduXq7//VvvLx7+rr6+jp6eXk5OzHruTt9f/v5+js7/O5kvvDnub8///y6/KiaP6bZ/5mBv9yKPnu5v+WbeTn6/L//+rp6fx1I/bs5OXl5P92SPT6/e/v8POiaf/+/v7+//Df1PvXwOnr6+Ly+/bZxvW4jv9dAv9WAPG0kO/w8v9vJfP4/OP2+/9pHOn0/ej1+e/3/fHi2P9FAPmxgPi3jvjv6fHz8/X5/PP//+Px+u3r6vH1+PX7/v339PLw8fX5+/1eCf2OR+f///rHpfT///Lx8Of4/+X6/uvr7OL6//fdy/Xg0fvYwfbp3u/s6+3EqOv7/+ft8O3r7OTt9P+caPaXWPqUTv9pO/Xz8P+QW/eRSP2RRvf///D9//1iDP9eDvf4+Onz/OL4/v/Ttvb5/P1mC/Lx8ffXwef+//T6/vb19f9EAPb3+OL///307vH2+efg2v5xEv9NAP/dzefm5vb6/Ons7vyWVfjFo/a+l+nl4vancfv7/On7/+rx9fPs5vD19+zy9faqd/94P+T+/+vSufX///+JU/D3/P/Yyufl5P/8+vb5+ub1+v7///9YFfLy8fp6K/D8/+bm5vf39+rq6vT09PHx8fLy8vX19eXl5f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDIxQkZGNUVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDIxQkZGNkVFMjYxMUUzQkYzN0ZGQzRENzlGRDZEMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwMjFCRkYzRUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwMjFCRkY0RUUyNjExRTNCRjM3RkZDNEQ3OUZENkQzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkECQAAyAAsAAAAAAwADAAACGEAkQkcSJDgMGAAECAQdmHWwGDAjBFEQiEPsgDHhhVE5uGLi2IENiLDwAIPgGIikVmYIwylSAjCiAFIWYDYgGPBNgY7NgDZsGMSBxrLOLAYMAMJEhggEHSgAGIHDhATMDAgACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABAgEAYs2MBgwIwRNHZMAbIAx4YVRKYhCJNiBDYK1GUCQDGRyBBpEXZSJKlBxACgdDRmwDGHBXOpkIBs2DGJAylqFFgMmIEECQwQADpQALEDB4gJGBgQACH5BAkAAMgALAgAAwAEAAgAAAgjAJEZWxAAGbICxAySgGHwxRtkNYhQQnZnESgyDAohC7XBYEAAIfkEBQAAyAAsAAAAAAwADAAACDMAkQkcSLCgwYMIExpbECAhsgLEHBYT5nACxYR+IiL8wUACQhFtihxMwoVPIIQOWnEYGBAAIfkECQAAyAAsBAAGAAgABgAACCQAkQkcWGygwQIGBUY6NmBgAxAthiGrEwHMlE4PBqqSAkvNwIAAIfkEBQAAyAAsAAAAAAwADAAACDUAkQkcSLCgwYMIEypcyJBgMWEKCxBLGOzYAIFG4hA0dmwYQTuoRuxZRcBYwVRuPJ1BI2BgQAAh+QQFAADIACwBAAYABwAGAAAIIQAnIBtI0AZBgmYaHUQmRAmQhYYOpbCSwMBAAV0cHCAWEAAh+QQJAADIACwAAAUABgAHAAAIIgCHIBs4cIsigshYVcFFEBKmDgQrwHmUBqGFWwYSICR2ICAAIfkEBQAAyAAsAAAAAAwADAAACC8AkQkcSLCgwYMIEw78lUPhjTAKeV1RGOWUwhCARCkcdsyYwmLADCRIKIDYAYMBAQAh+QQJAADIACwAAAEABAAIAAAIIwCRIXtwAZkYCmxsSdKDrFQPDMgqrRA4ipNAYgAEDjgWDFlAACH5BAkAAMgALAAAAAAMAAwAAAgzAJEJHEhwYIMTsmL9KSjQCRUeDAXu0oQjosBedCwKBLBGIzJhkzwSA+BxwLFgHlOqVBkQACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJ3HTEVAQIAQQqtDTj06s+T4AFUxiMxiUdCo0dU4AswDEsCjMuCFCMQMiQBYgBKHZSYTFhwli2RPZS5UxkKQccm3gy2LEByIYdMxZS4zCXwAwkSGCAANGQAogdOEBMgMKAACH5BAkAAMgALAAAAAAMAAwAAAhjAJEJHFDLi48PAQQqHAasRBNGgrJkUhgMmDGFFcrIUIAswLFhChUaWxCgGIGQIQsQA1AMpcJiwoS1dIkM5kqayFQOOBbMZbBjA5ANO3ZR5MeXwAwkSGCAQFGFAogdOEBMgMKAACH5BAUAAMgALAAAAAAMAAwAAAhgAJEJHEiQ4DBgABC4iuGL1sBgwIwNXEJoRyJkAY4NK4gsA5QAxQhwFIiCGIBiI5HJESYM5chiwkymLEBswLFgHIMdG4Bs2DGJA41pHFgMmIEECQwQADpQALEDB4gJGBgQADs=) no-repeat center;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual .field-status {
+  display: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual.status-error {
+  background: rgba(240, 70, 49, 0.06);
+  border: 1px solid #f04631;
+  border-radius: 3px;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual.status-error .visual-progress-box {
+  background: rgba(240, 70, 49, 0.06);
+  padding: 0 0 0 0;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual.status-error .visual-progress-box .re-upload {
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #f04631;
+  letter-spacing: 0;
+  line-height: 12px;
+  cursor: pointer;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual.status-error .visual-progress-box .re-upload-icon {
+  display: block;
+  font-size: 28px;
+  color: #f04631;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 100px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  height: 100%;
+  width: 100%;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .preview-action {
+  margin-right: 6px;
+  position: absolute;
+  top: 0;
+  left: 37px;
+  background: none;
+  border: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .preview-action:hover {
+  text-decoration: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .preview-action .uxicon-fangda {
+  font-size: 27px;
+  color: white;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .remove-action {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  color: rgba(31, 56, 88, 0.2);
+  line-height: normal;
+  cursor: pointer;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .remove-action:hover {
+  text-decoration: none;
+}
+.kuma-upload-filelist.nwmode .kuma-upload-fileitem-visual:hover .field-status .remove-action .uxicon-biaodanlei-tongyongqingchu {
+  font-size: 17px;
+}
+.progress-box {
+  height: 100%;
+  border-radius: 3px;
+  z-index: 3;
+  background: rgba(73, 142, 230, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.visual-progress-box {
+  width: 98px;
+  height: 98px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 24px 10px;
+  text-align: center;
+  font-size: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(31, 56, 88, 0.4);
+}
+.delete-progress {
+  cursor: pointer;
+  position: absolute;
+  right: -9px;
+  top: -12px;
+  width: 17px;
+  height: 17px;
+  color: rgba(31, 56, 88, 0.4);
+  display: none;
+}
+.delete-progress .uxicon-biaodanlei-tongyongqingchu {
+  font-size: 17px;
+}
+/**
+ * Icon Component Style for uxcore
+ * @author eternalsky
+ *
+ * Copyright 2015-2016, Uxcore Team, Alinw.
+ * All rights reserved.
+ */
+@font-face {
+  font-family: 'uxcore';
+  src: url('//at.alicdn.com/t/font_207195_kl1liw3b0ccy2e29.woff') format('woff');
+}
+.uxcore-icon {
+  font-family: "uxcore" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.uxicon-dingding:before {
+  content: "\e68b";
+}
+.uxicon-xiala:before {
+  content: "\e602";
+}
+.uxicon-liucheng:before {
+  content: "\e603";
+}
+.uxicon-bingtu:before {
+  content: "\e605";
+}
+.uxicon-lianjie:before {
+  content: "\e606";
+}
+.uxicon-dayin:before {
+  content: "\e607";
+}
+.uxicon-fujian:before {
+  content: "\e608";
+}
+.uxicon-ren:before {
+  content: "\e60a";
+}
+.uxicon-paixu-jiangxu:before {
+  content: "\e60b";
+}
+.uxicon-paixu-shengxu:before {
+  content: "\e60c";
+}
+.uxicon-renyuansousuo:before {
+  content: "\e60d";
+}
+.uxicon-renyuanzengjia:before {
+  content: "\e60e";
+}
+.uxicon-shanjian:before {
+  content: "\e60f";
+}
+.uxicon-richeng:before {
+  content: "\e610";
+}
+.uxicon-shangchuan:before {
+  content: "\e612";
+}
+.uxicon-shouji:before {
+  content: "\e613";
+}
+.uxicon-shoucang:before {
+  content: "\e614";
+}
+.uxicon-shezhi:before {
+  content: "\e615";
+}
+.uxicon-shouye:before {
+  content: "\e616";
+}
+.uxicon-shuaxin:before {
+  content: "\e617";
+}
+.uxicon-tuandui:before {
+  content: "\e618";
+}
+.uxicon-shu:before {
+  content: "\e619";
+}
+.uxicon-weizhi:before {
+  content: "\e61b";
+}
+.uxicon-xiazai:before {
+  content: "\e61c";
+}
+.uxicon-xinwen:before {
+  content: "\e61d";
+}
+.uxicon-xinwen1:before {
+  content: "\e61e";
+}
+.uxicon-yinpin:before {
+  content: "\e61f";
+}
+.uxicon-xiangji:before {
+  content: "\e620";
+}
+.uxicon-yingyong:before {
+  content: "\e621";
+}
+.uxicon-youxiang:before {
+  content: "\e623";
+}
+.uxicon-zengjia:before {
+  content: "\e624";
+}
+.uxicon-zhexiantu:before {
+  content: "\e626";
+}
+.uxicon-number:before {
+  content: "\e627";
+}
+.uxicon-number1:before {
+  content: "\e628";
+}
+.uxicon-number2:before {
+  content: "\e629";
+}
+.uxicon-number3:before {
+  content: "\e62a";
+}
+.uxicon-number4:before {
+  content: "\e62b";
+}
+.uxicon-number5:before {
+  content: "\e62c";
+}
+.uxicon-number6:before {
+  content: "\e62d";
+}
+.uxicon-number7:before {
+  content: "\e62e";
+}
+.uxicon-number8:before {
+  content: "\e62f";
+}
+.uxicon-number9:before {
+  content: "\e630";
+}
+.uxicon-PC:before {
+  content: "\e631";
+}
+.uxicon-number10:before {
+  content: "\e632";
+}
+.uxicon-tupian:before {
+  content: "\e633";
+}
+.uxicon-shipin:before {
+  content: "\e634";
+}
+.uxicon-yibiaopan:before {
+  content: "\e622";
+}
+.uxicon-wendang1:before {
+  content: "\e636";
+}
+.uxicon-zhuzhuangtu1:before {
+  content: "\e637";
+}
+.uxicon-sousuo:before {
+  content: "\e625";
+}
+.uxicon-shanchu:before {
+  content: "\e638";
+}
+.uxicon-shexiangtou:before {
+  content: "\e639";
+}
+.uxicon-number-xianxing:before {
+  content: "\e63a";
+}
+.uxicon-number-xianxing1:before {
+  content: "\e63b";
+}
+.uxicon-number-xianxing2:before {
+  content: "\e63c";
+}
+.uxicon-number-xianxing3:before {
+  content: "\e63d";
+}
+.uxicon-number-xianxing4:before {
+  content: "\e63e";
+}
+.uxicon-number-xianxing5:before {
+  content: "\e63f";
+}
+.uxicon-number-xianxing6:before {
+  content: "\e640";
+}
+.uxicon-number-xianxing7:before {
+  content: "\e641";
+}
+.uxicon-number-xianxing8:before {
+  content: "\e642";
+}
+.uxicon-number-xianxing9:before {
+  content: "\e643";
+}
+.uxicon-number-xianxing10:before {
+  content: "\e644";
+}
+.uxicon-riqi:before {
+  content: "\e645";
+}
+.uxicon-riqiqujian:before {
+  content: "\e646";
+}
+.uxicon-biaoge1:before {
+  content: "\e64b";
+}
+.uxicon-biaoqian:before {
+  content: "\e64f";
+}
+.uxicon-tuichu:before {
+  content: "\e650";
+}
+.uxicon-zhanghaobianji:before {
+  content: "\e651";
+}
+.uxicon-zhanghaoguanli:before {
+  content: "\e652";
+}
+.uxicon-pinglun:before {
+  content: "\e653";
+}
+.uxicon-renyuanmingpian:before {
+  content: "\e658";
+}
+.uxicon-renyuan:before {
+  content: "\e659";
+}
+.uxicon-top:before {
+  content: "\e65a";
+}
+.uxicon-right:before {
+  content: "\e65b";
+}
+.uxicon-left:before {
+  content: "\e65c";
+}
+.uxicon-bottom:before {
+  content: "\e65d";
+}
+.uxicon-left_double:before {
+  content: "\e65e";
+}
+.uxicon-right_double:before {
+  content: "\e65f";
+}
+.uxicon-shaixuan:before {
+  content: "\e69c";
+}
+.uxicon-xiaolian-line:before {
+  content: "\e6a2";
+}
+.uxicon-kulian-full:before {
+  content: "\e6a3";
+}
+.uxicon-caozuo-xingji-line:before {
+  content: "\e6a4";
+}
+.uxicon-caozuo-xingji-full:before {
+  content: "\e6a5";
+}
+.uxicon-kulian-line:before {
+  content: "\e6a6";
+}
+.uxicon-xiaolian-full:before {
+  content: "\e6a7";
+}
+.uxicon-xianshi:before {
+  content: "\e6a8";
+}
+.uxicon-chuangjiansiyoumoban:before {
+  content: "\e6a9";
+}
+.uxicon-jinggao:before {
+  content: "\e6ac";
+}
+.uxicon-biaodanlei-tongyongqingchu:before {
+  content: "\e6ab";
+}
+.uxicon-suo:before {
+  content: "\e6ae";
+}
+.uxicon-biaoqian-qingchu:before {
+  content: "\e6b0";
+}
+.uxicon-biaoqianxuanze-duoxuan-gou:before {
+  content: "\e6af";
+}
+.uxicon-jinggao-full:before {
+  content: "\e6b1";
+}
+.uxicon-yiwen-full:before {
+  content: "\e6b2";
+}
+.uxicon-chenggong-full:before {
+  content: "\e6b3";
+}
+.uxicon-tishi-full:before {
+  content: "\e6b4";
+}
+.uxicon-wangwang:before {
+  content: "\e69a";
+}
+.uxicon-dianhua:before {
+  content: "\e69b";
+}
+.uxicon-youxiang-full:before {
+  content: "\e6b5";
+}
+.uxicon-loading-icon-round:before {
+  content: "\e6b6";
+}
+.uxicon-caozuo-shoucang-full:before {
+  content: "\e6b7";
+}
+.uxicon-aite:before {
+  content: "\e69d";
+}
+.uxicon-huxiangguanzhu:before {
+  content: "\e69e";
+}
+.uxicon-zengjia1:before {
+  content: "\e69f";
+}
+.uxicon-duigou:before {
+  content: "\e6b8";
+}
+.uxicon-zidingyilie:before {
+  content: "\e6b9";
+}
+.uxicon-suoxiao:before {
+  content: "\e6ba";
+}
+.uxicon-fangda:before {
+  content: "\e6bb";
+}
+.uxicon-fangwen:before {
+  content: "\e6be";
+}
+.uxicon-fanyi:before {
+  content: "\e6bc";
+}
+.uxicon-fanyi-full:before {
+  content: "\e6bd";
+}
+.uxicon-option-yixuan-gou:before {
+  content: "\e6bf";
+}
+.uxicon-shouqi:before {
+  content: "\e601";
+}
+.uxicon-renwufull:before {
+  content: "\e609";
+}
+.uxicon-zhankai:before {
+  content: "\e611";
+}
+.uxicon-qiehuanyingwen:before {
+  content: "\e61a";
+}
+.uxicon-xiaoxitixingfull:before {
+  content: "\e635";
+}
+.uxicon-qiehuanzhongwen:before {
+  content: "\e647";
+}
+.uxicon-wailian:before {
+  content: "\e604";
+}
+.uxicon-jinggaocopy:before {
+  content: "\e6c0";
+}
+.uxicon-xinxitishicopy:before {
+  content: "\e6c1";
+}
+.uxicon-chenggongtishicopy:before {
+  content: "\e6c2";
+}
+.uxicon-cuowu-fullcopy:before {
+  content: "\e6c3";
+}
+.uxicon-yiwencopy:before {
+  content: "\e6c4";
+}
+.uxicon-fanhuidingbu:before {
+  content: "\e6c5";
+}
+.uxicon-pingjia:before {
+  content: "\e6c6";
+}
+.uxicon-guanyu:before {
+  content: "\e6c7";
+}
+.uxicon-qiuzhu:before {
+  content: "\e6c8";
+}
+.uxicon-shouce:before {
+  content: "\e6c9";
+}
+.uxicon-xiazai1:before {
+  content: "\e6ca";
+}
+.uxicon-shu1:before {
+  content: "\e648";
+}
+.uxicon-huibiao:before {
+  content: "\e6cb";
+}
+.uxicon-guanbi:before {
+  content: "\e6cc";
+}
+.uxicon-yincang:before {
+  content: "\e6d5";
+}
+.uxicon-yuyuechenggong:before {
+  content: "\e600";
+}
+.uxicon-yuyue:before {
+  content: "\e649";
+}
+.uxicon-dianzan:before {
+  content: "\e64a";
+}
+.uxicon-baocun:before {
+  content: "\e6d9";
+}
+.uxicon-ceshi:before {
+  content: "\e6da";
+}
+.uxicon-shanjian-full:before {
+  content: "\e6de";
+}
+.uxicon-zengjia-full:before {
+  content: "\e6df";
+}
+.uxicon-moren:before {
+  content: "\e64c";
+}
+.uxicon-bianji:before {
+  content: "\e6e0";
+}
+.uxicon-guojihua:before {
+  content: "\e6e4";
+}
+.uxicon-gengduo:before {
+  content: "\e64d";
+}
+.uxicon-fuli:before {
+  content: "\e64e";
+}
+.uxicon-nianjia:before {
+  content: "\e654";
+}
+.uxicon-xinchouhesuan:before {
+  content: "\e655";
+}
+.uxicon-gouwuche:before {
+  content: "\e6e6";
+}
+.uxicon-fuhao-shizhong-line:before {
+  content: "\e73e";
+}
+.uxicon-saoma:before {
+  content: "\e656";
+}
+.uxicon-shoudiantong:before {
+  content: "\e657";
+}
+.uxicon-ARsaomiao:before {
+  content: "\e660";
+}
+.uxicon-nav-bottom:before {
+  content: "\e760";
+}
+.uxicon-nav-right:before {
+  content: "\e761";
+}
+.uxicon-nav-top:before {
+  content: "\e762";
+}
+.uxicon-nav-left:before {
+  content: "\e763";
+}
+.sample {
+  margin: 10px 0;
+  font-size: 14px;
+}
+#sample4 {
+  width: 400px;
+}
+.mydroparea .kuma-icon-uploading {
+  font-size: 60px;
+  color: #57c5f7;
+  display: block;
+  margin-top: 35px;
+}
+.custom-button-group .kuma-uploader {
+  margin-bottom: 20px;
+}

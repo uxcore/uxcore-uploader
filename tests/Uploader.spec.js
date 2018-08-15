@@ -8,6 +8,7 @@ import File from './mocks/File';
 import { Core, Status, Events } from 'uploadcore';
 import Uploader from '../src';
 import DefaultFileItem from '../src/DefaultFileItem';
+import { debug } from 'util';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -107,6 +108,28 @@ describe('Uploader', () => {
     wrapper.setProps({ readOnly: true });
     expect(wrapper.find(Picker).length).to.be(0);
     expect(wrapper.find('.kuma-upload-tip').length).to.be(0);
+  });
+
+  it('should render picker when isVisual is true', () => {
+    const wrapper = mount(
+      <Uploader
+        autoPending
+        multiple={false}
+        fileList={fileList}
+        onChange={handleChange}
+        isOnlyImg={false}
+        name="file"
+        isVisual={false}
+        url="http://eternalsky.me:8122/file/upload"
+        tips={'tips'}
+      />
+    );
+    expect(wrapper.find('.kuma-upload-picker-visual').length).to.be(0);
+
+    wrapper.setProps({ isVisual: true });
+    expect(wrapper.find('.kuma-upload-picker-visual').length).to.be(1);
+    wrapper.setProps({ readOnly: true });
+    expect(wrapper.find('.kuma-upload-picker-visual').length).to.be(0);
   });
 
   it('should handle stat change', () => {

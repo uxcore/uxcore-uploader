@@ -13,7 +13,9 @@ export default class Picker extends React.Component {
   render() {
     const { isVisual } = this.props;
     if (isVisual) {
-      return (<div className="kuma-upload-picker-visual">
+      return (<div className="kuma-upload-picker-visual"
+        style={{ overflow: 'hidden' }}
+      >
         {this.props.children}
         <Icon name="zengjia1" />
       </div>);

@@ -99,7 +99,7 @@ describe('FileList', () => {
     expect(wrapper.find(FileItem).length).to.be(3);
   });
 
-  it('should only render Picker when core is not full and mode is icon', () => {
+  it('should render Picker when isVisual', () => {
     const wrapper = mount(
       <FileList
         locale={'en'}
@@ -111,12 +111,8 @@ describe('FileList', () => {
     );
     const getPicker = () => wrapper.find('.inner').children().filter(Picker);
     expect(getPicker().length).to.be(0);
-
-    wrapper.setProps({ mode: 'icon' });
-    expect(getPicker().length).to.be(1);
-
-    core.setOptions({ capcity: 2 });
-    wrapper.setState({});
+    // picker是children，外部的变量
+    wrapper.setProps({ isVisual: true });
     expect(getPicker().length).to.be(0);
   });
 
