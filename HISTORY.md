@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.2 
+
+* `CHANGED` modify picker position when isVisual
+
 ## 3.3.1 
 
 * `CHANGED` show download icon when readonly
