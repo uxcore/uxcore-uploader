@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'uxcore-button';
 import Uploader from '../src/';
+import '../style';
+import 'kuma-base/core.less';
+
 // attachment file tips
 const tips = <span>请选择大小不超过5M的文本文件，支持doc,docx,xls,xlsx,zip格式，最多3张</span>;
 const imgTips = <span>单张不超过3M，支持jpeg,jpg,png格式</span>;
@@ -234,6 +237,48 @@ class Demo3 extends React.Component {
 ReactDOM.render((
   <Demo3 />
 ), document.getElementById('sample3'));
+
+
+class Demo31 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList,
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+  render() {
+    const me = this;
+    return (<Uploader
+      ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
+      readOnly
+      prefixCls="my-uploader"
+      multiple={false}
+      isVisual={false}
+      progressInterval={100}
+      queueCapcity={2}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={imgTips}
+      name="file"
+      url="http://eternalsky.me:8122/file/upload"
+      locale="zh-cn-img"
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo31 />
+), document.getElementById('sample3-1'));
 
 class Demo4 extends React.Component {
   constructor(props) {

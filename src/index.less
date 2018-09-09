@@ -1,4 +1,4 @@
-@uploader-prefix-class: kuma-upload;
+@__uploaderPrefixCls: kuma-upload;
 
 @import "style/icon";
 @import "style/progress";
@@ -15,14 +15,14 @@
   }
 }
 
-.@{uploader-prefix-class}er {
+.@{__uploaderPrefixCls}er {
   min-width: 200px;
   .uxicon-fangda:before {
     content: '\e6a8';
   }
 }
 
-.@{uploader-prefix-class}-filelist {
+.@{__uploaderPrefixCls}-filelist {
   width: 100%;
   max-height: 400px;
   overflow-y: visible;
@@ -34,26 +34,26 @@
   }
   >.inner {
     overflow: visible;
-    & .@{uploader-prefix-class}-picker-visual{
+    & .@{__uploaderPrefixCls}-picker-visual{
       margin-top: 0;
     }
   }
 }
 
-.@{uploader-prefix-class}-filelist.filelist-visual.nwmode {
+.@{__uploaderPrefixCls}-filelist.filelist-visual.nwmode {
   float: none;
   margin-top: 5px;
   width: auto;
 }
 
-.@{uploader-prefix-class}-picker-visual {
+.@{__uploaderPrefixCls}-picker-visual {
   width: 100px;
   height: 100px;
   margin-top: 5px;
   display: inline-block;
   position: relative;
   line-height: normal;
-  .@{uploader-prefix-class}-button {
+  .@{__uploaderPrefixCls}-button {
     display: inline-block;
     background-color: #fff;
     outline: none;
@@ -76,7 +76,7 @@
   }
 }
 
-.@{uploader-prefix-class}-picker {
+.@{__uploaderPrefixCls}-picker {
   display: inline-block;
   position: relative;
   line-height: normal;
@@ -130,7 +130,7 @@
       }
     }
   }
-  .@{uploader-prefix-class}-button {
+  .@{__uploaderPrefixCls}-button {
     display: inline-block;
     background: #fff;
     outline: none;
@@ -149,24 +149,24 @@
       font-size: 12px;
     }
   }
-  .@{uploader-prefix-class}-button>* {
+  .@{__uploaderPrefixCls}-button>* {
     vertical-align: middle;
   }
 }
 
-.@{uploader-prefix-class}-tip {
+.@{__uploaderPrefixCls}-tip {
   font-size: 12px;
   color: rgba(31, 56, 88, 0.4);
   margin-top: 10px;
 }
 
-.@{uploader-prefix-class}-dropzoom {
+.@{__uploaderPrefixCls}-dropzoom {
   min-height: 200px;
   min-width: 200px;
   position: relative;
   border-radius: 5px;
 
-  .@{uploader-prefix-class}-responser {
+  .@{__uploaderPrefixCls}-responser {
     position: absolute;
     top: 0;
     right: 0;
@@ -175,13 +175,13 @@
     border: 1px dashed #D9D9D9;
     z-index: -1;
   }
-  &.blink .@{uploader-prefix-class}-responser {
+  &.blink .@{__uploaderPrefixCls}-responser {
     border: 3px dashed #fc6e51;
     background: #e1e5e8;
     -webkit-animation: kuxglow .7s infinite;
     animation: kuxglow .7s infinite;
   }
-  &.enter .@{uploader-prefix-class}-responser {
+  &.enter .@{__uploaderPrefixCls}-responser {
     display: block;
     border: 3px solid #fc6e51;
     background: none;
@@ -189,7 +189,7 @@
     animation: none;
   }
 
-  .@{uploader-prefix-class}-picker {
+  .@{__uploaderPrefixCls}-picker {
     display: block;
     text-align: center;
     opacity: 0.6;
@@ -262,7 +262,7 @@
       opacity: 1;
     }
   }
-  >.@{uploader-prefix-class}-picker {
+  >.@{__uploaderPrefixCls}-picker {
     position: absolute;
     z-index: 2;
     top: 0;
@@ -270,7 +270,7 @@
     left: 0;
     bottom: 0;
   }
-  .@{uploader-prefix-class}-filelist .@{uploader-prefix-class}-picker {
+  .@{__uploaderPrefixCls}-filelist .@{__uploaderPrefixCls}-picker {
     float: left;
     margin: 5px;
     width: 80px;
@@ -335,12 +335,12 @@
     }
   }
 
-  .@{uploader-prefix-class}-filelist {
+  .@{__uploaderPrefixCls}-filelist {
     height: 100%;
   }
 }
 
-.@{uploader-prefix-class}-fileitem {
+.@{__uploaderPrefixCls}-fileitem {
   position: relative;
   overflow: hidden;
   font-family: monospace;
@@ -359,8 +359,8 @@
     font-size: 12px;
   }
 
-  .@{uploader-prefix-class}-status,
-  .@{uploader-prefix-class}-action {
+  .@{__uploaderPrefixCls}-status,
+  .@{__uploaderPrefixCls}-action {
     display: inline-block;
     text-align: center;
     text-decoration: none;
@@ -370,7 +370,7 @@
       font-size: 18px;
     }
   }
-  .@{uploader-prefix-class}-status {
+  .@{__uploaderPrefixCls}-status {
     &.status-success {
       color: #8ad256;
     }
@@ -381,7 +381,7 @@
       }
     }
   }
-  .@{uploader-prefix-class}-action {
+  .@{__uploaderPrefixCls}-action {
     &.action-remove {
       cursor: pointer;
       &:hover {
@@ -406,8 +406,8 @@
 }
 
 
-.@{uploader-prefix-class}-filelist {
-  &.minimode .@{uploader-prefix-class}-fileitem {
+.@{__uploaderPrefixCls}-filelist {
+  &.minimode .@{__uploaderPrefixCls}-fileitem {
     border: 1px solid #d9d9d9;
     padding: 5px 6px;
     .field-info {
@@ -424,25 +424,25 @@
     }
 
     .field-status {
-      .@{uploader-prefix-class}-status,
-      .@{uploader-prefix-class}-action {
+      .@{__uploaderPrefixCls}-status,
+      .@{__uploaderPrefixCls}-action {
         margin: 0 1px;
       }
     }
 
-    .@{uploader-prefix-class}-progressbar {
+    .@{__uploaderPrefixCls}-progressbar {
       opacity: 0.3;
       z-index: -1;
     }
 
     &.status-error {
-      .@{uploader-prefix-class}-progressbar {
+      .@{__uploaderPrefixCls}-progressbar {
         display: none;
       }
     }
   }
 
-  &.iconmode .@{uploader-prefix-class}-fileitem {
+  &.iconmode .@{__uploaderPrefixCls}-fileitem {
     margin: 5px;
     width: 80px;
     height: 112px;
@@ -486,11 +486,11 @@
           overflow: hidden;
           vertical-align: middle;
         }
-        .@{uploader-prefix-class}-fileicon {
+        .@{__uploaderPrefixCls}-fileicon {
           font-size: 60px;
         }
       }
-      .@{uploader-prefix-class}-action {
+      .@{__uploaderPrefixCls}-action {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -509,19 +509,19 @@
         }
       }
 
-      .@{uploader-prefix-class}-progressbar,
-      .@{uploader-prefix-class}-progresspin {
+      .@{__uploaderPrefixCls}-progressbar,
+      .@{__uploaderPrefixCls}-progresspin {
         z-index: 1;
         position: absolute;
         left: 50%;
         top: 50%;
       }
 
-      .@{uploader-prefix-class}-progresspin {
+      .@{__uploaderPrefixCls}-progresspin {
         margin-left: -10px;
         margin-top: -10px;
       }
-      .@{uploader-prefix-class}-progressbar {
+      .@{__uploaderPrefixCls}-progressbar {
         left: 0;
         height: 20px;
         bottom: auto;
@@ -545,7 +545,7 @@
     margin-top: 10px;
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     clear: both;
     margin-bottom: 10px;
@@ -579,7 +579,7 @@
       padding: 0;
       margin: 0;
       background: transparent;
-      .@{uploader-prefix-class}-fileicon {
+      .@{__uploaderPrefixCls}-fileicon {
         font-size: 16px;
       }
       .kuma-icon-caution {
@@ -625,7 +625,7 @@
         margin-left: 0;
         float: right;
         margin-right: 10px;
-        .@{uploader-prefix-class}-status {
+        .@{__uploaderPrefixCls}-status {
           font-size: 12px;
           &.status-progress {
             color: #f60;
@@ -635,7 +635,7 @@
             margin-left: 5px;
           }
         }
-        .@{uploader-prefix-class}-action {
+        .@{__uploaderPrefixCls}-action {
           font-size: 12px;
           color: #616162;
           cursor: pointer;
@@ -658,7 +658,7 @@
         .terminal-action {
           display: inline;
         }
-        .@{uploader-prefix-class}-action {
+        .@{__uploaderPrefixCls}-action {
           display: inline;
         }
       }
@@ -679,15 +679,15 @@
     }
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem.status-error {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem.status-error {
     border: 1px solid #F04631;
     background: rgba(240, 69, 48, 0.06);
-    .@{uploader-prefix-class}-action.close-action {
+    .@{__uploaderPrefixCls}-action.close-action {
       margin: 0;
     }
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem-img {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem-img {
     &.read-style {
       border: none;
     }
@@ -735,7 +735,7 @@
           border-radius: 3px;
         }
       }
-      .@{uploader-prefix-class}-fileicon {
+      .@{__uploaderPrefixCls}-fileicon {
         margin: 0 10px;
         font-size: 16px;
       }
@@ -763,7 +763,7 @@
       float: right;
       margin-top: 17px;
       margin-right: 5px;
-      .@{uploader-prefix-class}-action {
+      .@{__uploaderPrefixCls}-action {
         cursor: pointer;
         width: 16px;
         height: 16px;
@@ -801,7 +801,7 @@
     }
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem-img.status-error {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem-img.status-error {
     border: 1px solid #F04631;
     .field-image-name {
       color: #F04631;
@@ -813,7 +813,7 @@
     }
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem-visual {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem-visual {
     &.status-progress {
       border: 1px dashed rgba(31, 56, 88, 0.2);
     }
@@ -854,7 +854,7 @@
           border-radius: 3px;
         }
       }
-      .@{uploader-prefix-class}-fileicon {
+      .@{__uploaderPrefixCls}-fileicon {
         margin: 0 10px;
         font-size: 16px;
       }
@@ -878,7 +878,7 @@
     }
   }
 
-  &.nwmode .@{uploader-prefix-class}-fileitem-visual.status-error {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem-visual.status-error {
     background: rgba(240, 70, 49, 0.06);
     border: 1px solid #f04631;
     border-radius: 3px;
@@ -903,7 +903,7 @@
       }
     }
   }
-  &.nwmode .@{uploader-prefix-class}-fileitem-visual:hover {
+  &.nwmode .@{__uploaderPrefixCls}-fileitem-visual:hover {
     .field-status {
       display: block;
       position: absolute;

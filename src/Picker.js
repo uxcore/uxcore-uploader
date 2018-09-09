@@ -11,16 +11,16 @@ export default class Picker extends React.Component {
   }
 
   render() {
-    const { isVisual } = this.props;
+    const { isVisual, prefixCls } = this.props;
     if (isVisual) {
-      return (<div className="kuma-upload-picker-visual"
+      return (<div className={`${prefixCls}-picker-visual`}
         style={{ overflow: 'hidden' }}
       >
         {this.props.children}
         <Icon name="zengjia1" />
       </div>);
     }
-    return <div className="kuma-upload-picker">{this.props.children}</div>;
+    return <div className={`${prefixCls}-picker`}>{this.props.children}</div>;
   }
 }
 

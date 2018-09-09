@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
 import Button from 'uxcore-button';
@@ -30,6 +31,7 @@ class Uploader extends React.Component {
   static displayName = 'Uploader';
 
   static defaultProps = {
+    prefixCls: 'kuma-upload',
     locale: 'zh-cn',
     autoPending: true,
     fileList: [],
@@ -42,6 +44,7 @@ class Uploader extends React.Component {
   };
 
   static propTypes = {
+    prefixCls: PropTypes.string,
     locale: PropTypes.string,
     fileList: PropTypes.array,
     onChange: PropTypes.func,
@@ -255,16 +258,16 @@ class Uploader extends React.Component {
   }
 
   renderTips() {
-    const { tips } = this.props;
+    const { tips, prefixCls } = this.props;
     if (tips) {
-      return <div key="tips" className="kuma-upload-tip">{tips}</div>;
+      return <div key="tips" className={`${prefixCls}-tip`}>{tips}</div>;
     }
     return null;
   }
 
   render() {
     const me = this;
-    const { locale, isVisual, hideUploadIcon, queueCapcity } = this.props;
+    const { prefixCls, locale, className, isVisual, hideUploadIcon, queueCapcity } = this.props;
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -272,7 +275,7 @@ class Uploader extends React.Component {
     if (!children || children.length < 1) {
       if (isVisual) {
         children = (
-          <button className="kuma-upload-button">
+          <button className={`${prefixCls}-button`}>
             {i18n[`${locale}-img`].upload_files}
           </button>
         );
@@ -286,6 +289,7 @@ class Uploader extends React.Component {
     const picker = readOnly || noPicker ? null : (
       <Picker
         key="picker"
+        prefixCls={prefixCls}
         core={this.core}
         isVisual={this.props.isVisual}
       >{children}</Picker>);
@@ -293,6 +297,7 @@ class Uploader extends React.Component {
       ? (
       <FileList
         key="files"
+        prefixCls={prefixCls}
         locale={this.props.locale}
         core={this.core}
         isVisual={this.props.isVisual}
@@ -312,9 +317,9 @@ class Uploader extends React.Component {
         isVisual ? (picker) : null
       );
     const contents = isVisual ? [tips, files] : [picker, tips, files];
-
+    const clazzName = classNames(`${prefixCls}er`, className);
     return (
-      <div className={`kuma-uploader ${this.props.className || ''}`}>
+      <div className={clazzName}>
         {contents}
       </div>
     );

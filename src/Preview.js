@@ -13,10 +13,11 @@ export default class Preview extends React.Component {
   }
 
   render() {
+    const { prefixCls } = this.props;
     return (
       <div className="previewer">{this.state.url
         ? <img src={this.state.url} />
-        : <i className="kuma-upload-fileicon" data-ext={this.props.file.ext} data-type={this.props.file.type} />}
+        : <i className={`${prefixCls}-fileicon`} data-ext={this.props.file.ext} data-type={this.props.file.type} />}
       </div>
     );
   }

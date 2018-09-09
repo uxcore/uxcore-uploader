@@ -15,6 +15,7 @@ export default class FileList extends React.Component {
   };
 
   static propTypes = {
+    prefixCls: PropTypes.string,
     locale: PropTypes.string,
     mode: PropTypes.string,
     isVisual: PropTypes.bool,
@@ -89,6 +90,7 @@ export default class FileList extends React.Component {
         arr.push(
           <DefaultFileItem
             file={file}
+            prefixCls={this.props.prefixCls}
             locale={this.props.locale}
             key={index}
             mode={this.props.mode}
@@ -109,6 +111,7 @@ export default class FileList extends React.Component {
       if ([Status.CANCELLED, Status.SUCCESS, Status.QUEUED].indexOf(file.status) === -1) {
         arr.push(
           <FileItem
+            prefixCls={this.props.prefixCls}
             locale={this.props.locale}
             key={file.id}
             file={file}
@@ -123,8 +126,11 @@ export default class FileList extends React.Component {
   }
 
   render() {
+
+    const { prefixCls, mode, isVisual } = this.props;
+
     return (
-      <div className={`kuma-upload-filelist ${this.props.mode === 'nw' ? 'nwmode' : (this.props.mode === 'mini' ? 'minimode' : 'iconmode')}${this.props.isVisual ? ' filelist-visual' : ''}`}>
+      <div className={`${prefixCls}-filelist ${mode === 'nw' ? 'nwmode' : (mode === 'mini' ? 'minimode' : 'iconmode')}${isVisual ? ' filelist-visual' : ''}`}>
         <div className="inner fn-clear">
           {this.renderDefaultFileItems()}
           {this.renderFileItems()}

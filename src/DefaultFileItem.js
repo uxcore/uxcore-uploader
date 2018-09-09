@@ -17,7 +17,7 @@ export default class DefaultFileItem extends React.Component {
 
   render() {
     const me = this;
-    const { locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly } = me.props;
+    const { prefixCls, locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly } = me.props;
     let response = util.simpleDeepCopy(file.response);
     if (file.type === 'upload') {
       response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
@@ -26,14 +26,14 @@ export default class DefaultFileItem extends React.Component {
     const previewUrl = response.previewUrl === undefined ? downloadUrl : response.previewUrl;
     let readOnlyStyle;
     if (isOnlyImg) {
-      const type = isVisual ? 'kuma-upload-fileitem-visual' : 'kuma-upload-fileitem-img';
+      const type = isVisual ? `${prefixCls}-fileitem-visual` : `${prefixCls}-fileitem-img`;
       readOnlyStyle = readOnly ? `${type} read-style` : type;
     } else {
-      readOnlyStyle = readOnly ? 'kuma-upload-fileitem read-style' : 'kuma-upload-fileitem';
+      readOnlyStyle = readOnly ? `${prefixCls}-fileitem read-style` : `${prefixCls}-fileitem`;
     }
     if (mode === 'icon') {
-      return (<div className={'kuma-upload-fileitem'}>
-        <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this)} title={i18n[locale].remove}>
+      return (<div className={`${prefixCls}-fileitem`}>
+        <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this)} title={i18n[locale].remove}>
           <Icon name="shanchu" />
         </a>
         <div className="filepreview">
@@ -54,9 +54,9 @@ export default class DefaultFileItem extends React.Component {
             </div>
             <div className="field-image-name" title={file.name}>{file.name}</div>
             <div className="field-status">
-              {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-              {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-              {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}>
+              {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+              {downloadUrl ? <a className={`${prefixCls}-action download-action`} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+              {response.canRemove !== false && !readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)}>
                 <Icon name="shanchu" />
               </a> : undefined}
             </div>
@@ -69,7 +69,7 @@ export default class DefaultFileItem extends React.Component {
             </a>
           </div>
           <div className="field-status">
-            {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+            {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
             {response.canRemove !== false && !readOnly ? <a className="remove-action" onClick={this.onCancel.bind(this, file)}>
               <Icon name="biaodanlei-tongyongqingchu" />
             </a> : undefined}
@@ -78,7 +78,7 @@ export default class DefaultFileItem extends React.Component {
       }
       return (<div className={readOnlyStyle}>
         <label className="field-icon">
-          <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
+          <i className={`${prefixCls}-fileicon`} data-ext={file.ext} data-type={file.fileType} />
         </label>
         <div className="field-line" />
         <div className="field-info-wrap">
@@ -86,21 +86,21 @@ export default class DefaultFileItem extends React.Component {
             <span className="filename" title={file.name}>{file.name}</span>
           </label>
           <div className="field-status">
-            {previewUrl ? <a className="kuma-upload-action preview-action" onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-            {downloadUrl ? <a className="kuma-upload-action download-action" target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
-            {response.canRemove !== false && !readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
+            {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
+            {downloadUrl ? <a className={`${prefixCls}-action download-action`} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+            {response.canRemove !== false && !readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
           </div>
         </div>
       </div>);
     }
-    return (<div className={'kuma-upload-fileitem'}>
+    return (<div className={`${prefixCls}-fileitem`}>
       <label className="field-info">
-        <i className="kuma-upload-fileicon" data-ext={file.ext} data-type={file.fileType} />
+        <i className={`${prefixCls}-fileicon`} data-ext={file.ext} data-type={file.fileType} />
         <span className="filename" title={file.name}>{util.natcut(response.name, 12)}</span>
       </label>
       <label className="field-status">
-        <a className="kuma-upload-status status-success"><i className="kuma-icon kuma-icon-choose" /></a>
-        {!readOnly ? <a className="kuma-upload-action remove-action" onClick={this.onCancel.bind(this, file)} title={i18n[locale].remove}>
+        <a className={`${prefixCls}-status status-success`}><i className="kuma-icon kuma-icon-choose" /></a>
+        {!readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)} title={i18n[locale].remove}>
           <Icon name="shanchu" />
         </a> : null}
       </label>
