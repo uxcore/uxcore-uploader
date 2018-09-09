@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.3 
+
+* `CHANGED` support js style export
+
 ## 3.3.2 
 
 * `CHANGED` modify picker position when isVisual
