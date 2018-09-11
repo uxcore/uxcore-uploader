@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.4 
+
+* `CHANGED` copy Uploader.less from index.less
+
 ## 3.3.3 
 
 * `CHANGED` support js style export

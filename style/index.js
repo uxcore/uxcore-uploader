@@ -1,4 +1,4 @@
-import '../src/index.less';
+import '../src/Uploader.less';
 import 'uxcore-album/style';
 import 'uxcore-button/style';
 import 'uxcore-icon/style';
