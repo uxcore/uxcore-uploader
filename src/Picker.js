@@ -14,7 +14,7 @@ export default class Picker extends React.Component {
     const { isVisual, prefixCls } = this.props;
     if (isVisual) {
       return (<div className={`${prefixCls}-picker-visual`}
-        style={{ overflow: 'hidden' }}
+        style={{ verticalAlign:'top' }}
       >
         {this.props.children}
         <Icon name="zengjia1" />

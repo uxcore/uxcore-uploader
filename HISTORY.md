@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.5 
+
+* `FIXED` fix visual-picker css bug in safari
+
 ## 3.3.4 
 
 * `CHANGED` copy Uploader.less from index.less
