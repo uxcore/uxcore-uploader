@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { UploadCore, Events, Status } from 'uploadcore/dist/uploadcore';
+import { UploadCore, Events, Status } from 'uploadcore';
 import Button from 'uxcore-button';
 import { polyfill } from 'react-lifecycles-compat';
 import util from './util';
