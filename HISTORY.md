@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.6 
+
+* `FIXED` fix uploadcore import (issue #81)
+
 ## 3.3.5 
 
 * `FIXED` fix visual-picker css bug in safari
