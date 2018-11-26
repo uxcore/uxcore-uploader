@@ -26,7 +26,7 @@ describe('Preview', () => {
     const file = new File();
     file.ext = 'json';
     file.type = 'application/json';
-    const wrapper = mount(<Preview file={file} />);
+    const wrapper = mount(<Preview file={file} prefixCls={'kuma-upload'} />);
     const i = wrapper.find('i');
     expect(i.is({
       className: 'kuma-upload-fileicon',

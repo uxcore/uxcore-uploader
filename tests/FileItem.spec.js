@@ -125,7 +125,7 @@ describe('FileItem', () => {
 
   describe('nw mode', () => {
     it('should render correctly', () => {
-      const wrapper = mount(<FileItem locale={'en'} file={file} mode={'nw'} />);
+      const wrapper = mount(<FileItem locale={'en'} file={file} mode={'nw'} prefixCls={'kuma-upload'} />);
       expect(wrapper.find('.kuma-upload-fileitem').length).to.be(1);
     });
 
@@ -162,7 +162,7 @@ describe('FileItem', () => {
 
   describe('other modes', () => {
     it('should render correctly', () => {
-      const wrapper = mount(<FileItem locale={'en'} file={file} mode={'foo'} />);
+      const wrapper = mount(<FileItem locale={'en'} file={file} mode={'foo'} prefixCls={'kuma-upload'} />);
       expect(wrapper.find('.kuma-upload-fileitem').length).to.be(1);
     });
   });

@@ -116,7 +116,7 @@ describe('DefaultFileItem', () => {
     it('should render correctly', () => {
       file.ext = 'png';
       file.fileType = 'image';
-      const wrapper = mount(<DefaultFileItem locale={'en'} file={file} mode={'foo'} />);
+      const wrapper = mount(<DefaultFileItem locale={'en'} file={file} mode={'foo'} prefixCls={'kuma-upload'} />);
       expect(wrapper.find('.kuma-upload-fileicon').is({
         'data-ext': 'png',
         'data-type': 'image',

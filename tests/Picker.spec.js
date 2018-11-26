@@ -16,14 +16,14 @@ describe('Picker', () => {
   });
 
   it('should render correctly when isVisual is not true', () => {
-    const wrapper = mount(<Picker core={core}><span className="foo" /></Picker>);
+    const wrapper = mount(<Picker core={core} prefixCls={'kuma-upload'}><span className="foo" /></Picker>);
     const root = wrapper.children();
     expect(root.hasClass('kuma-upload-picker')).to.be(true);
     expect(root.children().hasClass('foo')).to.be(true);
   });
 
   it('should render correctly when isVisual is true', () => {
-    const wrapper = mount(<Picker core={core} isVisual><span className="foo" /></Picker>);
+    const wrapper = mount(<Picker core={core} prefixCls={'kuma-upload'} isVisual><span className="foo" /></Picker>);
     const root = wrapper.children();
     expect(root.hasClass('kuma-upload-picker-visual')).to.be(true);
     expect(root.children().first().hasClass('foo')).to.be(true);

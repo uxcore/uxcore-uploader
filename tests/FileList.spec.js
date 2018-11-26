@@ -57,7 +57,8 @@ describe('FileList', () => {
 
   it('should render correctly', () => {
     const wrapper = mount(
-      <FileList
+      <FileList 
+        prefixCls={'kuma-upload'}
         locale={'en'}
         core={core}
         fileList={fileList}
