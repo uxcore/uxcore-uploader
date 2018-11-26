@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.7 
+
+* `FIXED` fix classnames dependency
+
 ## 3.3.6 
 
 * `FIXED` fix uploadcore import (issue #81)
