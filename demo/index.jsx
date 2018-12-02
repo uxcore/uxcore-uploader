@@ -149,7 +149,7 @@ class Demo1 extends React.Component {
       tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn-img"
+      locale="zh-cn"
     />);
   }
 }
@@ -188,7 +188,7 @@ class Demo2 extends React.Component {
       tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn-img"
+      locale="zh-cn"
     />);
   }
 }
@@ -229,7 +229,7 @@ class Demo3 extends React.Component {
       tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn-img"
+      locale="zh-cn"
     />);
   }
 }
@@ -259,7 +259,6 @@ class Demo31 extends React.Component {
       sizeLimit="3072kb"
       accept="*.jpeg, *.jpg *.png"
       readOnly
-      prefixCls="my-uploader"
       multiple={false}
       isVisual={false}
       progressInterval={100}
@@ -271,7 +270,7 @@ class Demo31 extends React.Component {
       tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn-img"
+      locale="zh-cn"
     />);
   }
 }
@@ -311,7 +310,7 @@ class Demo4 extends React.Component {
       tips={tips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
-      locale="zh-cn"
+      locale="en-us"
     />);
   }
 }
@@ -384,6 +383,7 @@ class Demo5 extends React.Component {
       isOnlyImg={false}
       name="file"
       isVisual={false}
+      locale="en-us"
       url="http://eternalsky.me:8122/file/upload"
     />);
   }
@@ -425,23 +425,61 @@ ReactDOM.render((
   <Demo6 />
 ), document.getElementById('sample6'));
 
-// 已废弃
+// for prefixCls
 class Demo7 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: fileList2,
+    };
+  }
 
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
   render() {
-    return (<Uploader.Dropzoom autoPending
-      multiple
-      isOnlyImg={false}
-      queueCapcity={20}
-      isVisual={false}
+    const me = this;
+    return (<Uploader
+      ref="uploader"
+      sizeLimit="3072kb"
+      accept="*.jpeg, *.jpg *.png"
+      prefixCls="kuma-upload"
+      multiple={false}
+      isOnlyImg
+      isVisual
+      progressInterval={100}
+      queueCapcity={2}
+      actionOnQueueLimit="cover"
+      onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      tips={imgTips}
       name="file"
       url="http://eternalsky.me:8122/file/upload"
+      locale="pl-pl"
     />);
   }
 }
 
+// 已废弃
+// class Demo7 extends React.Component {
+
+//   render() {
+//     return (<Uploader.Dropzoom autoPending
+//       multiple
+//       isOnlyImg={false}
+//       queueCapcity={20}
+//       isVisual={false}
+//       name="file"
+//       url="http://eternalsky.me:8122/file/upload"
+//     />);
+//   }
+// }
+
 ReactDOM.render((
-  <div><Demo7 />                 <p>已废弃</p></div>
+  <Demo7 />
 ), document.getElementById('sample7'));
 
 class Demo8 extends React.Component {
