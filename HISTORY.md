@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.8 
+
+* `FIXED` fix locale problem(issue #65)
+
 ## 3.3.7 
 
 * `FIXED` fix classnames dependency
