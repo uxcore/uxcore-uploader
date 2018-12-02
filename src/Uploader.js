@@ -276,7 +276,7 @@ class Uploader extends React.Component {
       if (isVisual) {
         children = (
           <button className={`${prefixCls}-button`}>
-            {i18n[`${locale}-img`].upload_files}
+            {i18n[locale].upload_files_img}
           </button>
         );
       } else {
