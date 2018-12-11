@@ -122,11 +122,11 @@ class Uploader extends React.Component {
     this.init();
   }
 
-  componentDidUpdate(nextProps) {
+  componentDidUpdate(prevProps) {
     const options = {};
     RESETOPTIONS.forEach((item) => {
-      if (nextProps.hasOwnProperty(item) && this.props[item] !== nextProps[item]) {
-        options[item] = nextProps[item];
+      if (this.props.hasOwnProperty(item) && this.props[item] !== prevProps[item]) {
+        options[item] = this.props[item];
       }
     });
     if (this.core.setOptions) this.core.setOptions(options);

@@ -2,6 +2,10 @@
 
 ---
 
+## 3.3.9
+
+* `FIXED` fix a stupid bug
+
 ## 3.3.8 
 
 * `FIXED` fix locale problem(issue #65)
