@@ -2,6 +2,11 @@
 
 ---
 
+## 3.3.10
+
+* `CHANGED` change the struct requirements of prop.fileList, see README for details
+* `CHANGED` add id,url to value pass to upper level by onChange(value) event
+
 ## 3.3.9
 
 * `FIXED` fix a stupid bug

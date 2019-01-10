@@ -80,17 +80,41 @@ class Uploader extends React.Component {
   static processDefaultListFile(file) {
     const newFile = file;
     if (!file.type) newFile.type = 'list';
+
+    // if there is no response, we create one if developers provided necessary values in top level
+    if (!newFile.response) {
+      const rdata = {
+        name: file.name,
+        downloadUrl: file.url || '',
+        previewUrl: file.previewUrl || file.url || '',
+        canRemove: file.canRemove || true,
+      };
+
+      if (newFile.type === 'upload') {
+        newFile.response = {
+          content: rdata,
+        };
+      } else {
+        newFile.response = rdata;
+      }
+    }
+
     return newFile;
   }
 
   static processFile(file) {
+    const response = file.response ? file.response.getJson() : null;
+    const rcontent = (response && response.content) ? response.content : {};
     return {
+      id: rcontent.id || '',
+      url: rcontent.url || rcontent.downloadUrl || rcontent.previewUrl || '',
+      previewUrl: rcontent.previewUrl || '',
       ext: file.ext,
       name: file.name,
       size: file.size,
       fileType: file.type,
       type: 'upload',
-      response: file.response ? file.response.getJson() : null,
+      response,
     };
   }
 
