@@ -81,7 +81,7 @@ class Uploader extends React.Component {
     const newFile = file;
     if (!file.type) newFile.type = 'list';
 
-    // if there is no response, we create one if developers provided necessary values in top level
+    // if there is no response, we create one if developers provide necessary values in top level
     if (!newFile.response) {
       const rdata = {
         name: file.name,
