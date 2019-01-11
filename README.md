@@ -28,7 +28,7 @@ see http://uxco.re/components/uploader/ for details.
 |----------          |---------------|---------|------------|------------|
 |className           |               |         |            | |
 |locale              | string        | zh-cn   | 1.1.10     | 国际化，目前支持 `zh-cn`, `en-us` 和 `pl-pl`|
-|fileList            | array         | []      | 1.2.3      |用于展示的文件列表|
+|fileList            | array         | []      | 1.2.3      |用于展示的文件列表, 见说明 “fileList 更新说明”|
 |isOnlyImg           | boolean       | false   | 1.2.1      | 是否以图片形式展示 |
 |isVisual            | boolean       | false   | 2.0.0      | 是否可视化展示 |
 |hideUploadIcon      | boolean       | false   | 3.2.2      | 在可视化展示下，达到容量(queueCapcity)后是否隐藏上传入口 |
@@ -69,7 +69,22 @@ see http://uxco.re/components/uploader/ for details.
         }
     }
 ]
+```
 
+### fileList 更新说明
+
+Since 3.3.10 版本，当前已存在的文件列表数据不需要自己再组装一个 response 结构，组件内部会根据顶层数据来组装：
+```javascript
+[
+  {
+    name: 'My File',
+    ext: '.jpg',
+    fileType: 'image/jpg',
+    url: 'http://www.foo.bar/aaa.jpg',
+    previewUrl: '', // 可选
+    canRemove: true // 可选
+  }
+]
 ```
 
 ### Events
@@ -86,10 +101,13 @@ see http://uxco.re/components/uploader/ for details.
 [
     // 上传后的文件的格式， response 即服务器返回的值
     {
+        id: 'xxxx', // 如果 response.content 中有提供
+        url: 'xxx', // 如果 response.content 中有提供
+        previewUrl: 'xxx', // 如果 response.content 中有提供
         type: 'upload',
         ext: file.ext,
         name: file.name,
-        response: JSON.parse(file.response.rawResponse.rawResponse)
+        response: JSON.parse(file.response)
     },
     // 预览用文件的格式， `props.fileList` 相关， responce 即 `props.fileList` 里传入的格式。
     {
