@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.0
+
+* `CHANGED` add 'onShowFile' hook for custom preview behavior
+
 ## 3.3.10
 
 * `CHANGED` change the struct requirements of prop.fileList, see README for details

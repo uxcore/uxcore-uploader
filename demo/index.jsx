@@ -170,6 +170,11 @@ class Demo2 extends React.Component {
       fileList,
     });
   }
+
+  onShowFile(file, url, current) {
+    console.log(`current image${current}:${url}`);
+  }
+
   render() {
     const me = this;
     return (<Uploader
@@ -178,6 +183,7 @@ class Demo2 extends React.Component {
       accept="*.jpeg, *.jpg *.png"
       multiple={false}
       isOnlyImg
+      onShowFile={this.onShowFile.bind(this)}
       isVisual={false}
       progressInterval={100}
       queueCapcity={2}

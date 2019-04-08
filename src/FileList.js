@@ -59,8 +59,14 @@ export default class FileList extends React.Component {
   }
 
   onShowFile(file, url, current) {
-    if (this.props.isOnlyImg && url) {
-      const fileList = this.props.fileList.map((item, index) => {
+    const { isOnlyImg, fileList, onShowFile } = this.props;
+    if (isOnlyImg && url) {
+      if (onShowFile) { // 自定义预览行为
+        onShowFile(file, url, current);
+        return;
+      }
+
+      const _fileList = fileList.map((item, index) => {
         if (item.response) {
           const { previewUrl } = util.getUrl(item.response);
           return (<Photo
@@ -71,7 +77,7 @@ export default class FileList extends React.Component {
         return null;
       });
 
-      const shows = fileList.filter(item => !!item);
+      const shows = _fileList.filter(item => !!item);
 
       Album.show({
         photos: shows,

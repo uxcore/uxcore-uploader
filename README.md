@@ -147,6 +147,7 @@ Since 3.3.10 版本，当前已存在的文件列表数据不需要自己再组�
 |onfileuploadcompleted | `File`, `Status`| 文件上传完成了 |
 |onfilestatuschange | `File`, `Status` | 文件状态发生变化 |
 |onfilecancel | `File` | 文件退出 |
+|onShowFile | `File`, `Url`, `Current` | 自定义文件预览行为 |
 
 
 具体配置信息见<https://github.com/uxcore/uxcore-uploadcore/blob/master/README.md>.

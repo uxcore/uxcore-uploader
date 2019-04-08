@@ -47,6 +47,7 @@ class Uploader extends React.Component {
     prefixCls: PropTypes.string,
     locale: PropTypes.string,
     fileList: PropTypes.array,
+    onShowFile: PropTypes.func,
     onChange: PropTypes.func,
     onError: PropTypes.func,
     tips: PropTypes.oneOfType([
@@ -332,6 +333,7 @@ class Uploader extends React.Component {
         fileList={me.state.fileList}
         removeFileFromList={me.handleRemoveFile.bind(me)}
         interval={this.props.progressInterval}
+        onShowFile={this.props.onShowFile && this.props.onShowFile.bind(this)}
       >
         {
           isVisual ? (picker) : null
