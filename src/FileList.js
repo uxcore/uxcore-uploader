@@ -25,6 +25,7 @@ export default class FileList extends React.Component {
     fileList: PropTypes.array,
     core: PropTypes.any,
   };
+
   constructor(props) {
     super(props);
 
@@ -60,11 +61,13 @@ export default class FileList extends React.Component {
 
   onShowFile(file, url, current) {
     const { isOnlyImg, fileList, onShowFile } = this.props;
+
+    if (onShowFile) { // 自定义预览行为
+      onShowFile(file, url, current);
+      return;
+    }
+
     if (isOnlyImg && url) {
-      if (onShowFile) { // 自定义预览行为
-        onShowFile(file, url, current);
-        return;
-      }
 
       const _fileList = fileList.map((item, index) => {
         if (item.response) {

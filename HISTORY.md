@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.1
+
+* `FIXED` bugfix: 'onShowFile' hook for all file
+
 ## 3.4.0
 
 * `CHANGED` add 'onShowFile' hook for custom preview behavior
