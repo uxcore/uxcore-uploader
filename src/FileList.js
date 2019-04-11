@@ -92,6 +92,15 @@ export default class FileList extends React.Component {
     }
   }
 
+  onDownloadFile(file, url, current){
+    const { onDownloadFile } = this.props;
+    if(onDownloadFile){
+      onDownloadFile(file, url, current)
+      return;
+    }
+    window.open(url)
+  }
+
   renderDefaultFileItems() {
     const arr = [];
     const fileList = this.props.fileList || [];
@@ -108,6 +117,7 @@ export default class FileList extends React.Component {
             readOnly={this.props.readOnly}
             isVisual={this.props.isVisual}
             onShowFile={(currentFile, url) => { this.onShowFile(currentFile, url, index); }}
+            onDownloadFile={(currentFile, url) => { this.onDownloadFile(currentFile, url, index); }}
             onCancel={this.props.removeFileFromList.bind(this)}
           />);
       }
