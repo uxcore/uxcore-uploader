@@ -15,6 +15,11 @@ export default class DefaultFileItem extends React.Component {
     this.props.onShowFile(file, url);
   }
 
+  onDownloadFile(file, url, e) {
+    e.preventDefault();
+    this.props.onDownloadFile(file, url);
+  }
+
   render() {
     const me = this;
     const { prefixCls, locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly } = me.props;
@@ -55,7 +60,7 @@ export default class DefaultFileItem extends React.Component {
             <div className="field-image-name" title={file.name}>{file.name}</div>
             <div className="field-status">
               {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-              {downloadUrl ? <a className={`${prefixCls}-action download-action`} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+              {downloadUrl ? <a className={`${prefixCls}-action download-action`} onClick={me.onDownloadFile.bind(this, file, downloadUrl)} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
               {response.canRemove !== false && !readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)}>
                 <Icon name="shanchu" />
               </a> : undefined}
@@ -87,7 +92,7 @@ export default class DefaultFileItem extends React.Component {
           </label>
           <div className="field-status">
             {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-            {downloadUrl ? <a className={`${prefixCls}-action download-action`} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
+            {downloadUrl ? <a className={`${prefixCls}-action download-action`} onClick={me.onDownloadFile.bind(this, file, downloadUrl)} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
             {response.canRemove !== false && !readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
           </div>
         </div>
