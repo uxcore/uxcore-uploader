@@ -85,6 +85,7 @@ export default class FileList extends React.Component {
       Album.show({
         photos: shows,
         current,
+        showButton: true,
       });
     } else {
       window.open(url);

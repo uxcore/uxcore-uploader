@@ -1,6 +1,6 @@
 {
   "name": "uxcore-uploader",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "uxcore-uploader component for react",
   "main": "build/index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "prop-types": "15.x",
     "react-lifecycles-compat": "^3.0.4",
     "uploadcore": "~2.3.0",
-    "uxcore-album": "^0.3.15",
+    "uxcore-album": "^0.3.26",
     "uxcore-button": "^0.4.11",
     "uxcore-icon": "^0.1.1",
     "uxcore-progress": "^1.1.0"

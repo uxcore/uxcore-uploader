@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.2
+
+* `CHANGED` add 'showButton' of the Album's config
+
 ## 3.4.1
 
 * `FIXED` bugfix: 'onShowFile' hook for all file
