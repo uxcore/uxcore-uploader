@@ -2,6 +2,10 @@
 
 ---
 
+## 3.5.0
+
+* `CHANGED` add 'onDownloadFile' hook for custom download behavior
+
 ## 3.4.2
 
 * `CHANGED` add 'showButton' of the Album's config

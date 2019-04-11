@@ -334,6 +334,7 @@ class Uploader extends React.Component {
         removeFileFromList={me.handleRemoveFile.bind(me)}
         interval={this.props.progressInterval}
         onShowFile={this.props.onShowFile && this.props.onShowFile.bind(this)}
+        onDownloadFile={this.props.onDownloadFile && this.props.onDownloadFile.bind(this)}
       >
         {
           isVisual ? (picker) : null

@@ -172,7 +172,11 @@ class Demo2 extends React.Component {
   }
 
   onShowFile(file, url, current) {
-    console.log(`current image${current}:${url}`);
+    console.log(`onShowFile current image${current}:${url}`);
+  }
+
+  onDownloadFile(file, url, current) {
+    console.log(`onDownloadFile current image${current}:${url}`);
   }
 
   render() {
@@ -184,6 +188,7 @@ class Demo2 extends React.Component {
       multiple={false}
       isOnlyImg
       onShowFile={this.onShowFile.bind(this)}
+      onDownloadFile={this.onDownloadFile.bind(this)}
       isVisual={false}
       progressInterval={100}
       queueCapcity={2}
