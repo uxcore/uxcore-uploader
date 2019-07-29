@@ -7,6 +7,7 @@ import { polyfill } from 'react-lifecycles-compat';
 import util from './util';
 import FileList from './FileList';
 import Picker from './Picker';
+import Paste from './Paste';
 import Dropzoom from './Dropzoom';
 import i18n from './locale';
 
@@ -38,6 +39,7 @@ class Uploader extends React.Component {
     onChange: () => { },
     onError: () => { },
     isVisual: false,
+    isPaste: false,
     hideUploadIcon: false,
     isOnlyImg: false,
     showErrFile: true,
@@ -59,6 +61,7 @@ class Uploader extends React.Component {
     readOnly: PropTypes.bool,
     queueCapcity: PropTypes.number,
     isVisual: PropTypes.bool,
+    isPaste: PropTypes.bool,
     hideUploadIcon: PropTypes.bool,
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
@@ -292,7 +295,7 @@ class Uploader extends React.Component {
 
   render() {
     const me = this;
-    const { prefixCls, locale, className, isVisual, hideUploadIcon, queueCapcity } = this.props;
+    const { prefixCls, locale, className, isVisual, isPaste, hideUploadIcon, queueCapcity } = this.props;
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -309,7 +312,7 @@ class Uploader extends React.Component {
       }
     }
     const tips = readOnly ? null : this.renderTips();
-    const noPicker = isVisual && hideUploadIcon && queueCapcity > 0 &&
+    const noPicker = (isVisual || isPaste) && hideUploadIcon && queueCapcity > 0 &&
       (uploadingFiles.length + notDeletedDefaultFiles.length) >= queueCapcity;
     const picker = readOnly || noPicker ? null : (
       <Picker
@@ -318,6 +321,15 @@ class Uploader extends React.Component {
         core={this.core}
         isVisual={this.props.isVisual}
       >{children}</Picker>);
+    const paste = isPaste ? (
+      <Paste
+        key="picker"
+        prefixCls={prefixCls}
+        core={this.core}
+        isPaste={isPaste}
+        locale={locale}
+      />
+    ) : null;
     const files = (uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0)
       ? (
       <FileList
@@ -343,7 +355,10 @@ class Uploader extends React.Component {
       : (
         isVisual ? (picker) : null
       );
-    const contents = isVisual ? [tips, files] : [picker, tips, files];
+    let contents = isVisual ? [tips, files] : [picker, tips, files];
+    if (isPaste) {
+      contents = [paste, tips, files];
+    }
     const clazzName = classNames(`${prefixCls}er`, className);
     return (
       <div className={clazzName}>

@@ -9,6 +9,7 @@ const locale = {
     upload_failed: 'upload failed',
     upload_files: 'upload files',
     upload_files_img: 'upload images',
+    paste_upload: 'focus then paste to upload',
   },
   'pl-pl': {
     download: 'pobierz',
@@ -20,6 +21,7 @@ const locale = {
     upload_failed: 'wysyłka nieudana',
     upload_files: 'wyślij pliki',
     upload_files_img: 'wyślij zdjęcie',
+    paste_upload: 'Kliknij i wklej aby przesłać',
   },
   'zh-cn': {
     download: '下载',
@@ -31,6 +33,7 @@ const locale = {
     upload_failed: '上传失败',
     upload_files: '添加文件',
     upload_files_img: '上传图片',
+    paste_upload: '点击并粘贴上传',
   },
 };
 

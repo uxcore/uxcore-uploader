@@ -574,4 +574,36 @@ ReactDOM.render((
   <Demo9 />
 ), document.getElementById('sample9'));
 
+class Demo10 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileList: [],
+    };
+  }
+
+  handleChange(fileList) {
+    this.setState({
+      fileList,
+    });
+  }
+
+  render() {
+    return (<Uploader
+      multiple
+      isOnlyImg={false}
+      name="file"
+      isVisual={false}
+      isPaste={true}
+      fileList={this.state.fileList}
+      onChange={this.handleChange.bind(this)}
+      url="http://eternalsky.me:8122/file/upload"
+    />);
+  }
+}
+
+ReactDOM.render((
+  <Demo10 />
+), document.getElementById('sample10'));
+
 // hljs.initHighlightingOnLoad();
