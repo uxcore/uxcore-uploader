@@ -1,6 +1,6 @@
 {
   "name": "uxcore-uploader",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "uxcore-uploader component for react",
   "main": "build/index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "url": "git@github.com:uxcore/uxcore-uploader.git"
   },
   "bugs": {
-    "url": "http://github.com/uxcore/uxcore-uploader/issues"
+    "url": "https://github.com/uxcore/uxcore-uploader/issues"
   },
   "keywords": [
     "react",

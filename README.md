@@ -12,7 +12,7 @@ $ cd uxcore-uploader
 $ npm start
 ```
 
-see http://uxco.re/components/uploader/ for details.
+see https://uxco.re/components/uploader/ for details.
 
 上传组件, 封装[UploadCore](https://github.com/uxcore/uxcore-uploadcore/)核心组件, 作为UI层.
 
@@ -47,7 +47,7 @@ see http://uxco.re/components/uploader/ for details.
 |queueCapcity        | int           | 0       |            | 队列容量，0无限; |
 |autoPending         | bool          | true    |            | 是否选择后自动等待上传 |
 |multiple            | bool          | true    |            | 是否多选 |
-|accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](http://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
+|accept              | string/array  | null    |            | 允许文件类型, [chrome 下的已知问题](https://stackoverflow.com/questions/39187857/inputfile-accept-image-open-dialog-so-slow-with-chrome) |
 |sizeLimit           | size          | 0       |            | 文件大小限制, 0表示不限制 |
 |preventDuplicate    | bool          | false   |            | 是否防止文件重复 |
 |readOnly            | bool          | false   | 3.0.0      | 是否以只读方式显示图片,有该属性时请fileList不能为空 |
@@ -80,7 +80,7 @@ Since 3.3.10 版本，当前已存在的文件列表数据不需要自己再组�
     name: 'My File',
     ext: '.jpg',
     fileType: 'image/jpg',
-    url: 'http://www.foo.bar/aaa.jpg',
+    url: 'https://www.foo.bar/aaa.jpg',
     previewUrl: '', // 可选
     canRemove: true // 可选
   }

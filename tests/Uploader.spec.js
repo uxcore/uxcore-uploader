@@ -48,9 +48,9 @@ describe('Uploader', () => {
         response: {
           success: true,
           data: {
-            url: 'http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png',
+            url: 'https://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png',
             canRemove: true, // 是否可以删除，可选
-            downloadUrl: 'http://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png', // 下载 URL，可选
+            downloadUrl: 'https://gdp.alicdn.com/tps/i2/T1k2HJXexjXXauUnsh-180-180.png', // 下载 URL，可选
           },
         },
       }, {
