@@ -137,6 +137,7 @@ class Demo1 extends React.Component {
       ref="uploader"
       multiple={false}
       isOnlyImg={false}
+      disabled={true}
       isVisual={false}
       // showErrFile={false}
       onfileuploadpreparing={this.beforeUpload}
@@ -311,6 +312,7 @@ class Demo4 extends React.Component {
       multiple
       isOnlyImg
       isVisual
+      disabled={true}
       hideUploadIcon
       progressInterval={100}
       queueCapcity={0}

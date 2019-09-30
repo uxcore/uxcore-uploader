@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Icon from 'uxcore-icon';
+import classNames from 'classnames';
 
 export default class Picker extends React.Component {
   componentDidMount() {
@@ -11,9 +12,13 @@ export default class Picker extends React.Component {
   }
 
   render() {
-    const { isVisual, prefixCls } = this.props;
+    const { isVisual, prefixCls, disabled } = this.props;
+
+    const clazzName = classNames({
+      [`${prefixCls}-picker-visual`]: true,
+    });
     if (isVisual) {
-      return (<div className={`${prefixCls}-picker-visual`}
+      return (<div className={clazzName}
         style={{ verticalAlign:'top' }}
       >
         {this.props.children}

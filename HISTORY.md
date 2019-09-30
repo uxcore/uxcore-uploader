@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.6.0
+* `CHANGED` support disabled props
+
 ## 3.5.1
 * `FIXED` fix a less path error
 

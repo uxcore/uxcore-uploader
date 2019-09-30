@@ -154,6 +154,23 @@
   }
 }
 
+
+.@{__uploaderPrefixCls}er-disabled {
+  * {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  .@{__uploaderPrefixCls}-picker button,
+  .@{__uploaderPrefixCls}-picker-visual *{
+    background-color: #f6f7f8!important;
+    color: rgba(31,56,88,.3);
+  }
+  .@{__uploaderPrefixCls}-picker button,
+  .@{__uploaderPrefixCls}-picker-visual button{
+    border-color: rgb(210, 215, 222);
+  }
+}
+
 .@{__uploaderPrefixCls}-tip {
   font-size: 12px;
   color: rgba(31, 56, 88, 0.4);

@@ -38,6 +38,7 @@ class Uploader extends React.Component {
     onChange: () => { },
     onError: () => { },
     isVisual: false,
+    disabled: false,
     hideUploadIcon: false,
     isOnlyImg: false,
     showErrFile: true,
@@ -57,6 +58,7 @@ class Uploader extends React.Component {
     ]),
     className: PropTypes.string,
     readOnly: PropTypes.bool,
+    disabled: PropTypes.bool,
     queueCapcity: PropTypes.number,
     isVisual: PropTypes.bool,
     hideUploadIcon: PropTypes.bool,
@@ -292,7 +294,7 @@ class Uploader extends React.Component {
 
   render() {
     const me = this;
-    const { prefixCls, locale, className, isVisual, hideUploadIcon, queueCapcity } = this.props;
+    const { prefixCls, locale, className, isVisual, disabled, hideUploadIcon, queueCapcity } = this.props;
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -316,6 +318,7 @@ class Uploader extends React.Component {
         key="picker"
         prefixCls={prefixCls}
         core={this.core}
+        disabled={disabled}
         isVisual={this.props.isVisual}
       >{children}</Picker>);
     const files = (uploadingFiles.length > 0 || notDeletedDefaultFiles.length > 0)
@@ -344,7 +347,11 @@ class Uploader extends React.Component {
         isVisual ? (picker) : null
       );
     const contents = isVisual ? [tips, files] : [picker, tips, files];
-    const clazzName = classNames(`${prefixCls}er`, className);
+
+    const clazzName = classNames(className, {
+      [`${prefixCls}er`]: true,
+      [`${prefixCls}er-disabled`]: disabled
+    });
     return (
       <div className={clazzName}>
         {contents}
