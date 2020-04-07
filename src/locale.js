@@ -2,6 +2,7 @@ const locale = {
   'en-us': {
     download: 'download',
     preview: 'preview',
+    edit: 'edit',
     remove: 'remove',
     retry: 'retry',
     upload: 'upload',
@@ -13,6 +14,7 @@ const locale = {
   'pl-pl': {
     download: 'pobierz',
     preview: 'podgląd',
+    edit: 'edytuj',
     remove: 'usuń',
     retry: 'powtórz',
     upload: 'wyślij',
@@ -24,6 +26,7 @@ const locale = {
   'zh-cn': {
     download: '下载',
     preview: '预览',
+    edit: '编辑',
     remove: '移除',
     retry: '重传',
     upload: '上传',

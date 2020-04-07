@@ -614,12 +614,14 @@
       margin-top: 6px;
     }
     .field-info-wrap {
-      display: block;
+      display: flex;
+
       padding: 0;
       .field-info {
+        flex: 1;
         display: inline-block;
         margin-left: 18px;
-        width: calc(~"100% - 138px");
+        // width: calc(~"100% - 138px");
         overflow: hidden;
         text-overflow: ellipsis;
         .kuma-loading {
