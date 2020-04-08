@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.7.0
+* `CHANGED` add new prop onlineEdit
+  
 ## 3.6.0
 * `CHANGED` support disabled props
 
