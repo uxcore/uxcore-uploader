@@ -94,12 +94,14 @@ export default class FileItem extends React.Component {
       </div>);
     } else if (this.props.mode === 'nw') {
       let downloadUrl,
-        previewUrl;
+        previewUrl,
+        editUrl;
       if (this.state.status === 'success') {
         const json = this.file.response.getJson();
         const url = util.getUrl(json);
         downloadUrl = url.downloadUrl;
         previewUrl = url.previewUrl;
+        editUrl = url.editUrl;
       }
       if (this.props.isOnlyImg) {
         if (!this.props.isVisual) {
@@ -137,6 +139,7 @@ export default class FileItem extends React.Component {
           <label className="field-status">
             {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`}>{i18n[locale].upload_failed}</a> : null}
             {this.state.status === 'success' && previewUrl ? <a className={`${prefixCls}-action`} target="_blank" href={previewUrl}>{i18n[locale].preview}</a> : null}
+            {this.state.status === 'success' && editUrl && this.props.onlineEdit ? <a className={`${prefixCls}-action`} target="_blank" href={editUrl}>{i18n[locale].edit}</a> : null}
             {this.state.status === 'success' && downloadUrl ? <a className={`${prefixCls}-action`} target="_blank" href={downloadUrl} download>{i18n[locale].download}</a> : null}
             {(this.state.status === 'success' || this.state.status === 'error') ? <a className={`${prefixCls}-action close-action`} onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : <a className="${prefixCls}-action terminal-action" onClick={this.onCancel.bind(this)}><Icon name="guanbi" /></a>}
           </label>

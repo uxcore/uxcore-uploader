@@ -22,6 +22,7 @@ export default class FileList extends React.Component {
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
     readOnly: PropTypes.bool,
+    onlineEdit: PropTypes.bool,
     fileList: PropTypes.array,
     core: PropTypes.any,
   };
@@ -101,6 +102,15 @@ export default class FileList extends React.Component {
     window.open(url)
   }
 
+  onEditFile(file, url, current) {
+    const { onEditFile } = this.props;
+    if (onEditFile) {
+      onEditFile(file, url, current);
+      return;
+    }
+    window.open(url);
+  }
+
   renderDefaultFileItems() {
     const arr = [];
     const fileList = this.props.fileList || [];
@@ -116,8 +126,10 @@ export default class FileList extends React.Component {
             isOnlyImg={this.props.isOnlyImg}
             readOnly={this.props.readOnly}
             isVisual={this.props.isVisual}
+            onlineEdit={this.props.onlineEdit}
             onShowFile={(currentFile, url) => { this.onShowFile(currentFile, url, index); }}
             onDownloadFile={(currentFile, url) => { this.onDownloadFile(currentFile, url, index); }}
+            onEditFile={(currentFile, url) => { this.onEditFile(currentFile, url, index); }}
             onCancel={this.props.removeFileFromList.bind(this)}
           />);
       }
@@ -136,6 +148,7 @@ export default class FileList extends React.Component {
             key={file.id}
             file={file}
             mode={this.props.mode}
+            onlineEdit={this.props.onlineEdit}
             isOnlyImg={this.props.isOnlyImg}
             isVisual={this.props.isVisual}
             interval={this.props.interval}

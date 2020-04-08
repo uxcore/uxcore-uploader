@@ -41,6 +41,7 @@ class Uploader extends React.Component {
     disabled: false,
     hideUploadIcon: false,
     isOnlyImg: false,
+    onlineEdit: false,
     showErrFile: true,
   };
 
@@ -64,6 +65,7 @@ class Uploader extends React.Component {
     hideUploadIcon: PropTypes.bool,
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
+    onlineEdit: PropTypes.bool,
     children: PropTypes.any,
   };
 
@@ -331,6 +333,7 @@ class Uploader extends React.Component {
         isVisual={this.props.isVisual}
         isOnlyImg={this.props.isOnlyImg}
         readOnly={this.props.readOnly}
+        onlineEdit={this.props.onlineEdit}
         showErrFile={this.props.showErrFile}
         mode="nw"
         fileList={me.state.fileList}
