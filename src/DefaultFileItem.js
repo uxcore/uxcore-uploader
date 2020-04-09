@@ -27,7 +27,7 @@ export default class DefaultFileItem extends React.Component {
 
   render() {
     const me = this;
-    const { prefixCls, locale, file, mode, isOnlyImg, isVisual, readStyle, readOnly, onlineEdit } = me.props;
+    const { prefixCls, locale, file, mode, isOnlyImg, isVisual, readOnly, disabled, onlineEdit } = me.props;
     let response = util.simpleDeepCopy(file.response);
     if (file.type === 'upload') {
       response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
@@ -98,7 +98,7 @@ export default class DefaultFileItem extends React.Component {
           </label>
           <div className="field-status">
             {previewUrl ? <a className={`${prefixCls}-action preview-action`} onClick={me.onShowFile.bind(this, file, previewUrl)} target="_blank" href={previewUrl}><Icon name="fangda" /></a> : null}
-            {editUrl && onlineEdit ? <a className={`${prefixCls}-action edit-action`} onClick={me.onEditFile.bind(this, file, editUrl)} target="_blank" href={editUrl}><Icon name="caozuo-bianji" /></a> : null}
+            {editUrl && onlineEdit && !readOnly && !disabled ? <a className={`${prefixCls}-action edit-action`} onClick={me.onEditFile.bind(this, file, editUrl)} target="_blank" href={editUrl}><Icon name="caozuo-bianji" /></a> : null}
             {downloadUrl ? <a className={`${prefixCls}-action download-action`} onClick={me.onDownloadFile.bind(this, file, downloadUrl)} target="_blank" download href={downloadUrl}><Icon name="xiazai" /></a> : null}
             {response.canRemove !== false && !readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)}><Icon name="shanchu" /></a> : null}
           </div>
