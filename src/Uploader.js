@@ -333,6 +333,7 @@ class Uploader extends React.Component {
         isVisual={this.props.isVisual}
         isOnlyImg={this.props.isOnlyImg}
         readOnly={this.props.readOnly}
+        disabled={disabled}
         onlineEdit={this.props.onlineEdit}
         showErrFile={this.props.showErrFile}
         mode="nw"
@@ -353,7 +354,7 @@ class Uploader extends React.Component {
 
     const clazzName = classNames(className, {
       [`${prefixCls}er`]: true,
-      [`${prefixCls}er-disabled`]: disabled
+      [`${prefixCls}er-disabled`]: disabled,
     });
     return (
       <div className={clazzName}>

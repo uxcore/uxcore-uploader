@@ -22,6 +22,7 @@ export default class FileList extends React.Component {
     isOnlyImg: PropTypes.bool,
     showErrFile: PropTypes.bool,
     readOnly: PropTypes.bool,
+    disabled: PropTypes.bool,
     onlineEdit: PropTypes.bool,
     fileList: PropTypes.array,
     core: PropTypes.any,
@@ -125,6 +126,7 @@ export default class FileList extends React.Component {
             mode={this.props.mode}
             isOnlyImg={this.props.isOnlyImg}
             readOnly={this.props.readOnly}
+            disabled={this.props.disabled}
             isVisual={this.props.isVisual}
             onlineEdit={this.props.onlineEdit}
             onShowFile={(currentFile, url) => { this.onShowFile(currentFile, url, index); }}

@@ -212,7 +212,7 @@ const fileList3 = [
     ext: 'ppt',
     fileType: 'application/vnd.ms-powerpoint',
     id: '',
-    name: '1c28404f9a6648d7c1c708a1284ac850ac020472.ppt',
+    name: '1c28404f9a6648d7c1c708a1284ac850ac0204721c28404f9a6648d7c1c708a1284ac850ac020472.ppt',
     previewUrl: 'https://yida.alibaba-inc.com/inst/preview?appType=APP_IW48H4Z2XO8T8HRC5I0X&fileName=1c28404f9a6648d7c1c708a1284ac850ac020472.ppt&fileSize=146432&downloadUrl=1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
     response: {
       content: {
@@ -230,12 +230,12 @@ const fileList3 = [
         isDeleted: 'n',
         memo: '',
         modifier: '162333',
-        name: '1c28404f9a6648d7c1c708a1284ac850ac020472.ppt',
+        name: '1c28404f9a6648d7c1c708a1284ac850ac0204721c28404f9a6648d7c1c708a1284ac850ac020472.ppt',
         needWaterMark: false,
         open: 'n',
         path: '1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
-        previewUrl: 'https://yida.alibaba-inc.com/inst/preview?appType=APP_IW48H4Z2XO8T8HRC5I0X&fileName=1c28404f9a6648d7c1c708a1284ac850ac020472.ppt&fileSize=146432&downloadUrl=1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
-        editUrl: 'https://yida.alibaba-inc.com/inst/preview?appType=APP_IW48H4Z2XO8T8HRC5I0X&fileName=1c28404f9a6648d7c1c708a1284ac850ac020472.ppt&fileSize=146432&downloadUrl=1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
+        previewUrl: 'https://yida.alibaba-inc.com/inst/preview?appType=APP_IW48H4Z2XO8T8HRC5I0X&fileName=1c28404f9a6648d7c1c708a1284ac850ac0204721c28404f9a6648d7c1c708a1284ac850ac020472.ppt&fileSize=146432&downloadUrl=1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
+        editUrl: 'https://yida.alibaba-inc.com/inst/preview?appType=APP_IW48H4Z2XO8T8HRC5I0X&fileName=1c28404f9a6648d7c1c708a1284ac850ac0204721c28404f9a6648d7c1c708a1284ac850ac020472.ppt&fileSize=146432&downloadUrl=1408e60a-e2ce-4620-b288-d0570429b9cc.ppt',
         procInstId: '',
         shardKey: '',
         size: 146432,
@@ -784,6 +784,7 @@ class Demo10 extends React.Component {
         sizeLimit="5120kb"
         accept="*.pdf, *.doc, *.docx, *.xlsx, *.ppt, *.pptx"
         readOnly={false}
+        disabled={false}
         multiple
         onlineEdit
         isVisual={false}
