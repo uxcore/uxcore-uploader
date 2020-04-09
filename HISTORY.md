@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.7.1
+* `FIXED` fix bug about prop onlineEdit
+
 ## 3.7.0
 * `CHANGED` add new prop onlineEdit
   
