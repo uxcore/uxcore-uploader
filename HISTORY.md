@@ -1,6 +1,9 @@
 # history
 
 ---
+## 3.7.2
+* `FIXED` fixbug
+
 ## 3.7.1
 * `FIXED` fix bug about prop onlineEdit
 
