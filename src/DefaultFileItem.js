@@ -34,7 +34,7 @@ export default class DefaultFileItem extends React.Component {
     }
     const downloadUrl = response.downloadUrl === undefined ? (response.file || response.url) : response.downloadUrl;
     const previewUrl = response.previewUrl === undefined ? downloadUrl : response.previewUrl;
-    const editUrl = response.editUrl === undefined ? downloadUrl : response.editUrl;
+    const editUrl = response.editUrl;
     let readOnlyStyle;
     if (isOnlyImg) {
       const type = isVisual ? `${prefixCls}-fileitem-visual` : `${prefixCls}-fileitem-img`;
