@@ -11,6 +11,18 @@ const locale = {
     upload_files: 'upload files',
     upload_files_img: 'upload images',
   },
+  'zh-hk': {
+    download: '下載',
+    preview: '預覽',
+    edit: '編輯',
+    remove: '移除',
+    retry: '重傳',
+    upload: '上傳',
+    uploading: '上傳中',
+    upload_failed: '上傳失敗',
+    upload_files: '添加文件',
+    upload_files_img: '上傳圖片',
+  },
   'pl-pl': {
     download: 'pobierz',
     preview: 'podgląd',
