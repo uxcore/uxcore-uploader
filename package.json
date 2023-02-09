@@ -43,7 +43,8 @@
     "react-dom": "16.x",
     "react-test-renderer": "16.x",
     "uxcore-kuma": "*",
-    "uxcore-tools": "^0.3.0"
+    "uxcore-tools": "^0.3.0",
+    "uxcore-config-provider": "^0.1.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -54,8 +55,7 @@
     "uxcore-album": "^0.3.26",
     "uxcore-button": "^0.4.11",
     "uxcore-icon": "^0.1.1",
-    "uxcore-progress": "^1.1.0",
-    "uxcore-config-provider": "^0.1.0"
+    "uxcore-progress": "^1.1.0"
   },
   "author": "onbing",
   "contributors": [],
