@@ -16,7 +16,7 @@ export default class FileList extends React.Component {
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    localePackage: PropTypes.object,
+    localePack: PropTypes.object,
     mode: PropTypes.string,
     isVisual: PropTypes.bool,
     isOnlyImg: PropTypes.bool,
@@ -121,7 +121,7 @@ export default class FileList extends React.Component {
           <DefaultFileItem
             file={file}
             prefixCls={this.props.prefixCls}
-            localePackage={this.props.localePackage}
+            localePack={this.props.localePack}
             key={index}
             mode={this.props.mode}
             isOnlyImg={this.props.isOnlyImg}
@@ -146,7 +146,7 @@ export default class FileList extends React.Component {
         arr.push(
           <FileItem
             prefixCls={this.props.prefixCls}
-            localePackage={this.props.localePackage}
+            localePack={this.props.localePack}
             key={file.id}
             file={file}
             mode={this.props.mode}
