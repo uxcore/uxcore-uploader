@@ -3,7 +3,6 @@ import Progress from './Progress';
 import util from './util';
 import { Events } from 'uploadcore';
 import React from 'react';
-import i18n from './locale';
 import Icon from 'uxcore-icon';
 
 export default class FileItem extends React.Component {
@@ -71,24 +70,24 @@ export default class FileItem extends React.Component {
 
   render() {
     const me = this;
-    const { locale, interval, prefixCls } = me.props;
+    const { localePack, interval, prefixCls } = me.props;
 
     if (this.props.mode === 'icon') {
       return (<div className={`${prefixCls}-fileitem status-${this.state.status}`}>
-        <a className={`${prefixCls}-action action-remove`} onClick={this.onCancel.bind(this)} title={i18n[locale].remove}>
+        <a className={`${prefixCls}-action action-remove`} onClick={this.onCancel.bind(this)} title={localePack.remove}>
           <Icon name="shanchu" />
         </a>
         <div className="filepreview">
           <Preview file={this.props.file} prefixCls={prefixCls} />
-          {this.state.status === 'error' ? <a className={`${prefixCls}-action action-retry`} onClick={this.onPending.bind(this)} title={i18n[locale].retry}>
+          {this.state.status === 'error' ? <a className={`${prefixCls}-action action-retry`} onClick={this.onPending.bind(this)} title={localePack.retry}>
             <i className="kuma-icon kuma-icon-refresh" />
           </a> : null}
-          {this.state.status === 'queued' ? <a className={`${prefixCls}-action action-upload`} onClick={this.onPending.bind(this)} title={i18n[locale].upload}>
+          {this.state.status === 'queued' ? <a className={`${prefixCls}-action action-upload`} onClick={this.onPending.bind(this)} title={localePack.upload}>
             <i className="kuma-icon kuma-icon-triangle-right" />
           </a> : null}
           {this.state.status === 'progress' || this.state.status === 'pending' ? <Progress file={this.file} interval={interval} percentage={this.state.percentage} /> : null}
         </div>
-        {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`} title={i18n[locale].upload_failed}><i className="kuma-icon kuma-icon-caution" /></a> : null}
+        {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`} title={localePack.upload_failed}><i className="kuma-icon kuma-icon-caution" /></a> : null}
         {this.state.status === 'success' ? <a className={`${prefixCls}-status status-success`}><i className="kuma-icon kuma-icon-choose" /></a> : null}
         <div className="filename" title={this.file.name}>{util.natcut(this.file.name, 10)}</div>
       </div>);
@@ -137,10 +136,10 @@ export default class FileItem extends React.Component {
             <span className="filename" title={this.file.name}>{this.file.name}</span>
           </label>
           <label className="field-status">
-            {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`}>{i18n[locale].upload_failed}</a> : null}
-            {this.state.status === 'success' && previewUrl ? <a className={`${prefixCls}-action`} target="_blank" href={previewUrl}>{i18n[locale].preview}</a> : null}
-            {this.state.status === 'success' && editUrl && this.props.onlineEdit ? <a className={`${prefixCls}-action`} target="_blank" href={editUrl}>{i18n[locale].edit}</a> : null}
-            {this.state.status === 'success' && downloadUrl ? <a className={`${prefixCls}-action`} target="_blank" href={downloadUrl} download>{i18n[locale].download}</a> : null}
+            {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`}>{localePack.upload_failed}</a> : null}
+            {this.state.status === 'success' && previewUrl ? <a className={`${prefixCls}-action`} target="_blank" href={previewUrl}>{localePack.preview}</a> : null}
+            {this.state.status === 'success' && editUrl && this.props.onlineEdit ? <a className={`${prefixCls}-action`} target="_blank" href={editUrl}>{localePack.edit}</a> : null}
+            {this.state.status === 'success' && downloadUrl ? <a className={`${prefixCls}-action`} target="_blank" href={downloadUrl} download>{localePack.download}</a> : null}
             {(this.state.status === 'success' || this.state.status === 'error') ? <a className={`${prefixCls}-action close-action`} onClick={this.onCancel.bind(this)}><Icon name="shanchu" /></a> : <a className="${prefixCls}-action terminal-action" onClick={this.onCancel.bind(this)}><Icon name="guanbi" /></a>}
           </label>
         </div>
@@ -154,18 +153,18 @@ export default class FileItem extends React.Component {
         <span className="filesize">{`/${size}`}</span>
       </label>
       <label className="field-status">
-        {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`} title={i18n[locale].upload_failed}><i className="kuma-icon kuma-icon-caution" /></a> : null}
+        {this.state.status === 'error' ? <a className={`${prefixCls}-status status-error`} title={localePack.upload_failed}><i className="kuma-icon kuma-icon-caution" /></a> : null}
         {this.state.status === 'success' ? <a className={`${prefixCls}-status status-success`}><i className="kuma-icon kuma-icon-choose" /></a> : null}
 
-        {this.state.status === 'error' ? <a className={`${prefixCls}-action action-retry`} onClick={this.onPending.bind(this)} title={i18n[locale].retry}>
+        {this.state.status === 'error' ? <a className={`${prefixCls}-action action-retry`} onClick={this.onPending.bind(this)} title={localePack.retry}>
           <i className="kuma-icon kuma-icon-refresh" />
         </a> : null}
 
-        {this.state.status === 'queued' ? <a className={`${prefixCls}-action action-upload`} onClick={this.onPending.bind(this)} title={i18n[locale].upload}>
+        {this.state.status === 'queued' ? <a className={`${prefixCls}-action action-upload`} onClick={this.onPending.bind(this)} title={localePack.upload}>
           <i className="kuma-icon kuma-icon-triangle-right" />
         </a> : null}
 
-        <a className={`${prefixCls}-action action-remove`} onClick={this.onCancel.bind(this)} title={i18n[locale].remove}>
+        <a className={`${prefixCls}-action action-remove`} onClick={this.onCancel.bind(this)} title={localePack.remove}>
           <Icon name="shanchu" />
         </a>
       </label>

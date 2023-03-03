@@ -27,7 +27,7 @@ export default class DefaultFileItem extends React.Component {
 
   render() {
     const me = this;
-    const { prefixCls, locale, file, mode, isOnlyImg, isVisual, readOnly, disabled, onlineEdit } = me.props;
+    const { prefixCls, localePack, file, mode, isOnlyImg, isVisual, readOnly, disabled, onlineEdit } = me.props;
     let response = util.simpleDeepCopy(file.response);
     if (file.type === 'upload') {
       response = response.content ? (response.content.data ? response.content.data : response.content) : response.data;
@@ -44,7 +44,7 @@ export default class DefaultFileItem extends React.Component {
     }
     if (mode === 'icon') {
       return (<div className={`${prefixCls}-fileitem`}>
-        <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this)} title={i18n[locale].remove}>
+        <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this)} title={localePack.remove}>
           <Icon name="shanchu" />
         </a>
         <div className="filepreview">
@@ -112,7 +112,7 @@ export default class DefaultFileItem extends React.Component {
       </label>
       <label className="field-status">
         <a className={`${prefixCls}-status status-success`}><i className="kuma-icon kuma-icon-choose" /></a>
-        {!readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)} title={i18n[locale].remove}>
+        {!readOnly ? <a className={`${prefixCls}-action remove-action`} onClick={this.onCancel.bind(this, file)} title={localePack.remove}>
           <Icon name="shanchu" />
         </a> : null}
       </label>

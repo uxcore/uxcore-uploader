@@ -51,5 +51,7 @@ const locale = {
 
 locale.en = locale['en-us'];
 locale.pl = locale['pl-pl'];
+locale['en_US'] = locale['en-us'];
+locale['zh_CN'] = locale['zh-cn'];
 
 export default locale;

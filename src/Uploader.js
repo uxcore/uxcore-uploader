@@ -33,6 +33,7 @@ class Uploader extends React.Component {
   static defaultProps = {
     prefixCls: 'kuma-upload',
     locale: 'zh-cn',
+    localePack: undefined,
     autoPending: true,
     fileList: [],
     onChange: () => { },
@@ -48,6 +49,7 @@ class Uploader extends React.Component {
   static propTypes = {
     prefixCls: PropTypes.string,
     locale: PropTypes.string,
+    localePack: PropTypes.object,
     fileList: PropTypes.array,
     onShowFile: PropTypes.func,
     onChange: PropTypes.func,
@@ -297,6 +299,9 @@ class Uploader extends React.Component {
   render() {
     const me = this;
     const { prefixCls, locale, className, isVisual, disabled, hideUploadIcon, queueCapcity } = this.props;
+    const { context = {} } = this;
+    const { localePack = {} } = context;
+    const mergedLang = { ...i18n[locale], ...localePack.Uploader, ...this.props.localePack };
     let children = this.props.children;
     const readOnly = this.props.readOnly;
     const uploadingFiles = me.getUploadingFiles();
@@ -305,11 +310,11 @@ class Uploader extends React.Component {
       if (isVisual) {
         children = (
           <button className={`${prefixCls}-button`}>
-            {i18n[locale].upload_files_img}
+            {mergedLang.upload_files_img}
           </button>
         );
       } else {
-        children = <Button type="secondary" size="small">{i18n[locale].upload_files}</Button>;
+        children = <Button type="secondary" size="small">{mergedLang.upload_files}</Button>;
       }
     }
     const tips = readOnly ? null : this.renderTips();
@@ -329,6 +334,7 @@ class Uploader extends React.Component {
         key="files"
         prefixCls={prefixCls}
         locale={this.props.locale}
+        localePack={mergedLang}
         core={this.core}
         isVisual={this.props.isVisual}
         isOnlyImg={this.props.isOnlyImg}
@@ -365,5 +371,9 @@ class Uploader extends React.Component {
 }
 
 polyfill(Uploader);
+
+Uploader.contextTypes = {
+  localePack: PropTypes.object
+}
 
 export default Uploader;

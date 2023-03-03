@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'uxcore-button';
+import UxcoreConfigProvider from 'uxcore-config-provider';
 import Uploader from '../src';
 import '../style';
 import 'kuma-base/core.less';
@@ -280,27 +281,35 @@ class Demo1 extends React.Component {
     const me = this;
     window.uploader = me;
     return (
-      <Uploader
-        sizeLimit="3072kb"
-        accept="*.jpeg, *.jpg *.png"
-        ref="uploader"
-        multiple={false}
-        isOnlyImg={false}
-        disabled
-        isVisual={false}
-        // showErrFile={false}
-        onfileuploadpreparing={this.beforeUpload}
-        progressInterval={100}
-        queueCapcity={2}
-        actionOnQueueLimit="cover"
-        onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
-        fileList={this.state.fileList}
-        onChange={this.handleChange.bind(this)}
-        tips={imgTips}
-        name="file"
-        url="http://eternalsky.me:8122/file/upload"
-        locale="zh-cn"
-      />
+      <UxcoreConfigProvider localePack={
+        {
+          Uploader: {
+            upload_files: '自定义文案'
+          }
+        }
+      }>
+        <Uploader
+          sizeLimit="3072kb"
+          accept="*.jpeg, *.jpg *.png"
+          ref="uploader"
+          multiple={false}
+          isOnlyImg={false}
+          disabled
+          isVisual={false}
+          // showErrFile={false}
+          onfileuploadpreparing={this.beforeUpload}
+          progressInterval={100}
+          queueCapcity={2}
+          actionOnQueueLimit="cover"
+          onqueueerror={function (err) { console.log(err); console.log(me.refs.uploader.getCore().getTotal()); }}
+          fileList={this.state.fileList}
+          onChange={this.handleChange.bind(this)}
+          tips={imgTips}
+          name="file"
+          url="http://eternalsky.me:8122/file/upload"
+          locale="zh-cn"
+        />
+      </UxcoreConfigProvider>
     );
   }
 }
