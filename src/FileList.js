@@ -121,6 +121,7 @@ export default class FileList extends React.Component {
           <DefaultFileItem
             file={file}
             prefixCls={this.props.prefixCls}
+            locale={this.props.locale}
             localePack={this.props.localePack}
             key={index}
             mode={this.props.mode}
@@ -146,6 +147,7 @@ export default class FileList extends React.Component {
         arr.push(
           <FileItem
             prefixCls={this.props.prefixCls}
+            locale={this.props.locale}
             localePack={this.props.localePack}
             key={file.id}
             file={file}

@@ -333,6 +333,7 @@ class Uploader extends React.Component {
       <FileList
         key="files"
         prefixCls={prefixCls}
+        locale={this.props.locale}
         localePack={mergedLang}
         core={this.core}
         isVisual={this.props.isVisual}
