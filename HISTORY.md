@@ -1,8 +1,11 @@
 # history
 
 ---
+## 3.7.4
+* `CHANGED` 新增语言包&locale key (#90)
+
 ## 3.7.2
-* `FIXED` fixbug
+* `FIXED` fix bug
 
 ## 3.7.1
 * `FIXED` fix bug about prop onlineEdit
